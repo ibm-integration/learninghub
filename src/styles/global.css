@@ -96,3 +96,11 @@ div[class*='Code-module--row']{
     background-repeat: no-repeat;
     alignment: center;
 }
+
+summary {
+    padding: 4px;
+    background-color: #e0e0e0;
+    border: none;
+    cursor: pointer;
+    font-size: 18pt;
+}
