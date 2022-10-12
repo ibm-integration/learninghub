@@ -104,3 +104,8 @@ summary {
     cursor: pointer;
     font-size: 18pt;
 }
+
+[class*=InlineNotification-module], [class*=page-table__container] {
+    flex: 0 0 100%!important;
+    max-width: 100%!important;
+}
