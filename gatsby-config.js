@@ -25,5 +25,5 @@ module.exports = {
   },
 }
 ],
-pathPrefix: "/ibm-integration/learninghub",
+pathPrefix: "/learninghub",
 };
