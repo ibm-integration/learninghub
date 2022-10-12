@@ -1,33 +1,14 @@
-- title: Early Sales Demo Assets
+- title: Live Demos
   pages:
-    - title: Early Sales Demo Assets
-      path: /esd/overview
-- title: Requesting your Environment
+    - title: Aspera on Cloud Sales Demo
+      path: /demos/aoc-sales
+- title: Hands-on Labs
   pages:
-    - title: Overview
-      path: /environment/overview/
-    - title: Requesting ROKS Cluster
-      path: /environment/requesting/
-    - title: Installing Cloud Pak for MCM
-      path: /environment/installpak/
-- title: Be Ready to Demo
+    - title: CP4I & GitOps Lab
+      path: /labs/gitops/
+    - title: ACE Toolkit Labs
+      path: /labs/toolkits/
+- title: Environments
   pages:
-    - title: Be Ready to Demo
-      path: /readings/
-- title: Learning with Labs
-  pages:
-    - title: Overview
-      path: /labs/overview/
-    - title: Prereq - Install CLI Tools
-      path: /labs/installcli/
-    - title: Introduction
-      path: /labs/introduction/
-    - title: Lab 1 - Multicluster Management
-      path: /labs/clustermgmt/
-- title: Delivering a Workshop
-  pages:
-    - title: Delivering a Workshop
-      path: /workshop/overview
-- title: Resources
-  pages:
-    - path: /resources/
+    - title: CP4I one-click on Techzone
+      path: /environments/oneclick
