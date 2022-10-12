@@ -106,6 +106,7 @@ summary {
 }
 
 [class*=InlineNotification-module], [class*=page-table__container] {
-    flex: 0 0 100%!important;
-    max-width: 100%!important;
+    flex: 0 0 95%!important;
+    max-width: 95%!important;
+    margin-left: 20px
 }
