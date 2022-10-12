@@ -97,7 +97,7 @@ div[class*='Code-module--row']{
     alignment: center;
 }
 
-summary {
+.summary {
     padding: 4px;
     background-color: #e0e0e0;
     border: none;
