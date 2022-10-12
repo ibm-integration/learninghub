@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: 'Cloud Pak for Template',
-    description: 'Cookbook for Cloud Pak for Pak_Name',
+    title: 'Integration Learning Hub',
+    description: 'Single point of access for Integration Learning material',
     keywords: 'ibm,mcm,carbon',
   },
   plugins: ['gatsby-theme-carbon',
@@ -19,11 +19,11 @@ module.exports = {
     isSearchEnabled: true,
     repository: {
       baseUrl:
-        'https://github.ibm.com/ibmdemos-cloudpaks/cloudpak-template',
+        'https://github.ibm.com/ibm-integration/learninghub',
       subDirectory: '/',
     },
   },
 }
 ],
-pathPrefix: "/ibmdemos-cloudpaks/cloudpak-template",
+pathPrefix: "/ibm-integration/learninghub",
 };
