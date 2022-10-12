@@ -1,7 +1,7 @@
 - title: Live Demos
   pages:
     - title: Aspera on Cloud Sales Demo
-      path: /demos/aoc-sales/demo-preparation.mdx
+      path: /demos/aoc-sales/demo-preparation
 - title: Hands-on Labs
   pages:
     - title: CP4I & GitOps Lab
