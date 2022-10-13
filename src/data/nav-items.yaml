@@ -2,3 +2,9 @@
   pages:
     - title: Aspera on Cloud Sales Demo
       path: /demos/aoc-sales/demo-preparation
+- title: Hands-on Labs
+  pages:
+    - title: CP4I & GitOps Lab
+      path: /labs/gitops/
+    - title: ACE Toolkit Labs
+      path: /labs/toolkits/
