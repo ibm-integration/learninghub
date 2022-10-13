@@ -185,20 +185,21 @@ Behind the scene, the user will receive an email about the Share event. Great, o
 
 <br/>
 
-| **3.1** | **Review properties** |
+| **3.1** | **Transfer Activity** |
 | :--- | :--- |
-| **Narration** | The designer builds your API for you. You don’t need to worry about OpenAPI specs or Swagger editors – it’s all built in. These are the fields we are going to use for our API. Note that we tell our API which field is the key – in our case, CaseReference. |
-| **Action** &nbsp; 3.1.1 | Open the **Properties** view. <br/><br/> <img src="https://raw.githubusercontent.com/ibm-garage-tsa/platinum-demos/master/src/pages/300-integration-api-enabled-application-integration/images/300-api-demo-3-1-1.png" width="800" /> <br/> |
-| **Action** &nbsp; 3.1.2 | Show the **Properties** view. <br/><br/> <img src="https://raw.githubusercontent.com/ibm-garage-tsa/platinum-demos/master/src/pages/300-integration-api-enabled-application-integration/images/300-api-demo-3-1-2.png" width="800" /> <br/> |
-| **Action** &nbsp; 3.1.3 | Open the **Operations** view. <br/><br/> <img src="https://raw.githubusercontent.com/ibm-garage-tsa/platinum-demos/master/src/pages/300-integration-api-enabled-application-integration/images/300-api-demo-3-1-3.png" width="800" /> |
-
+| **Narration** | Now, let's explore the monitoring cababilities of Aspera on Cloud. The Activity app shows app events and the performance, history, and usage for file transfers. Activity's responsive engine streams log data to the web application, generating interactive visualizations of real-time and historical data.<br/><br/>Let's explore the first capability: Transfer activity. Here you can view historic and live transfer activity based on filters. <br/><br/>This page displays real-time and historical transfer data for your organization. It includes context for a given transfer, such as the time of the transfer and whether it completed or failed. You can also review performance data for the resources (workspaces, nodes, and users) associated with your workspace. This can help you identify issues in the system; for example, an inactive server may need to be evaluated for connectivity issues.<br/><br/>And we can easily export the data for a CSV files and use in any other Data Visualization tool. |
+| **Action** &nbsp; 3.1.1 | Open the **App switcher** menu (A) and select **Activity** (B). <br/><br/> ![](images/transfer-activity-1.png)  |
+| **Action** &nbsp; 3.1.2 | On the **Transfer activity** page (A), change the filter to show more data (B). Show the information on top of the page (C). <br/><br/> ![](images/transfer-activity-2.png) |
+| **Action** &nbsp; 3.1.3 | Scroll down the page, and show the information on bottom of the page. <br/><br/> ![](images/transfer-activity-3.png) |
+| **Action** &nbsp; 3.1.4 | Click **Export**. <br/><br/> ![](images/transfer-activity-4.png) |
+| **Action** &nbsp; 3.1.5 | Keep the default name (A) and click **Export** (B). You are welcome to show the downloaded CSV file. <br/><br/> ![](images/transfer-activity-5.png) |
 <br/>
 
-| **3.2** | **Review operations** |
+| **3.2** | **Volume Usage** |
 | :--- | :--- |
-| **Narration** | The Operations view shows actions that the API exposes along with the data. In this demo, we’re going to build just one operation: “Create Car Repair Claim." We can add more later if we wish. Let’s check the flow logic. |
-| **Action** &nbsp; 3.2.1 | Show the **Operations**  view. Click **Edit flow**. <br/><br/> <img src="https://raw.githubusercontent.com/ibm-garage-tsa/platinum-demos/master/src/pages/300-integration-api-enabled-application-integration/images/300-api-demo-3-2-1.png" width="800" />  |
-
+| **Narration** | Now, let's explore the second capability of the Activity app: Volume Usage. <br/><br/>Use the Volume usage page to monitor transfer volume for your entire organization or filtered by each component of the transfer system: entitlements, nodes, access keys, workspaces, and users. You can zoom in to data based on configurable time spans.<br/><br/>The graph displays aggregate volume data for the selected time period. The graph is interactive. You can hover over any bar on the graph to see upload and download values for that point in time. |
+| **Action** &nbsp; 3.2.1 | Click on **Volume usage**. <br/><br/> ![](images/volume-usage-1.png)  |
+| **Action** &nbsp; 3.2.2 | Hover over any bar on the graph to see upload and download values for that point in time. <br/><br/> ![](images/volume-usage-2.png)  |
 <br/>
 
 | **3.3** | **Review the flow** |
