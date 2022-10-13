@@ -50,7 +50,7 @@ Let’s get started!
 
 | **1.2** | **Welcome page** |
 | :--- | :--- |
-| **Narration** | Here we have our Aspera on Cloud organization. Using Aspera on Cloud, organizations can store and readily access files and folders in multiple cloud-based and on-premises storage systems. Sharing among users is as easy as browsing or dragging-and-dropping – regardless of where the files are located – freeing collaboration from traditional boundaries among colleagues in both local and remote locations. <br/<br/> When we login the first time, we see the list of applications we have access to. Aspera on Cloud include multiples applications: Files to manage and share files and folders; Packages to send and download files; Activity to track usage and user activities; Automation to create automated tasks to simplify workflows and Admin to manage user and configure server settings. Users will only see and access applications that they have permission to use.  <br/<br/> In this page, we can define a default app to open by default when we access or Aspera on Cloud organization. Let's start using Files. |
+| **Narration** | Here we have our Aspera on Cloud organization. Using Aspera on Cloud, organizations can store and readily access files and folders in multiple cloud-based and on-premises storage systems. Sharing among users is as easy as browsing or dragging-and-dropping – regardless of where the files are located – freeing collaboration from traditional boundaries among colleagues in both local and remote locations. <br/><br/> When we login the first time, we see the list of applications we have access to. Aspera on Cloud include multiples applications: Files to manage and share files and folders; Packages to send and download files; Activity to track usage and user activities; Automation to create automated tasks to simplify workflows and Admin to manage user and configure server settings. Users will only see and access applications that they have permission to use.  <br/><br/> In this page, we can define a default app to open by default when we access or Aspera on Cloud organization. Let's start using Files. |
 | **Action** &nbsp; 1.2.1 | Describe and show all apps (don't click). <br/><br/> ![](images/welcome-1.png) |
 | **Action** &nbsp; 1.2.2 | Show how to make an app default (don't click). <br/><br/> ![](images/welcome-2.png) |
 | **Action** &nbsp; 1.2.3 | Open **Files**. <br/><br/> ![](images/welcome-3.png) |
@@ -201,65 +201,21 @@ Let’s get started!
 | **Action** &nbsp; 3.2.2 | Hover over any bar on the graph to see upload and download values for that point in time. <br/><br/> ![](images/volume-usage-2.png)  |
 <br/>
 
-| **3.3** | **Review the flow** |
+| **3.3** | **File Access** |
 | :--- | :--- |
-| **Narration** | Here we have our demo flow. In the designer flow editor, we can edit and change our flow. We are a car repair company that wants to create an API that will enable customers to send us photos of their cars, along with descriptions of what needs to be done with them. With this information we will create a case in Salesforce. Let’s explore our flow in detail. |
-| **Action** &nbsp; 3.3.1 | Close the **Request** box by clicking the **X**. <br/><br/> <img src="https://raw.githubusercontent.com/ibm-garage-tsa/platinum-demos/master/src/pages/300-integration-api-enabled-application-integration/images/300-api-demo-3-3-1.png" width="800" /> <br/> |
-| **Action** &nbsp; 3.3.2 | Explain the flow and scroll through all of the connectors in the flow. Open the **Request** again by clicking the first step of the flow. <br/><br/> <img src="https://raw.githubusercontent.com/ibm-garage-tsa/platinum-demos/master/src/pages/300-integration-api-enabled-application-integration/images/300-api-demo-3-3-2.png" width="800" />  |
-
+| **Narration** | Let's see the File Access capability. The File access page displays file access by user name or file name. <br/><br/>For example, here we can see all file permissions assigned to our current user. We can use the pagination buttons to check all files.<br/><br/>Another possibility is to use the search field to check the users who have permissions to a specific file. Let's try it with Campaigns files. <br/><br/>Here we can see the users and the permissions that they have in this file. In this case, it is only one user. |
+| **Action** &nbsp; 3.3.1 | Click on **File access**. <br/><br/> ![](images/file-access-1.png) |
+| **Action** &nbsp; 3.3.2 | By default, the first view of File access page will show all the file permissions assigned to the current user (A), maybe it is necessary to use next page button to find a useful file (B). <br/><br/> ![](images/file-access-2.png) |
+| **Action** &nbsp; 3.3.3 | On the search field, enter **Campaigns** as the file name (A) and select one of the file that you see in the result dialog (B). <br/><br/> ![](images/file-access-3.png) |
+| **Action** &nbsp; 3.3.4 | Show the user and permission in this specific file. <br/><br/> ![](images/file-access-4.png) |
 <br/>
 
-| **3.4** | **Review request** |
+| **3.4** | **Application Events** |
 | :--- | :--- |
-| **Narration** | Our flow starts by receiving the customer’s car repair request with photo via an API. Designer automatically creates an API “request” and “response” for your API flow. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  |
-| **Action** &nbsp; 3.4.1 | Show the **Request** box (1). Click to open the **If** step (2). <br/><br/> <img src="https://raw.githubusercontent.com/ibm-garage-tsa/platinum-demos/master/src/pages/300-integration-api-enabled-application-integration/images/300-api-demo-3-4-1.png" width="800" />  |
-
-<br/>
-
-| **3.5** | **Validate the photo** |
-| :--- | :--- |
-| **Narration** | Next, we validate the photo. Here, we have a simple IF statement that checks if the PhotoOfCar is empty. If it is not empty, we move forward to retrieve contacts by connecting to Salesforce. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  |
-| **Action** &nbsp; 3.5.1 | Explore the **If** step (1). Click the **Salesforce - Retrieve contacts** connector (2). &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br/><br/> <img src="https://raw.githubusercontent.com/ibm-garage-tsa/platinum-demos/master/src/pages/300-integration-api-enabled-application-integration/images/300-api-demo-3-5-1.png" width="800" /> |
-
-<br/>
-
-| **3.6** | **Retrieve contacts** |
-| :--- | :--- |
-| **Narration** | Now, we use a connector to create a case in Salesforce with the data from the API. This case is where we store the details and progress of our repair. We are using a hard-coded contact name: ‘Andy Young.' He’s the contact for the insurance company. Salesforce Developer Accounts have a pre-populated set of data that you can use to test. ‘Andy Young’ is one of those pre-populated contacts. Let’s test our connection with Salesforce. Let me change the contact to ‘Andrew Young‘ and test the connection.<br/><br/> The test shows that we don’t have an ‘Andrew Young.‘ Let’s change it back to ‘Andy Young‘ and test again. We now receive a successful response. This proves that our connection is working. Let’s check the details. Here we can see the output returned from Salesforce, including the Contact ID. |
-| **Action** &nbsp; 3.6.1 | Show the **Salesforce - Retrieve contacts** box. <br/><br/> <img src="https://raw.githubusercontent.com/ibm-garage-tsa/platinum-demos/master/src/pages/300-integration-api-enabled-application-integration/images/300-api-demo-3-6-1.png" width="800" />  |
-| **Action** &nbsp; 3.6.2 | Change the **Full Name** to **Andrew Young** (1). Click the highlighted icon to **Test** the connection (2). <br/><br/> <img src="https://raw.githubusercontent.com/ibm-garage-tsa/platinum-demos/master/src/pages/300-integration-api-enabled-application-integration/images/300-api-demo-3-6-2.png" width="800" />  |
-| **Action** &nbsp; 3.6.3 | On the **Try this action** dialog, check **Do not show this dialog box again** (1) and click **Continue** (2). <br/><br/> <img src="https://raw.githubusercontent.com/ibm-garage-tsa/platinum-demos/master/src/pages/300-integration-api-enabled-application-integration/images/300-api-demo-3-6-3.png" width="800" />  |
-| **Action** &nbsp; 3.6.4 | Change the **Full Name** back to **Andy Young** (1). Click the highlighted icon to **Test** again (2). Click the **View details** link (3). <br/><br/> <img src="https://raw.githubusercontent.com/ibm-garage-tsa/platinum-demos/master/src/pages/300-integration-api-enabled-application-integration/images/300-api-demo-3-6-4.png" width="800" />  |
-| **Action** &nbsp; 3.6.5 | On the **Output** tab, open the **Contact1** object. <br/><br/> <img src="https://raw.githubusercontent.com/ibm-garage-tsa/platinum-demos/master/src/pages/300-integration-api-enabled-application-integration/images/300-api-demo-3-6-5.png" width="800" />  |
-| **Action** &nbsp; 3.6.6 | Close all of the dialog tabs. Click the **Salesforce – Create case** connector. <br/><br/> <img src="https://raw.githubusercontent.com/ibm-garage-tsa/platinum-demos/master/src/pages/300-integration-api-enabled-application-integration/images/300-api-demo-3-6-6.png" width="800" />  |
-
-<br/>
-
-| **3.7** | **Create a case** |
-| :--- | :--- |
-| **Narration** | Now that we have the ID that we need, let’s create our Salesforce case. Note that we just re-use the same Salesforce connector but with a different operation and data. Here we can see that our contact ID comes from the previous ‘retrieve contact’ Salesforce Call. The name and email address come from the API request. The connector knows that fields like ‘Case Type’ have a limited number of values in Salesforce – so it automatically converts them into pull-down lists of values you can choose. |
-| **Action** &nbsp; 3.7.1 | Explore the **Salesforce – Create case** box (1). Open the **Salesforce - Create attachment** connector (2). <br/><br/> <img src="https://raw.githubusercontent.com/ibm-garage-tsa/platinum-demos/master/src/pages/300-integration-api-enabled-application-integration/images/300-api-demo-3-7-1.png" width="800" />  |
-
-<br/>
-
-| **3.8** | **Create an attachment** |
-| :--- | :--- |
-| **Narration** | To add a photograph, we need to create a Salesforce attachment. That will be easy, since we just use the connector again. Note that we use the case ID that is a returned value from the ‘Create Case’ connector call, which is kept in the flow automatically. We send the PhotoOfCar as a base64 string and we tell Salesforce that the content type is image/jpeg. |
-| **Action** &nbsp; 3.8.1 | Explore the **Salesforce – Create attachment** box (1). Open the **Create case comment** connector (2). <br/><br/> <img src="https://raw.githubusercontent.com/ibm-garage-tsa/platinum-demos/master/src/pages/300-integration-api-enabled-application-integration/images/300-api-demo-3-8-1.png" width="800" /> |
-
-<br/>
-
-| **3.9** | **Create a case comment** |
-| :--- | :--- |
-| **Narration** | Now we’ll add a comment to the case with the Salesforce connector stating this case was opened by IBM Cloud Pak for Integration. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |
-| **Action** &nbsp; 3.9.1 | Explore the **Salesforce – Create case comment** box (1). Open the **Response** connector (2). &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   <br/><br/><img src="https://raw.githubusercontent.com/ibm-garage-tsa/platinum-demos/master/src/pages/300-integration-api-enabled-application-integration/images/300-api-demo-3-10-1.png" width="800" /> |
-
-<br/>
-
-| **3.10** | **Respond to the customer** |
-| :--- | :--- |
-| **Narration** | Here we have the response that we submit to the customer after the API call. This response includes their Salesforce case reference for future enquiries, an estimate of how long it will take to repair, and also how much it will cost. Now that we've built the flow, let’s start it! &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  |
-| **Action** &nbsp; 3.10.1 | Explore the **Response** box (1). Click **Done** (2). <br/><br/> <img src="https://raw.githubusercontent.com/ibm-garage-tsa/platinum-demos/master/src/pages/300-integration-api-enabled-application-integration/images/300-api-demo-3-11-1.png" width="800" />  |
+| **Narration** | Last but not least, let's explore the Application events page. <br/><br/>The Application events page displays data for all app events, filterable by event type (such as user login or file creation), and time. Here we can get insights into events throughout our Aspera on Cloud applications, for security and monitoring purposes.<br/><br/>We can monitor different type of events, including: Log in, log out; workspace created or deleted; package sent, received or downloaded; File uploaded; Folder shared; User left the shared folder, etc. |
+| **Action** &nbsp; 3.4.1 | Click on **Application events**. <br/><br/> ![](images/app-events-1.png) |
+| **Action** &nbsp; 3.4.2 | Filter by specific **date**. <br/><br/> ![](images/app-events-2.png) |
+| **Action** &nbsp; 3.4.3 | Show and filter by specific Event type (e.g.: **Sent a package**). <br/><br/> ![](images/app-events-3.png) |
 
 <br/>
 
@@ -276,11 +232,11 @@ Let’s summarize what we’ve done today.
 
 <br/><br/>
 
-In the demo we: accessed the Cloud Pak for Integration environment and explored the capabilities; imported and reviewed the automated customer interactions integration flow; tested the flow; deployed the flow into the Cloud Pak runtime environment; managed access to the flow as an API and set up the security and rate limits; and demonstrated how a developer can use the API Portal to perform self-service consumption of the API.<br/><br/>From a business perspective we used APIs and application integrations to automate a series of steps to: obtain and validate input information from a customer with a concern, open a case in Salesforce, attach the incoming information to the case, and respond to the customer with the case number and expected date for resolution.
+In the demo we: accessed the Aspera on Cloud environment and explored the capabilities; manage and share files and folders; send and download packages; track usage and user activities. 
 
 <br/>
 
-The customer needing assistance obtains rapid response to their interaction and the confidence that your business is handling their request.
+From a business perspective we used Aspera on cloud to access and move data in a fast, secure and reusable way, by liberating data locaked away in multiple file sharing systems. With Aspera, we are able to improve customer satisfaction through an easily access to data spread across multiple locations.
 
 <br/>
 
