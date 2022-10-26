@@ -21,6 +21,7 @@ tabs: [ 'Demo preparation', 'Demo script']
   <AnchorLink>4 - Renaming your Workspace</AnchorLink>
   <AnchorLink>5 - Creating IBM Cloud Object Storage (ICOS) Services</AnchorLink>
   <AnchorLink>6 - Creating Microsoft Azure Blob Storage Services (Optional)</AnchorLink>
+  <AnchorLink>7 - Copying Access Key and Secret of your built-in node</AnchorLink>
 </AnchorLinks>
 
 ***
@@ -254,3 +255,29 @@ Your Azure storage must be in a region that is supported by the transfer service
 ![](images/azure-14.png)
 
 Great, your second object storage is ready for the demo.
+
+***
+
+### 7 - Copying Access Key and Secret of your built-in node
+
+Each Aspera on Cloud subscription includes one built-in, Aspera-managed transfer server (ATS) node with storage in IBM Cloud Storage. The access credentials (or access key) for this transfer server are automatically delivered to the administrator who first created the AoC organization. You can see these credentials in a digital package from Tech Support in the Packages app. It's very important to track and store these credentials securely so that you can access and manage content on this node.  You’ll need this key/secret for certain administrative tasks during the demo. Let's copy it!
+
+7.1 Back to Aspera on Cloud site, open the **App switcher** menu (A) and select **Packages** (B).
+
+![](images/access-key-1.png)
+
+7.2 In **My inbox** view (A), you should have the *Access key information* package from *Tech Support*. Click on **Access key information** package (B).
+
+![](images/access-key-2.png)
+
+7.3 In the **Assets** tab (A), select the **access_key_info.txt** file (B) and click **Download** (C).
+
+![](images/access-key-3.png)
+
+7.4 Open the **Transfer activity** dialog (A) and click on **View local folder** (B).
+
+![](images/access-key-4.png)
+
+7.5 Open the file with a Text editor and copy the **secret**.
+
+![](images/access-key-5.png)
