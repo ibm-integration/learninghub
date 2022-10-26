@@ -19,9 +19,11 @@ tabs: [ 'Demo preparation', 'Demo script']
   <AnchorLink>2 - Create your Aspera on Cloud free trial account</AnchorLink>
   <AnchorLink>3 - Installing Aspera Connect</AnchorLink>
   <AnchorLink>4 - Renaming your Workspace</AnchorLink>
-  <AnchorLink>5 - Creating IBM Cloud Object Storage (ICOS) Services</AnchorLink>
-  <AnchorLink>6 - Creating Microsoft Azure Blob Storage Services (Optional)</AnchorLink>
-  <AnchorLink>7 - Copying Access Key and Secret of your built-in node</AnchorLink>
+  <AnchorLink>5 - Creating your Demo Files</AnchorLink>
+  <AnchorLink>6 - Creating IBM Cloud Object Storage (ICOS) Services</AnchorLink>
+  <AnchorLink>7 - Creating Microsoft Azure Blob Storage Services (Optional)</AnchorLink>
+  <AnchorLink>8 - Copying Access Key and Secret of your built-in node</AnchorLink>
+  <AnchorLink>9 - Defining your Demo Users</AnchorLink>
 </AnchorLinks>
 
 ***
@@ -122,65 +124,84 @@ Great! Your workspace is ready for demo. 
 
 ***
 
-### 5 - Creating IBM Cloud Object Storage (ICOS) Services
+### 5 - Creating your Demo Files
+
+As part of this demo, you will need to upload some files. You can decide the size of files that you will use in your Demo based in your network bandwith. One important point: Large files are good to show how fast is to transfer files in Aspera, on the other hands, you don't want to stay in front of customer waiting a file to be uploaded. The recommendation is: Try first and define the best experience for your audience.
+
+You can create your demo files by using your personal files. Another possibility is to download some dummy files from internet. There are multiple sites where you can download test files, this <a href="http://xcal1.vodafone.co.uk/" target="_blank">site is one example</a>.
+
+Below are the names and size of files that we are using in the demo script. Feel free to recreate them. It is a good practice to keep them in a folder with easy access during the demo.
+
+| File Name | File Size |
+| A-B Testing Fall 2022 | 10 MB |
+| A-B Testing Summer 2022 | 10 MB |
+| Campaign Launch Video | 100 MB |
+| Campaign Logos | 10 MB |
+| Summer Campaign | 200 MB |
+| Mobile Campaign | 200 MB |
+| New Site Project | 10 MB |
+
+***
+
+### 6 - Creating IBM Cloud Object Storage (ICOS) Services
 
 In this section and next, you will configure two Object Storage services in different cloud providers to use in the demo to show file transfer between different cloud providers. Because of configuration simplicity, in this demo, you will use IBM Cloud and Microsoft Azure. Both Cloud providers enable you to use object storage service as part of free tier / trial account. The same is true with Google Cloud Platform and AWS. You are welcome to use any Object Storage service. 
 
-5.1 Access <a href="https://cloud.ibm.com/login" target="_blank">IBM Cloud log in page</a>.
+6.1 Access <a href="https://cloud.ibm.com/login" target="_blank">IBM Cloud log in page</a>.
 
-5.2 If you already have an account, just **log in**. If you don't, go ahead and follow all the steps to **create an account**.
+6.2 If you already have an account, just **log in**. If you don't, go ahead and follow all the steps to **create an account**.
 
 ![](images/icos-1.png)
 
-5.3 On IBM Dashboard, on *Search* field, type **Object Storage** (A)  and select **Object Storage** in *Catalog Results* (B). 
+6.3 On IBM Dashboard, on *Search* field, type **Object Storage** (A)  and select **Object Storage** in *Catalog Results* (B). 
 
 ![](images/icos-2.png)
 
-5.4 On *Cloud Object Storage* page, keep the **Lite Plan** selected (A), and click **Create** (B).
+6.4 On *Cloud Object Storage* page, keep the **Lite Plan** selected (A), and click **Create** (B).
 
 ![](images/icos-3.png)
 
-5.5 On your Storage instance page, click **Buckets** on the left menu. 
+6.5 On your Storage instance page, click **Buckets** on the left menu. 
 
 ![](images/icos-4.png)
 
-5.6 Click **Create bucket**.
+6.6 Click **Create bucket**.
 
 ![](images/icos-5.png)
 
-5.7 Click **Quickly get started** to use a predefined bucket.
+6.7 Click **Quickly get started** to use a predefined bucket.
 
 ![](images/icos-6.png)
 
-5.8 Close the **Get started creating a bucket** dialog.
+6.8 Close the **Get started creating a bucket** dialog.
 
 ![](images/icos-7.png)
 
-5.9 Your IBM Cloud storage must be in a region that is supported by the Aspera on Cloud transfer service. To view the supported regions, check the <a href="https://ats.aspera.io/pub/v1/servers/softlayer" target="_blank">list</a> here.  Check that you are using **us-south** (A) and click **Next** (B).
+6.9 Your IBM Cloud storage must be in a region that is supported by the Aspera on Cloud transfer service. To view the supported regions, check the <a href="https://ats.aspera.io/pub/v1/servers/softlayer" target="_blank">list</a> here.  Check that you are using **us-south** (A) and click **Next** (B).
 
 ![](images/icos-8.png)
 
-5.10 **Drag and drop a 50MB file** (A) and click **Next** (B).
+6.10 **Drag and drop a 50MB file** (A) and click **Next** (B).
 
 ![](images/icos-9.png)
 
-5.11 On *Test your bucket* page, click **View bucket configuration** button.
+6.11 On *Test your bucket* page, click **View bucket configuration** button.
 
 ![](images/icos-10.png)
 
-5.12 On the Bucket configuration page, take notes of your Bucket name (A), you will need that during the demo to integrate your ICOS bucket with Aspera on Cloud. Open the **Service credentials** page (B).
+6.12 On the Bucket configuration page, take notes of your Bucket name (A), you will need that during the demo to integrate your ICOS bucket with Aspera on Cloud. Open the **Service credentials** page (B).
 
 ![](images/icos-11.png)
 
-5.13 You need to have HMAC credentials for the IBM Cloud bucket. Let's create one! Click **New credential**.
+6.13 You need to have HMAC credentials for the IBM Cloud bucket. Let's create one! Click **New credential**.
 
 ![](images/icos-12.png)
 
-5.14 Enter **Service credentials-HMAC** as Credential Name (A). Open the **Advanced options** (B). **Turn On** the *Include HMAC Credential* (C). And click **Add** (D).
+6.14 Enter **Service credentials-HMAC** as Credential Name (A). Open the **Advanced options** (B). **Turn On** the *Include HMAC Credential* (C). And click **Add** (D).
 
 ![](images/icos-13.png)
 
-5.15 Click on **Service credentials-HMAC** credential (A) and take note of the **access_key_id** and **secret_access_key** (B). You will need both during the demo.
+6.15 Click on **Service credentials-HMAC** credential (A) and take note of the **access_key_id** and **secret_access_key** (B). You will need both during the demo.
 
 ![](images/icos-14.png)
 
@@ -188,69 +209,69 @@ Great, your IBM Cloud Object Storage is ready for demo. Let's prepare the second
 
 ***
 
-### 6 - Creating Microsoft Azure Blob Storage Services (Optional)
+### 7 - Creating Microsoft Azure Blob Storage Services (Optional)
 
 For the second storage bucket, you will need an acccount in a different Cloud platform. If you don't have one, you can go ahead and create an Azure free account and use its free tier capabilities. However, you will need to enter a valid <u>**credit card**</u>. It is a temporary authorization and will not charge unless you move to pay-as-you-go subscription. However If you don't want to create a free tier account, because you don't want to enter your *credit card*, no problem! You can go ahead with this demo and ignore the last section of the demo script (Transfer files between different cloud platforms).
 
 As previous described, here you will see how to create a Storage bucket in Azure Blob Storage. However, you are welcome to use a different Cloud platform, if you prefer.
 
-6.1 If you have an Azure account, log in <a href="https://portal.azure.com/" target="_blank">Azure Portal page</a>.
+7.1 If you have an Azure account, log in <a href="https://portal.azure.com/" target="_blank">Azure Portal page</a>.
 
-6.2 If not open the <a href="https://azure.microsoft.com/en-us/free/" target="_blank">Azure free account page</a>. Then click on **Start free** and follow the steps to create your free account.
+7.2 If not open the <a href="https://azure.microsoft.com/en-us/free/" target="_blank">Azure free account page</a>. Then click on **Start free** and follow the steps to create your free account.
 
 ![](images/azure-1.png)
 
-6.3 On Azure portal, on *Azure services* section, click **Storage accounts**.
+7.3 On Azure portal, on *Azure services* section, click **Storage accounts**.
 
 ![](images/azure-2.png)
 
-6.4 On Storage accounts page, click **Create storage account**.
+7.4 On Storage accounts page, click **Create storage account**.
 
 ![](images/azure-3.png)
 
-6.5 First, you need to select a Resource group. If you don't have one, click **Create new** (A). Enter a name for your resource group (e.g.: myresources) (B). Then, click **OK** (C).
+7.5 First, you need to select a Resource group. If you don't have one, click **Create new** (A). Enter a name for your resource group (e.g.: myresources) (B). Then, click **OK** (C).
 
 ![](images/azure-4.png)
 
-6.6 In the *Storage account name*, enter a unique name for your storage (A), don't forget to take notes of this name, you will use later in the demo.
+7.6 In the *Storage account name*, enter a unique name for your storage (A), don't forget to take notes of this name, you will use later in the demo.
 
 Your Azure storage must be in a region that is supported by the transfer service. To view the supported regions check <a href="https://ats.aspera.io/pub/v1/servers/AZURE" target="_blank">here</a>. For this demo, let's keep **(US) East US** as Region (B).
 
 ![](images/azure-5.png)
 
-6.7 Wait few seconds for the review process is ready. When completed, click **Create**.
+7.7 Wait few seconds for the review process is ready. When completed, click **Create**.
 
 ![](images/azure-6.png)
 
-6.8 You need to wait few minutes to deploy your storage account. When **your deployment is complete** (A), click **Go to resource** (B).
+7.8 You need to wait few minutes to deploy your storage account. When **your deployment is complete** (A), click **Go to resource** (B).
 
 ![](images/azure-7.png)
 
-6.9 Now you need to create your Blob container. On *Data storage* section, click on **Containers**.
+7.9 Now you need to create your Blob container. On *Data storage* section, click on **Containers**.
 
 ![](images/azure-8.png)
 
-6.10 To create a new container, click on **+ Container**.
+7.10 To create a new container, click on **+ Container**.
 
 ![](images/azure-9.png)
 
-6.11 Enter a **unique name** for your container (A) and set *Public access level* to **Blob (anonymous read access for blobs only)** (B). Click **Create** (C). Don't forget to take notes of your Container name, you will need that in the demo too.
+7.11 Enter a **unique name** for your container (A) and set *Public access level* to **Blob (anonymous read access for blobs only)** (B). Click **Create** (C). Don't forget to take notes of your Container name, you will need that in the demo too.
 
 ![](images/azure-10.png)
 
-6.12 On Blob container, click **Upload** (A). Select a **10 Mb file** (B) and click **Upload** button (C).
+7.12 On Blob container, click **Upload** (A). Select a **10 Mb file** (B) and click **Upload** button (C).
 
 ![](images/azure-11.png)
 
-6.13 Let's go back to the storage page. On the *Breadcrumbs*, click on your **Storage name**.
+7.13 Let's go back to the storage page. On the *Breadcrumbs*, click on your **Storage name**.
 
 ![](images/azure-12.png)
 
-6.14 Click on **Access keys**.
+7.14 Click on **Access keys**.
 
 ![](images/azure-13.png)
 
-6.15 On **key1** field, click **Show** button (A) and click **Copy** button (B) to copy the *Key* field. You will need that later in the demo to attach the Azure Blob Storage on Aspera on Cloud.
+7.15 On **key1** field, click **Show** button (A) and click **Copy** button (B) to copy the *Key* field. You will need that later in the demo to attach the Azure Blob Storage on Aspera on Cloud.
 
 ![](images/azure-14.png)
 
@@ -258,26 +279,34 @@ Great, your second object storage is ready for the demo.
 
 ***
 
-### 7 - Copying Access Key and Secret of your built-in node
+### 8 - Copying Access Key and Secret of your built-in node
 
 Each Aspera on Cloud subscription includes one built-in, Aspera-managed transfer server (ATS) node with storage in IBM Cloud Storage. The access credentials (or access key) for this transfer server are automatically delivered to the administrator who first created the AoC organization. You can see these credentials in a digital package from Tech Support in the Packages app. It's very important to track and store these credentials securely so that you can access and manage content on this node.  You’ll need this key/secret for certain administrative tasks during the demo. Let's copy it!
 
-7.1 Back to Aspera on Cloud site, open the **App switcher** menu (A) and select **Packages** (B).
+8.1 Back to Aspera on Cloud site, open the **App switcher** menu (A) and select **Packages** (B).
 
 ![](images/access-key-1.png)
 
-7.2 In **My inbox** view (A), you should have the *Access key information* package from *Tech Support*. Click on **Access key information** package (B).
+8.2 In **My inbox** view (A), you should have the *Access key information* package from *Tech Support*. Click on **Access key information** package (B).
 
 ![](images/access-key-2.png)
 
-7.3 In the **Assets** tab (A), select the **access_key_info.txt** file (B) and click **Download** (C).
+8.3 In the **Assets** tab (A), select the **access_key_info.txt** file (B) and click **Download** (C).
 
 ![](images/access-key-3.png)
 
-7.4 Open the **Transfer activity** dialog (A) and click on **View local folder** (B).
+8.4 Open the **Transfer activity** dialog (A) and click on **View local folder** (B).
 
 ![](images/access-key-4.png)
 
-7.5 Open the file with a Text editor and copy the **secret**.
+8.5 Open the file with a Text editor and copy the **secret**.
 
 ![](images/access-key-5.png)
+
+***
+
+### 9 - Defining your Demo Users
+
+During the demo, you will need to invite external users to access your files. We recommend to use a real external email (e.g.: gmail, hotmail, yahoo, ...).
+
+You can use your personal email. But a good practice is to create a fake demo user email (e.g.: fadams@gmail.com), and use different browser user profile to deliver your demo. For example, check <a href="https://support.google.com/chrome/answer/2364824?hl=en&co=GENIE.Platform%3DDesktop" target="_blank">here</a> how to use chrome with multiple user profiles.
