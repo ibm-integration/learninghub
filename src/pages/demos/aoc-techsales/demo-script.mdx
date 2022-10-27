@@ -192,43 +192,51 @@ Let’s get started!
 
 <details>
 
-<summary>4 - Monitoring Activities</summary>
+<summary>4 - Administering Workspaces and Users</summary>
 
 <br/>
 
-| **4.1** | **Transfer Activity** |
+| **4.1** | **Create Workspace** |
 | :--- | :--- |
-| **Narration** | Let’s explore the monitoring capabilities of Aspera on Cloud. The Activity app shows app events and the performance, history, and usage for file transfers. Activity’s responsive engine streams log data to the web application, generating interactive visualizations of real-time and historical data. <br/><br/> Let’s explore the first capability: Transfer activity. Here we can view historic and live transfer activity based on filters. <br/><br/> This page displays real-time and historical transfer data for the organization. It includes context for a given transfer, such as the time of the transfer and whether it completed or failed. We can also review performance data for the resources (workspaces, nodes, and users) associated with your workspace. This can help us identify issues in the system; for example, an inactive server may need to be evaluated for connectivity issues. <br/><br/> And we can easily export the data into a .CSV file and use in any other Data Visualization tool. |
-| **Action** &nbsp; 4.1.1 | Open the **App switcher** menu (A) and select **Activity** (B). <br/><br/> ![](images/transfer-activity-1.png)  |
-| **Action** &nbsp; 4.1.2 | On the **Transfer activity** page (A), change the filter to show more data (B). Show the information on top of the page (C). <br/><br/> ![](images/transfer-activity-2.png) |
-| **Action** &nbsp; 4.1.3 | Scroll down the page, and show the information on bottom of the page. <br/><br/> ![](images/transfer-activity-3.png) |
-| **Action** &nbsp; 4.1.4 | Click **Export**. <br/><br/> ![](images/transfer-activity-4.png) |
-| **Action** &nbsp; 4.1.5 | Keep the default name (A) and click **Export** (B). You are welcome to show the downloaded CSV file. <br/><br/> ![](images/transfer-activity-5.png) |
+| **Narration** | Now, let's explore the basic Administration features of Aspera on Cloud. We’ll start with Workspace creation. As I explained earlier, the workspace is a collection of users working together. The users, packages, files, and folders in one workspace are completely separate from those in another workspace.<br/><br/>So far, we have only one workspace in our organization: Marketing Workspace. Let's create another one: Sales Workspace. <br/><br/>Using the workspace admin page, we can add members to a workspace, define workspace settings or configure the applications available in the Workspace.|
+| **Action** &nbsp; 4.1.1 | Open the **App switcher** menu (A) and select **Admin** (B). <br/><br/> ![](images/admin-workspace-1.png)  |
+| **Action** &nbsp; 4.1.2 | In the **Workspaces** (A) page, click **Create new** (B).  <br/><br/> ![](images/admin-workspace-2.png) |
+| **Action** &nbsp; 4.1.3 | Enter **Sales Workspace** as *Name* (A). Keep the default Storage location. Then click **Create** (B). <br/><br/> ![](images/admin-workspace-3.png) |
+| **Action** &nbsp; 4.1.4 | Show the Workspace administration capabilities. <br/><br/> ![](images/admin-workspace-4.png) |
 <br/>
 
-| **4.2** | **Volume Usage** |
+| **4.2** | **Shared Folders** |
 | :--- | :--- |
-| **Narration** | Exploring some more, let’s take a look at the second capability of the Activity app: Volume Usage. <br/><br/> Use the Volume usage page to monitor transfer volume for our entire organization or filtered by each component of the transfer system: entitlements, nodes, access keys, workspaces, and users. We can zoom in to data based on configurable time spans. <br/><br/> The graph displays aggregate volume data for a selected time period. The graph is interactive. We can hover over any bar on the graph to see upload and download values for that point in time. |
-| **Action** &nbsp; 4.2.1 | Click on **Volume usage**. <br/><br/> ![](images/volume-usage-1.png)  |
-| **Action** &nbsp; 4.2.2 | Hover over any bar on the graph to see upload and download values for that point in time. <br/><br/> ![](images/volume-usage-2.png)  |
+| **Narration** | Let's explore the Applications tab to define some Applications settings for this new Workspace. By selecting the Files app, we can unselect the use of global app settings and define specific configurations for the Files app in this new workspace, for example, we can define who can share folders via public links. <br/><br/>Now, let's see how to define a Shared folder in a Workspace. First, we need to create the folder, then give permission to all workspace members.<br/><br/>Before we test it, we need to add our user as member of this workspace. Let's do it! <br/><br/>Great! Now we are ready to test it. We just need to open the Files app. Switch to the new Sales Workspace. Voilá! we can see the Shared folder that we have just created and shared with all workspace members.|
+| **Action** &nbsp; 4.2.1 | Open the **Applications** tab (A) and click on **Files** app (B). <br/><br/> ![](images/admin-workspace-5.png)  |
+| **Action** &nbsp; 4.2.2 | Uncheck the **Use global app settings** (A) and show some *Collaboration settings* (B).   <br/><br/> ![](images/admin-workspace-6.png) |
+| **Action** &nbsp; 4.2.3 | Click **Shared folders**. <br/><br/> ![](images/admin-workspace-7.png) |
+| **Action** &nbsp; 4.2.4 | Click **Create new**. <br/><br/> ![](images/admin-workspace-8.png) |
+| **Action** &nbsp; 4.2.5 | Copy and Paste the **Secret** of your Access Key (check in Demo Preparation how to do it) (A) and click **Log in** (B). <br/><br/> ![](images/admin-workspace-9.png)  |
+| **Action** &nbsp; 4.2.6 | Click **Create folder**.  <br/><br/> ![](images/admin-workspace-10.png) |
+| **Action** &nbsp; 4.2.7 | Enter **Sales Enablement** as folder Name (A). Click **Create** (B). <br/><br/> ![](images/admin-workspace-11.png) |
+| **Action** &nbsp; 4.2.8 | Select **Sales Enablement** (A) and click **Submit** (B). <br/><br/> ![](images/admin-workspace-12.png) |
+| **Action** &nbsp; 4.2.9 | Click **Add all workspace members**. <br/><br/> ![](images/admin-workspace-13.png)  |
+| **Action** &nbsp; 4.2.10 | Keep the default values and click **Add**.  <br/><br/> ![](images/admin-workspace-14.png) |
+| **Action** &nbsp; 4.2.11 | On the breadcrumbs menu, click on **...** (three dots) link (A). And select **Sales Workspace** (B). <br/><br/> ![](images/admin-workspace-15.png) |
+| **Action** &nbsp; 4.2.12 | Open the **Members** tab (A) and click on **Add members** button (B). <br/><br/> ![](images/admin-workspace-16.png) |
+| **Action** &nbsp; 4.2.13 | On the *Search for new members* field, enter and select your user (A) and click on **Add** (B). <br/><br/> ![](images/admin-workspace-17.png)  |
+| **Action** &nbsp; 4.2.14 | Click to **Refresh** the page.  <br/><br/> ![](images/admin-workspace-18.png) |
+| **Action** &nbsp; 4.2.15 | Open the **App switcher** menu again (A) and select **Files** (B). <br/><br/> ![](images/admin-workspace-19.png) |
+| **Action** &nbsp; 4.2.16 | Open the Workspace **menu** (A) and select **Sales Workspace** (B). <br/><br/> ![](images/admin-workspace-20.png) |
+| **Action** &nbsp; 4.2.17 | Show the new **Sales Enablement**, shared folder. <br/><br/> ![](images/admin-workspace-21.png) |
 <br/>
 
-| **4.3** | **File Access** |
+| **4.3** | **Manage Users** |
 | :--- | :--- |
-| **Narration** | Let’s see the File Access capability. The File access page displays file accesses by user name or file name. <br/><br/> For example, here we can see all file permissions assigned to our current user. We can use the pagination buttons to check all files. <br/><br/> Another possibility is to use the search field to check the users who have permissions to a specific file. Let’s try it with Campaigns files. <br/><br/> Here we can see the users and the permissions that they have in this file. In this case, it is only one user. |
-| **Action** &nbsp; 4.3.1 | Click on **File access**. <br/><br/> ![](images/fileaccess-1.png) |
-| **Action** &nbsp; 4.3.2 | By default, the first view of File access page will show all the file permissions assigned to the current user (A), maybe it is necessary to use next page button to find a useful file (B). <br/><br/> ![](images/fileaccess-2.png) |
-| **Action** &nbsp; 4.3.3 | On the search field, enter **Campaigns** as the file name (A) and select one of the file that you see in the result dialog (B). <br/><br/> ![](images/fileaccess-3.png) |
-| **Action** &nbsp; 4.3.4 | Show the user and permission in this specific file. <br/><br/> ![](images/fileaccess-4.png) |
-<br/>
-
-| **4.4** | **Application Events** |
-| :--- | :--- |
-| **Narration** | We arrived at the final capability to explore, the Application events page. <br/><br/> The Application events page displays data for all app events, filterable by event type (such as user login or file creation), and time. Here we can get insights into events throughout our Aspera on Cloud applications, for security and monitoring purposes. <br/><br/> We can monitor different types of events, some examples include: Log in, log out; workspace creation or deletion; packages sent, received or downloaded; File uploaded; Folder shared; or even when a User has left a shared folder. <br/><br/> We have arrived at the conclusion of our demonstration.  |
-| **Action** &nbsp; 4.4.1 | Click on **Application events**. <br/><br/> ![](images/appevents-1.png) |
-| **Action** &nbsp; 4.4.2 | Filter by specific **date**. <br/><br/> ![](images/appevents-2.png) |
-| **Action** &nbsp; 4.4.3 | Show and filter by specific Event type (e.g.: **Sent a package**). <br/><br/> ![](images/appevents-3.png) |
-
+| **Narration** | Let's see how to manage users in our organization. Back to the Admin app, we need to open the Users and Management menu. From here we can see all registered users and their status. Let's create a new user. <br/><br/>Now that we have the new user invited to join our organization, let's define his or her workspace membership.  We can easily add a new membership, by defining a role as a workspace manager in our Sales Workspace. Another way to manage users is using Group. The process is almost the same.|
+| **Action** &nbsp; 4.3.1 | Open the **App switcher** menu (A) and select **Admin** (B). <br/><br/> ![](images/manage-users-1.png)  |
+| **Action** &nbsp; 4.3.2 | Open **Users > Management** menu (A) and click **Create new** (B).  <br/><br/> ![](images/manage-users-2.png) |
+| **Action** &nbsp; 4.3.3 | On the *Invite people to join this organization* enter a user id (A). Then click **Create** (B). <br/><br/> ![](images/manage-users-3.png) |
+| **Action** &nbsp; 4.3.4 | Open the **Workspace memberships** tab (A). And click on **Add workspace memberships** (B). <br/><br/> ![](images/manage-users-4.png) |
+| **Action** &nbsp; 4.3.5 | On the *Role* field, select **Workspace manager** (A), on the *Search for workspaces* field, type and select **Sales Workspace** (B). And click **Add** (C). <br/><br/> ![](images/manage-users-5.png)  |
+| **Action** &nbsp; 4.3.6 | On the breadcrumbs menu, click on **Users**.  <br/><br/> ![](images/manage-users-6.png) |
+| **Action** &nbsp; 4.3.7 | Here you can show the new user as *Pending* status. <br/><br/> ![](images/manage-users-7.png) |
 <br/>
 
 **[Go to top](#place1)**
@@ -237,14 +245,206 @@ Let’s get started!
 
 
 <details>
+
+<summary>5 - Monitoring Activities</summary>
+
+<br/>
+
+| **5.1** | **Transfer Activity** |
+| :--- | :--- |
+| **Narration** | Let’s explore the monitoring capabilities of Aspera on Cloud. The Activity app shows app events and the performance, history, and usage for file transfers. Activity’s responsive engine streams log data to the web application, generating interactive visualizations of real-time and historical data. <br/><br/> Let’s explore the first capability: Transfer activity. Here we can view historic and live transfer activity based on filters. <br/><br/> This page displays real-time and historical transfer data for the organization. It includes context for a given transfer, such as the time of the transfer and whether it completed or failed. We can also review performance data for the resources (workspaces, nodes, and users) associated with your workspace. This can help us identify issues in the system; for example, an inactive server may need to be evaluated for connectivity issues. <br/><br/> And we can easily export the data into a .CSV file and use in any other Data Visualization tool. |
+| **Action** &nbsp; 5.1.1 | Open the **App switcher** menu (A) and select **Activity** (B). <br/><br/> ![](images/transfer-activity-1.png)  |
+| **Action** &nbsp; 5.1.2 | On the **Transfer activity** page (A), change the filter to show more data (B). Show the information on top of the page (C). <br/><br/> ![](images/transfer-activity-2.png) |
+| **Action** &nbsp; 5.1.3 | Scroll down the page, and show the information on bottom of the page. <br/><br/> ![](images/transfer-activity-3.png) |
+| **Action** &nbsp; 5.1.4 | Click **Export**. <br/><br/> ![](images/transfer-activity-4.png) |
+| **Action** &nbsp; 5.1.5 | Keep the default name (A) and click **Export** (B). You are welcome to show the downloaded CSV file. <br/><br/> ![](images/transfer-activity-5.png) |
+<br/>
+
+| **5.2** | **Volume Usage** |
+| :--- | :--- |
+| **Narration** | Exploring some more, let’s take a look at the second capability of the Activity app: Volume Usage. <br/><br/> Use the Volume usage page to monitor transfer volume for our entire organization or filtered by each component of the transfer system: entitlements, nodes, access keys, workspaces, and users. We can zoom in to data based on configurable time spans. <br/><br/> The graph displays aggregate volume data for a selected time period. The graph is interactive. We can hover over any bar on the graph to see upload and download values for that point in time. |
+| **Action** &nbsp; 5.2.1 | Click on **Volume usage**. <br/><br/> ![](images/volume-usage-1.png)  |
+| **Action** &nbsp; 5.2.2 | Hover over any bar on the graph to see upload and download values for that point in time. <br/><br/> ![](images/volume-usage-2.png)  |
+<br/>
+
+| **5.3** | **File Access** |
+| :--- | :--- |
+| **Narration** | Let’s see the File Access capability. The File access page displays file accesses by user name or file name. <br/><br/> For example, here we can see all file permissions assigned to our current user. We can use the pagination buttons to check all files. <br/><br/> Another possibility is to use the search field to check the users who have permissions to a specific file. Let’s try it with Campaigns files. <br/><br/> Here we can see the users and the permissions that they have in this file. In this case, it is only one user. |
+| **Action** &nbsp; 5.3.1 | Click on **File access**. <br/><br/> ![](images/fileaccess-1.png) |
+| **Action** &nbsp; 5.3.2 | By default, the first view of File access page will show all the file permissions assigned to the current user (A), maybe it is necessary to use next page button to find a useful file (B). <br/><br/> ![](images/fileaccess-2.png) |
+| **Action** &nbsp; 5.3.3 | On the search field, enter **Campaigns** as the file name (A) and select one of the file that you see in the result dialog (B). <br/><br/> ![](images/fileaccess-3.png) |
+| **Action** &nbsp; 5.3.4 | Show the user and permission in this specific file. <br/><br/> ![](images/fileaccess-4.png) |
+<br/>
+
+| **5.4** | **Application Events** |
+| :--- | :--- |
+| **Narration** | We arrived at the final capability to explore, the Application events page. <br/><br/> The Application events page displays data for all app events, filterable by event type (such as user login or file creation), and time. Here we can get insights into events throughout our Aspera on Cloud applications, for security and monitoring purposes. <br/><br/> We can monitor different types of events, some examples include: Log in, log out; workspace creation or deletion; packages sent, received or downloaded; File uploaded; Folder shared; or even when a User has left a shared folder. |
+| **Action** &nbsp; 5.4.1 | Click on **Application events**. <br/><br/> ![](images/appevents-1.png) |
+| **Action** &nbsp; 5.4.2 | Filter by specific **date**. <br/><br/> ![](images/appevents-2.png) |
+| **Action** &nbsp; 5.4.3 | Show and filter by specific Event type (e.g.: **Sent a package**). <br/><br/> ![](images/appevents-3.png) |
+
+<br/>
+
+**[Go to top](#place1)**
+
+</details>
+
+<details>
+
+<summary>6 - Sharing files between Cloud Storages </summary>
+
+<br/>
+
+| **6.1** | **Attach your IBM Cloud storage** |
+| :--- | :--- |
+| **Narration** | We can attach an existing Cloud storage to your Aspera on Cloud organization. Once attached, we can make the bucket and its contents available to our users in the form of administratively shared folders.<br/><br/>To attach our Cloud Storages in Aspera on Cloud, we need to create nodes. An IBM Aspera node is a computing machine (physical, virtual, or container) on which IBM Aspera High-Speed Transfer Server software is installed. The Aspera on Cloud subscription comes provisioned with one node, managed by IBM Aspera and connected to storage in IBM Cloud. We can connect additional storage to our Aspera on Cloud organization, either by attaching our own IBM Aspera HSTS node or cluster, or by using Aspera Transfer Service (ATS), the Aspera-managed auto-scaling transfer cluster.<br/><br/>Now, let's use the Admin app to create a new node using IBM Cloud Object Storage (COS). On the new node page, let's attach a cloud storage. Here we enter all the details of our IBM Cloud Object Storage. It is important to highlight that our IBM Cloud Storage must be in a region that is supported by the transfer service. In this demo, we will use a Storage in the United States South region. Now, we just need to enter access key and secret profile.<br/><br/>Great, here we have our IBM COS node. We just need to save the node access key and secret, because we will need that later to manage this node.|
+| **Action** &nbsp; 6.1.1 |  Open the **App switcher** menu (A) and select **Admin** (B).<br/><br/> ![](images/attach-icos-1.png) |
+| **Action** &nbsp; 6.1.2 |  Open the **Nodes and storage** menu (A) and click on **Nodes** page (B).<br/><br/> ![](images/attach-icos-2.png) |
+| **Action** &nbsp; 6.1.3 |  Click **Create new**. <br/><br/> ![](images/attach-icos-3.png) |
+| **Action** &nbsp; 6.1.4 |  Click **Attach my cloud storage**.<br/><br/> ![](images/attach-icos-4.png) |
+| **Action** &nbsp; 6.1.5 |  Enter **IBM-COS** as *Name* (A). Select **IBM COS** as *Storage*  (B). Select **us-south** as *Region* (C). Paste your **access_key_id** in *Access key ID* field (D), copied in the Demo Preparation part. Paste your **secret_access_key** in *Access key* secret field (E), copied in the Demo Preparation part.  Paste the **Bucket name** in Bucket field (F), copied in the Demo Preparation part. Enter **/** in *Path* field (G). Then click **Create** (H). <br/><br/> ![](images/attach-icos-5.png) |
+| **Action** &nbsp; 6.1.6 |  **Download** or take notes of your IBM-COS node **Access key** (A) and **Secret** (B). You will need them later. **Close** the dialog (C).<br/><br/> ![](images/attach-icos-6.png) |
+| **Action** &nbsp; 6.1.7 |  Paste your **IBM-COS Secret** (A) and click **Log in** (B). <br/><br/> ![](images/attach-icos-7.png) |
+<br/>
+
+| **6.2** | **Attach your Azure Blob storage (Optional)** |
+| :--- | :--- |
+| **Narration** | Now, let's create a new node using Azure Blob Storage. Let's repeat the same steps, but now let's select Azure Blob Storage. It is important to highlight that our Azure Storage must be in a region that is supported by the transfer service. In this demo, we will use a Storage in the U.S. South region. As before we have to enter access key and secret profile.<br/><br/>Great, here we have our Azure node. We just need to save the node access key and secret, because we will need that later to manage this Azure node. |
+| **Action** &nbsp; 6.2.1 |  On the *Breadcrumbs*, click on **Nodes**.<br/><br/> ![](images/attach-azure-1.png) |
+| **Action** &nbsp; 6.2.2 |  Click **Create new**.<br/><br/> ![](images/attach-azure-2.png) |
+| **Action** &nbsp; 6.2.3 |  Click **Attach my cloud storage**.<br/><br/> ![](images/attach-azure-3.png) |
+| **Action** &nbsp; 6.2.4 |  Enter **Azure** as *Name* (A). Select **Microsoft Azure Blob** as *Storage*  (B). Select **eastus** as *Region* (C). Select **Block** as *API type* (D). Select **Key** as *Storage credentials* (E). Paste your **Storage account name** in *Storage account* field (F), copied in the Demo Preparation part. Paste your **Key** in *Key* field (G), copied in the Demo Preparation part.  Copy the **Container name** in *Container* field (H). <br/><br/> ![](images/attach-azure-4.png) |
+| **Action** &nbsp; 6.2.5 |  Enter **/** in *Path* field (A). Then click **Create** (B). <br/><br/> ![](images/attach-azure-5.png) |
+| **Action** &nbsp; 6.2.6 |  **Download** or take notes of your Azure node **Access key** (A) and **Secret** (B). You will need them later. **Close** the dialog (C).<br/><br/> ![](images/attach-azure-6.png) |
+| **Action** &nbsp; 6.2.7 |  Paste your **Azure** (A) and click **Log in** (B).<br/><br/> ![](images/attach-azure-7.png) |
+<br/>
+
+| **6.3** | **Create Shared Folders using IBM-COS node** |
+| :--- | :--- |
+| **Narration** | Now that we have our nodes attached with Cloud Storage, we can use them to support a workspace. Let's create a Shared Folder using IBM-COS in Marketing Workspace. Let's open the Marketing Workspace configuration page. In the Files Application settings, let's create a Shared Folder. But now, we will use the IBM-COS storage. Let's take advantage this UI to create a new folder in the IBM Cloud Object Storage. Now the IBM-COS share folder is created, let's share this with all Workspace members. |
+| **Action** &nbsp; 6.3.1 |  Click on **Workspaces**.<br/><br/> ![](images/cloud-folder-1.png) |
+| **Action** &nbsp; 6.3.2 |  Click on **Marketing Workspace**.<br/><br/> ![](images/cloud-folder-2.png) |
+| **Action** &nbsp; 6.3.3 |  Open the **Applications** tab (A) and click on **Files** app (B).<br/><br/> ![](images/cloud-folder-3.png) |
+| **Action** &nbsp; 6.3.4 |  Click **Shared folders**.<br/><br/> ![](images/cloud-folder-4.png) |
+| **Action** &nbsp; 6.3.5 |  Click **Create new**.<br/><br/> ![](images/cloud-folder-5.png) |
+| **Action** &nbsp; 6.3.6 |  Select **IBM-COS** node (A). Paste the Secret of your IBM-COS node (B) and click **Log in** (C).<br/><br/> ![](images/cloud-folder-6.png) |
+| **Action** &nbsp; 6.3.7 |  Click **Create folder**.<br/><br/> ![](images/cloud-folder-7.png) |
+| **Action** &nbsp; 6.3.8 |  Enter **Campaigns** as folder Name (A). Click **Create** (B).<br/><br/> ![](images/cloud-folder-8.png) |
+| **Action** &nbsp; 6.3.9 |  Enter **IBM-COS** as *Display name* (A) and click **Submit** (B).<br/><br/> ![](images/cloud-folder-9.png) |
+| **Action** &nbsp; 6.3.10 |  Click **Add all workspace members**.<br/><br/> ![](images/cloud-folder-10.png) |
+| **Action** &nbsp; 6.3.11 |  Keep the default values and click **Add**. <br/><br/> ![](images/cloud-folder-11.png) |
+| **Action** &nbsp; 6.3.12 |  On the breadcrumbs menu, click on **Shared folders**.<br/><br/> ![](images/cloud-folder-12.png) |
+<br/>
+
+| **6.4** | **Create Shared Folders using Azure node (Optional)** |
+| :--- | :--- |
+| **Narration** | Now, let's repeat the same steps using the Azure Blob Storage. Let's create a Testing folder in the Azure storage. And share the Azure shared folder with all workspace members. |
+| **Action** &nbsp; 6.4.1 |  Click **Create new**.<br/><br/> ![](images/azure-folder-1.png) |
+| **Action** &nbsp; 6.4.2 |  Select **Azure** node (A). Paste the **Secret** of your Azure node (B) and click **Log in** (C).<br/><br/> ![](images/azure-folder-2.png) |
+| **Action** &nbsp; 6.4.3 |  Click **Create folder**.<br/><br/> ![](images/azure-folder-3.png) |
+| **Action** &nbsp; 6.4.4 |  Enter **Testing** as folder Name (A). Click **Create** (B).<br/><br/> ![](images/azure-folder-4.png) |
+| **Action** &nbsp; 6.4.5 |  Enter **Azure** as *Display name* (A) and click **Submit** (B).<br/><br/> ![](images/azure-folder-5.png) |
+| **Action** &nbsp; 6.4.6 |  Click **Add all workspace members**.<br/><br/> ![](images/azure-folder-6.png) |
+| **Action** &nbsp; 6.4.7 |  Keep the default values and click **Add**. <br/><br/> ![](images/azure-folder-7.png) |
+| **Action** &nbsp; 6.4.8 |  On the breadcrumbs menu, click on **...** (three dots) link (A). And select **Marketing Workspace** (B).<br/><br/> ![](images/azure-folder-8.png) |
+| **Action** &nbsp; 6.4.9 |  Click **Save**. <br/><br/> ![](images/azure-folder-9.png) |
+| **Action** &nbsp; 6.4.10 |  Click **Refresh**. <br/><br/> ![](images/azure-folder-10.png) |
+<br/>
+
+| **6.5** | **Copy files between different Cloud Providers (Optional)** |
+| :--- | :--- |
+| **Narration** | Great, now we should have two folders in our Marketing Workspace, one is showing files in IBM Cloud Object Storage and other is showing files in Azure Blob Storage. Let's check them! <br/><br/>We just need to open the Files app, and voilá! we have our two shared folders using different cloud providers. Let's see the files there! <br/><br/>Here we have the Azure Shared folder. This New Site Project file and the Testing folders are stored in Azure Blob Storage. Now, let's explore the IBM-COS shared folder. The Campaign Video and the Campaigns folder are stored in IBM Cloud Object Storage. <br/><br/>Now, let's see how easy is to use Aspera UI to copy or move files between different Cloud Storages. We just need to select the file and click copy. Then select the other Storage folder. It is easy, isn't? And more, you are using the IBM Aspera's FASP protocol, which overcomes the limitations of other file-transfer technologies. With this technology you can move large data sets at maximum speed. <br/><br/>Here we are transferring file from IBM Cloud Object Storage to Azure Blob Storage, but we can do that with other Cloud Providers too, including AWS S3 and Google Cloud Storage.|
+| **Action** &nbsp; 6.5.1 |  Open the **App switcher** menu (A) and select **Files** (B).<br/><br/> ![](images/copy-files-cloud-1.png) |
+| **Action** &nbsp; 6.5.2 |  On the Workspace switcher (A), change to **Marketing Workspace** (B). <br/><br/> ![](images/copy-files-cloud-2.png) |
+| **Action** &nbsp; 6.5.3 |  Open the **Azure** folder.<br/><br/> ![](images/copy-files-cloud-3.png) |
+| **Action** &nbsp; 6.5.4 |  Show the file available in Azure Blob Storage (A) and show the folder created in the previous section (B).<br/><br/> ![](images/copy-files-cloud-4.png) |
+| **Action** &nbsp; 6.5.5 |  On the *Breadcrumbs*, click on **All files**.<br/><br/> ![](images/copy-files-cloud-5.png) |
+| **Action** &nbsp; 6.5.6 |  Click on **IBM-COS** folder.<br/><br/> ![](images/copy-files-cloud-6.png) |
+| **Action** &nbsp; 6.5.7 |  Show the file available in IBM Cloud Object Storage (A) and show the folder created in the previous section (B). <br/><br/> ![](images/copy-files-cloud-7.png) |
+| **Action** &nbsp; 6.5.8 |  Click the **Checkbox** (A) of *Campaign Video* file and click **Copy** (B).<br/><br/> ![](images/copy-files-cloud-8.png) |
+| **Action** &nbsp; 6.5.9 |  Click **Azure** folder (A) and click **Copy** (B). <br/><br/> ![](images/copy-files-cloud-9.png) |
+| **Action** &nbsp; 6.5.10 |  **Open** the *Transfer activity* dialog (A) and show the **node to node** transfer (B). <br/><br/> ![](images/copy-files-cloud-10.png) |
+| **Action** &nbsp; 6.5.11 |  **Close** the *Transfer activity* dialog (A) and open the **All files** link on *Breadcrumbs* (B).<br/><br/> ![](images/copy-files-cloud-11.png) |
+| **Action** &nbsp; 6.5.12 |  Open the **Azure** folder. <br/><br/> ![](images/copy-files-cloud-3.png) |
+| **Action** &nbsp; 6.5.13 |  Show the **Campaign Video** file. <br/><br/> ![](images/copy-files-cloud-13.png) |
+| **Action** &nbsp; 6.5.14 |  You are welcome to repeat the steps and now copy the New Site Project file from Azure to IBM-COS. |
+<br/>
+
+**[Go to top](#place1)**
+
+</details>
+
+<details>
+
+<summary>7 - Automating your transfer workflows</summary>
+
+<br/>
+
+| **7.1** | **Create a Workflow** |
+| :--- | :--- |
+| **Narration** | The Automation app in Aspera on Cloud lets us create automated workflows that initiate file transfers, make calls to an API, and send notifications to users. In this part of the demo we will explore this app, its components, key concepts for automated workflows and jobs, and provides an example use case, to copy files received in a Shared Inbox to a Third party cloud storage. Let's get started!<br/><br/>Here in the Automation app, we begin by creating a new Campaign Automation workflow. |
+| **Action** &nbsp; 7.1.1 |  Open the **App switcher** menu (A) and select **Automation** (B).<br/><br/> ![](images/automation-1.png) |
+| **Action** &nbsp; 7.1.2 |  Click **Create new**.<br/><br/> ![](images/automation-2.png) |
+| **Action** &nbsp; 7.1.3 |  Enter **Campaign Automation** as workflow *Name* (A). Click **Submit** (B). <br/><br/> ![](images/automation-3.png) |
+<br/>
+
+| **7.2** | **Define a Trigger** |
+| :--- | :--- |
+| **Narration** | The first thing we need to define is how to trigger the workflow. Workflow triggers include scheduled or time based events; file, folder, and shared inbox events; and so on. For our demo, let's use a Shared inbox event. In this case, the workflow will start when a package arrives in an inbox. <br/><br/>Let's select the A/B Testing inbox that we created previously in the Marketing Workspace. |
+| **Action** &nbsp; 7.2.1 |  Click **Shared inbox event**.<br/><br/> ![](images/trigger-1.png) |
+| **Action** &nbsp; 7.2.2 |  Type and select **Marketing Workspace** in *Workspace* field (A). In **Shared inbox**, select the **A/B Testing** (B). Keep all the other values as default. Click **Save** (C). <br/><br/> ![](images/trigger-2.png) |
+<br/>
+
+| **7.3** | **Define an Action** |
+| :--- | :--- |
+| **Narration** | Now, we need to define an action to be executed after the workflow trigger. Workflow actions include transfer, send a package, notify, call an API, and so on. In this demo, let's use a Transfer action. This action will transfer the files received in the Shared inbox to a Node folder. In our case, the workflow will copy the files to Azure Testing folder. |
+| **Action** &nbsp; 7.3.1 |  Click on the **Add step (+)** button.<br/><br/> ![](images/action-1.png) |
+| **Action** &nbsp; 7.3.2 |  Select **Transfer** as action type.<br/><br/> ![](images/action-2.png) |
+| **Action** &nbsp; 7.3.3 |  Open the **Source of your transfer** section (A). On the *Source location* field, select **Same as trigger** (B). Open the **Destination of your transfer** section (C). On *Select a folder* field, select **On a node** (D).  Click **Select a node** button (E). <br/><br/> ![](images/action-3.png) |
+| **Action** &nbsp; 7.3.4 |  Select **Azure** as node Name (A).  And paste your **Azure Node Secret** (B). Click **Log in** (C).<br/>Note: If you didn't create an Azure Trial account because the Credit Card issue, no problem, go ahead and select IBM-COS as node. Any external node storage works for this scenario. <br/><br/> ![](images/action-4.png) |
+| **Action** &nbsp; 7.3.5 |  Select the **Testing** folder, or any other folder available in your node (A) and click **Select** (B).<br/><br/> ![](images/action-5.png) |
+| **Action** &nbsp; 7.3.6 |  Keep the other values as default and click **Save**. <br/><br/> ![](images/action-6.png) |
+<br/>
+
+| **7.4** | **Testing the Workflow** |
+| :--- | :--- |
+| **Narration** | Great, our workflow is ready. Before we test it, let's activate it! To activate the workflow we’ll  submit a file to our A/B Testing Shared inbox in Package app. <br/><br/>We just need to select a file to submit, and inform the package metadata, including the Test Date and Campaign type. <br/><br/>Great, our file was submitted. |
+| **Action** &nbsp; 7.4.1 |  Click **Activate**.<br/><br/> ![](images/testing-wfw-1.png) |
+| **Action** &nbsp; 7.4.2 |  Click **Activate** again.<br/><br/> ![](images/testing-wfw-2.png) |
+| **Action** &nbsp; 7.4.3 |  Open the **App switcher** menu (A) and select **Packages** (B).<br/><br/> ![](images/testing-wfw-3.png) |
+| **Action** &nbsp; 7.4.4 |  Click **Send files**.<br/><br/> ![](images/testing-wfw-4.png) |
+| **Action** &nbsp; 7.4.5 |  Select **A/B Testing** Shared inbox in *To* field (A). Enter a *Title* (e.g.: **Mobile App A/B Testing**) (B). Click **Add files > Files** button (C). And select a file (e.g.: 10 Mb) in your local machine (D). Click **Next** (E).<br/><br/> ![](images/testing-wfw-5.png) |
+| **Action** &nbsp; 7.4.6 |  Enter a **Test Date** (A). Select a *Campaign* type (e.g.: **Fall**) (B). And click **Send** (C).<br/><br/> ![](images/testing-wfw-6.png) |
+| **Action** &nbsp; 7.4.7 |  **Open** the *Transfer activity* dialog (A). Check the *File Uploading* message (B). When is done, **close** the *Transfer activity* dialog (C). <br/><br/> ![](images/testing-wfw-7.png) |
+<br/>
+
+| **7.5** | **Check the Automation** |
+| :--- | :--- |
+| **Narration** | Now, let's check our automation. Back to the Automation app, let's open the Job queue page. <br/><br/>In this page, we can see all running, queued and completed jobs. After few minutes, we can see that our first campaign automation job is completed. Here we can see the job details. <br/><br/>Let's use our Azure shared folder in Files app to confirm that our file was copied to Azure Blob Storage. <br/><br/>Great, here we can see the file that we sent using the Package app. It was copied to Azure. With this simple automation, it is easy to enable teams that are using other cloud providers to collaborate and work with different files and take advantage of fast file sharing of Aspera on Cloud to move large files around the globe. <br/><br/>We have arrived at the conclusion of our demonstration.|
+| **Action** &nbsp; 7.5.1 |  Open the **App switcher** menu (A) and select **Automation** (B).<br/><br/> ![](images/chk-automation-1.png) |
+| **Action** &nbsp; 7.5.2 |  Click **Job queue**.<br/><br/> ![](images/chk-automation-2.png) |
+| **Action** &nbsp; 7.5.3 |  Open the **Campaign Automation** *job* to see the *Job details* dialog.<br/><br/> ![](images/chk-automation-3.png) |
+| **Action** &nbsp; 7.5.4 |  Open and show the **Step 1 - Trigger** section (A). Open and show the **Step 2- Action** section (B). **Close** the Job details dialog.<br/><br/> ![](images/chk-automation-4.png) |
+| **Action** &nbsp; 7.5.5 |  Open the **App switcher** menu (A) and select **Files** (B).<br/><br/> ![](images/chk-automation-5.png) |
+| **Action** &nbsp; 7.5.6 |  Open the **Azure** folder (or any other Storage node folder that you are using in the Automation Workflow).<br/><br/> ![](images/chk-automation-6.png) |
+| **Action** &nbsp; 7.5.7 |  Open the **Testing** folder (or any other folder that you are using the Automation Workflow)<br/><br/> ![](images/chk-automation-7.png) |
+| **Action** &nbsp; 7.5.8 |  Open the **contents** folder.<br/><br/> ![](images/chk-automation-8.png) |
+| **Action** &nbsp; 7.5.9 |  Show the file submitted to the Shared Inbox using the Package app.<br/><br/> ![](images/chk-automation-9.png) |
+<br/>
+
+**[Go to top](#place1)**
+
+</details>
+
+<details>
 <summary>Summary</summary>
 
 <br/>
 Let’s summarize what we’ve done today.
 
-<br/><br/>
+<br/>
 
-In the demo we: accessed the Aspera on Cloud environment and explored the capabilities; managed and shared files and folders; sent and downloaded packages; tracked usage and user activities.
+In this demo we: accessed the Aspera on Cloud environment and explored the capabilities; managed and shared files and folders; sent and downloaded packages;  administered workspaces and users; tracked usage and user activities; shared files between cloud storages; and also automated our transfer workflow.
 
 <br/>
 
