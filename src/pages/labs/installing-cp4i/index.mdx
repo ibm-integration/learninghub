@@ -216,7 +216,7 @@ kibana-746f699cc-72qfk                          2/2     Running     0          5
 7. Your cluster will also need access to pull the container software required to deploy the Cloud Pak. Your Entitlement Key is used to grant access. You can download you entitlement key from <a href="https://myibm.ibm.com/products-services/containerlibrary" target="_blank">My IBM</a>. Click **Copy**.
 ![](images/set-context-1.png)
 
-8.You will need a namespace called *tools* where you will deploy the different capabilities. You can create the namespace the way you want or you can use the following script which also creates the secret for the *ibm entitlement key*. Replace the <my-key> with your **IBM entitlement key**, run this from the root of the GitHub repo you cloned:
+8.You will need a namespace called *tools* where you will deploy the different capabilities. You can create the namespace the way you want or you can use the following script which also creates the secret for the *ibm entitlement key*. Replace the *my-key* with your **IBM entitlement key**, run this from the root of the GitHub repo you cloned:
 ```
 export ENT_KEY=<my-key>
 scripts/02a-cp4i-ns-key-config.sh
