@@ -256,10 +256,133 @@ redhat-marketplace                             Red Hat Marketplace              
 redhat-operators                               Red Hat Operators                                        grpc   Red Hat     76m
 ```
 
-
 ***
 
 ## 5 - Install the Operators
+
+1. Once you confirm the catalog sources are available you can proceed to install the CP4I operators running the following script.
+```
+scripts/02b-cp4i-apply-subscriptions.sh
+```
+
+2. Once you get the email or if you want to check manually run the following command:
+```
+oc get csv -n openshift-operators
+```
+
+3. And you should get the following response with all the operators listed:
+```
+NAME                                          DISPLAY                                                                                        VERSION   REPLACES                                      PHASE
+datapower-operator.v1.6.4                     IBM DataPower Gateway                                                                          1.6.4     datapower-operator.v1.6.3                     Succeeded
+ibm-apiconnect.v3.0.0                         IBM API Connect                                                                                3.0.0                                                   Succeeded
+ibm-appconnect.v5.0.1                         IBM App Connect                                                                                5.0.1     ibm-appconnect.v5.0.0                         Succeeded
+ibm-aspera-hsts-operator.v1.5.2               IBM Aspera HSTS                                                                                1.5.2     ibm-aspera-hsts-operator.v1.5.1               Succeeded
+ibm-cloud-databases-redis.v1.5.3              IBM Operator for Redis                                                                         1.5.3     ibm-cloud-databases-redis.v1.5.2              Succeeded
+ibm-common-service-operator.v3.19.5           IBM Cloud Pak foundational services                                                            3.19.5    ibm-common-service-operator.v3.19.4           Succeeded
+ibm-eventstreams.v3.0.5                       IBM Event Streams                                                                              3.0.5     ibm-eventstreams.v3.0.4                       Succeeded
+ibm-integration-asset-repository.v1.5.2       IBM Automation Foundation assets (previously IBM Cloud Pak for Integration Asset Repository)   1.5.2                                                   Succeeded
+ibm-integration-operations-dashboard.v2.6.3   IBM Cloud Pak for Integration Operations Dashboard                                             2.6.3     ibm-integration-operations-dashboard.v2.6.2   Succeeded
+ibm-integration-platform-navigator.v6.0.3     IBM Cloud Pak for Integration                                                                  6.0.3     ibm-integration-platform-navigator.v6.0.2     Succeeded
+ibm-mq.v2.0.4                                 IBM MQ                                                                                         2.0.4     ibm-mq.v2.0.3                                 Succeeded
+```
+
+***
+
+## 6 – Deploy the Platform UI
+
+1. The first service we will create is the Platform UI instance. You can use the following script:
+```
+scripts/03a-platform-navigator-inst-deploy.sh
+```
+
+  Note that this step will also install the required common services, so it can take up to one hour to get the Platform UI ready.
+
+2. If you want to check the progress manually you can run the following command:
+```
+oc get platformnavigator -n tools
+```
+
+3. Once you receive the email or you get the following response from the previous command you can move to the next step:
+```
+NAME             REPLICAS   VERSION      READY   LASTUPDATE   AGE
+cp4i-navigator   3          2022.2.1-3   True    33s          43m
+```
+
+4. The rest of the activities are executed from the cli but if you want to access the Platform UI to track the progress you can use the following script to get the URL and credentials.
+```
+scripts/03b-cp4i-access-info.sh
+```
+
+***
+
+## 7 - Deploy Asset Repository
+
+1. Now you can deploy an instance of the Asset Repository using the following script:
+```
+scripts/05-asset-repo-inst-deploy.sh
+```
+
+2. Once the instance is deployed you will get an email. To confirm Asset Repo has been installed successfully you can use the following command:
+```
+oc get assetrepository -n tools
+```
+
+3. Once it has been installed successfully you will see the following response for the command and you can proceed to the next step.
+```
+NAME            PHASE   VERSION      AGE
+asset-repo-ai   Ready   2022.2.1-2   21m
+```
+
+***
+
+## 8 - Deploy API Connect
+
+1. Start executing the following script.
+```
+scripts/07d-apic-inst-deploy-instana.sh
+```
+
+2. Confirm the APIC was successfully deploy running the following command:
+```
+oc get apic -n tools
+```
+
+***
+
+## 9 - Deploy App Connect
+
+1. Now you will deploy App Connect Integration Servers, the Dashboard and the Designer Authoring tools alongside with a Switch Server to talk about the callable flow functionality as part of the Services layer. Let's deploy them! Run the following scripts:
+
+```
+scripts/09a-ace-dashboard-inst-deploy.sh
+scripts/09b-ace-switch-server-inst-deploy.sh
+scripts/09c-ace-designer-inst-deploy.sh
+```
+
+2. After few minutes you will receive the corresponding email, or you can run the following commands manually to confirm the deployments succeded:
+```
+oc get dashboard -n tools
+oc get switchserver -n tools
+oc get designerauthoring -n tools
+```
+
+3. You will get responses like these showing a Ready status for each instance:
+
+```
+NAME            RESOLVEDVERSION   REPLICAS   CUSTOMIMAGES   STATUS   URL                                                                                                                                                                      AGE
+ace-dashboard   12.0.6.0-r1-lts   1          false          Ready    https://cpd-tools.itzroks-270007kcnp-k0rbj2-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-east.containers.appdomain.cloud/integration/run/integrations/tools/ace-dashboard/   13m
+```
+
+```
+NAME                RESOLVEDVERSION   CUSTOMIMAGES   STATUS   AGENTCONFIGURATIONNAME     AGE
+ace-switch-server   12.0.6.0-r1-lts   false          Ready    ace-switch-server-agentx   98s
+```
+
+```
+NAME              RESOLVEDVERSION   URL                                                                                                                                                                           CUSTOMIMAGES   STATUS   AGE
+ace-designer-ai   12.0.6.0-r1-lts   https://cpd-tools.itzroks-270007kcnp-k0rbj2-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-east.containers.appdomain.cloud/integration/design/integrations/tools/ace-designer-ai/   false          Ready    6m9s
+```
+
 
 ***
 
