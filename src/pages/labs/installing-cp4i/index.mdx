@@ -22,7 +22,7 @@ title: Installing IBM API-Led solution using CP4I on IBM Cloud
   <AnchorLink>4 – Add the Catalog Sources</AnchorLink>
   <AnchorLink>5 – Install the Operators</AnchorLink>
   <AnchorLink>6 – Deploy the Platform UI</AnchorLink>
-  <AnchorLink>7 - Deploy Asset Repository</AnchorLink>
+  <AnchorLink>7 - Deploy Automation Assets</AnchorLink>
   <AnchorLink>8 - Deploy API Connect</AnchorLink>
   <AnchorLink>9 - Deploy App Connect</AnchorLink>
   <AnchorLink>Summary</AnchorLink>
@@ -46,7 +46,6 @@ In this session you will learn:
 
 ## Prerequisites
 
-- You need to have an OpenShift environment with GitOps operators. For this session, your proctor will provide you a pre-installed environment, with admin access (more details below). If you want to create your personal environment, check this <a href="https://www.youtube.com/watch?v=SmDE80vuP3w" target="_blank">video</a> or follow the preparation section from this <a href="https://github.com/sko-master/multi-tenancy-gitops/blob/master/doc/sko-scenario.md" target="_blank">documentation</a>.
 - You need to have installed in your machine:
   - <a href="https://docs.openshift.com/container-platform/4.8/cli_reference/openshift_cli/getting-started-cli.html" target="_blank">oc CLI</a> v4.6+.
   - github CLI
@@ -56,6 +55,7 @@ In this session you will learn:
 
 Note some of the tools will be available after you deploy an instance of the capability you are working on. And you also need an account in the folllowing email service to configure APIC:
   - <a href="https://mailtrap.io/" target="_blank">mailtrap</a>
+
 ***
 
 ## Installation Overview
@@ -69,8 +69,8 @@ In this document, we will follow the steps below to install CP4I. If you need mo
   - 3 – Set Context
   - 4 – Add the Catalog Sources
   - 5 – Install the Operators
-  - 6 – Deploy the Platform UI
-  - 7 - Deploy Asset Repository
+  - 6 – Deploy the Platform Navigator UI
+  - 7 - Deploy Automation Assets
   - 8 - Deploy API Connect
   - 9 - Deploy App Connect
 
@@ -80,7 +80,7 @@ In this document, we will follow the steps below to install CP4I. If you need mo
 
 IBM Cloud Pak for Integration brings together IBM’s market-leading middleware capabilities to support a broad range of integration styles and use cases. With powerful deployment, lifecycle management, and production services running on Red Hat OpenShift, it enables clients to leverage the latest agile integration practices, simplify the management of their integration architecture, and reduce cost. Cloud Pak for Integration demands an OpenShift cluster.
 
-Follow the steps below to provision an OpenShift cluster on VMware on IBM Cloud.
+Follow the steps below to provision a Red Hat OpenShift Container Platform cluster on VMware on IBM Cloud.
 
 1. To request an OpenShift Cluster on VMware on IBM Cloud, go <a href="https://techzone.ibm.com/my/reservations/create/63dba359cc19150018af084f" target="_blank">here</a> and complete the form with the follow details.
 
@@ -167,12 +167,15 @@ export CP4I_VER=2022.4
 export CP4I_TRACING=NO
 ```
 
+  Operations Dashboard provides integration tracing across instances to allow troubleshooting and investigating errors and latency issues across integration capabilities to ensure applications meet service level agreements.
+
 4. Before you start you can check you have the tools used by this repo running the following script:
 ```
 scripts/00a-cp4i-prereq-vaidation.sh
 ```
 
-5. We will start installing the overall prerequisites that will help to demonstrate the integration with OCP. To do so, run the following command to install the logging functionality. The script will track the progress and it will send you an email to your *mailtrap* inbox when the operators and logging instance are ready or in case any problem is detected, for that you need to set the environment variables with your *mailtrap* account as shown below.
+5. We will start installing the overall prerequisites that will help to demonstrate the integration with OCP.
+   IBM Cloud Pak for Integration supports both Red Hat OpenShift cluster logging and user-defined logging solutions. For running pods, you can use the logs that are available in the OpenShift console. To make logging data persistent, you need to install a logging solution for your cluster. To do so, run the following command to install the logging functionality. The script will track the progress and it will send you an email to your *mailtrap* inbox when the operators and logging instance are ready or in case any problem is detected, for that you need to set the environment variables with your *mailtrap* account as shown below.
 ```
 export MAILTRAP_USER=<my-mailtrap-user>
 export MAILTRAP_PWD=<my-mailtrap-pwd>
@@ -212,7 +215,8 @@ kibana-746f699cc-72qfk                          2/2     Running     0          5
 7. Your cluster will also need access to pull the container software required to deploy the Cloud Pak. Your Entitlement Key is used to grant access. You can download you entitlement key from <a href="https://myibm.ibm.com/products-services/containerlibrary" target="_blank">My IBM</a>. Click **Copy**.
 ![](images/set-context-1.png)
 
-8.You will need a namespace called *tools* where you will deploy the different capabilities. You can create the namespace the way you want or you can use the following script which also creates the secret for the *ibm entitlement key*. Replace the *my-key* with your **IBM entitlement key**, run this from the root of the GitHub repo you cloned:
+8.The IBM Entitled Registry contains software images for the capabilities in IBM Cloud Pak® for Integration. To allow the Cloud Pak for Integration operators to automatically pull those software images, you must first obtain your entitlement key, then add your entitlement key in a pull secret.
+  Now, you will need a namespace called *tools* where you will deploy the different capabilities. You can create the namespace the way you want or you can use the following script which also creates the secret for the *ibm entitlement key*. Replace the *my-key* with your **IBM entitlement key**, run this from the root of the GitHub repo you cloned:
 ```
 export ENT_KEY=<my-key>
 scripts/02a-cp4i-ns-key-config.sh
@@ -223,7 +227,7 @@ scripts/02a-cp4i-ns-key-config.sh
 
 ## 4 – Add the Catalog Sources
 
-Then we will continue with the *Infrastructure* layer installing the operators we will use for the demo. To do so, you will enable the IBM Catalog Source in your cluster.
+First, let's begin our installation by making the IBM Cloud Pak for Integration operators available to the cluster. Because our cluster has direct access to the internet, we will complete this task by addding the online catalog sources to our cluster.
 
 1. Run the following command:
 ```
@@ -260,6 +264,12 @@ redhat-operators                               Red Hat Operators                
 
 ## 5 - Install the Operators
 
+Red Hat OpenShift Operators automate the creation, configuration, and management of instances of Kubernetes-native applications. Operators provide automation at every level of the stack—from managing the parts that make up the platform all the way to applications that are provided as a managed service.
+
+Red Hat OpenShift uses the power of Operators to run the entire platform in an autonomous fashion while exposing configuration natively through Kubernetes objects, allowing for quick installation and frequent, robust updates. In addition to the automation advantages of Operators for managing the platform, Red Hat OpenShift makes it easier to find, install, and manage Operators running on your clusters.
+
+You can easily check all the Operators installed in your OpenShift environment, by opening the Operator Hub page in the OpenShift Web Console.
+
 1. Once you confirm the catalog sources are available you can proceed to install the CP4I operators running the following script.
 ```
 scripts/02b-cp4i-apply-subscriptions.sh
@@ -290,7 +300,9 @@ ibm-mq.v2.0.4                                 IBM MQ                            
 
 ## 6 – Deploy the Platform UI
 
-1. The first service we will create is the Platform UI instance. You can use the following script:
+In this section, you will install the Platform Navigator UI. The Platform UI is a user interface for the IBM Cloud Pak for Integration that allows the user to deploy and manage instances of the integration capabilities from a central location.
+
+1. The first service you will create is the Platform UI instance. You can use the following script:
 ```
 scripts/03a-platform-navigator-inst-deploy.sh
 ```
@@ -313,16 +325,27 @@ cp4i-navigator   3          2022.2.1-3   True    33s          43m
 scripts/03b-cp4i-access-info.sh
 ```
 
+  In this lab, you are using the cp4i-access-info script to capture this information. But there are multiple ways to find the Platform Navigator URL. Below are some examples, but you can get more details in the <a href="https://www.ibm.com/docs/en/cloud-paks/cp-integration/2022.4?topic=ui-deploying-platform-using-openshift-console">Product documentation page</a>.
+    - On the IBM Cloud Pak for Integration operator page in the Installed Operator view in the OpenShift Web Console.
+    - Checking the Platform UI route on the Networking > Routes view on OpenShift Web Console.
+    - Using the "oc get consolelink" command and filter by "IBM CLoud Pak for Integration" to get the list of Platform UI URLs available.
+
 ***
 
-## 7 - Deploy Asset Repository
+## 7 - Deploy Automation Assets
 
-1. Now you can deploy an instance of the Asset Repository using the following script:
+In this section, you will install the Automation foundation assets(Automaation Assets). It is a capability that lets you store, manage, and share integration assets.
+
+Automation assets enables teams to share and reuse integration assets across capability instances. For example, you can import an OpenAPI specification asset within the IBM API Connect user interface.
+
+Assets can be located in remote repositories, such as Git. This feature allows users to take advantage of the versioning capability offered by the remote repository. Assets that are stored in a remote repository are read-only.
+
+1. Let's deploy an instance of the Automation Assets using the following script:
 ```
 scripts/05-asset-repo-inst-deploy.sh
 ```
 
-2. Once the instance is deployed you will get an email. To confirm Asset Repo has been installed successfully you can use the following command:
+2. Once the instance is deployed you will get an email. To confirm Automation Asset has been installed successfully you can use the following command:
 ```
 oc get assetrepository -n tools
 ```
@@ -383,6 +406,7 @@ NAME              RESOLVEDVERSION   URL                                         
 ace-designer-ai   12.0.6.0-r1-lts   https://cpd-tools.itzroks-270007kcnp-k0rbj2-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-east.containers.appdomain.cloud/integration/design/integrations/tools/ace-designer-ai/   false          Ready    6m9s
 ```
 
+4. To check all the Integration instances installed in your environment, on the Platform UI, open the top left menu and select **Administration > Integration Instances**.
 
 ***
 
@@ -394,4 +418,4 @@ You have successfully completed this lab. In this lab you learned:
 
 So far we have focused on the "runtime" aspect of the API-Led deployment, but to provide a full demo experience, check <a href="https://www.ibm.com/docs/en/cloud-paks/cp-integration/2022.4?topic=capabilities-deploying-cloud-pak-integration-demos" target="_blank">here</a> how to install the Car Crash Repair Demo.
 
-In the <a href="https://yourlearning.ibm.com/activity/PLAN-0878B26C1617" target="_blank">Cloud Pak for Integration Level 3 course</a>, you can learn how to demo the IBM API-Led technology. 
+In the <a href="https://yourlearning.ibm.com/activity/PLAN-0878B26C1617" target="_blank">Cloud Pak for Integration Level 3 course</a>, you can learn how to demo the IBM API-Led technology.
