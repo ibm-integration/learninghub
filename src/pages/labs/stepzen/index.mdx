@@ -412,12 +412,13 @@ stepzen start
   One important point to highlight here is about how StepZen controls access to GraphQL schemas and endpoints.
 
   As you build out your GraphQL APIs, you will want to add access control mechanisms to prevent unauthorized use of these endpoints. StepZen supports two different solutions for this problem:
+
     - API Keys: You can use API keys to control access to the entire endpoint. API keys are the default access control mechanism.
     - Field Policies: You can use Field policies to control access to specific entry point fields on the endpoint. Field policies provide fine-grained access control to you GraphQL API, using a model similar to attribute-based access control.
 
-    StepZen provides two different types of API keys for use with an account: Admin Keys and API Keys. Admin keys provide administrative-level access to your account, and should only be used at development time. API keys provide more limited access to your account, and should be used for production.
+  StepZen provides two different types of API keys for use with an account: Admin Keys and API Keys. Admin keys provide administrative-level access to your account, and should only be used at development time. API keys provide more limited access to your account, and should be used for production.
 
-    In this lab, for simplification purpose, you will use the Admin Keys to access your API. In a real environment, you should use API Keys or Field Policies to improve your security level.
+  In this lab, for simplification purpose, you will use the Admin Keys to access your API. In a real environment, you should use API Keys or Field Policies to improve your security level.
 
 ***
 
@@ -484,18 +485,282 @@ For this part of the lab, you need to have an API Connect environment. If necess
 
 ## 9 - Editing and Testing the GraphQL Proxy API
 
+1. Now, let’s edit the API to view more details on the proxy API just created. Click **Edit API** to continue.
 
+![](images/apic-edit-1.png)
+
+2. GraphQL APIs are structured the same as REST APIs with some additional options. Just like REST APIs, you will be able to add security schemas, paths and definitions from the left menu bar. You can also view the Gateway, Test and Explorer tabs similar to REST APIs. You will notice a new tab for GraphQL APIs. Click on **GraphQL Schema** tab to view the schema.
+
+![](images/apic-edit-2.png)
+
+3. GraphQL Schema editor displays *Type* and *Type Weight* information. The weighting factor is used when calculating the type cost for a request to the GraphQL API. For example, a field that requires extensive CPU or memory use on the server to retrieve its value would be given a higher cost. Click **View** in the *Warning* message.
+
+![](images/apic-edit-3.png)
+
+4. In addition to the warning details, the Warning window gives an option to fix the warning by applying the limits. Click **Apply all** (1), then click **Apply** (2).
+
+![](images/apic-edit-4.png)
+
+5. After applying the recommendation the warning message is removed. Click **Save** to save the API definition .
+
+![](images/apic-edit-5.png)
+
+6. Now, let’s open the **Gateway** view.
+
+![](images/apic-edit-6.png)
+
+7. The flow is automatically created as part of the initial API creation. You may apply additional logic by dragging and dropping items from the pallet to the canvas. Let's do a small change to allow Authorization header propagation. Scroll down the flow (1) and on the **Otherwise** ramification (2),  you should see a **graphql-invoke** node, click on it to edit (3).
+
+![](images/apic-edit-7.png)
+
+8. On the *graphql-invoke* node definition, scroll down to see the *Header control* section. Click on **Add allowlist** to add a new header in the list.
+
+![](images/apic-edit-8.png)
+
+9. Enter **Authorization** as the new header allowed (1) and click **Save** button (2).
+
+![](images/apic-edit-9.png)
+
+10. Now, let's test the API. To publish the API toggle the button from offline to **online**.
+
+![](images/apic-edit-10.png)
+
+11. After successfully publishing the API to API Gateway, additional tabs appear on the screen. Select **Test** tab to test the API.
+
+![](images/apic-edit-11.png)
+
+12. The Test feature also includes a GraphQL Editor. Enter the following JSON in the GraphQL Editor. You may use *Prettify* option to improve the visualization of the JSON.
+```
+{
+  customers {
+    email
+    id
+    name
+    address {
+      city
+      countryRegion
+      postalCode
+      stateProvince
+    }
+  }
+}
+```
+
+![](images/apic-edit-12.png)
+
+13. Now you need to include the Authorization heard. Open the **Parameters** tab.
+
+![](images/apic-edit-13.png)
+
+14. Everytime that you invoke your API you need to pass your API Key as Authorization header. So let's include it in our test. On the bottom of the Parameters list, include a new parameter with the following value:
+
+    Key: **Authorization** (1)
+    Located In: **header** (2)
+    Value: *[paste the API Key value that you copied from the StepZen Dashboard Headers]* (3)
+
+![](images/apic-edit-14.png)
+
+15. Now click the **Send** button (1) and open the **GraphiQL** tab (2) again to see the result.
+
+![](images/apic-edit-15.png)
+
+16. On the Trace section, you should see an HTTP Status: 200 (1) and in the Response data you have the data returned from your GraphQL API (2).
+
+![](images/apic-edit-16.png)
+
+17. Great, but you can simplify it, by hard coding the Authorization header parameter in your GraphQL API Proxy flow. Let's do it! Open the **Gateway** tab again.
+
+![](images/apic-edit-17.png)
+
+18. On the **Otherwise** ramification (1),  you will add a node before the *graphql-invoke* node. On the *Palette* view, scroll down to see the *Policies* section (2). Drag and drop the **Set Variable** (3) node between the "*ratelimit expected*" node and "*graphql-invoke*" node (4).
+
+![](images/apic-edit-18.png)
+
+19. Enter **set-authorization** as Title (1) and click **Add action** (2).
+
+![](images/apic-edit-19.png)
+
+20. Keep **Set** (1) as the type of the action. On the Set field, enter **message.headers.Authorization** (2) as the name of the variable to be set. Select **String** (3) as type of the value to set. And in the *Value* field, paste the *API Key value that you copied from the StepZen Dashboard Headers* (4).
+
+![](images/apic-edit-20.png)
+
+21. Then click **Save**.
+
+![](images/apic-edit-21.png)
+
+22. Let's test again our API, now without pass the Authorization token. Open the **Test** tab (1), and click the **Execute Query** button (2). (Note: if you want, you can check in the Parameters tab that there isn't an Authorization header parameter).
+
+![](images/apic-edit-22.png)
+
+23. Great! Now you GraphQL Proxy is running and available to be used. You are welcome to change the GraphQL query to test more scenarios. Next section you will learn how to create a product to apply GraphQL RateLimits. On breadcrumbs, return to **Develop** page.
+
+![](images/apic-edit-23.png)
 
 ***
 
 ## 10 - Create a Product and apply GraphQL RateLimits
 
+1. Click **Add->Product**.
 
+![](images/apic-product-1.png)
+
+2. Select **New product** (1) and click **Next** (2).
+
+![](images/apic-product-2.png)
+
+3. Name the product as **Customers Product** (1) and click **Next** (2).
+
+![](images/apic-product-3.png)
+
+4. Add Customers API to the product by selecting **customers** (1). Then click **Next** (2).
+
+![](images/apic-product-4.png)
+
+5. The *Default Plan* contains traditional rate limiting options, but in next steps, you will be able to list GraphQL Rate Limits. By now, just click **Next**.
+
+![](images/apic-product-5.png)
+
+6. Publish the Product to Sandbox Catalog by selecting **Publish product** (1). Accept the default for *Visibility* and *Subscribability* (2) and click **Next** (3).
+
+![](images/apic-product-6.png)
+
+7. Great! You have your new product. Click **Done**.
+
+![](images/apic-product-7.png)
+
+8. Back to the *Develop* view, open **Products** tab (1) and click on **Customers Product** (2).
+
+![](images/apic-product-8.png)
+
+9. Open the **Plans** section (1), and on the *Default Plan*, open the **context menu** (2) and select **Edit** (3).
+
+![](images/apic-product-9.png)
+
+10. Scroll down, and now you can see the *GraphQL rate limits*. You will be able to adjust GraphQL cost parameters from this section (including costs per field or type). You can set a limit or make it unlimited. In this tutorial, you will not be making any changes.
+
+    If you want to understand how the GraphQL rate limits work, check this <a href="https://www.ibm.com/docs/en/api-connect/10.0.x?topic=api-securing-graphql-by-using-client-id" target="_blank">documentation page</a>.
+
+![](images/apic-product-10.png)
+
+11. On the left menu, click **Manage** icon to manage your Sandbox catalog.
+
+![](images/apic-product-11.png)
+
+    Next section, you will explore the Developer Portal.
 
 ***
 
 ## 11 - Explore the API from Developer Portal
 
+Now that you’ve published your API, you need to make sure that your API consumers can discover it and use it. Your Developer Portal will allow customers to view the APIs, sign up and subscribe to plans in a self-service manner, test the APIs, download the OpenAPI - Swagger documents and more. Let’s explore it.
+
+1. Let’s get our Portal URL. On *Manage* page, open the **Sandbox** catalog.
+
+![](images/apic-portal-1.png)
+
+2. Click **Catalog settings** (1) and open the **Portal** tab (2).
+
+![](images/apic-portal-2.png)
+
+3.Great, here you have your **Portal URL**. Copy it, and open it in a new browser tab.
+
+  'Note':  if you don't have a portal URL in your environment, go ahead and create a new portal. It will demand few minutes to have the portal ready.
+
+![](images/apic-portal-3.png)
+
+4. Click **Create account** to create a new developer account.
+
+![](images/apic-portal-4.png)
+
+5. Complete the registration form, go ahead and use any personal email.  Take note of the username (not email) and password. You will need them later to log in Developer Portal.
+
+![](images/apic-portal-5.png)
+
+6. You will receive an email to activate your new developer account.  Click on the link to validate the registration.
+
+![](images/apic-portal-6.png)
+
+7. **Sign in** (1) to Developer Portal using your developer's *username* and *password* (2).
+
+![](images/apic-portal-7.png)
+
+8. Developer Portal displays all the products that are currently published. In your case, no Apps created yet. As a consumer/developer, we’re going to create a new application in the portal. This will give us an API key, allowing us to call our APIs. Click **Create a new App**.
+
+![](images/apic-portal-8.png)
+
+9. Enter **Consumers Application** as the **App Title** (1). Click **Save** (2).
+
+![](images/apic-portal-9.png)
+
+10. On the **Credentials** dialog box, copy the *API Key* (1), copy the *API Secret* (2), then click **OK** (3).
+
+![](images/apic-portal-10.png)
+
+11. You have not subscribed to any APIs, so let’s do it now. Click on **Why not browse the available APIs?** link.
+
+![](images/apic-portal-11.png)
+
+12. Click on **Customers Product 1.0.0**.
+
+![](images/apic-portal-12.png)
+
+13. In the **Default Plan** section, click **Select**.
+
+![](images/apic-portal-13.png)
+
+14. Select the **Consumers Application**.
+
+![](images/apic-portal-14.png)
+
+15. Confirm the subscription by clicking **Next**.
+
+![](images/apic-portal-15.png)
+
+16. Click **Done**.
+
+![](images/apic-portal-16.png)
+
+17. You are now back at the product screen. Let’s explore your API here. Click the **customers 1.0.0 API**.
+
+![](images/apic-portal-17.png)
+
+18.From *Overview* page, you can download the OpenAPI Document and get the API Endpoint. Note the portal has everything you need to call your API. Open the **Try it** tab.
+
+![](images/apic-portal-18.png)
+
+19. Paste the API Key that you copied in the previous step (1). Paste the GraphQL below in the GraphQL editor (2). And click on **Execute Query** button (3).
+```
+{
+  customers {
+    email
+    id
+    name
+    address {
+      city
+      countryRegion
+      postalCode
+      stateProvince
+    }
+  }
+}
+```
+
+
+![](images/apic-portal-19.png)
+
+20. Great! Your GraphQL Proxy API is running and available for your ecosystem. You are welcome to continue to test the API, using the GraphQL Editor. Submit requests with different field names and watch how quickly the results are returned in the results window. If this was a REST API multiple end points will be needed to achieve the same result.
+
+![](images/apic-portal-20.png)
+
+21. As a developer, you can have some analytics information about the usage of the application. Open the **Apps** page (1) and select the **Consumers Application** (2).
+
+![](images/apic-portal-21.png)
+
+22. In this page, the developers can have some information and insights about the application.
+
+![](images/apic-portal-2.png)
+
+    Congratulations! You have successfully completed this lab!
 
 
 ***
