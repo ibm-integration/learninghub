@@ -411,9 +411,10 @@ stepzen start
 
   One important point to highlight here is about how StepZen controls access to GraphQL schemas and endpoints.
 
-  As you build out your GraphQL APIs, you will want to add access control mechanisms to prevent unauthorized use of these endpoints. StepZen supports two different solutions for this problem:
+  As you build out your GraphQL APIs, you will want to add access control mechanisms to prevent unauthorized use of these endpoints. StepZen supports two different solutions for this problem.
 
     - API Keys: You can use API keys to control access to the entire endpoint. API keys are the default access control mechanism.
+
     - Field Policies: You can use Field policies to control access to specific entry point fields on the endpoint. Field policies provide fine-grained access control to you GraphQL API, using a model similar to attribute-based access control.
 
   StepZen provides two different types of API keys for use with an account: Admin Keys and API Keys. Admin keys provide administrative-level access to your account, and should only be used at development time. API keys provide more limited access to your account, and should be used for production.
