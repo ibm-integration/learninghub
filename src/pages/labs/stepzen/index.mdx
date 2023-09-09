@@ -1,10 +1,10 @@
 ---
-title: Mastering Enterprise-Level GraphQL - Hands-on with StepZen and API Connect
+title: Mastering Enterprise-Level GraphQL
 ---
 
 
 <FeatureCard
-  title="Mastering Enterprise-Level GraphQL - Hands-on with StepZen and API Connect"
+  title="Mastering Enterprise-Level GraphQL"
   color="dark"
   >
 
@@ -37,15 +37,23 @@ title: Mastering Enterprise-Level GraphQL - Hands-on with StepZen and API Connec
 
 The rising adoption of hybrid cloud has resulted in data stored everywhere – in different types of data stores likes data warehouses, lakes, and lakehouses as well as across different clouds and on-premises environments. APIs serve as the essential connector between different data sources and applications, which means that businesses are relying on and creating more APIs than ever before to get the data they need to power their applications and experiences.
 
-GraphQL has rapidly become a go-to query language for companies to interact with their data and is emerging as a new standard for APIs, layering upon the investments in REST APIs and data systems. While GraphQL APIs are significantly easier for the application teams to consume, they can represent a challenge to the API teams tasked with building them.  We believe that APIs built declaratively are simply better - leading to first implementation with fewer lines of clean code, faster time to deploy, and APIs with built-in performance, cost, and reliability optimizations.
+GraphQL has rapidly become a go-to query language for companies to interact with their data and is emerging as a new standard for APIs, layering upon the investments in REST APIs and data systems. While GraphQL APIs are significantly easier for the application teams to consume, they can represent a challenge to the API Provider teams tasked with building them.  We believe that APIs built declaratively are simply better - leading to first implementation with fewer lines of clean code, faster time to deploy, and APIs with built-in performance, cost, and reliability optimizations.
 
-When you program declaratively you are configuring a system - you are also providing the system with universal rules that can be applied across all queries, and in different situations. The resulting code is more fault-tolerant, reduces repetition of software patterns (follows DRY principles), and is easier to understand and maintain. Importantly, it allows the platform to do things for you that you would otherwise have to code yourself.
+When you program declaratively you are configuring a system - you are also providing the system with universal rules that can be applied across all queries, and in different situations. The resulting code is more fault-tolerant, reduces repetition of software patterns (following DRY principles), and is easier to understand and maintain. Importantly, it allows the platform to do things for you that you would otherwise have to code yourself.
 
 StepZen enables developers to easily build and deploy a single GraphQL API that gets the data they need from multiple backends. The API delivers the right data reliably, irrespective of backend protocols, schemas and authentications. We manage the API so that developers manage zero infrastructure.
 
 With StepZen’s declarative approach developers can build GraphQL APIs (and federated graphs) by composing GraphQL building blocks to create the GraphQL schema. Strong introspection capabilities mean that a GraphQL model for enterprise data can be constructed and composed with only a few lines of code.
 
 Because you build your APIs declaratively, StepZen understands the API and can make optimization decisions at runtime, delivering low latency and high throughput and imposing a minimum burden on the backends.
+
+API Connect enables developers to easily manage, secure, socialize, and monitor their APIs.  With API Connect in front of StepZen, it’s easy to build API Products that include GraphQL, REST, SOAP, and other forms of APIs all in a single product.  You can then offer your API Product for sale under various API Plans which each have their own terms of usage.  With your Products and Plans set, you can advertise them and socialize them to your end users with a self-service Developer Portal, which allows your customers to find, try out, and pay you for your API Products, without your active involvement.  Finally, you can monitor your API usage to notice trends as well as issues.
+
+While API Connect management unifies your new GraphQL APIs with your existing REST APIs, it also provides first-class security for your new StepZen GraphQL API.  Threat protection, rate limiting, and monetization can all be based on a highly-customized analysis of every transaction’s input GraphQL query, with only a few declarative assertions from you.  You tell API Connect which parts of your schema are more expensive, and it customizes that to every query from your customers.
+
+By the end of this lab, with the combination of StepZen and API Connect, you will have deployed a world-class system for combining disparate backends including linkages between them, into a single API, secured your API, socialized it to your customers, and monitored its invocations.
+
+Let’s get started!
 
 ***
 
@@ -59,19 +67,19 @@ You need to have a StepZen account. StepZen provides an easier way for developer
 
 ## Business Context
 
-Your company decided to invest in GraphQL as the new standard for APIs. GraphQL is a query language for APIs that gives an application client greater control over what data it retrieves in an API request when compared with a REST API request.
+Your company decided to invest in GraphQL as a new standard for APIs. GraphQL is a query language for APIs that gives an application client greater control over what data it retrieves in an API request when compared with a REST API request.
 
-You would like to explore an easier way for developers to build GraphQL APIs, consuming data stored everywhere. Take an e-commerce application for example. With a single call, GraphQL can merge data that is found in different subsystems, like customer information, order numbers, and delivery status, and return it in an expected format. While GraphQL APIs are significantly easier for the application teams to consume, they can represent a challenge to the API teams tasked with building them. Based on that, you would like to explore a way to create GraphQL APIs using a declarative approach for federated access to data.
+You would like to explore an easier way for developers to build GraphQL APIs, consuming data stored everywhere. Take an e-commerce application for example. With a single call, GraphQL can merge data that is found in different subsystems, like customer information, order numbers, and delivery status, and return it in an expected format. While GraphQL APIs are significantly easier for the application teams to consume, they can represent a challenge to the API teams tasked with building them,  securing them, socializing them, and managing them. To ease the process of building these APIs, you would like to explore a way to create GraphQL APIs using a declarative approach for federated access to data.
 
-On the other hand, as a developer, you are having problems to manage the use of GraphQL APIs in your company.
+On the other hand, as a developer, you are having problems managing the use of GraphQL APIs in your company.
 
 GraphQL provides the following particular advantages over REST APIs:
 
-  - The application client can request only the data that it needs. For example, when retrieving bank account records, request only the account number and current balance for each account, but not the customer name and address details. With a REST API request, either the backend REST service must provide separate endpoints for different data subsets, or the application client must retrieve the complete records and then discard the unwanted data.
+  - The application client can request only the data that it needs. For example, when retrieving bank account records, request only the account number and current balance for each account, but not the customer name and address details. With a REST API request, either the backend REST service must provide separate endpoints or parameters for different data subsets, or the application client must retrieve the complete records and then discard the unwanted data.
 
-  - The application client can retrieve multiple related resources in a single request. For example, a customer’s bank account record might include an array that references other finance products that the customer holds. If an application client wants to retrieve the bank account details for a specific customer, and details of the other finance products for that customer, then with a REST API the client would first retrieve the bank account details, then make separate requests for each of the other products. A GraphQL API can be designed to allow the client to retrieve all this information in a single request.
+  - The application client can retrieve multiple related resources in a single request. For example, a customer’s bank account record might include an array that references other finance products that the customer holds. If an application client wants to retrieve the bank account details for a specific customer, and details of the other finance products for that customer, then with a REST API the client would first retrieve the bank account details, and then make separate requests for each of the other products. A GraphQL API can be designed to allow the client to retrieve all this information in a single request.
 
-However, this flexibility presents rate limiting challenges, because two seemingly very similar requests might return vastly different amounts of data, and what might have required multiple REST API requests, each counting towards the rate limit, might require only a single GraphQL API request. It is important therefore that rate limiting controls are imposed that reflect the amount of data that is retrieved.
+However, this flexibility presents security challenges with rate limiting, because two seemingly very similar requests might return vastly different amounts of data, and what might have required multiple REST API requests, each counting towards the rate limit, might require only a single GraphQL API request. It is important therefore that rate limiting controls are imposed that reflect the amount of data that is retrieved.
 
 ***
 
@@ -104,7 +112,7 @@ In this section you will install Node.JS in your machine. Let’s start it!
 
 ![](images/install-ide-1.png)
 
-2. Open the URL below (1). And download the recommended node.js version.
+2. Open the <a href="" target="_blank">URL below</a> (1). And download the recommended node.js version.
 ```
 https://nodejs.org
 ```
@@ -128,9 +136,10 @@ https://nodejs.org
 
 An **Integrated Development Environment (IDE)** is a piece of software that contains all of the things you need to develop, compile, link, and debug your programs. Furthermore, IDEs typically bundle a number of other helpful editing features, such as integrated help, name completion, auto-formatting, and sometimes a version control system. So while you could do all of these things separately, it’s much easier to install an IDE and have them all accessible from a single interface.
 
-In this lab, you will use the IDE to explore your graphQL schema. You are welcome to use any IDE that you prefer. If you don't have any preference, you can follow the steps below to install Visual Studio Code.
+In this lab, you will use the IDE to explore your GraphQL schema. You are welcome to use any IDE that you prefer. If you don't have any preference, you can follow the steps below to install Visual Studio Code.
 
-1. On your browser, open the URL below (1). And download the VSCode User Installer specific of your OS (2).
+
+1. On your browser, open the <a href="https://code.visualstudio.com/Download" target="_blank">URL below</a> (1). And download the VSCode User Installer specific of your OS (2).
 ```
 https://code.visualstudio.com/Download
 ```
@@ -189,14 +198,14 @@ npm install -g stepzen
 
 ![](images/setup-sz-1.png)
 
-2. Now, let's log in with StepZenAccount. Back to the browser window, open the URL below (1) and click on **Log In** link (2).
+2. Now, let's log in with StepZenAccount. Back to the browser window, open the <a href="http://www.stepzen.com" target="_blank">URL below</a> (1) and click on **Log In** link (2).
 ```
 http://www.stepzen.com
 ```
 
 ![](images/setup-sz-2.png)
 
-3. If you have a personal account, go ahead and log in. If you are using an account provided by your lab owner, click on **Sign in with GitHub** and log in with the user and password that you received.
+3. If you have a personal account, go ahead and log in. If you are using an account provided by your lab owner, log in with the user and password that you received.
 
 ![](images/setup-sz-3.png)
 
@@ -336,7 +345,7 @@ This command does three things
 
 ![](images/build-rest2-7.png)
 
-  These results, we are consuming from two different REST APIs. But you can do that with different type of data sources. In the next section, you will inspect data from a MySQL database.
+  With these results, we are consuming data from two different REST APIs. And you can do that with APIs from different types of data sources as well.  In the next section, you will inspect data from a MySQL database.
 
 ***
 
@@ -359,13 +368,13 @@ stepzen import mysql --db-host='db.introspection.stepzen.net' --db-database='int
 
 ![](images/build-mysql-2.png)
 
-  Before deploy the new API, next section you will merge the MySQL database and REST API endpoints.
+  Before deploying the new API, in the next section you will merge the MySQL database and REST API endpoints.
 
 ***
 
 ## 7 - Creating a composition of building blocks using @materializer
 
-Now that you have two subgraphs,  you can link types across subgraphs with @materializer. Let's do it!
+Now that you have multiple subgraphs, you can link types across subgraphs with @materializer. Let's do it!
 
 1. On the **index.graphql** from **mysql** folder (1), scroll down to see the ‘*type Query*’ declaration. Below the sentence "**Queries for type ‘Address’**" include the query code below (2).
 ```
@@ -412,11 +421,11 @@ One important point to highlight here is about how StepZen controls access to Gr
 
 As you build out your GraphQL APIs, you will want to add access control mechanisms to prevent unauthorized use of these endpoints. StepZen supports two different solutions for this problem.
   - API Keys: You can use API keys to control access to the entire endpoint. API keys are the default access control mechanism.
-  - Field Policies: You can use Field policies to control access to specific entry point fields on the endpoint. Field policies provide fine-grained access control to you GraphQL API, using a model similar to attribute-based access control.
+  - Field Policies: You can use Field policies to control access to specific entry point fields on the endpoint. Field policies provide fine-grained access control to your GraphQL API, using a model similar to attribute-based access control.
 
 StepZen provides two different types of API keys for use with an account: Admin Keys and API Keys. Admin keys provide administrative-level access to your account, and should only be used at development time. API keys provide more limited access to your account, and should be used for production.
 
-In this lab, for simplification purpose, you will use the Admin Keys to access your API. In a real environment, you should use API Keys or Field Policies to improve your security level.
+In this lab, for simplification purpose, you will use the Admin Keys to access your API. In a real environment, you should use API Keys or Field Policies to improve your API’s security.
 
 ***
 
@@ -426,7 +435,7 @@ IBM API Connect enables you to create a GraphQL API proxy definition that proxie
 
 For this part of the lab, you need to have an API Connect environment. If necessary, check the Prerequisites section to learn how to create your API Connect on AWS Trial Account.
 
-1. If you received a lab account from your lab monitor, you need to open the Gmail site to get the your APIC environment URL.  On Gmail inbox of your account, search for **IBM SaaS** (1), open the "**Your API Connect trial is ready**" email (2).
+1. If you received a lab account from your lab monitor, you need to open <a href="https://privateemail.com/" target="_blank">your email inbox</a> to get your APIC environment URL.  On your inbox (log in with your lab user and password), search for **IBM SaaS** (1), open the "**Your API Connect trial is ready**" email (2).
 
 ![](images/apic-proxy-1.png)
 
@@ -434,13 +443,13 @@ For this part of the lab, you need to have an API Connect environment. If necess
 
 ![](images/apic-proxy-2.png)
 
-3. Log in with your APIC user and password (account that you received from your lab monitor or account that you created).
+3. Log in with your APIC user and password (same user and password received from your lab monitor or using the account that you created).
 
 ![](images/apic-proxy-3.png)
 
 4. Here, you are on your API Connect Enterprise as a Service environment. API Connect Enterprise as a Service is a cloud-based edition of IBM API Connect. Using API Connect Enterprise as a Service enables you to work in the cloud to create, manage, secure, and socialize APIs using our latest user experiences, innovation, and industry standards for full API lifecycle management.
 
-  API Connect Enterprise as a Service uses the software-as-a-service as a delivery model. With this model, API Connect is hosted on Amazon Web Services and is managed by IBM. You pay for using the software without worrying about owning and maintaining the underlying infrastructure. With API Connect Enterprise as a Service, you pay for usage through your AWS bill.
+  API Connect Enterprise as a Service uses software-as-a-service as a delivery model. With this model, API Connect is hosted on Amazon Web Services and is managed by IBM. You pay for using the software without worrying about owning and maintaining the underlying infrastructure. With API Connect Enterprise as a Service, you pay for usage through your AWS bill.
 
   Let's see how to create a GraphQL Proxy API.  On the **Home** page (1), scroll down and click on **Develop API** tile (2).
 
@@ -461,9 +470,9 @@ For this part of the lab, you need to have an API Connect environment. If necess
 
 ![](images/apic-proxy-7.png)
 
-8. As described earlier in this lab, your StepZen API is using an API Key approach to control access to the entire endpoint. Because of that, you need to include the API Key in the Authorization Header of the HTTP Header. Here you will include that to read the API Schema (not to call API itself). Let's do it!
+8. As described earlier in this lab, your StepZen API is using an API Key approach to control access to the entire endpoint. Because of that, you need to include the API Key in the Authorization Header of the HTTP Header. Here you will include that to read the API Schema for introspection to setup this proxy API, and it will be used this one time only and not be saved for later to call the API itself. Let's do it!
 
-  In the *HTTP Header* section, click **Add** (1) to enter **Authorization** (2) as *Header* and paste the *API Key value* that you copied from the *StepZen Dashboard Headers* section as *Value* (3). Then click *Next* (4).
+   In the *HTTP Header* section, click **Add** (1) to enter **Authorization** (2) as *Header* and paste the *API Key value* that you copied from the *StepZen Dashboard Headers* section as *Value* (3). Then click *Next* (4).
 
 ![](images/apic-proxy-8.png)
 
@@ -487,19 +496,19 @@ For this part of the lab, you need to have an API Connect environment. If necess
 
 ![](images/apic-edit-1.png)
 
-2. GraphQL APIs are structured the same as REST APIs with some additional options. Just like REST APIs, you will be able to add security schemas, paths and definitions from the left menu bar. You can also view the Gateway, Test and Explorer tabs similar to REST APIs. You will notice a new tab for GraphQL APIs. Click on **GraphQL Schema** tab to view the schema.
+2. GraphQL APIs are structured the same as REST APIs with some additional options. Just like REST APIs, you will be able to add security schemas, paths and definitions from the left menu bar. You can also view the *Gateway*, *Test* and *Explorer* tabs similar to REST APIs. You will notice a new tab for GraphQL APIs. Click on **GraphQL Schema** tab to view the schema.
 
 ![](images/apic-edit-2.png)
 
-3. GraphQL Schema editor displays *Type* and *Type Weight* information. The weighting factor is used when calculating the type cost for a request to the GraphQL API. For example, a field that requires extensive CPU or memory use on the server to retrieve its value would be given a higher cost. Click **View** in the *Warning* message.
+3. The GraphQL Schema tab displays Type  for every type in your GraphQL schema, and Type Weight information for the cost or expense of each type. The weighting factor is used when calculating the type cost for a request to the GraphQL API. For example, a field that requires extensive CPU or memory use on the server to retrieve its value would be given a higher cost. Click **View** in the *Warning* message.
 
 ![](images/apic-edit-3.png)
 
-4. In addition to the warning details, the Warning window gives an option to fix the warning by applying the limits. Click **Apply all** (1), then click **Apply** (2).
+4. In addition to the warning details, the Warning window gives an option to fix the warning by applying the limits. While this Artificial Intelligence is often very accurate, for a real scenario it is important to carefully examine the results and only accept them when they are accurate, since this affects the security of your application.  In our case, click **Apply all** (1), then click **Apply** (2).
 
 ![](images/apic-edit-4.png)
 
-5. After applying the recommendation the warning message is removed. Click **Save** to save the API definition .
+5. After applying the recommendations, the warning message is removed. Click **Save** to save the API definition .
 
 ![](images/apic-edit-5.png)
 
@@ -507,7 +516,7 @@ For this part of the lab, you need to have an API Connect environment. If necess
 
 ![](images/apic-edit-6.png)
 
-7. The flow is automatically created as part of the initial API creation. You may apply additional logic by dragging and dropping items from the pallet to the canvas. Let's do a small change to allow Authorization header propagation. Scroll down the flow (1) and on the **Otherwise** ramification (2),  you should see a **graphql-invoke** node, click on it to edit (3).
+7. The flow is automatically created as part of the initial API creation. You may apply additional logic by dragging and dropping items from the palette to the canvas. Let's do a small change to allow Authorization header propagation. Scroll down the flow (1) and on the **Otherwise** ramification (2),  you should see a **graphql-invoke** node, click on it to edit (3).
 
 ![](images/apic-edit-7.png)
 
@@ -515,7 +524,7 @@ For this part of the lab, you need to have an API Connect environment. If necess
 
 ![](images/apic-edit-8.png)
 
-9. Enter **Authorization** as the new header allowed (1) and click **Save** button (2).
+9. Enter **Authorization** as the new header allowed (1) and click **Save** button (2). This means that we will send the Authorization header on to the backend.
 
 ![](images/apic-edit-9.png)
 
@@ -527,7 +536,7 @@ For this part of the lab, you need to have an API Connect environment. If necess
 
 ![](images/apic-edit-11.png)
 
-12. The Test feature also includes a GraphQL Editor. Enter the following JSON in the GraphQL Editor. You may use *Prettify* option to improve the visualization of the JSON.
+12. The Test feature also includes a GraphQL Editor. Enter the following GraphQL query in the GraphQL Editor. It is not JSON, but looks somewhat similar to the JSON that will come back as the response.  You may use **Prettify** option to improve the visualization of the GraphQL query.
 ```
 {
   customers {
@@ -550,7 +559,7 @@ For this part of the lab, you need to have an API Connect environment. If necess
 
 ![](images/apic-edit-13.png)
 
-14. Everytime that you invoke your API you need to pass your API Key as Authorization header. So let's include it in our test. On the bottom of the Parameters list, include a new parameter with the following value:
+14. Everytime that you invoke your API you need to pass your API Key as the Authorization header. So let's include it in our test. On the bottom of the Parameters list, include a new parameter with the following value:
 
     Key: **Authorization** (1)
     Located In: **header** (2)
@@ -570,7 +579,7 @@ For this part of the lab, you need to have an API Connect environment. If necess
 
 ![](images/apic-edit-17.png)
 
-18. On the **Otherwise** ramification (1),  you will add a node before the *graphql-invoke* node. On the *Palette* view, scroll down to see the *Policies* section (2). Drag and drop the **Set Variable** (3) node between the "*ratelimit expected*" node and "*graphql-invoke*" node (4).
+18. On the **Otherwise** (1) which starts with a *Parse*, you will add a node before the *graphql-invoke* node.  On the *Palette* view, scroll down to see the *Policies* section (2). Drag and drop the **Set Variable** (3) node between the "*ratelimit expected*" node and the "*graphql-invoke*" node (4).
 
 ![](images/apic-edit-18.png)
 
@@ -586,11 +595,11 @@ For this part of the lab, you need to have an API Connect environment. If necess
 
 ![](images/apic-edit-21.png)
 
-22. Let's test again our API, now without pass the Authorization token. Open the **Test** tab (1), and click the **Execute Query** button (2). (Note: if you want, you can check in the Parameters tab that there isn't an Authorization header parameter).
+22. Let's test our API again, this time without passing the Authorization token. Open the **Test** tab (1), and click the **Execute Query** button (2). (Note: if you want, you can check in the Parameters tab that there isn't an Authorization header parameter).
 
 ![](images/apic-edit-22.png)
 
-23. Great! Now you GraphQL Proxy is running and available to be used. You are welcome to change the GraphQL query to test more scenarios. Next section you will learn how to create a product to apply GraphQL RateLimits. On breadcrumbs, return to **Develop** page.
+23. Great! Now your GraphQL Proxy is running and available to be used. You are welcome to change the GraphQL query to test more scenarios. You can also use the **Example** button to help start your creativity. Next section you will learn how to create a product to apply GraphQL RateLimits. On breadcrumbs, return to **Develop** page.
 
 ![](images/apic-edit-23.png)
 
@@ -614,7 +623,7 @@ For this part of the lab, you need to have an API Connect environment. If necess
 
 ![](images/apic-product-4.png)
 
-5. The *Default Plan* contains traditional rate limiting options, but in next steps, you will be able to list GraphQL Rate Limits. By now, just click **Next**.
+5. The *Default Plan* contains traditional rate limiting options, but in the next steps, you will be able to list GraphQL Rate Limits. For now, just click **Next**.
 
 ![](images/apic-product-5.png)
 
@@ -634,13 +643,13 @@ For this part of the lab, you need to have an API Connect environment. If necess
 
 ![](images/apic-product-9.png)
 
-10. Scroll down, and now you can see the *GraphQL rate limits*. You will be able to adjust GraphQL cost parameters from this section (including costs per field or type). You can set a limit or make it unlimited. In this tutorial, you will not be making any changes.
+10. Scroll down, and now you can see the GraphQL rate limits. You will be able to adjust GraphQL cost parameters from this section (including costs per field or type). You can set a limit or make it unlimited. In this tutorial, you will not be making any changes.
 
     If you want to understand how the GraphQL rate limits work, check this <a href="https://www.ibm.com/docs/en/api-connect/10.0.x?topic=api-securing-graphql-by-using-client-id" target="_blank">documentation page</a>.
 
 ![](images/apic-product-10.png)
 
-11. On the left menu, click **Manage** icon to manage your Sandbox catalog.
+11. On the left menu, click **Manage** icon to manage our Sandbox catalog.
 
 ![](images/apic-product-11.png)
 
@@ -662,15 +671,15 @@ Now that you’ve published your API, you need to make sure that your API consum
 
 3.Great, here you have your **Portal URL**. Copy it, and open it in a new browser tab.
 
-  'Note':  if you don't have a portal URL in your environment, go ahead and create a new portal. It will demand few minutes to have the portal ready.
+  'Note':  if you don't have a portal URL in your environment, go ahead and create a new portal. It will require a few minutes for the portal to be ready.
 
 ![](images/apic-portal-3.png)
 
-4. Click **Create account** to create a new developer account.
+4. This Developer Portal is your public-facing website and therefore it is highly flexible and customizable, but we’ll be using the default design.  Note that all of these next steps are simulating what your API Consumer, your end-user customer, will do to find, buy, and use your API.  Click **Create account** to create a new developer account.
 
 ![](images/apic-portal-4.png)
 
-5. Complete the registration form, go ahead and use any personal email.  Take note of the username (not email) and password. You will need them later to log in Developer Portal.
+5. Complete the registration form, go ahead and use any personal email.  Take note of the username (not email) and password. You will need them later to log in to the Developer Portal.
 
 ![](images/apic-portal-5.png)
 
@@ -746,15 +755,15 @@ Now that you’ve published your API, you need to make sure that your API consum
 
 ![](images/apic-portal-19.png)
 
-20. Great! Your GraphQL Proxy API is running and available for your ecosystem. You are welcome to continue to test the API, using the GraphQL Editor. Submit requests with different field names and watch how quickly the results are returned in the results window. If this was a REST API multiple end points will be needed to achieve the same result.
+20. Great! Your GraphQL Proxy API is running and available for your ecosystem. You are welcome to continue to test the API, using the GraphQL Editor. Submit requests with different field names and watch how quickly the results are returned in the results window. If this was a REST API multiple end points would be needed to achieve the same result.
 
 ![](images/apic-portal-20.png)
 
-21. As a developer, you can have some analytics information about the usage of the application. Open the **Apps** page (1) and select the **Consumers Application** (2).
+21. That was the experience as the API Consumer, your paying customer.  Now we return to your experience as an API Provider with an API that is being called, and you have analytics information about the usage of the application.  Open the **Apps** page (1) and select the **Consumers Application** (2).
 
 ![](images/apic-portal-21.png)
 
-22. In this page, the developers can have some information and insights about the application.
+22. In this page, the developers can view information and insights about the application.
 
 ![](images/apic-portal-2.png)
 
