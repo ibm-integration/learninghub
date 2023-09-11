@@ -388,6 +388,8 @@ getAddressById(id: Int!): [Address]
 
 ![](images/merge-blocks-1.png)
 
+  **Save** the file (File > Save or CTRL+S).
+
 2. Now open the **index.graphql** file from **curl** folder (1), this is the schema from customers REST API.  Scroll down to see the ‘*type RootEntry*’ section.  By now, the address is coming from the REST API endpoint. Let's change it to get this value from MySQL database. Replace the current address type definition (address: Address) for the code below (2).
 ```
 address: [Address]
@@ -395,6 +397,8 @@ address: [Address]
 ```
 
 ![](images/merge-blocks-2.png)
+
+  **Save** the file (File > Save or CTRL+S).
 
 3. Let's deploy the new API. And refresh the StepZen Dashboard.
 ```
