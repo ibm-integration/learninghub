@@ -4,6 +4,8 @@
       path: /demos/aoc-sales/demo-preparation
     - title: Aspera on Cloud TechSales Demo
       path: /demos/aoc-techsales/demo-preparation
+    - title: API-led Sales Demo
+      path: /demos/cp4i-sales/demo-preparation
 - title: Hands-on Labs
   pages:
     - title: Installing IBM API-Led Solution
