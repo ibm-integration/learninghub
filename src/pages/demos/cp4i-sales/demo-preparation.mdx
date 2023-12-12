@@ -38,109 +38,61 @@ tabs: [ 'Demo preparation', 'Demo script']
 
 ### 2 - Requesting access to the shared environment
 
-2.1 Access the <a href="https://www.ibm.com/account/reg/us-en/signup?formid=urx-30538" target="_blank">Sign up for IBM Aspera on Cloud page</a>.
+2.1  Access the <a href="https://techzone.ibm.com/my/reservations/create/64c9031d4addf20017240b27" target="_blank" rel="noreferrer">Cloud Pak for Integration - Outcomes</a> page on IBM Asset Repo, and log in using your IBM credentials.
 
-2.2 On the **Sign up for our free trial** page, if you already have an IBM account, click **Log in** (A). If not, complete the registration form (B).
+2.2 Select your **Reservation type**.
 
-![](images/trial-1.png)
+![](images/outcomes-reservation-type.png)
 
-2.3 At the end, you need to verify your email. Open your email and **copy the 7 digit code**.
+2.3 Follow the **Create a reservation** form to define the details of your ROKS Reservation.
 
-![](images/trial-2.png)
+![](images/outcomes-create-reservation.png)
 
-2.4 Return to the Sign-up form and **paste the 7 digit code** into the form (A). Then, click **Start your free trial** (B).
+2.4 After a few seconds, your Cloud Pak for Integration Outcomes Demonstration is ready.
 
-![](images/trial-3.png)
-
-2.5 In the **About your IBMid Account**, check the information there and when ready, click **Proceed**.
-
-![](images/trial-4.png)
-
-2.6 Now, back to your email, you should have an email from IBM Aspera on Cloud. Open this email and click on **Start using IBM Aspera on Cloud now**.
-
-![](images/trial-5.png)
-
-2.7 Click **Log in with IBMid**. Then, go ahead and use your new IBMid credentials.
-
-![](images/trial-6.png)
+![](images/outcomes-ready.png)
 
 
 ***
 
-### 3 - Installing Aspera Connect
+### 3 - Accepting the invitation for API provider organizations
 
-3.1 On Aspera on Cloud home page, open the **Admin** app.
+<InlineNotification>There is a known issue with Firefox when trying to access the API. For the best user experience, we recommend that you use the latest version of Safari or Chrome.</InlineNotification>
 
-![](images/trial-8.png)
+3.1 Check your email. You should have received two emails, one from IBM Technology Zone and the second one from the APIC Administrator. Let's start with the email from **IBM Technology Zone**. In this email, you should have the environment URL, login, and password. Copy the **login** and **password**.
 
-3.2 First time you access the Aspera on Cloud, you should see the **Welcome** dialog, click **close**.
+![](images/outcomes-email.png)
 
-![](images/trial-9.png)
+3.2 As part of the demo, you will need to access the Demo API provider organization in IBM API Connect. Open the email from the **APIC Administrator**, and click the link to accept the invitation.
 
-3.3 Now, you will see a page, asking you to install the IBM Aspera Connect transfer client. You need to install both the Aspera Connect browser plug-in and the Aspera Connect client. Let's do it! Click **Install extension**.  
+![](images/api-org-invitation.png)
 
-![](images/connect-1.png)
+3.3 Select the **openldap Outcomes** authentication type.
 
-3.4 Go ahead, and follow the necessary steps to install the extension in your browser.
+![](images/100-preparation-2-3-1.png)
 
-![](images/connect-2.png)
+3.4 Log in using the **username** and **password**.
 
-3.5 When done, click **Install Connect** to open the <a href="https://www.ibm.com/aspera/connect/" target="_blank">IBM Aspera Connect</a> page. 
+![](images/apic-login.png)
 
-![](images/connect-3.png)
+3.5  Now you should see a **Registration completed successfully** screen.
 
-3.6 Go ahead and follow the necessary steps to install IBM Aspera Connect in your OS. 
-
-![](images/connect-4.png)
-
-3.7 When done, return back to the Aspera on Cloud page. Now, you should see the admin page.
-
-![](images/connect-5.png)
+![](images/apic-registration.png)
 
 ***
 
-### 4 - Renaming your Workspace
+### 4 - Accessing the environment
 
-By default your first workspace is default. To have a more appealing demo workspace, let's rename it.
+4.1  When you need to access your demo environment, use the URL, login, and password provided in the email from IBM Technology Zone. **Note**: Take note of these as you will use them multiple times during the demo.
 
-4.1 Click on **Default Workspace** to edit it.
+![](images/outcomes-email.png)
 
-![](images/workspace-1.png)
+4.2 If necessary, accept the risks. On the *Log in* page, click on the **Enterprise LDAP** link.
 
-4.2 On *Name* field, change to **Marketing Workspace** (A). Then click **Save** (B).
+![](images/100-preparation-3-2-1.png)
 
-![](images/workspace-2.png)
+4.3.  Log in using the username and password that you received in your email.
 
-4.3. Click **Refresh**.
+![](images/100-preparation-3-2-2.png)
 
-![](images/workspace-3.png)
-
-Great! Your workspace is ready for demo. 
-
-***
-
-### 5 - Creating your Demo Files
-
-As part of this demo, you will need to upload some files. You can decide the size of files that you will use in your Demo based in your network bandwith. One important point: Large files are good to show how fast is to transfer files in Aspera, on the other hands, you don't want to stay in front of customer waiting a file to be uploaded. The recommendation is: Try first and define the best experience for your audience.
-
-You can create your demo files by using your personal files. Another possibility is to download some dummy files from internet. There are multiple sites where you can download test files, this <a href="http://xcal1.vodafone.co.uk/" target="_blank">site is one example</a>.
-
-Below are the names and size of files that we are using in the demo script. Feel free to recreate them. It is a good practice to keep them in a folder with easy access during the demo.
-
-| File Name | File Size |
-| --------------------------------------- | ------------------------------------- |
-| A-B Testing Fall 2022 | 10 MB |
-| A-B Testing Summer 2022 | 10 MB |
-| Campaign Launch Video | 100 MB |
-| Campaign Logos | 10 MB |
-| Summer Campaign | 200 MB |
-| Mobile Campaign | 200 MB |
-| New Site Project | 10 MB |
-
-***
-
-### 6 - Defining your Demo Users
-
-During the demo, you will need to invite external users to access your files. We recommend to use a real external email (e.g.: gmail, hotmail, yahoo, ...).
-
-You can use your personal email. But a good practice is to create a fake demo user email (e.g.: fadams@gmail.com), and use different browser user profile to deliver your demo. For example, check <a href="https://support.google.com/chrome/answer/2364824?hl=en&co=GENIE.Platform%3DDesktop" target="_blank">here</a> how to use chrome with multiple user profiles.
+Great! You are ready to present the demo! 
