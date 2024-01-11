@@ -74,33 +74,29 @@ tabs: [ 'Demo preparation', 'Demo script']
 
 ### 3 - Installing Aspera Connect
 
-3.1 On Aspera on Cloud home page, open the **Admin** app.
+3.1 First time you access the Aspera on Cloud, you should see the **Welcome** dialog, click **Enable high speed transfer**.
 
-![](images/trial-8.png)
+![](images/3-1-update-2024-1.png)
 
-3.2 First time you access the Aspera on Cloud, you should see the **Welcome** dialog, click **close**.
-
-![](images/trial-9.png)
-
-3.3 Now, you will see a page, asking you to install the IBM Aspera Connect transfer client. You need to install both the Aspera Connect browser plug-in and the Aspera Connect client. Let's do it! Click **Install extension**.  
+3.2 Now, you will see a page, asking you to install the IBM Aspera Connect transfer client. You need to install both the Aspera Connect browser plug-in and the Aspera Connect client. Let's do it! Click **Install extension**.  
 
 ![](images/connect-1.png)
 
-3.4 Go ahead, and follow the necessary steps to install the extension in your browser.
+3.3 Go ahead, and follow the necessary steps to install the extension in your browser.
 
 ![](images/connect-2.png)
 
-3.5 When done, click **Install Connect** to open the <a href="https://www.ibm.com/aspera/connect/" target="_blank">IBM Aspera Connect</a> page. 
+3.4 When done, click **Install Connect** to open the <a href="https://www.ibm.com/aspera/connect/" target="_blank">IBM Aspera Connect</a> page. 
 
 ![](images/connect-3.png)
 
-3.6 Go ahead and follow the necessary steps to install IBM Aspera Connect in your OS. 
+3.5 Go ahead and follow the necessary steps to install IBM Aspera Connect in your OS. 
 
 ![](images/connect-4.png)
 
-3.7 When done, return back to the Aspera on Cloud page. Now, you should see the admin page.
+3.6 When done, return back to the Aspera on Cloud page. Now, you should be on the Default Workspace area on Files app. Before explore the Files app, let’s open the admin page. Open the **App switcher** menu (A), select **Admin** (B).
 
-![](images/connect-5.png)
+![](images/3-6-update-2024-1.png)
 
 ***
 
@@ -162,45 +158,45 @@ In this section and next, you will configure two Object Storage services in diff
 
 ![](images/icos-3.png)
 
-6.5 On your Storage instance page, click **Buckets** on the left menu. 
+6.5 Open the **Instances** menu (A) and select your new **Cloud Object Storage instance** (B).
 
-![](images/icos-4.png)
+![](images/6-5-update-2024-1.png)
 
 6.6 Click **Create bucket**.
 
-![](images/icos-5.png)
+![](images/6-6-update-2024-1.png)
 
-6.7 Click **Quickly get started** to use a predefined bucket.
+6.7 Select **Quickly get started** to use a predefined bucket.
 
-![](images/icos-6.png)
+![](images/6-7-update-2024-1.png)
 
-6.8 Close the **Get started creating a bucket** dialog.
-
-![](images/icos-7.png)
-
-6.9 Your IBM Cloud storage must be in a region that is supported by the Aspera on Cloud transfer service. To view the supported regions, check the <a href="https://ats.aspera.io/pub/v1/servers/softlayer" target="_blank">list</a> here.  Check that you are using **us-south** (A) and click **Next** (B).
+6.8 Your IBM Cloud storage must be in a region that is supported by the Aspera on Cloud transfer service. To view the supported regions, check the <a href="https://ats.aspera.io/pub/v1/servers/softlayer" target="_blank">list</a> here.  Check that you are using **us-south** (A) and click **Next** (B).
 
 ![](images/icos-8.png)
 
-6.10 **Drag and drop a 50MB file** (A) and click **Next** (B).
+6.9 **Drag and drop a 50MB file** (A) and click **Next** (B).
 
 ![](images/icos-9.png)
 
-6.11 On *Test your bucket* page, click **View bucket configuration** button.
+6.10 On *Test your bucket* page, click **View bucket configuration** button.
 
 ![](images/icos-10.png)
 
-6.12 On the Bucket configuration page, take notes of your Bucket name (A), you will need that during the demo to integrate your ICOS bucket with Aspera on Cloud. Open the **Service credentials** page (B).
+6.11 On the Bucket configuration page, take notes of your Bucket name (A), you will need that during the demo to integrate your ICOS bucket with Aspera on Cloud. On the Breadcrumbs, click on your new **Storage instance** link (B).
 
-![](images/icos-11.png)
+![](images/6-11-update-2024-1.png)
+
+6.12 Open the **Service credentials** tab.
+
+![](images/6-12-update-2024-1.png)
 
 6.13 You need to have HMAC credentials for the IBM Cloud bucket. Let's create one! Click **New credential**.
 
 ![](images/icos-12.png)
 
-6.14 Enter **Service credentials-HMAC** as Credential Name (A). Open the **Advanced options** (B). **Turn On** the *Include HMAC Credential* (C). And click **Add** (D).
+6.14 Enter **Service credentials-HMAC** as Credential Name (A). Select **Writer** as Role (B). **Turn On** the *Include HMAC Credential* (C). And click **Add** (D).
 
-![](images/icos-13.png)
+![](images/6-14-update-2024-1.png)
 
 6.15 Click on **Service credentials-HMAC** credential (A) and take note of the **access_key_id** and **secret_access_key** (B). You will need both during the demo.
 
@@ -226,9 +222,9 @@ As previous described, here you will see how to create a Storage bucket in Azure
 
 ![](images/azure-2.png)
 
-7.4 On Storage accounts page, click **Create storage account**.
+7.4 On Storage accounts page, click on **+ Create**.
 
-![](images/azure-3.png)
+![](images/7-4-update-2024-1.png)
 
 7.5 First, you need to select a Resource group. If you don't have one, click **Create new** (A). Enter a name for your resource group (e.g.: myresources) (B). Then, click **OK** (C).
 
@@ -238,21 +234,27 @@ As previous described, here you will see how to create a Storage bucket in Azure
 
 Your Azure storage must be in a region that is supported by the transfer service. To view the supported regions check <a href="https://ats.aspera.io/pub/v1/servers/AZURE" target="_blank">here</a>. For this demo, let's keep **(US) East US** as Region (B).
 
-![](images/azure-5.png)
+Then click on **Advanced** tab (C).
 
-7.7 Wait few seconds for the review process is ready. When completed, click **Create**.
+![](images/7-6-update-2024-1.png)
+
+7.7 On the *Advanced* page, click on **Allow enabling anonymous access on indiviual containers** (A), and click **Review** (B).
+
+![](images/7-7-update-2024-1.png)
+
+7.8 Wait few seconds for the review process is ready. When completed, click **Create**.
 
 ![](images/azure-6.png)
 
-7.8 You need to wait few minutes to deploy your storage account. When **your deployment is complete** (A), click **Go to resource** (B).
+7.9 You need to wait few minutes to deploy your storage account. When **your deployment is complete** (A), click **Go to resource** (B).
 
 ![](images/azure-7.png)
 
-7.9 Now you need to create your Blob container. On *Data storage* section, click on **Containers**.
+7.10 Now you need to create your Blob container. On *Data storage* section, click on **Containers**.
 
 ![](images/azure-8.png)
 
-7.10 To create a new container, click on **+ Container**.
+7.11 To create a new container, click on **+ Container**.
 
 ![](images/azure-9.png)
 
@@ -260,19 +262,23 @@ Your Azure storage must be in a region that is supported by the transfer service
 
 ![](images/azure-10.png)
 
-7.12 On Blob container, click **Upload** (A). Select a **10 Mb file** (B) and click **Upload** button (C).
+7.12 On the Containers view, click on your new **Blob container** to open it.
+
+![](images/7-12-update-2024-1.png)
+
+7.13 On Blob container, click **Upload** (A). Select a **10 Mb file** (B) and click **Upload** button (C).
 
 ![](images/azure-11.png)
 
-7.13 Let's go back to the storage page. On the *Breadcrumbs*, click on your **Storage name**.
+7.14 Let's go back to the storage page. On the *Breadcrumbs*, click on your **Storage name**.
 
 ![](images/azure-12.png)
 
-7.14 Click on **Access keys**.
+7.15 Click on **Access keys**.
 
 ![](images/azure-13.png)
 
-7.15 On **key1** field, click **Show** button (A) and click **Copy** button (B) to copy the *Key* field. You will need that later in the demo to attach the Azure Blob Storage on Aspera on Cloud.
+7.16 On **key1** field, click **Show** button (A) and click **Copy** button (B) to copy the *Key* field. You will need that later in the demo to attach the Azure Blob Storage on Aspera on Cloud.
 
 ![](images/azure-14.png)
 
