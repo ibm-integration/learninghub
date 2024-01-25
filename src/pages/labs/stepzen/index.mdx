@@ -577,6 +577,10 @@ For this part of the lab, you need to have an API Connect environment. If necess
 
 ![](images/apic-edit-16.png)
 
+  `TROUBLESHOOTING:` On the latest version of APIC on AWS, we are having some issues with the test UI. Maybe you are not able to see the data returned from your GraphQL API, but you should receive an HTTP Status 200 (sucesss). Another way to test your API is using a GraphQL sandbox. For example, open this <a href="https://graphqlzero.almansi.me/api" target="_blank">URL</a> (1), copy and paste the requested URL from APIC (2), enter the Graphql query (3) and in the HTTP Header section, enter a JSON with the Authorization header parameter that you included in APIC, and copy and paste the X-IBM-Client-Id from APIC parameters tab (4). And click on the **Play** button to see the graphQL returned data (5).
+
+![](images/playground-workaround-1.png)
+
 17. Great, but you can simplify it, by hard coding the Authorization header parameter in your GraphQL API Proxy flow. Let's do it! Open the **Gateway** tab again.
 
 ![](images/apic-edit-17.png)
@@ -600,6 +604,10 @@ For this part of the lab, you need to have an API Connect environment. If necess
 22. Let's test our API again, this time without passing the Authorization token. Open the **Test** tab (1), and click the **Execute Query** button (2). (Note: if you want, you can check in the Parameters tab that there isn't an Authorization header parameter).
 
 ![](images/apic-edit-22.png)
+
+  `TROUBLESHOOTING:` You can keep using the <a href="https://graphqlzero.almansi.me/api" target="_blank">external GraphQL playground</a> to test your api(1), but now in the HTTP Header section, remove the Authorization header parameter (4). Then click on the **Play** button to see the graphQL returned data (5).
+
+![](images/playground-workaround-2.png)
 
 23. Great! Now your GraphQL Proxy is running and available to be used. You are welcome to change the GraphQL query to test more scenarios. You can also use the **Example** button to help start your creativity. Next section you will learn how to create a product to apply GraphQL RateLimits. On breadcrumbs, return to **Develop** page.
 
@@ -754,8 +762,11 @@ Now that you’ve published your API, you need to make sure that your API consum
 }
 ```
 
-
 ![](images/apic-portal-19.png)
+
+  `TROUBLESHOOTING:` You can keep using the <a href="https://graphqlzero.almansi.me/api" target="_blank">external GraphQL playground</a> to test your api(1), but now in the HTTP Header section, paste the API Key that you copied in the previous stepr as your X-IBM-Client-Id header parameter (4). Then click on the **Play** button to see the graphQL returned data (5).
+
+![](images/playground-workaround-2.png)
 
 20. Great! Your GraphQL Proxy API is running and available for your ecosystem. You are welcome to continue to test the API, using the GraphQL Editor. Submit requests with different field names and watch how quickly the results are returned in the results window. If this was a REST API multiple end points would be needed to achieve the same result.
 
