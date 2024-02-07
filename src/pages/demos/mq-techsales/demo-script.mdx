@@ -45,8 +45,7 @@ Let's get started!<br/><br/>
 
 | **1.2** | **View the Cloud Pak for Integration instances** |
 | :--- | :--- |
-| **Narration** | Welcome to IBM Cloud Pak for Integration! We’re now at the home screen showing all the capabilities of the Pak, brought together in one place. Specialized integration capabilities — for API management, application integration, messaging, and more — are built on top of powerful automation services. <br/><br/>
-As you can see, you are able to access all the integration capabilities your team needs through a single interface.So far we have a basic MQ instance here. IBM MQ is an universal messaging backbone with robust connectivity for flexible and reliable messaging for applications and the integration of existing IT assets. In this demo, to scale our IBM MQ Cluster, we will create a Universal cluster. |
+| **Narration** | Welcome to IBM Cloud Pak for Integration! We’re now at the home screen showing all the capabilities of the Pak, brought together in one place. Specialized integration capabilities — for API management, application integration, messaging, and more — are built on top of powerful automation services. <br/><br/>As you can see, you are able to access all the integration capabilities your team needs through a single interface.So far we have a basic MQ instance here. IBM MQ is an universal messaging backbone with robust connectivity for flexible and reliable messaging for applications and the integration of existing IT assets. In this demo, to scale our IBM MQ Cluster, we will create a Universal cluster. |
 | **Action** &nbsp; 1.2.1 | Show the **Integration page**. <br/><br/> <img src="https://raw.githubusercontent.com/ibm-garage-tsa/platinum-demos/master/src/pages/100-integration/images/100-api-demo-1-2-1.png" width="800" /> <br/> |
 
 | **1.3** | **Access OpenShift Web Console** |
@@ -68,7 +67,7 @@ As you can see, you are able to access all the integration capabilities your tea
 | **2.1** | **Create configurations** |
 | :--- | :--- |
 | **Narration** | The objective of a uniform cluster deployment is that applications can be designed for scale and availability, and can connect to any of the queue managers within the uniform cluster. This removes any dependency on a specific queue manager, resulting in better availability and workload balancing of messaging traffic.<br/><br/>Let's create it now. First we need to create our uniform cluster configurations. |
-| **Action** &nbsp; 2.1.1 | On a terminal windows, **log in** on your OpenShift environment and run the command below. <br/>|
+| **Action** &nbsp; 2.1.1 | On a terminal windows, **log in** on your OpenShift environment and run the command below. <br/> ``` oc apply -f resources/03d-qmgr-uniform-cluster-config.yaml ```|
 
 | **2.2** | **Deploy Queue Managers** |
 | :--- | :--- |
