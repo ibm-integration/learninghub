@@ -185,7 +185,7 @@ Let's get started!<br/><br/>
 
 | **6.1** | ** Delete Queue Manager** |
 | :--- | :--- |
-| **Narration** | We observed how each instance will connect to a different queue manager trying to keep a homogenous distribution, but what would happen if one of the queue managers goes down? Let’s find out. <br/><br>Let's check our queue managers in the installed operators page. <br/><br/>We could kill one of the active pods for any of the queue managers, but since we have configured Native HA, one of the standby instances will take over and at the end, each queue manager will keep a couple of connections, so in this case we will go ahead and fully delete the queue manager.  |
+| **Narration** | We observed how each instance will connect to a different queue manager trying to keep a homogenous distribution, but what would happen if one of the queue managers goes down? Let’s find out. <br/><br/>Let's check our queue managers in the installed operators page. <br/><br/>We could kill one of the active pods for any of the queue managers, but since we have configured Native HA, one of the standby instances will take over and at the end, each queue manager will keep a couple of connections, so in this case we will go ahead and fully delete the queue manager.  |
 | **Action** &nbsp; 6.1.1 | On the left navigator, open the **Operators** (A) > **Installed Operators** (B) menu.  |
 | **Action** &nbsp; 6.1.2 | Navigate to the **IBM MQ** Operator again. |
 | **Action** &nbsp; 6.1.3 | Open the **Queue Manager** tab.  |
