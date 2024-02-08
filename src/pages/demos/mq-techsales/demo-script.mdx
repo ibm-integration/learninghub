@@ -76,14 +76,14 @@ Let's get started!<br/><br/>
 | **Narration** | Uniform clusters are a specific pattern of an IBM MQ cluster that provides a highly available and horizontally scaled small collection of queue managers. These queue managers are configured almost identically, so that an application can interact with them as a single group. This makes it easier to ensure each queue manager in the cluster is being used, by automatically ensuring application instances are spread evenly across the queue managers.<br/><br/>Now we need to create our two queue Managers. Let's do it!<br/><br/>Great now let's confirm the instances have been deployed successfully before moving to the next step. |
 | **Action** &nbsp; 2.2.1 | Run the command below.``` oc apply -f instances/${CP4I_VER}/${OCP_TYPE}/13a-qmgr-uniform-cluster-qm1.yaml -n cp4i ``` |
 | **Action** &nbsp; 2.2.2 | Run the command below.``` oc apply -f instances/${CP4I_VER}/${OCP_TYPE}/13b-qmgr-uniform-cluster-qm2.yaml -n cp4i ``` |
-| **Action** &nbsp; 2.2.3 | Run the command below.``` oc get queuemanager -n cp4i ``` <br/><br/> `Note` this will take few minutes, but at the end you should get a response like this: <br/><br/>![](images/uniform-cluster-2-2-3.png)<br/>  |
+| **Action** &nbsp; 2.2.3 | Run the command below.``` oc get queuemanager -n cp4i ``` <br/><br/> `Note` this will take few minutes, but at the end you should get a response like this. <br/><br/>![](images/uniform-cluster-2-2-3.png)<br/>  |
 
 | **2.3** | **Deploy NGINX to serve CCDT** |
 | :--- | :--- |
 | **Narration** | We need to create the CCDT to be used by our application and deploy an NGINX instance to serve CCDT. <br/><br/>Voilá, the NGINX service was created to be used by our application. Now we can deploy our application. |
 | **Action** &nbsp; 2.3.1 | Run the command below to create CCDT to be used by App. ``` oc apply -f resources/04a-nginx-ccdt-configmap.yaml ``` |
 | **Action** &nbsp; 2.3.2 | Run the command below to deploy NGINX instance to serve CCDT. ``` oc apply -f resources/04b-nginx-deployment.yaml ``` |
-| **Action** &nbsp; 2.3.3 | Confirm the instances has been deployed successfully before moving to the next step running the following command. ``` oc get pods -n cp4i | grep nginx ``` <br/><br/> You should get a response like this: <br/><br/>![](images/uniform-cluster-2-3-3.png)<br/>|
+| **Action** &nbsp; 2.3.3 | Confirm the instances has been deployed successfully before moving to the next step running the following command. ``` oc get pods -n cp4i | grep nginx ``` <br/><br/> You should get a response like this. <br/><br/>![](images/uniform-cluster-2-3-3.png)<br/>|
 | **Action** &nbsp; 2.3.4 | Run the command below to create service for NGINX to be used by App. ``` oc apply -f resources/04c-nginx-service.yaml ``` |
 
 
@@ -99,7 +99,7 @@ Let's get started!<br/><br/>
 | **3.1** | **Check the Topology** |
 | :--- | :--- |
 | **Narration** | Now that the uniform cluster is running, we can proceed to deploy the application that will be interaction with the queue managers. <br/><br/>First, we will switch to the “Developer” perspective. In this perspective you can view the queue managers. Here you will see the tiles representing each queue manager .  |
-| **Action** &nbsp; 3.1.1 | Back to the **OpenShift Web Console** page, click on the **Administrator** option (A) and select the **Developer** (B) perspective. <br/><br/>![](images/mq-app-3-1-1.png)<br/><br/>'Note': If you see the Welcome to the Developer Perspective dialog, go ahead and close it.<br/>|
+| **Action** &nbsp; 3.1.1 | Back to the **OpenShift Web Console** page, click on the **Administrator** option (A) and select the **Developer** (B) perspective. <br/><br/>![](images/mq-app-3-1-1.png)<br/><br/>'Note' - If you see the Welcome to the Developer Perspective dialog, go ahead and close it.<br/>|
 | **Action** &nbsp; 3.1.2 | Open the **Topology** page.  <br/><br/>![](images/mq-app-3-1-2.png)<br/>|
 | **Action** &nbsp; 3.1.3 | Filter by **cp4i** project (A) and show the topology (B).  <br/><br/>![](images/mq-app-3-1-3.png)<br/>|
 
