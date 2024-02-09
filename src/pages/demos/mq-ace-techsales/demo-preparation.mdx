@@ -375,20 +375,46 @@ scripts/10c-qmgr-post-config.sh
 
 ***
 
-### 9 - Copy the JAR file
+### 9 - Configure Message Queue (IBM MQ) to Authorize and Accept Data
 
-For demo purposes we have created the application for you. The application is the file **jmsproducer-jgr-demo.jar**, and it is available in the **extra** folder. You are welcome to copy to another folder in your demo machine.
+As this is a brand-new deployment of the Cloud Pak for Integration, all instances of integrations, message queues, and APIs are deployed as microservices. You need to authorize the Message Queue service to accept incoming data from the integration running on a separate server.
 
-Another possibility is to follow the steps below to download the jar file again.
+9.1 Let’s configure the MQ security. Open a browser and go to this <a href="https://github.com/ibm-integration/learninghub/tree/main/static/mq-ace-files" target="_blank">GitHub page</a>.
 
-9.1 Open the <a href="https://github.com/ibm-integration/learninghub/blob/main/static/jmsproducer-jgr-demo.jar" target="_blank">URL</a> below.
+9.2 Download both ZIP files (mqconfig.zip and ace-mq.zip).
+![](images/mq-authorize-9-2.png)
+
+9.3 Open a terminal window and enter unzip mqconf.zip. Unzip creates a directory mqconf.zip
 ```
-https://github.com/ibm-integration/learninghub/blob/main/static/jmsproducer-jgr-demo.jar
+unzip mqconf.zip
 ```
 
-9.2 Then click on the **Download raw** file icon.
-![](images/copy-jar-2.png)
+Then access the unzipped directory
+```
+cd mqconf
+```
 
-You will use this JAR file during your demonstration.
+`Note`- Do not unzip ace-mq.zip (this is a App Connect Interchange Project).
+
+9.4 Now, let's get the mq pods available on OpenShift server. First, let's use the cp4i project.
+```
+oc project cp4i
+```
+
+9.5 Now, let's find the check the mq pods. Use the command below.
+```
+oc get pods | grep mq
+```
+
+9.6 Take notes of the MQ pods, you will need this information later.
+![](images/mq-authorize-9-6.png)
+
+9.7 Execute the shell script to run MQ configuration. Execute the command below by replacing the [your_mq_pod_name].
+```
+./loadmq.sh [name of your mq pod]
+```
+
+Great! The MQ configuration (channel and security) was updated for your queue manager.
+
 
 Great! You are ready to present the demo!  Take a breath and happy selling!
