@@ -47,7 +47,7 @@ Let's get started!<br/><br/>
 | **1.2** | **View the Cloud Pak for Integration instances** |
 | :--- | :--- |
 | **Narration** | Welcome to IBM Cloud Pak for Integration! We’re now at the home screen showing all the capabilities of the Pak, brought together in one place. Specialized integration capabilities — for API management, application integration, messaging, and more — are built on top of powerful automation services. <br/><br/>As you can see, you are able to access all the integration capabilities your team needs through a single interface. In this demo, to access backend systems , we will use App Connect for application integration, and the IBM MQ as an universal messaging backbone with robust connectivity for flexible and reliable messaging for applications and the integration of existing IT assets. |
-| **Action** &nbsp; 1.2.1 | Show the **Instances page** and open the **Messaging** capability (qmgr-demo). <br/><br/>![](images/access-env-1-2.png)<br/> |
+| **Action** &nbsp; 1.2.1 | Show the **Instances page** and open the **Messaging** capability (qmgr-demo).<br/><br/>'Note'- If you didn't complete the Uniform Clusters demo before this demo, you don't have the uniform clusters instance. No problem at all! Just ignore them in the picture below. You don't need them. In this demo you only use the qmgr-demo instance.<br/><br/>![](images/access-env-1-2.png)<br/> |
 
 
 **[Go to top](#place1)**
@@ -59,25 +59,27 @@ Let's get started!<br/><br/>
 
 <br/>
 
-| **2.1** | **Create configurations** |
+| **2.1** | **View the IBM MQ home screen** |
 | :--- | :--- |
-| **Narration** | The objective of a uniform cluster deployment is that applications can be designed for scale and availability, and can connect to any of the queue managers within the uniform cluster. This removes any dependency on a specific queue manager, resulting in better availability and workload balancing of messaging traffic.<br/><br/>Let's create it now. First we need to create our uniform cluster configurations. |
-| **Action** &nbsp; 2.1.1 | On a terminal windows, **log in** on your OpenShift environment and run the command below. <br/> ```oc apply -f resources/03d-qmgr-uniform-cluster-config.yaml```|
+| **Narration** | Welcome to IBM MQ on IBM Cloud Pak for Integration. IBM MQ offers proven, enterprise-grade messaging capabilities that skillfully and safely move information between applications. You can run IBM MQ in the pre-packaged container provided in IBM Cloud Pak for Integration.<br/><br/>Here we are on MQ Console page of a pre-created Queue Manager. From here you can manage your local queues or create a new queue. <br/><br/>IBM MQ can be managed using a variety of tools, from the IBM MQ Explorer GUI, through scripted or interactive command line tools or programmatically. <br/><br/> Let's explore how to create a new queue. |
+| **Action** &nbsp; 2.1.1 | Click **Create a queue**. <br/><br/>![](images/create-queue-2-1-1.png)<br/> |
 
-| **2.2** | **Deploy Queue Managers** |
+| **2.2** | **Choose queue type** |
 | :--- | :--- |
-| **Narration** | Uniform clusters are a specific pattern of an IBM MQ cluster that provides a highly available and horizontally scaled small collection of queue managers. These queue managers are configured almost identically, so that an application can interact with them as a single group. This makes it easier to ensure each queue manager in the cluster is being used, by automatically ensuring application instances are spread evenly across the queue managers.<br/><br/>Now we need to create our two queue Managers. Let's do it!<br/><br/>Great now let's confirm the instances have been deployed successfully before moving to the next step. |
-| **Action** &nbsp; 2.2.1 | Run the command below.``` oc apply -f instances/${CP4I_VER}/${OCP_TYPE}/13a-qmgr-uniform-cluster-qm1.yaml -n cp4i ``` |
-| **Action** &nbsp; 2.2.2 | Run the command below.``` oc apply -f instances/${CP4I_VER}/${OCP_TYPE}/13b-qmgr-uniform-cluster-qm2.yaml -n cp4i ``` |
-| **Action** &nbsp; 2.2.3 | Run the command below.``` oc get queuemanager -n cp4i ``` <br/><br/> `Note` this will take few minutes, but at the end you should get a response like this. <br/><br/>![](images/uniform-cluster-2-2-3.png)<br/>  |
+| **Narration** | An IBM MQ messaging system is made up of one or more queue managers. Queue managers are where messaging resources, such as queues, are configured and what applications connect to, either running on the same system as the queue manager or over the network.<br/><br/>A network of connected queue managers supports asynchronous routing of messages between systems, where producing and consuming applications are connected to different queue managers. <br/><br/>In this demo, we will use a Local queue. |
+| **Action** &nbsp; 2.2.1 | In Create a queue page. Choose **Local** as your queue type. <br/><br/>![](images/create-queue-2-2-1.png)<br/>|
 
-| **2.3** | **Deploy NGINX to serve CCDT** |
+| **2.3** | **Define queue details** |
 | :--- | :--- |
-| **Narration** | We need to create the CCDT to be used by our application and deploy an NGINX instance to serve CCDT. <br/><br/>Voilá, the NGINX service was created to be used by our application. Now we can deploy our application. |
-| **Action** &nbsp; 2.3.1 | Run the command below to create CCDT to be used by App. <br/> ``` oc apply -f resources/04a-nginx-ccdt-configmap.yaml ``` |
-| **Action** &nbsp; 2.3.2 | Run the command below to deploy NGINX instance to serve CCDT. <br/> ``` oc apply -f resources/04b-nginx-deployment.yaml ``` |
-| **Action** &nbsp; 2.3.3 | Confirm the instances has been deployed successfully before moving to the next step running the following command. <br/><br/>  <b>oc get pods -n cp4i \| grep nginx  </b> <br/><br/> You should get a response like this. <br/><br/>![](images/uniform-cluster-2-3-3.png)<br/>|
-| **Action** &nbsp; 2.3.4 | Run the command below to create service for NGINX to be used by App. ``` oc apply -f resources/04c-nginx-service.yaml ``` |
+| **Narration** | Message queuing has been used in data processing for many years. It is most commonly used today in electronic mail. Without queuing, sending an electronic message over long distances requires every node on the route to be available for forwarding messages, and the addressees to be logged on and conscious of the fact that you are trying to send them a message. In a queuing system, messages are stored at intermediate nodes until the system is ready to forward them. At their final destination they are stored in an electronic mailbox until the addressee is ready to read them. <br/><br/> You can think of message queuing as being electronic mail for programs. In a message queuing environment, each program that makes up part of an application suite performs a well-defined, self-contained function in response to a specific request. To communicate with another program, a program must put a message on a predefined queue. The other program retrieves the message from the queue, and processes the requests and information contained in the message. So message queuing is a style of program-to-program communication. <br/><br/> A message queue, known simply as a queue, is a named destination to which messages can be sent. Messages accumulate on queues until they are retrieved by programs that service those queues.<br/><br/>Here, we need to define the details of our new queue. Let's define NEWORDER as the name of our new queue and keep the default values. |
+| **Action** &nbsp; 2.3.1 | Enter **NEWORDER** as queue name (A), keep the **default values** (B) and the click **Create** (C). <br/><br/>![](images/create-queue-2-3-1.png)<br/> |
+
+| **2.4** | **Manage your new queue** |
+| :--- | :--- |
+| **Narration** | Great we have a new local queue. In the manage page we can see all the queues available. Let's open the NEWORDER queue.<br/><br/> In the details page, we can see all the messages available in this queue. Right now, the NEWORDER queue is empty. Let's create an application to submit messages to this queue. By now, let's return to the queue manager page.  |
+| **Action** &nbsp; 2.4.1 | In the **Manage** page (A), open the **Queues** tab (B), click on Find button (lens icon) (C) <br/><br/>![](images/create-queue-2-4-1.png)<br/> |
+| **Action** &nbsp; 2.4.2 | Search for **NEWORDER** (A) queue and click on the **NEWORDER** queue link (B). <br/><br/>![](images/create-queue-2-4-2.png)<br/> |
+| **Action** &nbsp; 2.4.3 | On the breadcrumbs, click **QMGRDEMO** link.<br/><br/>![](images/create-queue-2-4-3.png)<br/> |
 
 
 **[Go to top](#place1)**
@@ -89,29 +91,46 @@ Let's get started!<br/><br/>
 
 <br/>
 
-| **3.1** | **Check the Topology** |
+| **3.1** | **Checking the MQ IP address** |
 | :--- | :--- |
-| **Narration** | Now that the uniform cluster is running, we can proceed to deploy the application that will be interaction with the queue managers. <br/><br/>First, we will switch to the “Developer” perspective. In this perspective you can view the queue managers. Here you will see the tiles representing each queue manager .  |
-| **Action** &nbsp; 3.1.1 | Back to the **OpenShift Web Console** page, click on the **Administrator** option (A) and select the **Developer** (B) perspective. <br/><br/>![](images/mq-app-3-1-1.png)<br/><br/>`Note` - If you see the Welcome to the Developer Perspective dialog, go ahead and close it.<br/>|
-| **Action** &nbsp; 3.1.2 | Open the **Topology** page.  <br/><br/>![](images/mq-app-3-1-2.png)<br/>|
-| **Action** &nbsp; 3.1.3 | Filter by **cp4i** project (A) and show the topology (B).  <br/><br/>![](images/mq-app-3-1-3.png)<br/>|
+| **Narration** | The applications connecting to IBM MQ can be written in any one of many different programming languages and to many different APIs. From C and Cobol, to Java and .Net to NodeJS and Ruby. In this demo, we will create an Integration Flow using App Connect Enterprise Toolkit. <br/><br/>Before starting App Connect Enterprise toolkit to create our flow, let’s check our IBM MQ IP address. |
+| **Action** &nbsp; 3.1.1 | Open a **Terminal** window where you are already loggedin your CP4I environment. |
+| **Action** &nbsp; 3.1.2 | Run the command below to get a list of mq services in the cp4i namespace. <br/><br/> ```oc get svc -n tools \| grep mq``` |
+| **Action** &nbsp; 3.1.3 | Copy the IP address from **qmgr-demo-ibm-mq** service which the port is 1414.  <br/><br/>![](images/ace-toolkit-3-1-3.png)<br/>|
 
-| **3.2** | **Deploy JAR file** |
+| **3.2** | **Open App Connect Enterprise Toolkit** |
 | :--- | :--- |
-| **Narration** | For demo purposes we have pre-created the JMS application that will use our Queue Managers. Let's deploy it.  |
-| **Action** &nbsp; 3.2.1 | Click on **+Add** on left menu. <br/><br/>![](images/mq-app-3-2-1.png)<br/>|
-| **Action** &nbsp; 3.2.2 | Click on **Upload JAR file**. <br/><br/>![](images/mq-app-3-2-2.png)<br/>|
-| **Action** &nbsp; 3.2.3 | Select **Browse** (A) and follow the dialogs to select the **jmsproducer-jgr-demo.jar** file (B) (check the demo preparation document about how to get the jar file).  <br/><br/>![](images/mq-app-3-2-3.png)<br/> |
-| **Action** &nbsp; 3.2.4 | Scroll down and uncheck **Create a route** (A), then click **Create** button (B).  <br/><br/>![](images/mq-app-3-2-4.png)<br/>|
-| **Action** &nbsp; 3.2.5 | Show the tile representing the deployment in the Topology view. <br/><br/>![](images/mq-app-3-2-5.png)<br/>|
+| **Narration** | Let's open the App Connect Enterprise Toolkit. <br/><br/> You can use the IBM App Connect Enterprise Toolkit to build powerful integration applications, services, and APIs. You can then deploy your integration solutions to the software run time, IBM App Connect Enterprise as a Service, containers, or a combination of environments.<br/><br/> The welcome page provides access to the Tutorials Gallery, which you can use to get started, what’s new information, and an option to install language packs. Let's close this Welcome page and go to Integration Development perspective. |
+| **Action** &nbsp; 3.2.1 | Open your App Connect Enterprise Toolkit by clicking the icon on the Launchapad (MAC OS) or Desktop (Windows) or executing **ace toolkit** in terminal window. <br/><br/>![](images/ace-toolkit-3-2-1.png)<br/>|
+| **Action** &nbsp; 3.2.2 | In the Workspace Launcher window, you are welcome to create a new workspace or accept the default one. Click **Launch**. <br/><br/>![](images/ace-toolkit-3-2-2.png)<br/>|
+| **Action** &nbsp; 3.2.3 | **Close** the welcome page.  <br/><br/>![](images/ace-toolkit-3-2-3.png)<br/> |
 
-| **3.3** | **Review Deployment** |
+| **3.3** | **Import a flow** |
 | :--- | :--- |
-| **Narration** | Now, let's review our application connection. From here, we can easily check the application log. Great, our application was able to connect to a queue manager and it is sending messages. |
-| **Action** &nbsp; 3.3.1 | After a few second click on the tile representing the deployment to display the pod. <br/><br/>![](images/mq-app-3-3-1.png)<br/> |
-| **Action** &nbsp; 3.3.2 | Click on the pod name. <br/><br/>![](images/mq-app-3-3-2.png)<br/>|
-| **Action** &nbsp; 3.3.3 | In the pod page go to the **Logs** tab (1) and click **Expand** (2) to get a full view of the log. <br/><br/>![](images/mq-app-3-3-3.png)<br/> |
-| **Action** &nbsp; 3.3.4 | Take your time reviewing the log, and at the bottom you will find a message saying “Sending…” confirming the application was able to connect to a queue manager and it is sending messages (A).  When done, **collapse** the log window. (B) <br/><br/>![](images/mq-app-3-3-4.png)<br/> |
+| **Narration** | Here we are in the Integration Development perspective. This is where we can create all our integration flows and manage our connectivity to our services and endpoints. We have a simple pre-created flow about a messaging integration scenario. Let’s import it to simplify our demonstration. |
+| **Action** &nbsp; 3.3.1 | Select **File->Import** <br/><br/>![](images/ace-toolkit-3-3-1.png)<br/> |
+| **Action** &nbsp; 3.3.2 | Select **Project Interchange** (A) and click **Next** (B). <br/><br/>![](images/ace-toolkit-3-3-2.png)<br/> |
+| **Action** &nbsp; 3.3.3 | Select **ace-mq.zip** (A) file that you downloaded in the Demo Preparation part. Verify **neworder** project is checked (B) and click **Finish** (C). <br/><br/>![](images/mq-app-3-3-3.png)<br/>|
+
+| **3.4** | **Check the integration flow** |
+| :--- | :--- |
+| **Narration** | Here we have our demo flow. In the flow editor, we can edit and change our flow. Message flows are created in the Toolkit using a drag and drop editor. <br/><br/>The flow is really simple, with four nodes. The Input and Output, a simple mapping node and an MQOutput node. |
+| **Action** &nbsp; 3.4.1 | Open **neworder -> Resources -> Subflows -> getid.subflow** <br/><br/>![](images/ace-toolkit-3-4-1.png)<br/> |
+
+| **3.5** | **Configure MQ Output node properties** |
+| :--- | :--- |
+| **Narration** | This scenario uses an MQOutput node which is configured to interact with a local queue manager. Let's explore this node. <br/><br/>Let's start by defining the Queue name in the Basic section. Now, we need to inform the details of the MQ Connection, including the queue manager, the MQ ip, port and channel. |
+| **Action** &nbsp; 3.5.1 | Click the **MQ Output** tile. <br/><br/>![](images/ace-toolkit-3-5-1.png)<br/> |
+| **Action** &nbsp; 3.5.2 | In the lower-right of the Properties pane, you see the **Properties** view (A), open the **Basic** tab (B) and type **NEWORDER** as the queue name (C). <br/><br/>![](images/ace-toolkit-3-3-2.png)<br/>|
+| **Action** &nbsp; 3.5.3 | Open the MQ Connection tab (A). On the Connection field, select **MQ client connection properties** (B). On Destination queue manager name, enter **QMGRDEMO** (case-sensitive) (C). On Queue manager host name, enter the **MQ ip** identified in the previous step (D). On Listener port number, enter **1414** (E). On Channel name field, enter **SYSTEM.DEF.SRVCONN** (F). Save the flow (**CRTL+S**). <br/><br/>![](images/ace-toolkit-3-5-3.png)<br/> |
+
+| **3.6** | **Export BAR file** |
+| :--- | :--- |
+| **Narration** | We are ready to deploy our Integration flow. Now, we need to generate a BAR (broker archive) file. The App Connect Enterprise server uses BAR files to save compiled message flows, libraries, etc. |
+| **Action** &nbsp; 3.6.1 | In the Application Development window in the upper-left, on *neworder* application, right-click and select **New** then **BAR file**. <br/><br/>![](images/ace-toolkit-3-6-1.png)<br/> |
+| **Action** &nbsp; 3.6.2 | On the Window New Bar file, type **neworder** as the bar file name (A) and click **Finish** (B). <br/><br/>![](images/ace-toolkit-3-6-2.png)<br/>|
+| **Action** &nbsp; 3.6.3 | On the *Prepare* screen, mark the **REST APIs** checkbox (A). Check **Compile and in-line resources** (B). Click **Build and Save** (C). <br/><br/>![](images/ace-toolkit-3-6-3.png)<br/> |
+| **Action** &nbsp; 3.6.4 | Now, a popup window displays **Operation completed successfully**. Click **OK**. <br/><br/>![](images/ace-toolkit-3-6-4.png)<br/> |
 
 **[Go to top](#place1)**
 
@@ -122,33 +141,21 @@ Let's get started!<br/><br/>
 
 <br/>
 
-| **4.1** | **Explore the Queue Manager 2** |
+| **4.1** | **Accessing the Integration Dashboard** |
 | :--- | :--- |
-| **Narration** | Now that the mq application is deployed let’s check the behavior with the Uniform Cluster. Let's open the Queue Manager 2.  The pod ending with 0 is by default the active instance, let's explore it. |
-| **Action** &nbsp; 4.1.1 | Navigate back to the **Topology** page. <br/><br/>![](images/valid-uniform-4-1-1.png)<br/>|
-| **Action** &nbsp; 4.1.2 | Select the tile that represent **QM02**. <br/><br/>![](images/valid-uniform-4-1-2.png)<br/>|
-| **Action** &nbsp; 4.1.3 | Select the pod ending with **0** that by default is the active instance. <br/><br/>![](images/valid-uniform-4-1-3.png)<br/> |
+| **Narration** | Let's see how to create an Integration Server using the App Connect Enteprise Dashboard in Cloud Pak for Integration. |
+| **Action** &nbsp; 4.1.1 | Back to the **Cloud Pak Integration Platform Navigator** in the browser. Open the **Menu** (A) and on the **Run** section (B), open the **Integrations** dashboard (C). <br/><br/>![](images/deploy-ace-4-1-1.png)<br/>|
+| **Action** &nbsp; 4.1.2 | On the Run integrations view, select the **ace-dashboard**. <br/><br/>![](images/deploy-ace-4-1-2.png)<br/>|
 
-| **4.2** | **Review connections to QM02** |
+| **4.2** | **Deploy integrations** |
 | :--- | :--- |
-| **Narration** | In order to check the connection status we will use the command “display connections” and we will filter by the MQ App name that is “MY-PRODUCER”. We will execute the command directly from the terminal in each MQ pod. <br/><br/>Right now, we don't have any connection in this pod. But in the next step we will get a better picture on how the connections are distributed.  |
-| **Action** &nbsp; 4.2.1 | Open the **Terminal** tab (A) and click **Expand** (B) <br/><br/>![](images/valid-uniform-4-2-1.png)<br/>|
-| **Action** &nbsp; 4.2.2 | Enter the command below in your terminal windows (if your prefer, you can paste using the context menu) and hit enter to check how many active connections associated with our application are in this queue manager. <br/><br/> echo 'dis conn(*)' all \| runmqsc \| grep -i my  <br/> |
-| **Action** &nbsp; 4.2.3 | Show that there isn't any connection in this Message queue (A). Once you are over you can **Collapse** (B) the terminal again.  <br/><br/>![](images/valid-uniform-4-2-3.png)<br/> |
-
-| **4.3** | **Explore the Queue Manager 1** |
-| :--- | :--- |
-| **Narration** | Now let's explore the Queue Manager 1.  Let's repeat the same procedure as before to select the active pod. |
-| **Action** &nbsp; 4.3.1 | Right click the **Topology** menu (A) and select **Open Link in New Tab** (B) to keep a window open for each queue manager since you may need to go back and forth. <br/><br/>![](images/valid-uniform-4-3-1.png)<br/> |
-| **Action** &nbsp; 4.3.2 | Select the tile that represent **QM01**. <br/><br/>![](images/valid-uniform-4-3-2.png)<br/>|
-| **Action** &nbsp; 4.3.3 | Select the pod ending with **0**. <br/><br/>![](images/valid-uniform-4-3-3.png)<br/>|
-
-| **4.4** | **Review connections to QM01** |
-| :--- | :--- |
-| **Narration** | Now let's check the connection status in this MQ pod. <br/><br/>This time we see a couple of active connections, probing that the application we deployed is connected to the cluster.  |
-| **Action** &nbsp; 4.4.1 | Open the **Terminal** tab (A) and click **Expand** (B) <br/><br/>![](images/valid-uniform-4-4-1.png)<br/>|
-| **Action** &nbsp; 4.4.2 | Enter the command below in your terminal windows (if your prefer, you can paste using the context menu) and hit enter to check how many active connections associated with our application are in this queue manager.<br/><br/> echo 'dis conn(*)' all \| runmqsc \| grep -i my <br/> |
-| **Action** &nbsp; 4.4.3 | Show the **connections** available (A). Once you are over you can **Collapse** (B) the terminal again. <br/><br/>![](images/valid-uniform-4-4-3.png) <br/><br/> `Note` - In your case the result could potentially be the opposite since we have no affinity defined and the application will connect to any queue manager, but since we only have one instance there will only be a connection to one queue manager at a time. |
+| **Narration** | Welcome to IBM App Connect Dashboard. Here we are able to administer integration servers and integration runtimes, which are deployed from BAR files. Let's deploy our Integration flow. <br/><br/>Because we need to deploy a simple integration, let's select the Quick start integration type. <br/><br/>Now we need to provide a BAR file. The BAR file contains all the resources that are needed to deploy an integration that exposes the integration and its operations. Let's upload our exported BAR file. <br/><br/>We can use the Configuration component to create any configurations that we want to apply to the integration server when we deploy it. For our scenario, we don't need to use the configuration package. <br/><br/>Now, we need to define a name for our Integration server, for example neworder. That is it. After few minutes our server should be ready with our integration flow. |
+| **Action** &nbsp; 4.2.1 | Click **Deploy integrations**. <br/><br/>![](images/deploy-ace-4-2-1.png)<br/>|
+| **Action** &nbsp; 4.2.2 | Select **Quick start integration** option (A) and click **NEXT** (B). <br/><br/>![](images/deploy-ace-4-2-2.png)<br/> |
+| **Action** &nbsp; 4.2.3 | Click to upload your BAR File. And select the **neworders.bar** (A) file (it is in your workspace folder in a Bar Files directory). And click **Next** (B).   <br/><br/>![](images/deploy-ace-4-2-3.png)<br/> |
+| **Action** &nbsp; 4.2.4 | You don't need any Integration configuration, click **Next**. <br/><br/>![](images/deploy-ace-4-2-4.png)<br/> |
+| **Action** &nbsp; 4.2.5 | Enter the Integration Server name as neworder (A). Then click Create (B). <br/><br/>![](images/deploy-ace-4-2-5.png)<br/> |
+| **Action** &nbsp; 4.2.6 | The deployment process takes up to 5 minutes, refresh the browser to see the BAR file deployed and started. <br/><br/>![](images/deploy-ace-4-2-5.png)<br/> |
 
 **[Go to top](#place1)**
 
@@ -159,24 +166,28 @@ Let's get started!<br/><br/>
 
 <br/>
 
-| **5.1** | **Increase the number of instances** |
+| **5.1** | **Copying the Integration server endpoint** |
 | :--- | :--- |
-| **Narration** | At the moment our application is running in a single pod and therefore it is only connect to one of the queue managers, but what if the workload increases and I need to scale my app. Let’s simulate the scenario and see how the connections are distributed. <br/><br/>Let's explore the Deployments view of our application. Here we can see there is only one pod. Let's increate to have two instances. |
-| **Action** &nbsp; 5.1.1 | Right click on the **RedHat OpenShift logo** (A) and select **Open Link in New Tab** (B) to keep a window open. <br/><br/>![](images/rebalance-connec-5-1-1.png)<br/> |
-| **Action** &nbsp; 5.1.2 | Change to **Administrator** perspective. <br/><br/>![](images/rebalance-connec-5-1-2.png)<br/>|
-| **Action** &nbsp; 5.1.3 | Open the **Workloads** menu (A) and select **Deployments** (B). <br/><br/>![](images/rebalance-connec-5-1-3.png)<br/>|
-| **Action** &nbsp; 5.1.4 | Check that you are on **cp4i** project (A). Click on the **jmsproducer** deployment (B). <br/><br/>![](images/rebalance-connec-5-1-4.png)<br/> |
-| **Action** &nbsp; 5.1.5 | Click on the **arrow up** icon to increase the number of instances to **two**.  <br/><br/>![](images/rebalance-connec-5-1-5.png)<br/> |
-| **Action** &nbsp; 5.1.6 | Wait a few seconds. After a moment you will see the number of pods is updated to two. <br/><br/>![](images/rebalance-connec-5-1-6.png)<br/> |
+| **Narration** | To test our Integration flow, we need to have the Integration API endpoint. Let's copy our Integration flow endpoint here in the Integration definition.  |
+| **Action** &nbsp; 5.1.1 | Click the **neworder** server icon. <br/><br/>![](images/test-ace-5-1-1.png)<br/> |
+| **Action** &nbsp; 5.1.2 | Click the **neworder API** icon. <br/><br/>![](images/test-ace-5-1-2.png)<br/>|
+| **Action** &nbsp; 5.1.3 | Copy the **Endpoint URL**. <br/><br/>![](images/test-ace-5-1-3.png)<br/>|
 
-
-| **5.2** | **Review connectivity** |
+| **5.2** | **Invoking the Integration flow** |
 | :--- | :--- |
-| **Narration** | Now, let's check how many connections we have per queue manager. This time we should see that each queue manager has a couple of connections.  |
-| **Action** &nbsp; 5.2.1 | Back to the **MQ1 browser tab**, refresh the terminal page and enter the command below again and press **enter**. <br/><br/> echo 'dis conn(*)' all \| runmqsc \| grep -i my  <br/> |
-| **Action** &nbsp; 5.2.2 | Show that you have **multiple connections** in **MQ1**. <br/><br/>![](images/rebalance-connec-5-2-2.png)<br/>|
-| **Action** &nbsp; 5.2.3 | Back to the **MQ2 browser tab**, enter the command below again and press **enter**. <br/><br/> echo 'dis conn(*)' all \| runmqsc \| grep -i my  <br/> |
-| **Action** &nbsp; 5.2.4 | Show that you have **multiple connections** in **MQ2**. <br/><br/>![](images/rebalance-connec-5-2-4.png)<br/>|
+| **Narration** | To test our flow, let's do a simple curl HTTP request to our endpoint, passing the order number as parameter. |
+| **Action** &nbsp; 5.2.1 | Open a terminal window and enter the curl command below. <br/><br/> ``` curl -G -k [NEWORDER_ENDPOINT]/00000```  <br/><br/> `Note` - Replace the API URL with your Endpoint and don’t forget to include 0000 as order number at the end of the URL. <br/><br/>![](images/test-ace-5-2-1.png)<br/> |
+
+| **5.3** | **Checking the message** |
+| :--- | :--- |
+| **Narration** | Now, let’s check if the message arrived in the NEWORDER queue in IBM MQ. Let’s use IBM MQ Console to do it. Great, here we can see that our NEWORDER queue has one new message.  |
+| **Action** &nbsp; 5.3.1 | Open the **Menu** again (A), and on **Run** section (B), click on **Messaging** (C). <br/><br/>![](images/deploy-ace-5-3-1.png)<br/>|
+| **Action** &nbsp; 5.3.2 | Select **qmgr-demo**. <br/><br/>![](images/deploy-ace-5-3-2.png)<br/>|
+| **Action** &nbsp; 5.3.3 | Click **Manage QMGRDEMO**. <br/><br/>![](images/deploy-ace-5-3-3.png)<br/> |
+| **Action** &nbsp; 5.3.4 | Open the **Queues** tab. <br/><br/>![](images/deploy-ace-5-3-4.png)<br/> |
+| **Action** &nbsp; 5.3.5 | In the Maximum depth, you can see that a new message has arrived in NEWORDER queue. <br/><br/>![](images/deploy-ace-5-3-5.png)<br/> |
+| **Action** &nbsp; 5.3.6 | Click on the **NEWORDER** queue. <br/><br/>![](images/deploy-ace-5-3-6.png)<br/> |
+| **Action** &nbsp; 5.3.7 | Show the messages received. <br/><br/>![](images/deploy-ace-5-3-7.png)<br/> |
 
 **[Go to top](#place1)**
 
