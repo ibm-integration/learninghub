@@ -23,8 +23,9 @@ tabs: [ 'Demo preparation', 'Demo script']
   <AnchorLink>6 - Install Foundational Services</AnchorLink>
   <AnchorLink>7 - Deploy the Platform UI</AnchorLink>
   <AnchorLink>8 - Deploy the Enterprise Messaging (MQ)</AnchorLink>
-  <AnchorLink>9 - Configure Message Queue (IBM MQ) to Authorize and Accept Data</AnchorLink>
-  <AnchorLink>10 - Install IBM App Connect Enterprise for Developers (Toolkit)</AnchorLink>
+  <AnchorLink>9 - Deploy the App Connect</AnchorLink>
+  <AnchorLink>10 - Configure Message Queue (IBM MQ) to Authorize and Accept Data</AnchorLink>
+  <AnchorLink>11 - Install IBM App Connect Enterprise for Developers (Toolkit)</AnchorLink>
 </AnchorLinks>
 
 ***
@@ -375,49 +376,69 @@ scripts/10c-qmgr-post-config.sh
 
 ***
 
-### 9 - Configure Message Queue (IBM MQ) to Authorize and Accept Data
+### 9 - Deploy the App Connect
 
-As this is a brand-new deployment of the Cloud Pak for Integration, all instances of integrations, message queues, and APIs are deployed as microservices. You need to authorize the Message Queue service to accept incoming data from the integration running on a separate server.
+Now, let's install the IBM App Connect.
 
-9.1 Let’s configure the MQ security. Open a browser and go to this <a href="https://github.com/ibm-integration/learninghub/tree/main/static/mq-ace-files" target="_blank">GitHub page</a>.
+Back to the terminal window logged in your OpenShift Environment.
 
-9.2 Download both ZIP files (mqconfig.zip and ace-mq.zip).
-![](images/mq-authorize-9-2.png)
-
-9.3 Open a terminal window and enter unzip mqconf.zip. Unzip creates a directory mqconf.zip
+9.1 First, let's intall the App Connect Catalog source.
 ```
-unzip mqconf.zip
+oc apply -f catalog-sources/${CP4I_VER}/10-app-connect-catalog-source-11.2.0.yaml
 ```
 
-Then access the unzipped directory
+9.2 Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
 ```
-cd mqconf
-```
-
-`Note`- Do not unzip ace-mq.zip (this is a App Connect Interchange Project).
-
-9.4 Now, let's get the mq pods available on OpenShift server. First, let's use the **tools** project.
-```
-oc project tools
+oc get pods -n openshift-marketplace | grep appconnect
 ```
 
-9.5 Now, let's find the check the mq pods. Use the command below.
+You should get a response like this.
 ```
-oc get pods | grep mq
-```
-
-9.6 Take notes of the MQ pods, you will need this information later.
-![](images/mq-authorize-9-6.png)
-
-9.7 Execute the shell script to run MQ configuration. Execute the command below by replacing the [your_mq_pod_name].
-```
-./loadmq.sh [name of your mq pod]
+appconnect-operator-catalogsource-qt2p5                           1/1     Running     0              3d23h
 ```
 
-![](images/mq-authorize-9-7.png)
+9.3 Now, we need to install the App Connect operator.
+```
+oc apply -f subscriptions/${CP4I_VER}/07-app-connect-subscription.yaml
+```
 
-The MQ configuration was updated on your QMGRDEMO queue manager.
+9.4 Confirm the operator has been deployed successfully before moving to the next step running the following command.
+```
+oc get pods -n openshift-operators | grep ibm-appconnect
+```
 
+You should get a response like this.
+```
+ibm-appconnect-operator-7d789b5b4c-cr8qw                          1/1     Running     2 (3d4h ago)    3d23h
+```
+
+9.5 It is time to Deploy the Dashboard instance.
+```
+oc apply -f instances/${CP4I_VER}/${OCP_TYPE}/06-ace-dashboard-instance.yaml
+```
+
+9.6 Confirm the instance has been deployed successfully before moving to the next step running the following command.
+```
+oc get dashboard -n tools
+```
+
+Note this will take few minutes, but at the end you should get a response like this.
+```
+NAME            RESOLVEDVERSION   REPLICAS   CUSTOMIMAGES   STATUS   URL                                                                                   AGE
+ace-dashboard   12.0.10.0-r3      1          false          Ready    https://ace-dashboard-ui-tools.apps.6597480c8e1478001153ba0d.cloud.techzone.ibm.com   3d23h
+```
+
+9.7 Now, let's create Bar Auth Configuration.
+```
+scripts/11-ace-config-barauth-github.sh
+```
+
+9.8 Create Policy Configuration to integrate with MQ.
+```
+scripts/12a-ace-config-policy-mq.sh
+```
+
+Your App Connect Dashboard environment is ready for the demo! Now, let's prepare the App Connect Toolkit environment.
 ***
 
 ### 10 - Install IBM App Connect Enterprise for Developers (Toolkit)

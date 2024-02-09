@@ -20,11 +20,11 @@ tabs: [ 'Demo preparation', 'Demo script']
 
 <summary>Introduction</summary>
 <br/>
-We’re running a cluster of IBM MQ queue managers in Red Hat OpenShift, together with a large number of client applications putting and getting messages to them. This workload will vary over time, so we need flexibility in how we scale all of this.
+Every enterprise in today's markets must offer robust digital products and services, often requiring integration of complex capabilities and systems to deliver one coherent whole. IBM® Cloud Pak for Integration offers a simplified solution to this integration challenge, allowing the enterprise to modernize its processes while positioning itself for future innovation. Messaging is one of the key capabilities of IBM Cloud Pak for Integration.
 <br/><br/>
-This demo will show how we can easily scale the number of instances of our client applications up and down, without having to reconfigure their connection details and without needing to manually distribute or load balance them.
+IBM MQ provides a universal messaging backbone with robust connectivity for flexible and reliable messaging for applications and the integration of existing IT assets.  IBM MQ simplify, accelerate and facilitate the reliable exchange of data with a flexible and security-rich messaging solution that’s trusted by some of the world’s most successful enterprises. With IBM MQ, you ensure you receive the information you need, when you need it — and receive it only once.
 <br/><br/>
-And it will show how to quickly and easily grow the queue manager cluster – adding a new queue manager to the cluster without complex, new, custom configuration. In this demo, we will see the Universal Cluster capability of IBM MQ in action.
+This demo you will learn how to access applications through messages and integrations using IBM Integration Portfolio.
 <br/><br/>
 Let's get started!<br/><br/>
 
@@ -39,31 +39,23 @@ Let's get started!<br/><br/>
 
 | **1.1** | **Log in to Cloud Pak for Integration** |
 | :--- | :--- |
-| **Narration** |Let’s see how to scale IBM MQ cluster and client applications in OpenShift. Here we have an IBM Cloud Pak for Integration environment with IBM MQ operator installed. We have a cloud version of the product on IBM Cloud. Let me log in here.  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  |
+| **Narration** | Let’s see IBM MQ and IBM App Connect in action. Here we have an IBM Cloud Pak for Integration environment with IBM MQ and IBM App Connector operators installed. We have a cloud version of the product on IBM Cloud. Let me log in here. |
 | **Action** &nbsp; 1.1.1 | Open **Cloud Pak for Integration page** and **log in** with your **username** and **password**. <br/><br/>![](images/access-env-1-1.png)<br/>|
 
 <br/>
 
 | **1.2** | **View the Cloud Pak for Integration instances** |
 | :--- | :--- |
-| **Narration** | Welcome to IBM Cloud Pak for Integration! We’re now at the home screen showing all the capabilities of the Pak, brought together in one place. Specialized integration capabilities — for API management, application integration, messaging, and more — are built on top of powerful automation services. <br/><br/>As you can see, you are able to access all the integration capabilities your team needs through a single interface.So far we have a basic MQ instance here. IBM MQ is an universal messaging backbone with robust connectivity for flexible and reliable messaging for applications and the integration of existing IT assets. In this demo, to scale our IBM MQ Cluster, we will create a Universal cluster. |
-| **Action** &nbsp; 1.2.1 | Show the **Instnces page**. <br/><br/>![](images/access-env-1-2.png)<br/> |
+| **Narration** | Welcome to IBM Cloud Pak for Integration! We’re now at the home screen showing all the capabilities of the Pak, brought together in one place. Specialized integration capabilities — for API management, application integration, messaging, and more — are built on top of powerful automation services. <br/><br/>As you can see, you are able to access all the integration capabilities your team needs through a single interface. In this demo, to access backend systems , we will use App Connect for application integration, and the IBM MQ as an universal messaging backbone with robust connectivity for flexible and reliable messaging for applications and the integration of existing IT assets. |
+| **Action** &nbsp; 1.2.1 | Show the **Instances page** and open the **Messaging** capability (qmgr-demo). <br/><br/>![](images/access-env-1-2.png)<br/> |
 
-| **1.3** | **Access OpenShift Web Console** |
-| :--- | :--- |
-| **Narration** | Let's check our environment on OpenShift Web Console. On Installed Operators page, we can confirm that IBM MQ operator is installed. But we have only one queue manager so far. Next step is to create our Universal Cluster in MQ.  |
-| **Action** &nbsp; 1.3.1 | Open the **OpenShift Web Console** and **log in**. <br/><br/>![](images/access-env-1-3-1.png)<br/>  |
-| **Action** &nbsp; 1.3.2 | Open the **Operators** (A) > **Installed Operators** (B). <br/><br/>![](images/access-env-1-3-2.png)<br/>  |
-| **Action** &nbsp; 1.3.3 | Open the **IBM MQ** operator. <br/><br/>![](images/access-env-1-3-3.png)<br/>  |
-| **Action** &nbsp; 1.3.4 | Open the **Queue Manager** tab. <br/><br/>![](images/access-env-1-3-4.png)<br/>  |
-| **Action** &nbsp; 1.3.5 | Show the queue manager available <br/><br/>![](images/access-env-1-3-5.png)<br/>  |
 
 **[Go to top](#place1)**
 
 </details>
 
 <details>
-<summary>2 - Deploy Uniform Cluster configuration</summary>
+<summary>2 - Create a queue</summary>
 
 <br/>
 
@@ -93,7 +85,7 @@ Let's get started!<br/><br/>
 </details>
 
 <details>
-<summary>3 - Deploy MQ Application</summary>
+<summary>3 - Configuring the App Integration flow</summary>
 
 <br/>
 
@@ -126,7 +118,7 @@ Let's get started!<br/><br/>
 </details>
 
 <details>
-<summary>4 - Validate Uniform Cluster connectivity</summary>
+<summary>4 - Deploying the App Integration flow</summary>
 
 <br/>
 
@@ -163,7 +155,7 @@ Let's get started!<br/><br/>
 </details>
 
 <details>
-<summary>5 - Scale MQ Application</summary>
+<summary>5 - Testing the Integration flow</summary>
 
 <br/>
 
@@ -191,56 +183,14 @@ Let's get started!<br/><br/>
 </details>
 
 <details>
-<summary>6 - Rebalance connections</summary>
-
-<br/>
-
-| **6.1** | ** Delete Queue Manager** |
-| :--- | :--- |
-| **Narration** | We observed how each instance will connect to a different queue manager trying to keep a homogenous distribution, but what would happen if one of the queue managers goes down? Let’s find out. <br/><br/>Let's check our queue managers in the installed operators page. <br/><br/>We could kill one of the active pods for any of the queue managers, but since we have configured Native HA, one of the standby instances will take over and at the end, each queue manager will keep a couple of connections, so in this case we will go ahead and fully delete the queue manager.  |
-| **Action** &nbsp; 6.1.1 | Back to the Administrator perspective browser tab, on the left navigator, open the **Operators** (A) > **Installed Operators** (B) menu. <br/><br/>![](images/rebalance-connec-6-1-1.png)<br/> |
-| **Action** &nbsp; 6.1.2 | Navigate to the **IBM MQ** Operator again. <br/><br/>![](images/rebalance-connec-6-1-2.png)<br/> |
-| **Action** &nbsp; 6.1.3 | Open the **Queue Manager** tab. <br/><br/>![](images/rebalance-connec-6-1-3.png)<br/> |
-| **Action** &nbsp; 6.1.4 | Click on the hamburger **menu** for QM02 (A) and select **Delete Queue Manager** (B). <br/><br/>![](images/rebalance-connec-6-1-4.png)<br/>|
-| **Action** &nbsp; 6.1.5 | Click the **Delete** button on the warning dialog to confirm you want to delete the queue manager. <br/><br/>![](images/rebalance-connec-6-1-5.png)<br/> |
-
-| **6.2** | **Review connectivity ** |
-| :--- | :--- |
-| **Narration** | If we try to navigate back to the active pod for queue manager 2, we will get an error message since the queue manager and therefore its pods have been deleted already. <br/><br/>However, if we navigate to the active pod for queue manager one and submit the command to check the number of active connection, we will see all the connections are directed to the active queue manager assuring the client application can continue sending messages.  |
-| **Action** &nbsp; 6.2.1 | Back to the **MQ2 browser tab**, show the error message: “**404**”. <br/><br/>![](images/rebalance-connec-6-2-1.png)<br/>|
-| **Action** &nbsp; 6.2.2 | Back to the **MQ1 browser tab**, refresh the terminal page and enter the command below again and press **enter**. <br/><br/>  echo 'dis conn(*)' all \| runmqsc \| grep -i my <br/>  |
-| **Action** &nbsp; 6.2.3 | Show that you have **all the connections** now in **MQ1**. <br/><br/>![](images/rebalance-connec-6-2-3.png)<br/> |
-
-| **6.3** | **Recreate Queue Manager 2** |
-| :--- | :--- |
-| **Narration** | Now let's recreate the Queue Manager 2. For this demo, we will recreate using Command Line Interface, but in a production environment, we can use a gitOps approach.  |
-| **Action** &nbsp; 6.3.1 | Run the command below.<br/><br/> ``` oc apply -f instances/${CP4I_VER}/${OCP_TYPE}/13b-qmgr-uniform-cluster-qm2.yaml -n cp4i ``` |
-| **Action** &nbsp; 6.3.2 | Run the command below.<br/><br/> ``` oc get queuemanager -n cp4i ``` <br/><br/>`Note` this will take few minutes, but at the end you should get a response like this. <br/><br/>![](images/rebalance-connec-6-3-2.png)<br/> |
-| **Action** &nbsp; 6.3.3 | Back to OpenShift Console browser tab with the Administrator profile, on the IBM MQ operator on the Queue Manager tab, check the new Queue Manager is ready. <br/><br/>![](images/rebalance-connec-6-3-3.png)<br/> |
-
-| **6.4** | **Review the final scenario** |
-| :--- | :--- |
-| **Narration** | Once we confirm both queue managers are up and running, we can go back to the terminal of the active pod for each queue manager to check the number of active connections. <br/><br/> And a similar behavior would happen if additional queue manager are added to the uniform cluster and the connection would be rebalanced providing a way to scale horizontally. <br/><br/> Great! Here, we have arrived at the conclusion of our demonstration. |
-| **Action** &nbsp; 6.4.1 | Back to the **MQ1 browser tab**, refresh the terminal page and enter the command below again and press **enter**. <br/><br/>  echo 'dis conn(*)' all \| runmqsc \| grep -i my <br/>|
-| **Action** &nbsp; 6.4.2 | Show that you have **multiple connections** in **MQ1** (not all connections as presented in the previous section).  <br/><br/>![](images/rebalance-connec-6-4-2.png)<br/>|
-| **Action** &nbsp; 6.4.3 | Back to the **MQ2 browser tab**, you need to reopen the MQ2 pod0 terminal page. Enter the command below again and press enter.<br/><br/> echo 'dis conn(*)' all \| runmqsc \| grep -i my <br/>|
-| **Action** &nbsp; 6.4.4 | Show that you have **multiple connections** in **MQ2** again. <br/><br/>![](images/rebalance-connec-6-4-4.png)<br/>|
-
-**[Go to top](#place1)**
-
-</details>
-
-<details>
 <summary>Summary</summary>
 
 <br/>
 Let’s summarize what we’ve done today.
 <br/><br/>
-In the demo we: accessed the Cloud Pak for Integration environment and explored the IBM MQ capabilities; deployed an uniform cluster; deployed an MQ Application, validated the uniform cluster connectivity, scaled the MQ application and rebalanced the connections.
+In the demo we: accessed the Cloud Pak for Integration environment and explored the capabilities; created a queue in IBM MQ; imported and configured an Integration flow using IBM App Connect Enterprise toolkit; deployed and tested our Application flow in IBM App  fdemonstrated how a developer can use the API Portal to perform self-service consumption of the API.
 <br/><br/>
-From an operation perspective we showed how we can easily scale the number of instances of your client applications up and down, without having to reconfigure their connection details and without needing to manually distribute or load balance them.
-<br/><br/>
-And here we demonstrated how to quickly and easily grow the queue manager cluster – adding a new queue manager to the cluster without complex configuration.
+From a business perspective we used messaging and application integrations to integrate backend systems using a messaging platform. IBM MQ provides a universal messaging backbone with robust connectivity for flexible and reliable messaging for applications and the integration of existing IT assets.  IBM MQ simplify, accelerate and facilitate the reliable exchange of data with a flexible and security-rich messaging solution that’s trusted by some of the world’s most successful enterprises. With IBM MQ, you ensure you receive the information you need, when you need it — and receive it only once.
 <br/><br/>
 Thank you for attending today’s presentation.
 <br/>
