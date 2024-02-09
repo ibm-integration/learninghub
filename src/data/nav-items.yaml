@@ -8,6 +8,8 @@
       path: /demos/cp4i-sales/demo-preparation
     - title: MQ Uniform Clusters Demo
       path: /demos/mq-techsales/demo-preparation
+    - title: MQ ACE Toolkit Demo
+      path: /demos/mq-ace-techsales/demo-preparation
 - title: Hands-on Labs
   pages:
     - title: Installing IBM API-Led Solution
