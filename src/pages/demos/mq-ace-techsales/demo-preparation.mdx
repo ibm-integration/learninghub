@@ -396,9 +396,9 @@ cd mqconf
 
 `Note`- Do not unzip ace-mq.zip (this is a App Connect Interchange Project).
 
-9.4 Now, let's get the mq pods available on OpenShift server. First, let's use the cp4i project.
+9.4 Now, let's get the mq pods available on OpenShift server. First, let's use the **tools** project.
 ```
-oc project cp4i
+oc project tools
 ```
 
 9.5 Now, let's find the check the mq pods. Use the command below.
@@ -414,7 +414,9 @@ oc get pods | grep mq
 ./loadmq.sh [name of your mq pod]
 ```
 
-The MQ configuration (channel and security) was updated on your queue manager.
+![](images/mq-authorize-9-7.png)
+
+The MQ configuration was updated on your QMGRDEMO queue manager.
 
 ***
 
