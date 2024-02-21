@@ -21,9 +21,11 @@ tabs: [ 'Demo preparation', 'Demo script']
 <br/>
 We’re running a cluster of IBM MQ queue managers in Red Hat OpenShift, together with a large number of client applications putting and getting messages to them. This workload will vary over time, so we need flexibility in how we scale all of this.
 <br/><br/>
+Simplifying your messaging solution deployment is very important for your Operations team, but it is good for your business too. Increased business high availability can provide the difference between a satisfied customer who wants to do more business with you or a disappointed customer who is looking for an alternative option. In addition, it improves innovation, because a team that is used to quickly shipping experiments and getting back user-validated results fast, will soon find itself naturally innovating.
+<br/><br/>
 This demo will show how we can easily scale the number of instances of our client applications up and down, without having to reconfigure their connection details and without needing to manually distribute or load balance them.
 <br/><br/>
-And it will show how to quickly and easily grow the queue manager cluster – adding a new queue manager to the cluster without complex, new, custom configuration. In this demo, we will see the Universal Cluster capability of IBM MQ in action.
+It will also show how to quickly and easily grow the queue manager cluster – adding a new queue manager to the cluster without a complex, new, custom configuration. In this demo, we will see the Uniform Cluster capability of IBM MQ in action.
 <br/><br/>
 Let's get started!<br/><br/>
 
@@ -38,19 +40,19 @@ Let's get started!<br/><br/>
 
 | **1.1** | **Log in to Cloud Pak for Integration** |
 | :--- | :--- |
-| **Narration** |Let’s see how to scale IBM MQ cluster and client applications in OpenShift. Here we have an IBM Cloud Pak for Integration environment with IBM MQ operator installed. We have a cloud version of the product on IBM Cloud. Let me log in here.  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  |
+| **Narration** | Let’s see how to scale the IBM MQ cluster and client applications in OpenShift. Here we have an IBM Cloud Pak for Integration environment with IBM MQ operator installed. We have a cloud version of the product on IBM Cloud. Let me log in here.  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  |
 | **Action** &nbsp; 1.1.1 | Open **Cloud Pak for Integration page** and **log in** with your **username** and **password**. <br/><br/>![](images/access-env-1-1.png)<br/>|
 
 <br/>
 
 | **1.2** | **View the Cloud Pak for Integration instances** |
 | :--- | :--- |
-| **Narration** | Welcome to IBM Cloud Pak for Integration! We’re now at the home screen showing all the capabilities of the Pak, brought together in one place. Specialized integration capabilities — for API management, application integration, messaging, and more — are built on top of powerful automation services. <br/><br/>As you can see, you are able to access all the integration capabilities your team needs through a single interface.So far we have a basic MQ instance here. IBM MQ is an universal messaging backbone with robust connectivity for flexible and reliable messaging for applications and the integration of existing IT assets. In this demo, to scale our IBM MQ Cluster, we will create a Universal cluster. |
+| **Narration** | Welcome to IBM Cloud Pak for Integration! We’re now at the home screen showing all the capabilities of the Pak, brought together in one place. Specialized integration capabilities — for API management, application integration, messaging, and more — are built on top of powerful automation services. <br/><br/>As you can see, you are able to access all the integration capabilities your team needs through a single interface.  By now, we have a basic MQ instance here. IBM MQ is a universal messaging backbone with robust connectivity for flexible and reliable messaging for applications and the integration of existing IT assets. In this demo, to scale our IBM MQ Cluster, we will create a Uniform cluster. |
 | **Action** &nbsp; 1.2.1 | Show the **Instances page**. <br/><br/>![](images/new-access-env-1-2.png)<br/> |
 
 | **1.3** | **Access OpenShift Web Console** |
 | :--- | :--- |
-| **Narration** | Let's check our environment on OpenShift Web Console. On Installed Operators page, we can confirm that IBM MQ operator is installed. But we have only one queue manager so far. Next step is to create our Universal Cluster in MQ.  |
+| **Narration** | Let’s check our environment on the OpenShift Web Console. On the Installed Operators page, we can confirm that IBM MQ operator is installed. But we have only one queue manager so far. Next step is to create our Uniform Cluster in MQ. |
 | **Action** &nbsp; 1.3.1 | Open the **OpenShift Web Console** and **log in**. <br/><br/>![](images/access-env-1-3-1.png)<br/>  |
 | **Action** &nbsp; 1.3.2 | Open the **Operators** (A) > **Installed Operators** (B). <br/><br/>![](images/access-env-1-3-2.png)<br/>  |
 | **Action** &nbsp; 1.3.3 | Open the **IBM MQ** operator. <br/><br/>![](images/access-env-1-3-3.png)<br/>  |
@@ -68,19 +70,20 @@ Let's get started!<br/><br/>
 
 | **2.1** | **Create configurations** |
 | :--- | :--- |
-| **Narration** | The objective of a uniform cluster deployment is that applications can be designed for scale and availability, and can connect to any of the queue managers within the uniform cluster. This removes any dependency on a specific queue manager, resulting in better availability and workload balancing of messaging traffic.<br/><br/>Let's create it now. First we need to create our uniform cluster configurations. |
+| **Narration** | TThe objective of a uniform cluster deployment is that applications can be designed for scale and availability and can connect to any of the queue managers within the uniform cluster. This removes any dependency on a specific queue manager, resulting in better availability and workload balancing of messaging traffic.<br/><br/>Let’s create it now. First, we need to create our uniform cluster configurations. |
 | **Action** &nbsp; 2.1.1 | On a terminal windows, **log in** on your OpenShift environment and run the command below. <br/> ```oc apply -f resources/03d-qmgr-uniform-cluster-config.yaml```|
 
 | **2.2** | **Deploy Queue Managers** |
 | :--- | :--- |
-| **Narration** | Uniform clusters are a specific pattern of an IBM MQ cluster that provides a highly available and horizontally scaled small collection of queue managers. These queue managers are configured almost identically, so that an application can interact with them as a single group. This makes it easier to ensure each queue manager in the cluster is being used, by automatically ensuring application instances are spread evenly across the queue managers.<br/><br/>Now we need to create our two queue Managers. Let's do it!<br/><br/>Great now let's confirm the instances have been deployed successfully before moving to the next step. |
+| **Narration** | Uniform clusters are a specific pattern of an IBM MQ cluster that provides a highly available and horizontally scaled small collection of queue managers. These queue managers are configured almost identically, so that an application can interact with them as a single group. This makes it easier to ensure each queue manager in the cluster is being used, by automatically ensuring application instances are spread evenly across the queue managers.
+<br/><br/>Now we need to create our two queue Managers. Let’s do it!<br/><br/>Great, now let’s confirm the instances have been deployed successfully before moving to the next step. |
 | **Action** &nbsp; 2.2.1 | Run the command below.``` oc apply -f instances/${CP4I_VER}/${OCP_TYPE}/13a-qmgr-uniform-cluster-qm1.yaml -n cp4i ``` |
 | **Action** &nbsp; 2.2.2 | Run the command below.``` oc apply -f instances/${CP4I_VER}/${OCP_TYPE}/13b-qmgr-uniform-cluster-qm2.yaml -n cp4i ``` |
 | **Action** &nbsp; 2.2.3 | Run the command below.``` oc get queuemanager -n cp4i ``` <br/><br/> `Note` this will take few minutes, but at the end you should get a response like this. <br/><br/>![](images/uniform-cluster-2-2-3.png)<br/>  |
 
 | **2.3** | **Deploy NGINX to serve CCDT** |
 | :--- | :--- |
-| **Narration** | We need to create the CCDT to be used by our application and deploy an NGINX instance to serve CCDT. <br/><br/>Voilá, the NGINX service was created to be used by our application. Now we can deploy our application. |
+| **Narration** | When one application want to connect multiple Queue Managers this can be done using Client connection channel table(CCDT).<br/><br/> For this demo, we need to create the Client Channel Definition Table (CCDT) to be used by our application and we need to deploy a NGINX instance to serve CCDT.  <br/><br/>Voilá, the NGINX service was created to be used by our application. Now we can deploy our application. |
 | **Action** &nbsp; 2.3.1 | Run the command below to create CCDT to be used by App. <br/> ``` oc apply -f resources/04a-nginx-ccdt-configmap.yaml ``` |
 | **Action** &nbsp; 2.3.2 | Run the command below to deploy NGINX instance to serve CCDT. <br/> ``` oc apply -f resources/04b-nginx-deployment.yaml ``` |
 | **Action** &nbsp; 2.3.3 | Confirm the instances has been deployed successfully before moving to the next step running the following command. <br/><br/>  <b>oc get pods -n cp4i \| grep nginx  </b> <br/><br/> You should get a response like this. <br/><br/>![](images/uniform-cluster-2-3-3.png)<br/>|
@@ -98,14 +101,14 @@ Let's get started!<br/><br/>
 
 | **3.1** | **Check the Topology** |
 | :--- | :--- |
-| **Narration** | Now that the uniform cluster is running, we can proceed to deploy the application that will be interaction with the queue managers. <br/><br/>First, we will switch to the “Developer” perspective. In this perspective you can view the queue managers. Here you will see the tiles representing each queue manager .  |
+| **Narration** | Now that the uniform cluster is running, we can proceed to deploy the application that will be interacting with the queue managers. <br/><br/> First, we will switch to the “Developer” perspective. In this perspective you can view the queue managers. Here you will see the tiles representing each queue manager.  |
 | **Action** &nbsp; 3.1.1 | Back to the **OpenShift Web Console** page, click on the **Administrator** option (A) and select the **Developer** (B) perspective. <br/><br/>![](images/mq-app-3-1-1.png)<br/><br/>`Note` - If you see the Welcome to the Developer Perspective dialog, go ahead and close it.<br/>|
 | **Action** &nbsp; 3.1.2 | Open the **Topology** page.  <br/><br/>![](images/mq-app-3-1-2.png)<br/>|
 | **Action** &nbsp; 3.1.3 | Filter by **cp4i** project (A) and show the topology (B).  <br/><br/>![](images/mq-app-3-1-3.png)<br/>|
 
 | **3.2** | **Deploy JAR file** |
 | :--- | :--- |
-| **Narration** | For demo purposes we have pre-created the JMS application that will use our Queue Managers. Let's deploy it.  |
+| **Narration** | For demo purposes, we have pre-created the JMS application that will use our Queue Managers. Let's deploy it.  |
 | **Action** &nbsp; 3.2.1 | Click on **+Add** on left menu. <br/><br/>![](images/mq-app-3-2-1.png)<br/>|
 | **Action** &nbsp; 3.2.2 | Click on **Upload JAR file**. <br/><br/>![](images/mq-app-3-2-2.png)<br/>|
 | **Action** &nbsp; 3.2.3 | Select **Browse** (A) and follow the dialogs to select the **jmsproducer-jgr-demo.jar** file (B) (check the demo preparation document about how to get the jar file).  <br/><br/>![](images/mq-app-3-2-3.png)<br/> |
@@ -114,7 +117,7 @@ Let's get started!<br/><br/>
 
 | **3.3** | **Review Deployment** |
 | :--- | :--- |
-| **Narration** | Now, let's review our application connection. From here, we can easily check the application log. Great, our application was able to connect to a queue manager and it is sending messages. |
+| **Narration** | Now, let’s review our application connection. From here, we can easily check the application log. Great, our application was able to connect to a queue manager and it is sending messages. |
 | **Action** &nbsp; 3.3.1 | After a few second click on the tile representing the deployment to display the pod. <br/><br/>![](images/mq-app-3-3-1.png)<br/> |
 | **Action** &nbsp; 3.3.2 | Click on the pod name. <br/><br/>![](images/mq-app-3-3-2.png)<br/>|
 | **Action** &nbsp; 3.3.3 | In the pod page go to the **Logs** tab (1) and click **Expand** (2) to get a full view of the log. <br/><br/>![](images/mq-app-3-3-3.png)<br/> |
@@ -131,28 +134,28 @@ Let's get started!<br/><br/>
 
 | **4.1** | **Explore the Queue Manager 2** |
 | :--- | :--- |
-| **Narration** | Now that the mq application is deployed let’s check the behavior with the Uniform Cluster. Let's open the Queue Manager 2.  The pod ending with 0 is by default the active instance, let's explore it. |
+| **Narration** | Now that the MQ application is deployed let’s check the behavior with the Uniform Cluster. Let’s open Queue Manager 2.  The pod ending with 0 is by default the active instance, let’s explore it. |
 | **Action** &nbsp; 4.1.1 | Navigate back to the **Topology** page. <br/><br/>![](images/valid-uniform-4-1-1.png)<br/>|
 | **Action** &nbsp; 4.1.2 | Select the tile that represent **QM02**. <br/><br/>![](images/valid-uniform-4-1-2.png)<br/>|
 | **Action** &nbsp; 4.1.3 | Select the pod ending with **0** that by default is the active instance. <br/><br/>![](images/valid-uniform-4-1-3.png)<br/> |
 
 | **4.2** | **Review connections to QM02** |
 | :--- | :--- |
-| **Narration** | In order to check the connection status we will use the command “display connections” and we will filter by the MQ App name that is “MY-PRODUCER”. We will execute the command directly from the terminal in each MQ pod. <br/><br/>Right now, we don't have any connection in this pod. But in the next step we will get a better picture on how the connections are distributed.  |
+| **Narration** | In order to check the connection status, we will use the command “display connections” and we will filter by the MQ App name that is “MY-PRODUCER”. We will execute the command directly from the terminal in each MQ pod. <br/><br/>Right now, we don’t have any connection in this pod. But in the next step we will get a better picture on how the connections are distributed.  |
 | **Action** &nbsp; 4.2.1 | Open the **Terminal** tab (A) and click **Expand** (B) <br/><br/>![](images/valid-uniform-4-2-1.png)<br/>|
 | **Action** &nbsp; 4.2.2 | Enter the command below in your terminal windows (if your prefer, you can paste using the context menu) and hit enter to check how many active connections associated with our application are in this queue manager. <br/><br/> echo 'dis conn(*)' all \| runmqsc \| grep -i my  <br/> |
 | **Action** &nbsp; 4.2.3 | Show that there isn't any connection in this Message queue (A). Once you are over you can **Collapse** (B) the terminal again.  <br/><br/>![](images/valid-uniform-4-2-3.png)<br/> |
 
 | **4.3** | **Explore the Queue Manager 1** |
 | :--- | :--- |
-| **Narration** | Now let's explore the Queue Manager 1.  Let's repeat the same procedure as before to select the active pod. |
+| **Narration** | Now let’s explore Queue Manager 1. Let’s repeat the same procedure as before to select the active pod. |
 | **Action** &nbsp; 4.3.1 | Right click the **Topology** menu (A) and select **Open Link in New Tab** (B) to keep a window open for each queue manager since you may need to go back and forth. <br/><br/>![](images/valid-uniform-4-3-1.png)<br/> |
 | **Action** &nbsp; 4.3.2 | Select the tile that represent **QM01**. <br/><br/>![](images/valid-uniform-4-3-2.png)<br/>|
 | **Action** &nbsp; 4.3.3 | Select the pod ending with **0**. <br/><br/>![](images/valid-uniform-4-3-3.png)<br/>|
 
 | **4.4** | **Review connections to QM01** |
 | :--- | :--- |
-| **Narration** | Now let's check the connection status in this MQ pod. <br/><br/>This time we see a couple of active connections, probing that the application we deployed is connected to the cluster.  |
+| **Narration** | Now let’s check the connection status in this MQ pod. <br/><br/>This time we see a couple of active connections, proving that the application we deployed is connected to the cluster. |
 | **Action** &nbsp; 4.4.1 | Open the **Terminal** tab (A) and click **Expand** (B) <br/><br/>![](images/valid-uniform-4-4-1.png)<br/>|
 | **Action** &nbsp; 4.4.2 | Enter the command below in your terminal windows (if your prefer, you can paste using the context menu) and hit enter to check how many active connections associated with our application are in this queue manager.<br/><br/> echo 'dis conn(*)' all \| runmqsc \| grep -i my <br/> |
 | **Action** &nbsp; 4.4.3 | Show the **connections** available (A). Once you are over you can **Collapse** (B) the terminal again. <br/><br/>![](images/valid-uniform-4-4-3.png) <br/><br/> `Note` - In your case the result could potentially be the opposite since we have no affinity defined and the application will connect to any queue manager, but since we only have one instance there will only be a connection to one queue manager at a time. |
@@ -168,7 +171,7 @@ Let's get started!<br/><br/>
 
 | **5.1** | **Increase the number of instances** |
 | :--- | :--- |
-| **Narration** | At the moment our application is running in a single pod and therefore it is only connect to one of the queue managers, but what if the workload increases and I need to scale my app. Let’s simulate the scenario and see how the connections are distributed. <br/><br/>Let's explore the Deployments view of our application. Here we can see there is only one pod. Let's increate to have two instances. |
+| **Narration** | At the moment, our application is running in a single pod and therefore it is only connected to one of the queue managers, but what if the workload increases and I need to scale my app. Let’s simulate the scenario and see how the connections are distributed. <br/><br/>Let’s explore the Deployments view of our application. Here we can see there is only one pod. Let’s increase it to have two instances. |
 | **Action** &nbsp; 5.1.1 | Right click on the **RedHat OpenShift logo** (A) and select **Open Link in New Tab** (B) to keep a window open. <br/><br/>![](images/rebalance-connec-5-1-1.png)<br/> |
 | **Action** &nbsp; 5.1.2 | Change to **Administrator** perspective. <br/><br/>![](images/rebalance-connec-5-1-2.png)<br/>|
 | **Action** &nbsp; 5.1.3 | Open the **Workloads** menu (A) and select **Deployments** (B). <br/><br/>![](images/rebalance-connec-5-1-3.png)<br/>|
@@ -179,7 +182,7 @@ Let's get started!<br/><br/>
 
 | **5.2** | **Review connectivity** |
 | :--- | :--- |
-| **Narration** | Now, let's check how many connections we have per queue manager. This time we should see that each queue manager has a couple of connections.  |
+| **Narration** | Now, let’s check how many connections we have per queue manager. This time we should see that each queue manager has a couple of connections. |
 | **Action** &nbsp; 5.2.1 | Back to the **MQ1 browser tab**, refresh the terminal page and enter the command below again and press **enter**. <br/><br/> echo 'dis conn(*)' all \| runmqsc \| grep -i my  <br/> |
 | **Action** &nbsp; 5.2.2 | Show that you have **multiple connections** in **MQ1**. <br/><br/>![](images/rebalance-connec-5-2-2.png)<br/>|
 | **Action** &nbsp; 5.2.3 | Back to the **MQ2 browser tab**, enter the command below again and press **enter**. <br/><br/> echo 'dis conn(*)' all \| runmqsc \| grep -i my  <br/> |
@@ -196,7 +199,7 @@ Let's get started!<br/><br/>
 
 | **6.1** | ** Delete Queue Manager** |
 | :--- | :--- |
-| **Narration** | We observed how each instance will connect to a different queue manager trying to keep a homogenous distribution, but what would happen if one of the queue managers goes down? Let’s find out. <br/><br/>Let's check our queue managers in the installed operators page. <br/><br/>We could kill one of the active pods for any of the queue managers, but since we have configured Native HA, one of the standby instances will take over and at the end, each queue manager will keep a couple of connections, so in this case we will go ahead and fully delete the queue manager.  |
+| **Narration** | We observed how each instance will connect to a different queue manager trying to keep a homogenous distribution, but what would happen if one of the queue managers goes down? Let’s find out. <br/><br/>Let’s check our queue managers in the installed operators’ page. <br/><br/>We could kill one of the active pods for any of the queue managers, but since we have configured Native HA, one of the standby instances will take over and at the end, each queue manager will keep a couple of connections, so in this case we will go ahead and fully delete the queue manager. |
 | **Action** &nbsp; 6.1.1 | Back to the Administrator perspective browser tab, on the left navigator, open the **Operators** (A) > **Installed Operators** (B) menu. <br/><br/>![](images/rebalance-connec-6-1-1.png)<br/> |
 | **Action** &nbsp; 6.1.2 | Navigate to the **IBM MQ** Operator again. <br/><br/>![](images/rebalance-connec-6-1-2.png)<br/> |
 | **Action** &nbsp; 6.1.3 | Open the **Queue Manager** tab. <br/><br/>![](images/rebalance-connec-6-1-3.png)<br/> |
@@ -205,21 +208,21 @@ Let's get started!<br/><br/>
 
 | **6.2** | **Review connectivity ** |
 | :--- | :--- |
-| **Narration** | If we try to navigate back to the active pod for queue manager 2, we will get an error message since the queue manager and therefore its pods have been deleted already. <br/><br/>However, if we navigate to the active pod for queue manager one and submit the command to check the number of active connection, we will see all the connections are directed to the active queue manager assuring the client application can continue sending messages.  |
+| **Narration** | If we try to navigate back to the active pod for queue manager 2, we will get an error message since the queue manager and therefore its pods have been deleted already. <br/><br/>However, if we navigate to the active pod for queue manager one and submit the command to check the number of active connections, we will see all the connections are directed to the active queue manager assuring the client application can continue sending messages. |
 | **Action** &nbsp; 6.2.1 | Back to the **MQ2 browser tab**, show the error message: “**404**”. <br/><br/>![](images/rebalance-connec-6-2-1.png)<br/>|
 | **Action** &nbsp; 6.2.2 | Back to the **MQ1 browser tab**, refresh the terminal page and enter the command below again and press **enter**. <br/><br/>  echo 'dis conn(*)' all \| runmqsc \| grep -i my <br/>  |
 | **Action** &nbsp; 6.2.3 | Show that you have **all the connections** now in **MQ1**. <br/><br/>![](images/rebalance-connec-6-2-3.png)<br/> |
 
 | **6.3** | **Recreate Queue Manager 2** |
 | :--- | :--- |
-| **Narration** | Now let's recreate the Queue Manager 2. For this demo, we will recreate using Command Line Interface, but in a production environment, we can use a gitOps approach.  |
+| **Narration** | Now let’s recreate Queue Manager 2. For this demo, we will recreate using the Command Line Interface, but in a production environment, we can use a gitOps approach. |
 | **Action** &nbsp; 6.3.1 | Run the command below.<br/><br/> ``` oc apply -f instances/${CP4I_VER}/${OCP_TYPE}/13b-qmgr-uniform-cluster-qm2.yaml -n cp4i ``` |
 | **Action** &nbsp; 6.3.2 | Run the command below.<br/><br/> ``` oc get queuemanager -n cp4i ``` <br/><br/>`Note` this will take few minutes, but at the end you should get a response like this. <br/><br/>![](images/rebalance-connec-6-3-2.png)<br/> |
 | **Action** &nbsp; 6.3.3 | Back to OpenShift Console browser tab with the Administrator profile, on the IBM MQ operator on the Queue Manager tab, check the new Queue Manager is ready. <br/><br/>![](images/rebalance-connec-6-3-3.png)<br/> |
 
 | **6.4** | **Review the final scenario** |
 | :--- | :--- |
-| **Narration** | Once we confirm both queue managers are up and running, we can go back to the terminal of the active pod for each queue manager to check the number of active connections. <br/><br/> And a similar behavior would happen if additional queue manager are added to the uniform cluster and the connection would be rebalanced providing a way to scale horizontally. <br/><br/> Great! Here, we have arrived at the conclusion of our demonstration. |
+| **Narration** | Once we confirm both queue managers are up and running, we can go back to the terminal of the active pod for each queue manager to check the number of active connections. <br/><br/> And a similar behavior would happen if additional queue managers were added to the uniform cluster. The connection would be rebalanced providing a way to scale horizontally. <br/><br/> Great! Here, we have arrived at the conclusion of our demonstration. |
 | **Action** &nbsp; 6.4.1 | Back to the **MQ1 browser tab**, refresh the terminal page and enter the command below again and press **enter**. <br/><br/>  echo 'dis conn(*)' all \| runmqsc \| grep -i my <br/>|
 | **Action** &nbsp; 6.4.2 | Show that you have **multiple connections** in **MQ1** (not all connections as presented in the previous section).  <br/><br/>![](images/rebalance-connec-6-4-2.png)<br/>|
 | **Action** &nbsp; 6.4.3 | Back to the **MQ2 browser tab**, you need to reopen the MQ2 pod0 terminal page. Enter the command below again and press enter.<br/><br/> echo 'dis conn(*)' all \| runmqsc \| grep -i my <br/>|
@@ -235,13 +238,13 @@ Let's get started!<br/><br/>
 <br/>
 Let’s summarize what we’ve done today.
 <br/><br/>
-In the demo we: accessed the Cloud Pak for Integration environment and explored the IBM MQ capabilities; deployed an uniform cluster; deployed an MQ Application, validated the uniform cluster connectivity, scaled the MQ application and rebalanced the connections.
+In the demo we:  accessed the Cloud Pak for Integration environment and explored the IBM MQ capabilities; deployed an uniform cluster; deployed an MQ Application; validated the uniform cluster connectivity; scaled the MQ application and rebalanced the connections.
 <br/><br/>
-From an operation perspective we showed how we can easily scale the number of instances of your client applications up and down, without having to reconfigure their connection details and without needing to manually distribute or load balance them.
+From an operations perspective, we showed how we can easily scale the number of instances of your client applications up and down, without having to reconfigure their connection details and without needing to manually distribute or load balance them.
 <br/><br/>
 And here we demonstrated how to quickly and easily grow the queue manager cluster – adding a new queue manager to the cluster without complex configuration.
 <br/><br/>
-Thank you for attending today’s presentation.
+Thank you for your attention.
 <br/>
 
 **[Go to top](#place1)**
