@@ -61,7 +61,7 @@ Let's get started!<br/><br/>
 
 | **2.1** | **View the IBM MQ home screen** |
 | :--- | :--- |
-| **Narration** | Welcome to IBM MQ on IBM Cloud Pak for Integration. IBM MQ offers proven, enterprise-grade messaging capabilities that skillfully and safely move information between applications. You can run IBM MQ in the pre-packaged container provided in IBM Cloud Pak for Integration.<br/><br/>Here we are on MQ Console page of a pre-created Queue Manager. From here you can manage your local queues or create a new queue. <br/><br/>IBM MQ can be managed using a variety of tools, from the IBM MQ Explorer GUI, through scripted or interactive command line tools or programmatically. <br/><br/> Let's explore how to create a new queue. |
+| **Narration** | Welcome to IBM MQ on IBM Cloud Pak for Integration. IBM MQ offers proven, enterprise-grade messaging capabilities that skillfully and safely move information between applications. You can run IBM MQ in the pre-packaged container provided in IBM Cloud Pak for Integration.<br/><br/>Here we are on MQ Console page of a pre-created Queue Manager. From here you can manage your local queues or create a new queue. <br/><br/>IBM MQ can be managed using a variety of tools, from the IBM MQ Explorer GUI, through scripted or interactive command line tools or programmatically. <br/><br/> Let's explore how to create a new queue. <br/><br/> For demo purposes, we will create the queue using the Graphic User Interface, however in a production scenario you will create the queue using a ConfigMap that allows you to decouple environment-specific configuration from your container images, so that your applications are easily portable |
 | **Action** &nbsp; 2.1.1 | Click **Create a queue**. <br/><br/>![](images/create-queue-2-1-1.png)<br/> |
 
 | **2.2** | **Choose queue type** |
@@ -119,10 +119,10 @@ Let's get started!<br/><br/>
 
 | **3.5** | **Configure MQ Output node properties** |
 | :--- | :--- |
-| **Narration** | This scenario uses an MQOutput node which is configured to interact with a local queue manager. Let's explore this node. <br/><br/>Let's start by defining the Queue name in the Basic section. Now, we need to inform the details of the MQ Connection, including the queue manager, the MQ ip, port and channel. |
+| **Narration** | This scenario uses an MQOutput node which is configured to interact with a local queue manager. Let's explore this node. <br/><br/>Let's start by defining the Queue name in the Basic section. Now, we need to inform the details of the MQ Connection, including the queue manager, the MQ ip, port and channel. <br/><br/> For demo purposes, we are hard coding the queue manager values in the flow, but in a production environment, we should use a Policy to implement it. |
 | **Action** &nbsp; 3.5.1 | Click the **MQ Output** tile. <br/><br/>![](images/ace-toolkit-3-5-1.png)<br/> |
 | **Action** &nbsp; 3.5.2 | In the lower-right of the Properties pane, you see the **Properties** view (A), open the **Basic** tab (B) and type **NEWORDER** as the queue name (C). <br/><br/>![](images/ace-toolkit-3-5-2.png)<br/>|
-| **Action** &nbsp; 3.5.3 | Open the MQ Connection tab (A). On the Connection field, select **MQ client connection properties** (B). On Destination queue manager name, enter **QMGRDEMO** (case-sensitive) (C). On Queue manager host name, enter the **MQ service name** (e.g.: *qmgr-demo-ibm-mq*) identified in the previous step (D). On Listener port number, enter **1414** (E). On Channel name field, enter **SYSTEM.DEF.SRVCONN** (F). Save the flow (**CRTL+S**). <br/><br/>![](images/ace-toolkit-3-5-3.png)<br/> |
+| **Action** &nbsp; 3.5.3 | Open the MQ Connection tab (A). On the Connection field, select **MQ client connection properties** (B). On Destination queue manager name, enter **QMGRDEMO** (case-sensitive) (C). On Queue manager host name, enter the **MQ service name** (e.g.: *qmgr-demo-ibm-mq*) identified in the previous step (D). On Listener port number, enter **1414** (E). On Channel name field, enter **SYSTEM.DEF.SRVCONN** (F). Save the flow (**CRTL+S**). <br/><br/>![](images/ace-toolkit-3-5-3.png) |
 
 | **3.6** | **Export BAR file** |
 | :--- | :--- |
