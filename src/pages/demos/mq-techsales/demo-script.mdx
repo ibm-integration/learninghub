@@ -73,10 +73,6 @@ Let's get started!<br/><br/>
 | **Narration** | The objective of a uniform cluster deployment is that applications can be designed for scale and availability and can connect to any of the queue managers within the uniform cluster. This removes any dependency on a specific queue manager, resulting in better availability and workload balancing of messaging traffic.<br/><br/>Let’s create it now. First, we need to create our uniform cluster configurations. <br/><br/> Let's start the configuration to create a queue manager uniform cluster with two queue managers. <br/><br/> A ConfigMap with a config.ini is used by all three queue managers. This identifies which of the queue managers are going to maintain the full repository of information about the cluster. <br/><br/> Another ConfigMap holds the MQSC commands that all queue managers use to define the channel they will need to be members of the cluster. <br/><br/> Each queue manager then has it’s own ConfigMap with an additional MQSC file defining the addresses for the channels it will use to join the cluster.|
 | **Action** &nbsp; 2.1.1 | On a terminal windows, **log in** on your OpenShift environment and run the command below. <br/> ```oc apply -f resources/03d-qmgr-uniform-cluster-config.yaml```|
 
-```
-oc apply -f resources/03d-qmgr-uniform-cluster-config.yaml
-```
-
 | **2.2** | **Deploy Queue Managers** |
 | :--- | :--- |
 | **Narration** | Uniform clusters are a specific pattern of an IBM MQ cluster that provides a highly available and horizontally scaled small collection of queue managers. These queue managers are configured almost identically, so that an application can interact with them as a single group. This makes it easier to ensure each queue manager in the cluster is being used, by automatically ensuring application instances are spread evenly across the queue managers.<br/><br/>Now we need to create our two queue Managers. The QueueManager specifications for each of the queue managers just need to point to the ConfigMaps created earlier. Let’s do it!<br/><br/>Great, now let’s confirm the instances have been deployed successfully before moving to the next step. |
