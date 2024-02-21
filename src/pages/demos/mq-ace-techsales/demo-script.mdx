@@ -91,12 +91,12 @@ Let's get started!<br/><br/>
 
 <br/>
 
-| **3.1** | **Checking the MQ IP address** |
+| **3.1** | **Checking the MQ Services name** |
 | :--- | :--- |
 | **Narration** | The applications connecting to IBM MQ can be written in any one of many different programming languages and to many different APIs. From C and Cobol, to Java and .Net to NodeJS and Ruby. In this demo, we will create an Integration Flow using App Connect Enterprise Toolkit. <br/><br/>Before starting App Connect Enterprise toolkit to create our flow, let’s check our IBM MQ IP address. |
 | **Action** &nbsp; 3.1.1 | Open a **Terminal** window where you are already loggedin your CP4I environment. |
-| **Action** &nbsp; 3.1.2 | Run the command below to get a list of mq services in the cp4i namespace. <br/><br/> ```oc get svc -n tools \| grep mq``` |
-| **Action** &nbsp; 3.1.3 | Copy the IP address from **qmgr-demo-ibm-mq** service which the port is 1414.  <br/><br/>![](images/ace-toolkit-3-1-3.png)<br/>|
+| **Action** &nbsp; 3.1.2 | Run the command below to get a list of mq services in the cp4i namespace. <br/><br/> oc get svc -n tools \| grep mq |
+| **Action** &nbsp; 3.1.3 | Copy the MQ service name  from service which the port is 1414 (e.g.:*qmgr-demo-ibm-mq*).  <br/><br/>![](images/ace-toolkit-3-1-3.png)<br/>|
 
 | **3.2** | **Open App Connect Enterprise Toolkit** |
 | :--- | :--- |
@@ -122,7 +122,7 @@ Let's get started!<br/><br/>
 | **Narration** | This scenario uses an MQOutput node which is configured to interact with a local queue manager. Let's explore this node. <br/><br/>Let's start by defining the Queue name in the Basic section. Now, we need to inform the details of the MQ Connection, including the queue manager, the MQ ip, port and channel. |
 | **Action** &nbsp; 3.5.1 | Click the **MQ Output** tile. <br/><br/>![](images/ace-toolkit-3-5-1.png)<br/> |
 | **Action** &nbsp; 3.5.2 | In the lower-right of the Properties pane, you see the **Properties** view (A), open the **Basic** tab (B) and type **NEWORDER** as the queue name (C). <br/><br/>![](images/ace-toolkit-3-5-2.png)<br/>|
-| **Action** &nbsp; 3.5.3 | Open the MQ Connection tab (A). On the Connection field, select **MQ client connection properties** (B). On Destination queue manager name, enter **QMGRDEMO** (case-sensitive) (C). On Queue manager host name, enter the **MQ ip** identified in the previous step (D). On Listener port number, enter **1414** (E). On Channel name field, enter **SYSTEM.DEF.SRVCONN** (F). Save the flow (**CRTL+S**). <br/><br/>![](images/ace-toolkit-3-5-3.png)<br/> |
+| **Action** &nbsp; 3.5.3 | Open the MQ Connection tab (A). On the Connection field, select **MQ client connection properties** (B). On Destination queue manager name, enter **QMGRDEMO** (case-sensitive) (C). On Queue manager host name, enter the **MQ service name** (e.g.: *qmgr-demo-ibm-mq*) identified in the previous step (D). On Listener port number, enter **1414** (E). On Channel name field, enter **SYSTEM.DEF.SRVCONN** (F). Save the flow (**CRTL+S**). <br/><br/>![](images/ace-toolkit-3-5-3.png)<br/> |
 
 | **3.6** | **Export BAR file** |
 | :--- | :--- |
@@ -199,7 +199,7 @@ Let's get started!<br/><br/>
 <br/>
 Let’s summarize what we’ve done today.
 <br/><br/>
-In the demo we: accessed the Cloud Pak for Integration environment and explored the capabilities; created a queue in IBM MQ; imported and configured an Integration flow using IBM App Connect Enterprise toolkit; deployed and tested our Application flow in IBM App  fdemonstrated how a developer can use the API Portal to perform self-service consumption of the API.
+In the demo we: accessed the Cloud Pak for Integration environment and explored the capabilities; created a queue in IBM MQ; imported and configured an Integration flow using IBM App Connect Enterprise toolkit; deployed and tested our Application flow in IBM App Connect Dashboard.
 <br/><br/>
 From a business perspective we used messaging and application integrations to integrate backend systems using a messaging platform. IBM MQ provides a universal messaging backbone with robust connectivity for flexible and reliable messaging for applications and the integration of existing IT assets.  IBM MQ simplify, accelerate and facilitate the reliable exchange of data with a flexible and security-rich messaging solution that’s trusted by some of the world’s most successful enterprises. With IBM MQ, you ensure you receive the information you need, when you need it — and receive it only once.
 <br/><br/>
