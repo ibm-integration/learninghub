@@ -22,7 +22,7 @@ tabs: [ 'Demo preparation', 'Demo script']
 <br/>
 Every enterprise in today's markets must offer robust digital products and services, often requiring integration of complex capabilities and systems to deliver one coherent whole. IBM® Cloud Pak for Integration offers a simplified solution to this integration challenge, allowing the enterprise to modernize its processes while positioning itself for future innovation. Messaging is one of the key capabilities of IBM Cloud Pak for Integration.
 <br/><br/>
-IBM MQ provides a universal messaging backbone with robust connectivity for flexible and reliable messaging for applications and the integration of existing IT assets.  IBM MQ simplify, accelerate and facilitate the reliable exchange of data with a flexible and security-rich messaging solution that’s trusted by some of the world’s most successful enterprises. With IBM MQ, you ensure you receive the information you need, when you need it — and receive it only once.
+IBM MQ provides a universal messaging backbone with robust connectivity for flexible and reliable messaging for applications and the integration of existing IT assets.  IBM MQ simplifies, accelerates and facilitates the reliable exchange of data with a flexible and security-rich messaging solution that’s trusted by some of the world’s most successful enterprises. With IBM MQ, you ensure you receive the information you need, when you need it — and receive it only once.
 <br/><br/>
 Automating customer interactions effectively can mean the difference between a satisfied customer (one who will want to do more business with you in the future) or a disappointed customer (who will afterwards be looking for alternative options).
 <br/><br/>
@@ -51,7 +51,7 @@ Let's get started!<br/><br/>
 | **1.2** | **View the Cloud Pak for Integration instances** |
 | :--- | :--- |
 | **Narration** | Welcome to IBM Cloud Pak for Integration! We’re now at the home screen showing all the capabilities of the Pak, brought together in one place. Specialized integration capabilities — for API management, application integration, messaging, and more — are built on top of powerful automation services. <br/><br/>As you can see, you are able to access all the integration capabilities your team needs through a single interface. In this demo, we will use App Connect for application integration to access our company’s backend systems. IBM MQ will serve as the universal messaging backbone, providing robust connectivity for flexible and reliable messaging between applications — as well as for integration of existing IT assets. |
-| **Action** &nbsp; 1.2.1 | Show the **Instances page** and open the **Messaging** capability (qmgr-demo).<br/><br/>'Note'- If you didn't complete the Uniform Clusters demo before this demo, you don't have the uniform clusters instance. No problem at all! Just ignore them in the picture below. You don't need them. In this demo you only use the qmgr-demo instance.<br/><br/>![](images/access-env-1-2.png)<br/> |
+| **Action** &nbsp; 1.2.1 | Show the **Instances page** and open the **Messaging** capability (qmgr-demo).<br/><br/>'Note'- If you didn't complete the Uniform Clusters demo before this demo, you don't have the uniform clusters instance. No problem at all! Just ignore them in the picture below. You don't need them. In this demo you only use the qmgr-demo instance.<br/><br/>If necessary, accept the security risks.<br/><br/>![](images/access-env-1-2.png)<br/> |
 
 
 **[Go to top](#place1)**
@@ -65,12 +65,12 @@ Let's get started!<br/><br/>
 
 | **2.1** | **View the IBM MQ home screen** |
 | :--- | :--- |
-| **Narration** | Let’s examine the capabilities of IBM MQ on Cloud Pak for Integration. IBM MQ offers proven, enterprise-grade messaging capabilities that skillfully and safely move information between applications. You can run IBM MQ in the pre-packaged container provided in IBM Cloud Pak for Integration.<br/><br/>Here we are on MQ Console page of a pre-created Queue Manager. From here you can manage your local queues or create a new queue.<br/><br/>IBM MQ can be managed using a variety of tools: from the IBM MQ Explorer GUI; as well as through scripted or interactive command line tools; or programmatically.<br/><br/>Let’s explore how to create a new queue.<br/><br/> For demo purposes, we will create the queue using the Graphic User Interface, however in a production scenario you will create the queue using a ConfigMap that allows you to decouple environment-specific configuration from your container images, so that your applications are easily portable |
+| **Narration** | Let’s examine the capabilities of IBM MQ on Cloud Pak for Integration. IBM MQ offers proven, enterprise-grade messaging capabilities that skillfully and safely move information between applications. You can run IBM MQ in the pre-packaged container provided in IBM Cloud Pak for Integration.<br/><br/>Here we are on MQ Console page of a pre-created Queue Manager. From here you can manage your local queues or create a new queue.<br/><br/>IBM MQ can be managed using a variety of tools: from the IBM MQ Explorer GUI; as well as through scripted or interactive command line tools; or programmatically.<br/><br/>Let’s explore how to create a new queue.<br/><br/> For demo purposes, we will create the queue using the Graphic User Interface, however in a production scenario you will create the queue using a ConfigMap that allows you to decouple environment-specific configuration from your container images, so that your applications are easily portable. |
 | **Action** &nbsp; 2.1.1 | Click **Create a queue**. <br/><br/>![](images/create-queue-2-1-1.png)<br/> |
 
 | **2.2** | **Choose queue type** |
 | :--- | :--- |
-| **Narration** | An IBM MQ messaging system is made up of one or more queue managers. Queue managers are where messaging resources, such as queues, are configured. Queue managers are also what applications connect to, either running on the same system as the queue manager itself or over the network.<br/><br/>A network of connected queue managers supports asynchronous routing of messages between systems, where producing and consuming applications are connected to different queue managers.<br/><br/>In this demo, we will use a Local queue.|
+| **Narration** | An IBM MQ messaging system is made up of one or more queue managers. Queue managers are where messaging resources, such as queues, are configured. Queue managers are also what applications connect to, either running on the same system as the queue manager itself or over the network.<br/><br/>A network of connected queue managers supports asynchronous routing of messages between systems, where producing and consuming applications are connected to different queue managers.<br/><br/>In this demo, we will use a Local queue that is on the queue manager we are connected to, QMGRDEMO.|
 | **Action** &nbsp; 2.2.1 | In Create a queue page. Choose **Local** as your queue type. <br/><br/>![](images/create-queue-2-2-1.png)<br/>|
 
 | **2.3** | **Define queue details** |
@@ -118,7 +118,7 @@ Let's get started!<br/><br/>
 
 | **3.4** | **Check the integration flow** |
 | :--- | :--- |
-| **Narration** | Here we have our demo flow. In the flow editor, we can edit and change our flow. Message flows are created in the Toolkit using a drag and drop editor. <br/><br/> The flow is quite simple, consisting of only four nodes: Input, Output, a simple mapping node, and an MQOutput node. |
+| **Narration** | Here we have our demo flow. In the flow editor, we can edit and change our flow. Message flows are created in the Toolkit using a drag and drop editor. <br/><br/> The flow is quite simple, consisting of only four nodes: Input, Output, a simple mapping node, and an MQOutput node. <br/><br/> This message flow is developed as an API, therefore, the actual API operation is developed as a subflow in the ACE Toolkit. |
 | **Action** &nbsp; 3.4.1 | Open **neworder -> Resources -> Subflows -> getid.subflow** <br/><br/>![](images/ace-toolkit-3-4-1.png)<br/> |
 
 | **3.5** | **Configure MQ Output node properties** |
@@ -180,7 +180,7 @@ Let's get started!<br/><br/>
 | **5.2** | **Invoking the Integration flow** |
 | :--- | :--- |
 | **Narration** | To test our flow, let’s do a simple curl HTTP request to our endpoint, passing the order number as parameter. |
-| **Action** &nbsp; 5.2.1 | Open a terminal window and enter the curl command below. <br/><br/> ``` curl -G -k [NEWORDER_ENDPOINT]/00000```  <br/><br/> `Note` - Replace the API URL with your Endpoint and don’t forget to include 0000 as order number at the end of the URL. <br/><br/>![](images/deploy-ace-5-2-1.png)<br/> |
+| **Action** &nbsp; 5.2.1 | Open a terminal window and enter the curl command below. <br/><br/> ``` curl -G -k [NEWORDER_ENDPOINT]/00000```  <br/><br/> `Note` - Replace the API URL with your Endpoint and don’t forget to include 00000 as order number at the end of the URL. <br/><br/>![](images/deploy-ace-5-2-1.png)<br/> |
 
 | **5.3** | **Checking the message** |
 | :--- | :--- |
