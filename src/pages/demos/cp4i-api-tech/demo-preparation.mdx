@@ -115,13 +115,17 @@ To copy the repository you will need to have the Git CLI on your machine. If you
 
 4.1 To download the scripts to install the demo, create a new directory, change to this newly created directory, and run the following command:
 
-   ```git clone https://github.com/IBM/platinum-demo-code-api-enabled-integration.git```
+```
+git clone https://github.com/IBM/platinum-demo-code-api-enabled-integration.git
+```
 
    <br/>
 
-4.2 Change to the new {{ page.gitHubDir }} directory:
+4.2 Change to the new **platinum-demo-code-api-enabled-integration** directory:
 
-   ```cd platinum-demo-code-api-enabled-integration```
+```
+cd platinum-demo-code-api-enabled-integration
+```
 
    <br/>
 
@@ -129,11 +133,13 @@ To copy the repository you will need to have the Git CLI on your machine. If you
 
 ### 5 - Install the demo
 
-1. The script to install the demo components requires a utility called jq. If you don't have it, follow the installation steps described in this <a href="https://jqlang.github.io/jq/download/" target="_blank" rel="noreferrer">page</a>, based on your operating system. <br/>
+5.1 The script to install the demo components requires a utility called jq. If you don't have it, follow the installation steps described in this <a href="https://jqlang.github.io/jq/download/" target="_blank" rel="noreferrer">page</a>, based on your operating system. <br/>
 
-2. Install API Connect and App Connect by running the `deploy.sh` command:<br/>
+5.2 Install API Connect and App Connect by running the `deploy.sh` command:<br/>
 
-   ```./deploy.sh ```
+```
+./deploy.sh
+```
 
 This script may take 30-45 minutes to complete.
 
@@ -260,15 +266,15 @@ Now create a user in the Developer Portal.
 
 9.8 Scroll down to the Owner section, set the type of user to **New user** (1), fill in the following details and click **Create**.
 
-    | FIELD | VALUE |
-    | ------ | ------- |
-    | **Username:** | devuser |
-    | **Email:** | devuser@ibmapiconnect.com |
-    | **First name:** | Dev |
-    | **Last name:** | User |
-    | **Password:** | AP1Connect! |
+| FIELD | VALUE |
+| ------ | ------- |
+| **Username:** | devuser |
+| **Email:** | devuser@ibmapiconnect.com |
+| **First name:** | Dev |
+| **Last name:** | User |
+| **Password:** | AP1Connect! |
 
-    <img src="images/prep-image217.png" width="800" />
+<img src="images/prep-image217.png" width="800" />
 
 9.9 A new consumer organization is created.
 <br/><img src="images/prep-image218.png" width="800" /><br/>
