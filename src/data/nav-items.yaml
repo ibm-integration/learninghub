@@ -6,8 +6,10 @@
       path: /demos/aoc-techsales/demo-preparation
     - title: CP4I Sales API Demo
       path: /demos/cp4i-sales/demo-preparation
-    - title: CP4I Tech API Demo
+    - title: CP4I TechSales API Demo
       path: /demos/cp4i-api-tech/demo-preparation
+    - title: CP4I Tech Low-code Demo
+      path: /demos/cp4i-low-code/demo-preparation
     - title: MQ Uniform Clusters Demo
       path: /demos/mq-techsales/demo-preparation
     - title: MQ ACE Toolkit Demo
