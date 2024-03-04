@@ -2,13 +2,13 @@
   pages:
     - title: Aspera Sales Demo
       path: /demos/aoc-sales/demo-preparation
-    - title: Aspera Tech Demo
+    - title: Aspera TechSales Demo
       path: /demos/aoc-techsales/demo-preparation
     - title: CP4I Sales API Demo
       path: /demos/cp4i-sales/demo-preparation
-    - title: CP4I Tech API Demo
+    - title: CP4I TechSales API Demo
       path: /demos/cp4i-api-tech/demo-preparation
-    - title: CP4I Tech Low-code Demo
+    - title: CP4I Low-code Demo
       path: /demos/cp4i-low-code/demo-preparation
     - title: MQ Uniform Clusters Demo
       path: /demos/mq-techsales/demo-preparation
