@@ -48,7 +48,7 @@ Let's get started!<br/><br/>
 | **1.1** | **Accessing StepZen** |
 | :--- | :--- |
 | **Narration** | StepZen enables developers to easily build and deploy a single GraphQL API that gets the data they need from multiple backends. The StepZen CLI is the primary tool for creating, uploading, deploying and testing your StepZen API. The StepZen CLI enables you use to manage your StepZen schemas, configurations, and endpoints. The CLI also comes with a built-in Schema Explorer that enables you to explore and test the API you’ve deployed locally from your browser. <br/><br/> We already installed StepZen CLI here. Now we need to get the details about our StepZen account. For this demo we are using a free StepZen account, let's log in here.  |
-| **Action** &nbsp; 1.1.1 | On a browser window open the <a href="http://www.stepzen.com" target="_blank">URL below</a> (1) and click on **Log In** link (2). <br/><br/>```http://www.stepzen.com```<br/><br/>![](images/setup-sz-2.png)<br/>|
+| **Action** &nbsp; 1.1.1 | On a browser window open the <a href="http://www.stepzen.com" target="_blank">URL below</a> (1) and click on **Log In** link (2). <br/>```http://www.stepzen.com```<br/><br/>![](images/setup-sz-2.png)<br/>|
 | **Action** &nbsp; 1.1.2 | **Log in** with your *username* and *password*. <br/><br/>```http://www.stepzen.com```<br/><br/>![](images/setup-sz-3.pn)<br/>|
 
 <br/>
@@ -68,8 +68,8 @@ Let's get started!<br/><br/>
 | **1.3** | **StepZen CLI log In** |
 | :--- | :--- |
 | **Narration** | To run StepZen in the cloud, we can connect the CLI to our account to get a private and secure endpoint or use StepZen with a public account. After installing the CLI, we can connect it to our account using the login CLI command. |
-| **Action** &nbsp; 1.3.1 | Using Visual Studio Code terminal window, execute the command below to log in with StepZen CLI, replace [your_account] with the account value (1) from the Account page. <br/><br/> ``` stepzen login -a [your_account] ``` <br/><br/>![](images/setup-sz-7.png)<br/>|
-| **Action** &nbsp; 1.2.2 | Now, you need to enter your Admin Key. Copy and paste the **Admin Key** value (2) from the Account page.  <br/><br/>![](images/setup-sz-8.pn)<br/>|
+| **Action** &nbsp; 1.3.1 | Using Visual Studio Code terminal window, execute the command below to log in with StepZen CLI, replace [your_account] with the account value (1) from the Account page. <br/> ```stepzen login -a [your_account]``` <br/><br/>![](images/setup-sz-7.png)<br/>|
+| **Action** &nbsp; 1.3.2 | Now, you need to enter your Admin Key. Copy and paste the **Admin Key** value (2) from the Account page.  <br/><br/>![](images/setup-sz-8.pn)<br/>|
 
 <br/>
 
@@ -82,10 +82,11 @@ Let's get started!<br/><br/>
 
 <br/>
 
-| **2.1** | **Create configurations** |
+| **2.1** | **Create your API directory** |
 | :--- | :--- |
-| **Narration** | The objective of a uniform cluster deployment is that applications can be designed for scale and availability and can connect to any of the queue managers within the uniform cluster. This removes any dependency on a specific queue manager, resulting in better availability and workload balancing of messaging traffic.<br/><br/>Let’s create it now. First, we need to create our uniform cluster configurations. <br/><br/> Let's start the configuration to create a queue manager uniform cluster with two queue managers. <br/><br/> A ConfigMap with a config.ini is used by all three queue managers. This identifies which of the queue managers are going to maintain the full repository of information about the cluster. <br/><br/> Another ConfigMap holds the MQSC commands that all queue managers use to define the channel they will need to be members of the cluster. <br/><br/> Each queue manager then has it’s own ConfigMap with an additional MQSC file defining the addresses for the channels it will use to join the cluster.|
-| **Action** &nbsp; 2.1.1 | On a terminal windows, **log in** on your OpenShift environment and run the command below. <br/> ```oc apply -f resources/03d-qmgr-uniform-cluster-config.yaml```|
+| **Narration** | Using StepZen, we can create a GraphQL API for backends with REST interfaces in minutes. <br/><br/>There are two ways to create our GraphQL API with StepZen when we have a REST backend. <br/><br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Use the command-line interface (CLI) command stepzen import curl to specify an existing REST endpoint - StepZen introspects the endpoint and auto-generates a GraphQL schema for you.<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Write your schema code in a .graphql GraphQL Schema Definition Language (SDL) file. Use the powerful GraphQL directive @rest to connect the REST endpoint, and with just a few lines of code, you have a working schema.<br/><br/>In this section we will learn how to use StepZen import curl on an existing REST API. This command sends a curl request to StepZen and parses the GraphQL types from the JSON response.<br/><br/>Before we build our GraphQL API, let’s create a new directory.|
+| **Action** &nbsp; 2.1.1 | On Visual Studio Code Terminal, execute the command below to create a new directory. <br/>```mkdir product-demo```<br/><br/>![](images/build-rest1-1.png)|
+| **Action** &nbsp; 2.1.2 | Change to the new directory. <br/>```cd product-demo```<br/><br/>![](images/build-rest1-2.png)|
 
 <br/>
 
