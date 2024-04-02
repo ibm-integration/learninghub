@@ -132,3 +132,51 @@ Now, you need to enter your Admin Key. Copy and paste the **Admin Key** value (2
 
 ***
 </details>
+
+
+### 2 - Build your GraphQL API from a REST API
+
+<details>
+<summary>2.1 - Create your API directory</summary><br/>
+
+**Narration**
+
+Using StepZen, we can create a GraphQL API for backends with REST interfaces in minutes.
+
+There are two ways to create our GraphQL API with StepZen when we have a REST backend.
+
+<ul>
+<li>Use the command-line interface (CLI) command stepzen import curl to specify an existing REST endpoint - StepZen introspects the endpoint and auto-generates a GraphQL schema for you.</li>
+<li>Write your schema code in a .graphql GraphQL Schema Definition Language (SDL) file. Use the powerful GraphQL directive @rest to connect the REST endpoint, and with just a few lines of code, you have a working schema.</li>
+</ul><br/>
+
+In this section we will learn how to use StepZen import curl on an existing REST API. This command sends a curl request to StepZen and parses the GraphQL types from the JSON response.
+
+Before we build our GraphQL API, let’s create a new directory.
+
+<hr/><br/>
+
+**Action** &nbsp; 2.1.1
+
+On Visual Studio Code Terminal, execute the command below to create a new directory.
+
+```
+mkdir product-demo
+```
+
+  ![](images/build-rest1-1.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 2.1.2
+
+Change to the new directory.
+
+```
+cd product-demo
+```
+
+![](images/build-rest1-2.png)
+
+***
+</details>
