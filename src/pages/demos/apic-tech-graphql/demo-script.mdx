@@ -239,9 +239,20 @@ stepzen import curl "https://introspection.apis.stepzen.com/customers" --query-n
 
 **Narration**
 
+Now, let's improve our GraphQL API by addding another REST API. We just need to execute the import command again with a new REST URL to add a new REST API.
+
 <hr/><br/>
 
 **Action** &nbsp; 3.1.1
+
+On Visual Studio Code Terminal, execute the command below to import another REST API.
+
+```
+stepzen import curl "https://introspection.apis.stepzen.com/orders" --query-name "orders" --query-type "Order"
+```
+&nbsp;
+&nbsp;
+  ![](images/build-rest2-1.png)
 
 
 ***
@@ -253,16 +264,31 @@ stepzen import curl "https://introspection.apis.stepzen.com/customers" --query-n
 
 **Narration**
 
+To check the new graphQL schema, we just need to open the curl-01 folder and open the new index.graphql file. Here we can see the schema of the orders API.
+
+This third schema in the product-demo folder is aggregating the other two schemas of our two different REST APIs.
+
 <hr/><br/>
 
 **Action** &nbsp; 3.2.1
 
+Open the **curl-01** folder and open the new **index.graphql** file (1). You are welcome to explore the new schema (2).
+
+  ![](images/build-rest2-2.png)
+
 <hr/><br/>
+
 
 **Action** &nbsp; 3.2.2
 
+Open the third schema, the **index.graphql** file in the **product-demo** folder (1) and check this schema is referencing the other two schemas (2).
+
+  ![](images/build-rest2-3.png)
+
+
 ***
 </details>
+
 
 
 <details>
@@ -270,36 +296,73 @@ stepzen import curl "https://introspection.apis.stepzen.com/customers" --query-n
 
 **Narration**
 
+StepZen can be deployed and run as a managed service on StepZen's cloud, on a virtual private cloud, or in a colocation data center. Whatever your choice of deployment, StepZen helps you build clean, declarative, consistent APIs and run them at scale with built-in optimizations.<br/><br/> To Deploy and run our endpoint, from command line, let's run stepzen start command.
+
+This command does three things:
+
+<ul>
+  <li>Deploys the code in the current directory (or the directory provided via the --dir flag) to the specified endpoint on StepZen.</li>
+  <li>Watches the directory for changes and automatically deploys them to the endpoint specified.</li>
+  <li>Share a URL with StepZen's Schema Explorer that enables you to test your API by exploring the queries and types available and querying the API running on StepZen.</li>
+</ul>
+
+The StepZen dashboard provides a playground for testing your GraphQL API. Let's open it to explore our GraphQL API.
+
 <hr/><br/>
 
 **Action** &nbsp; 3.3.1
+
+On Visual Studio Code terminal,  run the command below to initialize your endpoint.
+
+```
+stepzen start
+```
+&nbsp;
+&nbsp;
+  ![](images/build-rest2-4.png)
 
 
 <hr/><br/>
 
 **Action** &nbsp; 3.3.2
 
+Show the stepzen start return.
+  ![](images/build-rest2-4-2.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 3.3.3
 
+Scroll down your terminal page to see the Dashboard URL of your API. Copy and paste it in you browser window.
+  ![](images/build-rest2-5.png)
 
 ***
 </details>
+
 
 <details>
 <summary>3.4 - Test the endpoint</summary><br/>
 
 **Narration**
+The StepZen dashboard provides a playground for testing your GraphQL API. In the Dashboard we can play with different queries, for example, let's try the orders query.<br/><br/>Let's try a customers query now, with some fields. Remember, with this GraphQL API, we are consuming data from two different REST APIs. And we can do that with APIs from different types of data sources as well.
 
 <hr/><br/>
 
 **Action** &nbsp; 3.4.1
 
+Go ahead and click **Execute Query** button (1) to test the orders query.  Check the result data (2).
+
+  ![](images/build-rest2-6.png)
+
 <hr/><br/>
 
+
 **Action** &nbsp; 3.4.2
+
+You are welcome to play with the Builder section (1), to create queries with different values. For example, delete the order query, and create a customers query with some fields (2). Execute the query again (3) and check the result data (4).
+
+  ![](images/build-rest2-7.png)
+
 
 ***
 </details>
@@ -313,26 +376,54 @@ stepzen import curl "https://introspection.apis.stepzen.com/customers" --query-n
 
 **Narration**
 
+Now, let's see how to create a GraphQL API with a SQL database backend.
+
+There are two ways to create your GraphQL API with StepZen when you have a SQL database backend.
+
+<ul>
+  <li>Use the command-line interface (CLI) command stepzen import [mysql OR postgresql] to specify your database - StepZen introspects it and auto-generates a GraphQL schema for you.</li>
+  <li>Write your schema code in a .graphql GraphQL Schema Definition Language (SDL) file. Use the GraphQL directive @dbquery to connect the database, and with just a few lines of code, you have a working schema.)</li>
+</ul>
+
+Here, we will see how to use stepzen import mysql command. Our company database's team provided use with a MySQL database. Let's use StepZen CLI command to import it.
+
 <hr/><br/>
 
 **Action** &nbsp; 4.1.1
 
+On Visual Studio Code terminal, cancel the current execution (CTRL+C). And execute the command below to create a GraphQL API that connects data from a database backend.
+
+```
+stepzen import mysql --db-host='db.introspection.stepzen.net' --db-database='introspection' --db-user='testUserIntrospection' --db-password='HurricaneStartingSample1934' --name=mysql
+```
+&nbsp;
+&nbsp;
+  ![](images/build-mysql-1.png)
 
 ***
 </details>
+
 
 <details>
 <summary>4.2 - Explore MySQL schema</summary><br/>
 
 **Narration**
 
+To check the new graphQL schema, open the mysql folder and open the new index.graphql file. Here we have our database schema from MySQL.
+
+By now, we are invoking two REST APIs and one MySQL database in our GraphQL API.
+
 <hr/><br/>
 
 **Action** &nbsp; 4.2.1
 
+On VSCode, open the **mysql** folder and open the new **index.graphql** file (1). You are welcome to explore the new schema (2).
+
+  ![](images/build-mysql-2.png)
 
 ***
 </details>
+
 
 
 <br/><br/>
@@ -869,3 +960,26 @@ stepzen import curl "https://introspection.apis.stepzen.com/customers" --query-n
 </details>
 
 <br/><br/>
+
+### **Summary**
+
+<br/>
+Let’s summarize what we’ve done today. In the demo we:
+<br/><br/>
+<ul>
+<li>Created a GraphQL API using a declarative approach using API Connect Essentials (StepZen);</li>
+<li>Created a GraphQL API using different sources (two REST services and one MySQL database);</li>
+<li>Created a graph composition using @materializer;</li>
+<li>Deployed the new GraphQL API on StepZen Cloud runtime;</li>
+<li>Created a GraphQL Proxy API in API Connect to call the GraphQL API on StepZen;</li>
+<li>Managed our API and set up the security and rate limits;</li>
+<li>Create a Product and apply GraphQL RateLimits;</li>
+<li>Socialize our GraphQL API on Developer Portal and demonstrated how a developer can use the API portal to perform self-service consumption of the API;</li>
+</ul>
+<br/><br/>
+From a business perspective, we used APIs to automate a series of steps to: obtain customer and order information from different sources (legacy services and databases). We presented how API is the foundation of a digital transformation journey.
+<br/><br/>
+For developers, we demonstrated an easier way to build GraphQL APIs, consuming data stored everywhere.  At the same time, we presented a complete API Management solution that enables them to create, secure, socialize and manage APIs.
+<br/><br/>
+Thank you for attending today’s presentation.
+<br/>
