@@ -1,0 +1,69 @@
+---
+title: APIC GraphQL Demo
+description: APIC GraphQL Demo for TechSales
+tabs: [ 'Demo preparation', 'Demo script']
+---
+
+
+<FeatureCard
+  title="Mastering Enterprise-Level GraphQL with APIC and APIC Essentials - Demo Preparation"
+  color="dark"
+  >
+
+![banner](./images/banner.png)
+
+</FeatureCard>
+
+<span id="place1"></span>
+
+### Introduction
+<br/>
+The rising adoption of hybrid cloud has resulted in data stored everywhere – in different types of data stores likes data warehouses, lakes, and lakehouses as well as across different clouds and on-premises environments. APIs serve as the essential connector between different data sources and applications, which means that businesses are relying on and creating more APIs than ever before to get the data they need to power their applications and experiences.
+<br/><br/>
+GraphQL has rapidly become a go-to query language for companies to interact with their data and is emerging as a new standard for APIs, layering upon the investments in REST APIs and data systems. While GraphQL APIs are significantly easier for the application teams to consume, they can represent a challenge to the API Provider teams tasked with building them.  We believe that APIs built declaratively are simply better - leading to first implementation with fewer lines of clean code, faster time to deploy, and APIs with built-in performance, cost, and reliability optimizations.
+<br/><br/>
+Our company decided to invest in GraphQL as a new standard for APIs. GraphQL is a query language for APIs that gives an application client greater control over what data it retrieves in an API request when compared with a REST API request.
+<br/><br/>
+We would like to explore an easier way for developers to build GraphQL APIs, consuming data stored everywhere. Take an e-commerce application for example. With a single call, GraphQL can merge data that is found in different subsystems, like customer information, order numbers, and delivery status, and return it in an expected format. While GraphQL APIs are significantly easier for the application teams to consume, they can represent a challenge to the API teams tasked with building them, securing them, socializing them, and managing them. To ease the process of building these APIs, we would like to explore a way to create GraphQL APIs using a declarative approach for federated access to data.
+<br/><br/>
+On the other hand, our Development's team is having problems managing the use of GraphQL APIs in your company, including rate limits, API lifecycle, security and how to socialize these APIs with our developers ecosystem.
+<br/><br/>
+In this demo we will learn how to move from Zero to Enterprise in the GraphQL domain. Initially we will learn how to use API Connect Essentials (StepZen) to create a a federated GraphQL API by pulling data from disparate sources (REST API and MySQL). After that you will use IBM API Connect to create a GraphQL API proxy definition that proxies a backend GraphQL server from StepZen, and to define rate limiting controls that reflect the amount of data that is returned from the server by a request to the GraphQL API.
+<br/><br/>
+Here we will see how to CREATE, MANAGE, SECURE and SOCIALIZE our GraphQL APIs using IBM API Connect solutions.
+<br/><br/>
+Let's get started!<br/><br/>
+
+(Demo Slides <a href="https://github.com/ibm-integration/learninghub/blob/main/src/pages/demos/mq-techsales/files/APICSlides.pptx" target="_blank" rel="noreferrer">here</a>)
+<br/>
+
+
+### 1 - Setup StepZen
+
+<details>
+<summary>1.1 - Access StepZen</summary>
+
+<br/>
+
+| **Narration** |
+StepZen enables developers to easily build and deploy a single GraphQL API that gets the data they need from multiple backends. The StepZen CLI is the primary tool for creating, uploading, deploying and testing your StepZen API. The StepZen CLI enables you use to manage your StepZen schemas, configurations, and endpoints. The CLI also comes with a built-in Schema Explorer that enables you to explore and test the API you’ve deployed locally from your browser.
+<br/><br/>
+We already installed StepZen CLI here. Now we need to get the details about our StepZen account. For this demo we are using a free StepZen account, let's log in here.
+
+| **Action** &nbsp; 1.1.1 |
+ On a browser window open the <a href="http://www.stepzen.com" target="_blank">URL below</a> (1) and click on **Log In** link (2).
+ <br/><br/>
+ ```
+ http://www.stepzen.com
+ ```
+ <br/><br/>
+ ![](images/setup-sz-2.png)<br/><br/>
+
+| **Action** &nbsp; 1.1.2 |
+**Log in** with your *username* and *password*. <br/><br/>
+![](images/setup-sz-3.png)
+
+<br/>
+
+
+</details>
