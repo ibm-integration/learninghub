@@ -436,34 +436,81 @@ On VSCode, open the **mysql** folder and open the new **index.graphql** file (1)
 
 **Narration**
 
+In many organizations, APIs are built around organizations or domains. For example, a B2C retail business might have customer APIs, e-commerce APIs, marketing APIs, and so on. These APIs are typically built by semi-independent teams, and usually have some common lightweight structures (like authentication, documentation, etc.), but otherwise are constructed independently. And they might appear in the same portal for the API consumer, but there is nothing that connects them.
+
+Because GraphQL APIs are designed to “stitch” data together, GraphQL represents an opportunity to connect APIs easily—even those built by independent teams.  GraphQL federation is a critical element of your GraphQL architecture. Federation is about assembling the work of independent teams into one, or possibly a few, uber GraphQL APIs. Let's see how to do it!
+
+First, let's create a query to getAddressById in our MySQL database.
+
+
 <hr/><br/>
 
 **Action** &nbsp; 5.1.1
 
+On the **index.graphql** from **mysql** folder (1), scroll down to see the ‘*type Query*’ declaration. Below the sentence "**Queries for type ‘Address’**" include the query code below (2).
+
+```
+getAddressById(id: Int!): [Address]
+@dbquery(
+  type: "mysql"
+  query: """
+  SELECT * FROM `address` where `id` = ?
+  """
+  configuration: "mysql_config"
+)
+```
+&nbsp;
+&nbsp;
+This code is defining a getAddressById query to select address from mySQL database.
+
+  ![](images/merge-blocks-1.png)
+
 
 <hr/><br/>
 
+
 **Action** &nbsp; 5.1.2
+
+**Save** the file (File > Save or CTRL+S).
+<br/>
 
 ***
 </details>
+
 
 <details>
 <summary>5.2 - Create a composition with @materializer</summary><br/>
 
 **Narration**
 
+By now we have multiple subgraphs, we can link types across subgraphs with @materializer. Let's do it!
+
+We just need to change our address field to use the getAdressById query that we have just created. We can easily link these two subgraphs with @materializer.
+
+
 <hr/><br/>
 
 **Action** &nbsp; 5.2.1
 
+Open the **index.graphql** file from **curl** folder (1), this is the schema from customers REST API.  Scroll down to see the ‘*type RootEntry*’ section.  By now, the address is coming from the REST API endpoint. Let's change it to get this value from MySQL database. Replace the current address type definition (address: Address) for the code below (2).
+```
+address: [Address]
+  @materializer (query: "getAddressById")
+```
+&nbsp;
+&nbsp;
+  ![](images/merge-blocks-2.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 5.2.2
 
+**Save** the file (File > Save or CTRL+S).
+<br/>
+
 ***
 </details>
+
 
 
 <details>
@@ -471,33 +518,65 @@ On VSCode, open the **mysql** folder and open the new **index.graphql** file (1)
 
 **Narration**
 
+We are ready to deploy our new API. Now we can test the new API, by creating a customers query including address attributes.
+
+Here we have the result, including data from REST API and MySQL database at the same time.
+
+Before we move to API Connections part, to see how to manage, secure and socialize this API, we need to take a copy of our API endpoint and the Authorization header. We will need them later to invoke our API.
+
+One important point to highlight here is about how StepZen controls access to GraphQL schemas and endpoints.
+
+As we build out our GraphQL APIs, we will want to add access control mechanisms to prevent unauthorized use of these endpoints. StepZen supports two different solutions for this problem.
+
+<ul>
+  <li>API Keys: we can use API keys to control access to the entire endpoint. API keys are the default access control mechanism.</li>
+  <li>And Field Policies: we can use Field policies to control access to specific entry point fields on the endpoint. Field policies provide fine-grained access control to your GraphQL API, using a model similar to attribute-based access control.</li>
+</ul><br/>
+
+StepZen provides two different types of API keys for use with an account: Admin Keys and API Keys. Admin keys provide administrative-level access to your account, and should only be used at development time. API keys provide more limited access to your account, and should be used for production.
+
+In this demo, for simplification purpose, we will use the Admin Keys to access our API. In a real environment, we should use API Keys or Field Policies to improve our API’s security.
+
 <hr/><br/>
 
 **Action** &nbsp; 5.3.1
 
+On Visual Studio Code terminal, execute the command below.
+```
+stepzen start
+```
+
+  ![](images/merge-blocks-3.png)
 
 <hr/><br/>
+
 
 **Action** &nbsp; 5.3.2
 
+Back to the browser, refresh the Stepzen Dashboard page.
 
 <hr/><br/>
 
+
 **Action** &nbsp; 5.3.3
+
+On the StepZen Dashboard page, use the Builder section (1), to create a customers query including address attributes (2). Execute the query again (3) and check the result data is coming from Rest and MySQL database (4).
+
+  ![](images/merge-blocks-4.png)
 
 
 <hr/><br/>
 
 **Action** &nbsp; 5.3.4
 
+Take a copy of your API endpoint (1) and the Authorization header (2).
 
-<hr/><br/>
-
-**Action** &nbsp; 5.3.5
+  ![](images/merge-blocks-5.png)
 
 
 ***
 </details>
+
 
 <br/><br/>
 
@@ -507,97 +586,175 @@ On VSCode, open the **mysql** folder and open the new **index.graphql** file (1)
 
 **Narration**
 
+Great, our GraphQL API was created. However our developer's team still need a comprehensive API solution and strategy to manage these new GraphQL APIs from a unified and centrally visible solution. <br/><br/>They are looking for an integrated API management offering, with capabilities and tooling for all phases of the API lifecycle. Key steps of the API lifecycle include create, secure, manage, socialize, and analyze the APIs.
+
+IBM API Connect is a full lifecycle API management solution that uses an intuitive experience to help consistently create, manage, secure, socialize and monetize APIs, which promotes digital transformation on premises and across clouds. This means we can power digital apps and spur innovation in real-time. IBM API Connect is also available as-a-Service as a highly scalable, fully managed API management platform on Amazon Web Services (AWS).
+
+Let's explore how IBM API Connect will support our development team to manage our GraphQL APIs.  For this demo, we are using a trial account of IBM APIC on AWS.
+
 <hr/><br/>
 
 **Action** &nbsp; 6.1.1
 
+In your email inbox (that you used to create the APIC trial account), search for **IBM SaaS** (1), open the "**Your API Connect trial is ready**" email (2).
+
+  ![](images/apic-proxy-1.png)
 
 <hr/><br/>
+
 
 **Action** &nbsp; 6.1.2
 
+Now, click **Access trial** button.
+
+  ![](images/apic-proxy-2.png)
 
 <hr/><br/>
 
+
 **Action** &nbsp; 6.1.3
 
+Log in with your APIC user and password.
+
+  ![](images/apic-proxy-3.png)
 
 ***
 </details>
+
 
 <details>
 <summary>6.2 - Create a new API from existing GraphQL service</summary><br/>
 
 **Narration**
 
+Here, you are on your API Connect Enterprise as a Service environment. API Connect Enterprise as a Service is a cloud-based edition of IBM API Connect. Using API Connect Enterprise as a Service enables you to work in the cloud to create, manage, secure, and socialize APIs using our latest user experiences, innovation, and industry standards for full API lifecycle management.
+
+API Connect Enterprise as a Service uses software-as-a-service as a delivery model. With this model, API Connect is hosted on Amazon Web Services and is managed by IBM. You pay for using the software without worrying about owning and maintaining the underlying infrastructure. With API Connect Enterprise as a Service, you pay for usage through your AWS bill.
+
+IBM API Connect enables you to create a GraphQL API proxy definition that proxies a backend GraphQL server. API Connect extends the GraphQL standard by providing, in a GraphQL API definition, the ability to configure a range of settings that are used to calculate the complexity of a GraphQL request and an associated cost that counts towards the rate limit.
+
+Let’s see how to create a GraphQL Proxy API.
+
 <hr/><br/>
 
 **Action** &nbsp; 6.2.1
 
+Click on the **Develop** menu.
+
+  ![](images/apic-home.png)
 
 <hr/><br/>
+
 
 **Action** &nbsp; 6.2.2
 
+Then click **Add->API**.
+
+  ![](images/apic-proxy-5.png)
 
 <hr/><br/>
 
+
 **Action** &nbsp; 6.2.3
 
+Select **From Existing GraphQL service (GraphQL proxy)** (1).  Then click **Next** (2).
+
+  ![](images/apic-proxy-6.png)
 
 ***
 </details>
+
 
 <details>
 <summary>6.3 - Add the details of your GraphQL service</summary><br/>
 
 **Narration**
 
+Now, we need to add details from our GraphQL API created with API Connect Essentials (StepZen).  When we point to an existing GraphQL server, API Connect introspects the service and automatically creates a GraphQL proxy service.
+
+As described earlier in this lab, your StepZen API is using an API Key approach to control access to the entire endpoint. Because of that, you need to include the API Key in the Authorization Header of the HTTP Header. Here you will include that to read the API Schema for introspection to setup this proxy API, and it will be used this one time only and not be saved for later to call the API itself. Let’s do it!
+
+The schema validator reports warning and errors if found. Let's ignore the schema warning by now, will fix this warning in later steps.
+
+Great! API Connect successfully created a GraphQL proxy API.
+
 <hr/><br/>
 
 **Action** &nbsp; 6.3.1
 
+Enter the following values:
+
+  Title: **customers** (1)
+
+  GraphQL server URL: [*Your API URL copied from StepZen Dashboard*] (for example: https://wanaka.stepzen.net/api/product-demo/__graphql) (2)
+
+  ![](images/apic-proxy-7.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 6.3.2
 
+In the *HTTP Header* section, click **Add** (1) to enter **Authorization** (2) as *Header* and paste the *API Key value* that you copied from the *StepZen Dashboard Headers* section as *Value* (3). Then click *Next* (4).
+
+  ![](images/apic-proxy-8.png)
 
 <hr/><br/>
+
 
 **Action** &nbsp; 6.3.3
 
+In the Paths section, select **all** the available endpoints (1), then click **Next** (2).
+
+  ![](images/apic-proxy-9.png)
 
 <hr/><br/>
+
 
 **Action** &nbsp; 6.3.4
 
+Keep both **Secure using Client ID** and **CORS** checked (1) and click **Next** (2).
+
+  ![](images/apic-proxy-10.png)
 
 <hr/><br/>
 
+
 **Action** &nbsp; 6.3.5
 
+Great! API Connect successfully created a GraphQL proxy API.
+
+  ![](images/apic-proxy-11.png)
 
 ***
 </details>
 
 <br/><br/>
 
+
 ### **7 - Editing and Testing the GraphQL Proxy API**
 <details>
 <summary>7.1 - Edit API</summary><br/>
 
 **Narration**
+Now, let’s edit the API to view more details on the proxy API just created.
+
+GraphQL APIs are structured the same as REST APIs with some additional options. Just like REST APIs, we will be able to add security schemas, paths and definitions from the left menu bar. We can also view the Gateway, Test and Explorer tabs similar to REST APIs. We will notice a new tab for GraphQL APIs. Let's explore the GraphQL Schema view.
 
 <hr/><br/>
 
 **Action** &nbsp; 7.1.1
 
+Click **Edit API** to continue.
+
+  ![](images/apic-edit-1.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 7.1.2
 
+Click on **GraphQL Schema** tab to view the schema.
+
+  ![](images/apic-edit-2.png)
 
 ***
 </details>
@@ -607,21 +764,38 @@ On VSCode, open the **mysql** folder and open the new **index.graphql** file (1)
 
 **Narration**
 
+The GraphQL Schema tab displays Type for every type in your GraphQL schema, and Type Weight information for the cost or expense of each type. The weighting factor is used when calculating the type cost for a request to the GraphQL API. For example, a field that requires extensive CPU or memory use on the server to retrieve its value would be given a higher cost.
+
+In addition to the warning details, the Warning window gives an option to fix the warning by applying the limits. While this Artificial Intelligence is often very accurate, for a real scenario it is important to carefully examine the results and only accept them when they are accurate, since this affects the security of your application.
+
+After applying the recommendations, the warning message is removed.
+
+
 <hr/><br/>
 
 **Action** &nbsp; 7.2.1
 
+Click **View** in the *Warning* message.
+
+  ![](images/apic-edit-3.png)
 
 <hr/><br/>
 
+
 **Action** &nbsp; 7.2.2
+
+In our case, click **Apply all** (1), then click **Apply** (2).
+
+  ![](images/apic-edit-4.png)
 
 
 <hr/><br/>
 
 **Action** &nbsp; 7.2.3
 
+Click **Save** to save the API definition.
 
+![](images/apic-edit-5.png)
 
 ***
 </details>
@@ -631,24 +805,49 @@ On VSCode, open the **mysql** folder and open the new **index.graphql** file (1)
 
 **Narration**
 
+It is time to explore the Gateway view.
+
+The flow is automatically created as part of the initial API creation. You may apply additional logic by dragging and dropping items from the palette to the canvas. Let’s do a small change to allow Authorization header propagation.
+
+Here we can add Authorization header in the allowlist.
+
 <hr/><br/>
 
 **Action** &nbsp; 7.3.1
+
+Open the **Gateway** view.
+
+  ![](images/apic-edit-6.png)
 
 
 <hr/><br/>
 
 **Action** &nbsp; 7.3.2
 
+Scroll down the flow (1) and on the **Otherwise** ramification (2), you should see a **graphql-invoke** node, click on it to edit (3).
+
+  ![](images/apic-edit-7.png)
+
 
 <hr/><br/>
+
 
 **Action** &nbsp; 7.3.3
 
+On the *graphql-invoke* node definition, scroll down to see the *Header control* section. Click on **Add allowlist** to add a new header in the list.
+
+  ![](images/apic-edit-8.png)
+
 
 <hr/><br/>
 
+
 **Action** &nbsp; 7.3.4
+
+Enter **Authorization** as the new header allowed (1) and click **Save** button (2). This means that we will send the Authorization header on to the backend.
+
+  ![](images/apic-edit-9.png)
+
 
 ***
 </details>
@@ -658,39 +857,99 @@ On VSCode, open the **mysql** folder and open the new **index.graphql** file (1)
 
 **Narration**
 
+Now, let's test the API. To publish the API, first we need to set our API to online.
+
+After successfully publishing the API to API Gateway, additional tabs appear on the screen. Let's explore the Test tab.
+
+The Test feature also includes a GraphQL Editor. Here we can include our customers query. We can use Prettify option to improve the visualization of the GraphQL query.
+
+Now we need to include the Authorization heard in the Parameters tab.
+
+Everytime that we invoke our API we need to pass your API Key as the Authorization header. So let’s include it in our test.
+
+On the Trace section, we should see an HTTP Status: 200 and in the Response data we have the data returned from your GraphQL API.
+
 <hr/><br/>
 
 **Action** &nbsp; 7.4.1
 
+Toggle the button from offline to **online**.
+
+![](images/apic-edit-10.png)
+
 
 <hr/><br/>
 
+
 **Action** &nbsp; 7.4.2
+
+Select **Test** tab to test the API.
+
+![](images/apic-edit-11.png)
 
 
 <hr/><br/>
 
 **Action** &nbsp; 7.4.3
 
+Enter the following GraphQL query in the GraphQL Editor. You may use **Prettify** option to improve the visualization of the GraphQL query.
+
+```
+{
+  customers {
+    email
+    id
+    name
+    address {
+      city
+      countryRegion
+      postalCode
+      stateProvince
+    }
+  }
+}
+```
+&nbsp;
+&nbsp;
+  ![](images/apic-edit-12.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 7.4.4
 
+Now you need to include the Authorization heard. Open the **Parameters** tab.
+
+  ![](images/apic-edit-13.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 7.4.5
 
+On the bottom of the Parameters list, include a new parameter with the following value:
+
+    Key: **Authorization** (1)
+
+    Located In: **header** (2)
+
+    Value: *[paste the API Key value that you copied from the StepZen Dashboard Headers]* (3)
+
+    ![](images/apic-edit-14.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 7.4.6
 
+Now click the **Send** button (1) and open the **GraphiQL** tab (2) again to see the result.
+
+  ![](images/apic-edit-15.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 7.4.7
+
+On the Trace section, you should see an HTTP Status: 200 (1) and in the Response data you have the data returned from your GraphQL API (2).
+
+  ![](images/apic-edit-16.png)
 
 ***
 </details>
@@ -700,29 +959,49 @@ On VSCode, open the **mysql** folder and open the new **index.graphql** file (1)
 
 **Narration**
 
+Great, but we can simplify it, by hard coding the Authorization header parameter in our GraphQL API Proxy flow. Let’s do it!
+
+Now, we will add a set variable node before the graphql-invoke. This node will add the authorization header in our message with the value that we copied from StepZen Dashboard.
+
 <hr/><br/>
 
 **Action** &nbsp; 7.5.1
 
+Open the **Gateway** tab again.
+
+  ![](images/apic-edit-17.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 7.5.2
 
+On the **Otherwise** (1) which starts with a *Parse*, you will add a node before the *graphql-invoke* node.  On the *Palette* view, scroll down to see the *Policies* section (2). Drag and drop the **Set Variable** (3) node between the "*ratelimit expected*" node and the "*graphql-invoke*" node (4).
+
+  ![](images/apic-edit-18.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 7.5.3
 
+Enter **set-authorization** as Title (1) and click **Add action** (2).
+
+  ![](images/apic-edit-19.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 7.5.4
 
+Keep **Set** (1) as the type of the action. On the Set field, enter **message.headers.Authorization** (2) as the name of the variable to be set. Select **String** (3) as type of the value to set. And in the *Value* field, paste the *API Key value that you copied from the StepZen Dashboard Headers* (4).
+
+  ![](images/apic-edit-20.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 7.5.5
+
+Then click **Save**.
+
+  ![](images/apic-edit-21.png)
 
 ***
 </details>
@@ -733,15 +1012,25 @@ On VSCode, open the **mysql** folder and open the new **index.graphql** file (1)
 
 **Narration**
 
+Let’s test our API again, this time without passing the Authorization token.
+
+Great! Now your GraphQL Proxy is running and available to be used.
+
 <hr/><br/>
 
 **Action** &nbsp; 7.6.1
 
+Open the **Test** tab (1), and click the **Execute Query** button (2). (Note: if you want, you can check in the Parameters tab that there isn't an Authorization header parameter).
+
+  ![](images/apic-edit-22.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 7.6.2
 
+Show the result. You are welcome to change the GraphQL query to test more scenarios. You can also use the **Example** button to help start your creativity. On breadcrumbs, return to **Develop** page.
+
+  ![](images/apic-edit-23.png)
 
 ***
 </details>
@@ -754,34 +1043,71 @@ On VSCode, open the **mysql** folder and open the new **index.graphql** file (1)
 
 **Narration**
 
+Now, let’s see how we package our APIs using products for publishing to consumers. Products are packages that contain both the APIs and the accompanying plans. The providers use plans to control access to APIs and to manage API usage. Plans can use differing rate limits to provide different levels of service to API consumers. We can have multiple plans for different consumers. For example, we can add approval steps for consumers when they sign up, or we can allocate them plans as a provider.
+
+Let's see how to create a product from scratch. After include the basic information about the product we can define the default plan.
+
+The Default Plan contains traditional rate limiting options, but in the next steps, you will be able to list GraphQL Rate Limits.
+
+Here we publish the product to Sandbox catalog and aceppt the default for Visibility and Subscribability.
+
+Great! We have our new product.
+
 <hr/><br/>
 
 **Action** &nbsp; 8.1.1
+
+Click **Add->Product**.
+
+  ![](images/apic-product-1.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 8.1.2
 
+Select **New product** (1) and click **Next** (2).
+
+  ![](images/apic-product-2.png)
+
 <hr/><br/>
 
 **Action** &nbsp; 8.1.3
+
+Name the product as **Customers Product** (1) and click **Next** (2).
+
+  ![](images/apic-product-3.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 8.1.4
 
+Add Customers API to the product by selecting **customers** (1). Then click **Next** (2).
+
+  ![](images/apic-product-4.png)
+
 <hr/><br/>
 
 **Action** &nbsp; 8.1.5
+
+For now, just click **Next**.
+
+  ![](images/apic-product-5.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 8.1.6
 
+Publish the Product to Sandbox Catalog by selecting **Publish product** (1). Accept the default for *Visibility* and *Subscribability* (2) and click **Next** (3).
+
+  ![](images/apic-product-6.png)
+
 <hr/><br/>
 
 **Action** &nbsp; 8.1.7
 
+Click **Done**.
+
+  ![](images/apic-product-7.png)
 
 ***
 </details>
@@ -791,22 +1117,41 @@ On VSCode, open the **mysql** folder and open the new **index.graphql** file (1)
 
 **Narration**
 
+Now, let's review our plan to check the GraphQL rate limits.
+
+Here in the plan page, we are able to adjust GraphQL cost parameters, including costs per field or type. We can set a limit or make it unlimited. In this demo, we will not be making any changes.
+
 <hr/><br/>
 
 **Action** &nbsp; 8.2.1
+
+Back to the *Develop* view, open **Products** tab (1) and click on **Customers Product** (2).
+
+  ![](images/apic-product-8.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 8.2.2
 
+Open the **Plans** section (1), and on the *Default Plan*, open the **context menu** (2) and select **Edit** (3).
+
+  ![](images/apic-product-9.png)
+
 <hr/><br/>
 
 **Action** &nbsp; 8.2.3
+
+Show the GraphQL rate limits section.
+
+  ![](images/apic-product-10.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 8.2.4
 
+On the left menu, click **Manage** icon to manage our Sandbox catalog.
+
+  ![](images/apic-product-11.png)
 
 ***
 </details>
@@ -818,20 +1163,38 @@ On VSCode, open the **mysql** folder and open the new **index.graphql** file (1)
 <summary>9.1 - Access the Developer Portal</summary><br/>
 
 **Narration**
+Now that you’ve published your API, you need to make sure that your API consumers can discover it and use it. Your Developer Portal will allow customers to view the APIs, sign up and subscribe to plans in a self-service manner, test the APIs, download the OpenAPI - Swagger documents and more.
+
+First, we need to get our Portal URL.
+
+Great, here we have our **Portal URL**. Let's open it in a new browser tab.
 
 <hr/><br/>
 
 **Action** &nbsp; 9.1.1
+
+On *Manage* page, open the **Sandbox** catalog.
+
+  ![](images/apic-portal-1.png)
 
 
 <hr/><br/>
 
 **Action** &nbsp; 9.1.2
 
+Click **Catalog settings** (1) and open the **Portal** tab (2).
+
+  ![](images/apic-portal-2.png)
+
 
 <hr/><br/>
 
 **Action** &nbsp; 9.1.3
+
+Here you have your **Portal URL**. Copy it, and open it in a new browser tab.
+
+  ![](images/apic-portal-3.png)
+
 
 ***
 </details>
@@ -841,24 +1204,45 @@ On VSCode, open the **mysql** folder and open the new **index.graphql** file (1)
 
 **Narration**
 
+This Developer Portal is your public-facing website and therefore it is highly flexible and customizable, but we’ll be using the default design.
+
+Now, we need to create an account to simulate an API consumer. Let's do it!
+
+After validate the new account, we are ready to log in!
+
 <hr/><br/>
 
 **Action** &nbsp; 9.2.1
 
+Click **Create account** to create a new developer account.
+
+  ![](images/apic-portal-4.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 9.2.2
+
+Complete the registration form, go ahead and use any personal email.  Take note of the username (not email) and password. You will need them later to log in to the Developer Portal.
+
+  ![](images/apic-portal-5.png)
 
 
 <hr/><br/>
 
 **Action** &nbsp; 9.2.3
 
+You will receive an email to activate your new developer account.  Click on the link to validate the registration.
+
+  ![](images/apic-portal-6.png)
+
 
 <hr/><br/>
 
 **Action** &nbsp; 9.2.4
+
+**Sign in** (1) to Developer Portal using your developer's *username* and *password* (2).
+
+  ![](images/apic-portal-7.png)
 
 ***
 </details>
@@ -868,50 +1252,84 @@ On VSCode, open the **mysql** folder and open the new **index.graphql** file (1)
 
 **Narration**
 
+Note that all of these next steps are simulating what your API Consumer, your end-user customer, will do to find, buy, and use your API.
+
+Developer Portal displays all the products that are currently published. In our case, no Apps created yet. As a consumer/developer, we’re going to create a new application in the portal. This will give us an API key, allowing us to call our APIs.
+
+We have not subscribed to any APIs, so let’s do it now. Subscribe to Customers Product 1.0. Now that we selected our API product, we can see the plans available. In our case, Default plan. We want to subscribe to the plan, but which application do we want to use to subscribe? We can have many applications, but in this demo, we’ve only created one. So, we just need to select the app that we created earlier and confirm our subscription. And done - we are subscribed to our API!
+
 <hr/><br/>
 
 **Action** &nbsp; 9.3.1
 
+Click **Create a new App**.
+
+  ![](images/apic-portal-8.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 9.3.2
 
+Enter **Consumers Application** as the **App Title** (1). Click **Save** (2).
+
+  ![](images/apic-portal-9.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 9.3.3
 
+On the **Credentials** dialog box, copy the *API Key* (1), copy the *API Secret* (2), then click **OK** (3).
+
+  ![](images/apic-portal-10.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 9.3.4
 
+Click on **Why not browse the available APIs?** link.
+
+  ![](images/apic-portal-11.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 9.3.5
 
+Click on **Customers Product 1.0.0**.
+
+  ![](images/apic-portal-12.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 9.3.6
+
+In the **Default Plan** section, click **Select**.
+
+  ![](images/apic-portal-13.png)
 
 
 <hr/><br/>
 
 **Action** &nbsp; 9.3.7
 
+Select the **Consumers Application**.
+
+  ![](images/apic-portal-14.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 9.3.8
 
+Confirm the subscription by clicking **Next**.
+
+  ![](images/apic-portal-15.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 9.3.9
 
+Click **Done**.
+
+  ![](images/apic-portal-16.png)
 
 ***
 </details>
@@ -921,24 +1339,56 @@ On VSCode, open the **mysql** folder and open the new **index.graphql** file (1)
 
 **Narration**
 
+We’re now back at the product screen. Let’s explore our API here. From the Overview page, we can download the OpenAPI Document and get the API endpoint. Note the portal has everything you need to call your API, it’s even generated clients in various languages for you to copy/paste into your calling application. You can try the API on the Try it area. We can use our customers query here. Now, let’s test it. Great, we got a response, Our GraphQL Proxy API is running and available for your ecosystem. Check how quickly the results are returned in the results window, coming from different sources. If this was a REST API multiple end points would be needed to achieve the same result.
+
 <hr/><br/>
 
 **Action** &nbsp; 9.4.1
 
+Click the **customers 1.0.0 API**.
+
+  ![](images/apic-portal-17.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 9.4.2
+
+Open the **Try it** tab.
+
+  ![](images/apic-portal-18.png)
 
 
 <hr/><br/>
 
 **Action** &nbsp; 9.4.3
 
+Paste the API Key that you copied in the previous step (1). Paste the GraphQL below in the GraphQL editor (2). And click on **Execute Query** button (3).
+
+```
+{
+  customers {
+    email
+    id
+    name
+    address {
+      city
+      countryRegion
+      postalCode
+      stateProvince
+    }
+  }
+}
+```
+
+  ![](images/apic-portal-19.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 9.4.4
+
+Your GraphQL Proxy API is running. You are welcome to continue to test the API, using the GraphQL Editor. Submit requests with different field names.
+
+  ![](images/apic-portal-20.png)
 
 ***
 </details>
@@ -948,14 +1398,25 @@ On VSCode, open the **mysql** folder and open the new **index.graphql** file (1)
 
 **Narration**
 
+We can see our API statistics in the portal. We just need to select our app, and here we can see all the API calls, including any possible errors. If you make more calls, you’ll see larger statistic results.
+
+In this page, the developers can view information and insights about the application.
+
 <hr/><br/>
 
 **Action** &nbsp; 9.5.1
 
+Open the **Apps** page (1) and select the **Consumers Application** (2).
+
+  ![](images/apic-portal-21.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 9.5.2
+
+Show the statistics page.
+
+  ![](images/apic-portal-22.png)
 
 
 ***
