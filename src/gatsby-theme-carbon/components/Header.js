@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from 'gatsby-theme-carbon/src/components/Header';
 
-import { InlineNotification } from 'gatsby-theme-carbon/src/components/inline-notification';
+import { InlineNotification } from 'gatsby-theme-carbon/src/components/InlineNotification';
 
 const CustomHeader = props => (
   <Header {...props}>
