@@ -21,7 +21,6 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "carbon-components-svelte": "^0.85.0",
     "gh-pages": "^2.1.1"
   }
 }
