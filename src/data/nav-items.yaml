@@ -1,5 +1,7 @@
 - title: Live Demos
   pages:
+    - title: APIC GraphQL Demo
+      path: /demos/apic-tech-graphql/demo-preparation
     - title: Aspera Sales Demo
       path: /demos/aoc-sales/demo-preparation
     - title: Aspera TechSales Demo
