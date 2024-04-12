@@ -945,19 +945,29 @@ On the Trace section, they should see an HTTP Status: 200 and in the Response da
 
 **Action** &nbsp; 7.4.1
 
-Toggle the button from offline to **online**.
+Click the **Settings** icon.
 
-![](images/apic-edit-10.png)
+![](images/auto-publish-1.png)
 
 
 <hr/><br/>
 
 
-<InlineNotification>There is a known issue with GraphQL test tool on APIC on AWS. The Development's team is working to fix it as soon as possible. Because of it, please skip steps 7.4.2 to 7.4.7. The step 7.4.8 is a workaround to test your GraphQL Proxy API using an external tool. As soon as the bug is fixed, the step 7.4.8 will be removed.</InlineNotification>
+**Action** &nbsp; 7.4.2
+
+Toggle the *Auto-publish* button from off to **on** (1). Then click **Save Preferences** (2).
+
+![](images/auto-publish-2.png)
+
+
+<hr/><br/>
+
+
+<InlineNotification kind="warning">There is a known issue with GraphQL test tool on APIC on AWS. The Development's team is working to fix it as soon as possible. Because of it, please skip steps 7.4.3 to 7.4.8. The step 7.4.9 is a workaround to test your GraphQL Proxy API using an external tool. As soon as the issue is fixed, the step 7.4.8 will be removed.</InlineNotification>
 
 <br/>
 
-**Action** &nbsp; 7.4.2 (This step is currently not working, see the notification above)
+**Action** &nbsp; 7.4.3 (This step is currently not working, see the notification above)
 
 Select **Test** tab to test the API.
 
@@ -966,7 +976,7 @@ Select **Test** tab to test the API.
 
 <hr/><br/>
 
-**Action** &nbsp; 7.4.3 (This step is currently not working, see the notification on step 7.4.2)
+**Action** &nbsp; 7.4.4 (This step is currently not working, see the notification on step 7.4.3)
 
 Enter the following GraphQL query in the GraphQL Editor. You may use **Prettify** option to improve the visualization of the GraphQL query.
 
@@ -991,7 +1001,7 @@ Enter the following GraphQL query in the GraphQL Editor. You may use **Prettify*
 
 <hr/><br/>
 
-**Action** &nbsp; 7.4.4 (This step is currently not working, see the notification on step 7.4.2)
+**Action** &nbsp; 7.4.5 (This step is currently not working, see the notification on step 7.4.3)
 
 Now you need to include the Authorization heard. Open the **Parameters** tab.
 
@@ -999,7 +1009,7 @@ Now you need to include the Authorization heard. Open the **Parameters** tab.
 
 <hr/><br/>
 
-**Action** &nbsp; 7.4.5 (This step is currently not working, see the notification on step 7.4.2)
+**Action** &nbsp; 7.4.6 (This step is currently not working, see the notification on step 7.4.3)
 
 On the bottom of the Parameters list, include a new parameter with the following value:
 
@@ -1013,7 +1023,7 @@ Value: *[paste the API Key value that you copied from the StepZen Dashboard Head
 
 <hr/><br/>
 
-**Action** &nbsp; 7.4.6 (This step is currently not working, see the notification on step 7.4.2)
+**Action** &nbsp; 7.4.7 (This step is currently not working, see the notification on step 7.4.3)
 
 Now click the **Send** button (1) and open the **GraphiQL** tab (2) again to see the result.
 
@@ -1021,7 +1031,7 @@ Now click the **Send** button (1) and open the **GraphiQL** tab (2) again to see
 
 <hr/><br/>
 
-**Action** &nbsp; 7.4.7 (This step is currently not working, see the notification on step 7.4.2)
+**Action** &nbsp; 7.4.8 (This step is currently not working, see the notification on step 7.4.3)
 
 On the Trace section, you should see an HTTP Status: 200 (1) and in the Response data you have the data returned from your GraphQL API (2).
 
