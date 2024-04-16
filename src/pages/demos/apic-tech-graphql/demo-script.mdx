@@ -36,7 +36,7 @@ Focus’ team requested a demo to learn how to move from zero to enterprise in t
 ### **1 - Setup API Connect Essentials (StepZen)**
 
 <details>
-<summary>1.1 - Access StepZen</summary><br/>
+<summary>1.1 - Access APIC Essentials</summary><br/>
 
 **Narration**
 
@@ -49,19 +49,23 @@ Focus' developers already installed StepZen CLI. Next, they need to get the deta
 
 **Action** &nbsp; 1.1.1
 
-On a browser window open the <a href="http://www.stepzen.com" target="_blank">URL below</a> (1) and click on **Log In** link (2).
+In your email inbox (that you used to create the API Connect Essentials free account), search for **IBM SaaS** (1), open the "**ccess your IBM API Connect Essentials free instance**" email (2). Then click **Access Lite** (3).
 
-```
- http://www.stepzen.com
-```
-&nbsp;
-&nbsp;
-  ![](images/setup-sz-2.png)
-
+  ![](images/stepzen-new-access-1.png)
 
 <hr/><br/>
 
+
 **Action** &nbsp; 1.1.2
+
+Click **Log in** button.
+
+  ![](images/stepzen-new-access-2.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 1.1.3
 
 **Log in** with your *username* and *password*.
 
@@ -77,52 +81,44 @@ On a browser window open the <a href="http://www.stepzen.com" target="_blank">UR
 
 **Narration**
 
-To get the details about Focus’ account, first they need to navigate to the StepZen Dashboard. In the Account page, they will find their account name, and the two keys they need for API authentication.
+To get the details about Focus’ account, first they need to navigate to the API Connect Essentials Dashboard. In the Account page, they will find their environment name, the domain, and the two keys they need for API authentication.
 
 <hr/><br/>
 
 **Action** &nbsp; 1.2.1
 
-On StepZen Dashboard page, on the left menu, open the **Account** page (key icon).
+On API Connect Essentials Dashboard page, scroll down to see the *Authentication details* section. Copy the **Environment** name (1), the **Domain** (2) and **Admin Key** (3). You will use them in the next step.
 
-  ![](images/setup-sz-5.png)
-
-<hr/><br/>
-
-**Action** &nbsp; 1.2.2
-
-Copy the **Account name** (1) and **Admin Key** (2). You will use them in the next step.
-
-  ![](images/setup-sz-6.png)
+  ![](images/setup-new-sz-6.png)
 
 ***
 </details>
 
 <details>
-<summary>1.3 - StepZen CLI log in</summary><br/>
+<summary>1.3 - APIC Essentials CLI log in</summary><br/>
 
 **Narration**
 
-To run StepZen in the cloud, the developers can connect the CLI to their account to get a private and secure endpoint or use StepZen with a public account. After installing the CLI, they are able to connect it to their account using the login CLI command.
+To run APIC Essentials in the cloud, the developers can connect the CLI to their account to get a private and secure endpoint or use APIC Essentials with a public account. After installing the CLI, they are able to connect it to their account using the login CLI command.
 
 <hr/><br/>
 
 **Action** &nbsp; 1.3.1
 
-Using Visual Studio Code terminal window, execute the command below to log in with StepZen CLI, replace [your_account] with the account value (1) from the Account page.
+Using Visual Studio Code terminal window, execute the command below to log in with API Connect Essentials CLI, replace [your_environment] with the environment value (1), and [your_domain] with the domain value (2) from the Account details page.
 
 ```
-stepzen login -a [your_account]
+stepzen login [your_domain] -a [your_environment]
 ```
 &nbsp;
 &nbsp;
-  ![](images/setup-sz-7.png)
+  ![](images/setup-new-sz-7.png)
 
 **Action** &nbsp; 1.3.2
 
-Now, you need to enter your Admin Key. Copy and paste the **Admin Key** value (2) from the Account page.
+Now, you need to enter your Admin Key. Copy and paste the **Admin Key** value (3) from the Account page.
 
-  ![](images/setup-sz-8.png)
+    ![](images/setup-new-sz-8.png)
 
 ***
 </details>
@@ -136,7 +132,7 @@ Now, you need to enter your Admin Key. Copy and paste the **Admin Key** value (2
 
 **Narration**
 
-Using StepZen, Focus’ developers can create a GraphQL API for backends with REST interfaces in minutes.
+Using API Connect Essentials, Focus’ developers can create a GraphQL API for backends with REST interfaces in minutes.
 
 There are two ways to create a GraphQL API with StepZen when they have a REST backend.
 
@@ -177,7 +173,7 @@ cd product-demo
 </details>
 
 <details>
-<summary>2.2 - Initialize the StepZen workspace</summary><br/>
+<summary>2.2 - Initialize the APIC Essentials workspace</summary><br/>
 
 **Narration**
 
@@ -377,8 +373,15 @@ Show the stepzen start return.
 
 **Action** &nbsp; 3.3.3
 
-Scroll down your terminal page to see the Dashboard URL of your API. Copy and paste it in you browser window.
-  ![](images/build-rest2-5.png)
+Back to the APIC Essentials page, open the **Endpoint** page.
+  ![](images/build-new-rest2-5.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 3.3.4
+
+Click on **Actions** menu (1) and select **Open Explorer** (2).
+  ![](images/build-new-rest2-6.png)
 
 ***
 </details>
@@ -389,24 +392,24 @@ Scroll down your terminal page to see the Dashboard URL of your API. Copy and pa
 
 **Narration**
 
-The StepZen dashboard provides a playground for testing the GraphQL API. In the Dashboard, Focus’ developers can play with different queries, for example, they can try the orders query. Another possibility is to run a customer query, with some custom fields. Remember, with this GraphQL API, they are consuming data from two different REST APIs. And if they want, they can do that with APIs from different types of data sources as well.
+The APIC Essentials Explorer provides a playground for testing the GraphQL API. In the Explorer, Focus’ developers can play with different queries, for example, they can try the orders query. Another possibility is to run a customer query, with some custom fields. Remember, with this GraphQL API, they are consuming data from two different REST APIs. And if they want, they can do that with APIs from different types of data sources as well.
 
 <hr/><br/>
 
 **Action** &nbsp; 3.4.1
 
-Go ahead and click **Execute Query** button (1) to test the orders query.  Check the result data (2).
+Go ahead and click **Execute Query** button (1) to test the *customers* query.  Check the result data (2).
 
-  ![](images/build-rest2-6.png)
+  ![](images/build-new-rest2-6-2.png)
 
 <hr/><br/>
 
 
 **Action** &nbsp; 3.4.2
 
-You are welcome to play with the Builder section (1), to create queries with different values. For example, delete the order query, and create a customers query with some fields (2). Execute the query again (3) and check the result data (4).
+You are welcome to play with the Builder section (1), to create queries with different values.
 
-  ![](images/build-rest2-7.png)
+  ![](images/build-new-rest2-7.png)
 
 
 ***
@@ -603,9 +606,9 @@ Back to the browser, refresh the Stepzen Dashboard page.
 
 **Action** &nbsp; 5.3.3
 
-On the StepZen Dashboard page, use the Builder section (1), to create a customers query including address attributes (2). Execute the query again (3) and check the result data is coming from Rest and MySQL database (4).
+On the APIC Essentials Explorer page, use the Builder section (1), to create a customers query including address attributes (2). Execute the query again (3) and check the result data is coming from Rest and MySQL database (4).
 
-  ![](images/merge-blocks-4.png)
+  ![](images/merge-new-blocks-4.png)
 
 
 <hr/><br/>
@@ -614,7 +617,7 @@ On the StepZen Dashboard page, use the Builder section (1), to create a customer
 
 Take a copy of your API endpoint (1) and the Authorization header (2).
 
-  ![](images/merge-blocks-5.png)
+  ![](images/merge-new-blocks-5.png)
 
 
 ***
