@@ -965,7 +965,7 @@ Toggle the *Auto-publish* button from off to **on** (1). Then click **Save Prefe
 <hr/><br/>
 
 
-<InlineNotification kind="warning">There is a known issue with GraphQL test tool on APIC on AWS. The Development's team is working to fix it as soon as possible. Because of it, please skip steps 7.4.3 to 7.4.8. The step 7.4.9 is a workaround to test your GraphQL Proxy API using an external tool. As soon as the issue is fixed, the step 7.4.8 will be removed.</InlineNotification>
+<InlineNotification kind="warning">There is a known issue with GraphQL test tool on APIC on AWS. The Development's team is working to fix it as soon as possible. Because of it, please skip steps 7.4.3 - 7.4.8. The step 7.4.9 is a workaround to test your GraphQL Proxy API using an external tool. As soon as the issue is fixed, the step 7.4.9 will be removed.</InlineNotification>
 
 <br/>
 
@@ -1039,6 +1039,32 @@ On the Trace section, you should see an HTTP Status: 200 (1) and in the Response
 
   ![](images/apic-edit-16.png)
 
+
+<hr/><br/>
+
+**Action** &nbsp; 7.4.9 (WORKAROUND)
+
+Another way to test your API is using a GraphQL sandbox. For example, open this <a href="https://graphqlzero.almansi.me/api" target="_blank">URL</a> (1), copy and paste the requested URL from APIC (2), enter the Graphql query (3) and in the HTTP Header section, enter a JSON with the Authorization header parameter that you copied from StepZen, and copy and paste the X-IBM-Client-Id from APIC parameters tab (see step 7.4.6) (4). And click on the **Play** button to see the graphQL returned data (5).
+
+```
+{
+  customers {
+    email
+    id
+    name
+    address {
+      city
+      countryRegion
+      postalCode
+      stateProvince
+    }
+  }
+}
+```
+<br/>
+
+  ![](images/playground-workaround-1.png)
+
 ***
 </details>
 
@@ -1106,7 +1132,11 @@ Great! Now their GraphQL Proxy is running and available to be used.
 
 <hr/><br/>
 
-**Action** &nbsp; 7.6.1
+<InlineNotification kind="warning">There is a known issue with GraphQL test tool on APIC on AWS. The Development's team is working to fix it as soon as possible. Because of it, please skip steps 7.6.1 - 7.6.2. The step 7.6.3 is a workaround to test your GraphQL Proxy API using an external tool. As soon as the issue is fixed, the step 7.6.3 will be removed.</InlineNotification>
+
+<br/>
+
+**Action** &nbsp; 7.6.1 (This step is currently not working, see the notification above)
 
 Open the **Test** tab (1), and click the **Execute Query** button (2). (Note: if you want, you can check in the Parameters tab that there isn't an Authorization header parameter).
 
@@ -1114,13 +1144,39 @@ Open the **Test** tab (1), and click the **Execute Query** button (2). (Note: if
 
 <hr/><br/>
 
-**Action** &nbsp; 7.6.2
+**Action** &nbsp; 7.6.2 (This step is currently not working, see the notification on step 7.6.2)
 
 Show the result. You are welcome to change the GraphQL query to test more scenarios. You can also use the **Example** button to help start your creativity. On breadcrumbs, return to **Develop** page.
 
   ![](images/apic-edit-23.png)
 
+<hr/><br/>
+
+**Action** &nbsp; 7.6.3 (WORKAROUND)
+
+You can keep using the <a href="https://graphqlzero.almansi.me/api" target="_blank">external GraphQL playground</a> to test your api(1), but now in the HTTP Header section, remove the Authorization header parameter (4). Then click on the **Play** button to see the graphQL returned data (5).
+
+```
+{
+  customers {
+    email
+    id
+    name
+    address {
+      city
+      countryRegion
+      postalCode
+      stateProvince
+    }
+  }
+}
+```
+<br/>
+
+  ![](images/playground-workaround-2.png)
+
 ***
+
 </details>
 
 <br/><br/>
@@ -1452,7 +1508,11 @@ Open the **Try it** tab.
 
 <hr/><br/>
 
-**Action** &nbsp; 9.4.3
+<InlineNotification kind="warning">There is a known issue with GraphQL test tool on APIC on AWS. The Development's team is working to fix it as soon as possible. Because of it, please skip steps 9.4.3 - 9.4.4. The step 9.4.5 is a workaround to test your GraphQL Proxy API using an external tool. As soon as the issue is fixed, the step 9.4.5 will be removed.</InlineNotification>
+
+<br/>
+
+**Action** &nbsp; 9.4.3 (This step is currently not working, see the notification above)
 
 Paste the API Key that you copied in the previous step (1). Paste the GraphQL below in the GraphQL editor (2). And click on **Execute Query** button (3).
 
@@ -1471,16 +1531,43 @@ Paste the API Key that you copied in the previous step (1). Paste the GraphQL be
   }
 }
 ```
+<br/>
 
   ![](images/apic-portal-19.png)
 
 <hr/><br/>
 
-**Action** &nbsp; 9.4.4
+**Action** &nbsp; 9.4.4 (This step is currently not working, see the notification on step 9.4.3)
 
 Your GraphQL Proxy API is running. You are welcome to continue to test the API, using the GraphQL Editor. Submit requests with different field names.
 
   ![](images/apic-portal-20.png)
+
+
+<hr/><br/>
+
+**Action** &nbsp; 9.4.5 (WORKAROUND)
+
+You can keep using the <a href="https://graphqlzero.almansi.me/api" target="_blank">external GraphQL playground</a> to test your api(1), but now in the HTTP Header section, paste the API Key that you copied in the previous stepr as your X-IBM-Client-Id header parameter (4). Then click on the **Play** button to see the graphQL returned data (5).
+
+```
+{
+  customers {
+    email
+    id
+    name
+    address {
+      city
+      countryRegion
+      postalCode
+      stateProvince
+    }
+  }
+}
+```
+<br/>
+
+  ![](images/playground-workaround-2.png)
 
 ***
 </details>
