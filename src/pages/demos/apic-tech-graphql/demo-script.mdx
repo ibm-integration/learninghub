@@ -20,13 +20,13 @@ tabs: [ 'Demo preparation', 'Demo script']
 <br/>
 The rising adoption of hybrid cloud has resulted in data stored everywhere – in different types of data stores likes data warehouses, lakes, and lakehouses as well as across different clouds and on-premises environments. APIs serve as the essential connector between different data sources and applications, which means that businesses are relying on and creating more APIs than ever before to get the data they need to power their applications and experiences.
 <br/><br/>
-GraphQL has rapidly become a go-to query language for companies to interact with their data and is emerging as a new standard for APIs, layering upon the investments in REST APIs and data systems. While GraphQL APIs are significantly easier for the application teams to consume, they can represent a challenge to the API Provider teams tasked with building them. We believe that APIs built declaratively are simply better - leading to first implementation with fewer lines of clean code, faster time to deploy, and APIs with built-in performance, cost, and reliability optimizations.
+GraphQL has rapidly become a go-to query language for companies to interact with their data and is emerging as a new standard for APIs, layering upon the investments in REST APIs and data systems. While GraphQL APIs are significantly easier for the application teams to consume, they can represent a challenge to the API Provider teams tasked with building them. We believe that APIs built declaratively are simply better leading to first implementation with fewer lines of clean code, faster time to deploy, and APIs with built-in performance, cost, and reliability optimizations.
 <br/><br/>
-Focus Corporation, a hypothetical retail company engaged with IBM, is highly motivated to derive more revenue from first-time customers to their online storefronts. Focus development team decided to invest in GraphQL as a new standard for APIs. GraphQL is a query language for APIs that gives an application client greater control over what data it retrieves in an API request when compared with a REST API request.
+Focus Corporation, a hypothetical retail company engaged with IBM, is highly motivated to derive more revenue from first-time customers to their online storefronts. The Focus development team decided to invest in GraphQL as a new standard for APIs. GraphQL is a query language for APIs that gives an application client greater control over what data it retrieves in an API request when compared with a REST API request.
 <br/><br/>
 Focus’ developers would like to explore an easier way for developers to build GraphQL APIs, consuming data stored everywhere.  While GraphQL APIs are significantly easier for the application teams to consume, they can represent a challenge to the API teams tasked with building them, securing them, socializing them, and managing them. To ease the process of building these APIs, they would like to explore a way to create GraphQL APIs using a declarative approach for federated access to data.
 <br/><br/>
-Focus’ team requested a demo to learn how to move from zero to enterprise in the GraphQL API domain. The following demo, Focus’ developers will learn how to use API Connect Essentials (StepZen) to create a a federated GraphQL API by pulling data from disparate sources (REST API and MySQL). After that they will use IBM API Connect to create a GraphQL API proxy definition that proxies a backend GraphQL server from StepZen, and to define rate limiting controls that reflect the amount of data that is returned from the server. In this demo, Focus will see how to CREATE, MANAGE, SECURE and SOCIALIZE their GraphQL APIs using IBM API Connect solution.
+Focus’ team requested a demo to learn how to move from zero to enterprise in the GraphQL API domain. In the following demo, Focus’ developers will learn how to use API Connect Essentials (StepZen) to create a federated GraphQL API by pulling data from disparate sources (REST API and MySQL). After that they will use IBM API Connect to create a GraphQL API proxy definition that proxies a backend GraphQL server from API Connect Essentials and define rate limiting controls that reflect the amount of data that is returned from the server. In this demo, Focus will see how to CREATE, MANAGE, SECURE and SOCIALIZE their GraphQL APIs using the IBM API Connect solution.
 <br/><br/>
 
 (Demo Slides <a href="https://github.com/ibm-integration/learninghub/blob/main/src/pages/demos/apic-tech-graphql/files/APICGraphQLSlides.pptx" target="_blank" rel="noreferrer">here</a>)
@@ -40,9 +40,9 @@ Focus’ team requested a demo to learn how to move from zero to enterprise in t
 
 **Narration**
 
-StepZen enables developers to easily build and deploy a single GraphQL API that gets the data they need from multiple backends. The StepZen CLI is the primary tool for creating, uploading, deploying, and testing your StepZen API. The StepZen CLI enables Focus’ developers to manage they StepZen schemas, configurations, and endpoints. The CLI also comes with a built-in Schema Explorer that enables them to explore and test the API.
+API Connect Essentials enables developers to easily build and deploy a single GraphQL API that gets the data they need from multiple backends. The API Connect Essentials CLI is the primary tool for creating, uploading, deploying, and testing their GraphQL APIs. The CLI enables Focus’ developers to manage their API Connect Essentials schemas, configurations, and endpoints. The CLI also comes with a built-in Schema Explorer that enables them to explore and test the API.
 
-Focus' developers already installed StepZen CLI. Next, they need to get the details about our StepZen account. For this demo, they are using a free StepZen account.
+Focus' developers already installed the API Connect Essentials CLI. Next, they need to get the details about our StepZen account. For this demo, they are using a free StepZen account.
 
 
 <hr/><br/>
@@ -134,14 +134,14 @@ Now, you need to enter your Admin Key. Copy and paste the **Admin Key** value (3
 
 Using API Connect Essentials, Focus’ developers can create a GraphQL API for backends with REST interfaces in minutes.
 
-There are two ways to create a GraphQL API with StepZen when they have a REST backend.
+There are two ways to create a GraphQL API with StepZen when they have a REST backend:
 
 <ul>
-<li>Use the command-line interface (CLI) command stepzen import curl to specify an existing REST endpoint - StepZen introspects the endpoint and auto-generates a GraphQL schema for you.</li>
+<li>Use the command-line interface (CLI) command **stepzen import curl** to specify an existing REST endpoint - StepZen introspects the endpoint and auto-generates a GraphQL schema for you.</li>
 <li>Write the schema code in a .graphql GraphQL Schema Definition Language (SDL) file. Use the powerful GraphQL directive @rest to connect the REST endpoint, and with just a few lines of code, they have a working schema.</li>
 </ul><br/>
 
-In this module, Focus’ developers will learn how to use stepzen import curl command on an existing REST API. This command sends a curl request to StepZen and parses the GraphQL types from the JSON response. Before the developers build their GraphQL API, they need to create a new directory.
+In this module, Focus’ developers will learn how to use the **stepzen import curl** command on an existing REST API. This command sends a curl request to API Connect Essentials and parses the GraphQL types from the JSON response. Before the developers build their GraphQL API, they need to create a new directory.
 
 <hr/><br/>
 
@@ -177,7 +177,7 @@ cd product-demo
 
 **Narration**
 
-With the directory created, Focus’ developers need to initialize the StepZen workspace in their working directory. They use the StepZen CLI init command to do it.
+With the directory created, Focus’ developers need to initialize the API Connect Essentials workspace in their working directory. They use the CLI **init** command to do it.
 
 <hr/><br/>
 
@@ -201,7 +201,7 @@ stepzen init --endpoint=api/product-demo
 
 **Narration**
 
-An amazing feature of StepZen is the possibility to introspects the REST endpoint and auto-generates a GraphQL schema for Focus’ team. Using this capability, the Focus’ developers are using a REST API provided by their legacy CRM system with their CUSTOMERS information, and creating a new GraphQL API.
+An amazing feature of API Connect Essentials is the capability to introspect the REST endpoint and auto-generate a GraphQL schema for Focus’ team. Using this option, the Focus’ developers are using a REST API provided by their legacy CRM system with their CUSTOMERS information and creating a new GraphQL API.
 
 <hr/><br/>
 
@@ -224,7 +224,7 @@ stepzen import curl "https://introspection.apis.stepzen.com/customers" --query-n
 
 **Narration**
 
-Their first GraphQL API was created. Now, it is time to explore the graphQL schema! First, they need to open their project folder and open the index.graphql file on curl folder. Here the developers have all the schema of their customers REST API.  Before, they deploy the GraphQL, they would like to import another REST endpoint.
+Their first GraphQL API was created. Now, it is time to explore the graphQL schema! First, they need to open their project folder and open the index.graphql file on the curl folder. Here, the developers have all the schema of their customers REST API.  Before, they deploy the GraphQL, they would like to import another REST endpoint.
 
 <hr/><br/>
 
@@ -277,7 +277,7 @@ If necessary, click **View > Terminal** to see the terminal window again.
 
 **Narration**
 
-Focus’ developers will now improve their GraphQL API by addding another REST API from their CRM about ORDERS. To do it, they just need to run the import command again with a different REST URL.
+Focus’ developers will now improve their GraphQL API by adding another REST API from their CRM about ORDERS. To do it, they just need to run the import command again with a different REST URL.
 
 <hr/><br/>
 
@@ -334,7 +334,7 @@ Open the third schema, the **index.graphql** file in the **product-demo** folder
 
 **Narration**
 
-StepZen can be deployed and run as a managed service on StepZen's cloud, on a virtual private cloud, or in a colocation data center. Whatever Focus’ choice of deployment, StepZen helps them to build clean, declarative, consistent APIs and run them at scale with built-in optimizations.
+API Connect Essentials can be deployed and run as a managed service on API Connect Essentials's cloud, on a virtual private cloud, or in a on premise data center. Whatever Focus’ choice of deployment, StepZen helps them to build clean, declarative, consistent APIs and run them at scale with built-in optimizations.
 
 To Deploy and run their endpoint, from command line, the Focus’ developers will run the stepzen start command.
 
@@ -346,7 +346,7 @@ This command does three things:
   <li>Share a URL with StepZen's Schema Explorer that enables the developers to test their API by exploring the queries and types available and querying the API running on StepZen.</li>
 </ul><br/>
 
-The StepZen dashboard provides a playground for testing Focus’ GraphQL API. Next they will explore their GraphQL API.
+The API Connect Essentials dashboard provides a playground for testing Focus’ GraphQL API. Next, they will explore their GraphQL API.
 
 <hr/><br/>
 
@@ -424,16 +424,16 @@ You are welcome to play with the Builder section (1), to create queries with dif
 
 **Narration**
 
-At this stage, the Focus’ team decided to create a GraphQL API with a SQL database backend.
+At this stage, the Focus team decided to create a GraphQL API with a SQL database backend.
 
-There are two ways to create your GraphQL API with StepZen when you have a SQL database backend.
+There are two ways to create your GraphQL API with API Connect Essentials when you have a SQL database backend.
 
 <ul>
-  <li>Use the command-line interface (CLI) command stepzen import [mysql OR postgresql] to specify their database - StepZen introspects it and auto-generates a GraphQL schema for you.</li>
-  <li>Write the schema code in a .graphql GraphQL Schema Definition Language (SDL) file. Use the GraphQL directive @dbquery to connect the database, and with just a few lines of code, they have a working schema.)</li>
+  <li>Use the command-line interface (CLI) command **stepzen import [mysql OR postgresql]** to specify their database. API Connect Essentials introspects it and auto-generates a GraphQL schema for you.</li>
+  <li>Write the schema code in a .graphql GraphQL Schema Definition Language (SDL) file. Use the GraphQL directive @dbquery to connect the database, and with just a few lines of code, they have a working schema.</li>
 </ul><br/>
 
-Focus' team decided to use stepzen import mysql command. Focus's Database team provided all details of a MySQL database. The developers use StepZen CLI command to import the database schema to a GraphQL API.
+Focus' team decided to use hte **stepzen import mysql** command. Focus's Database team provided all the details of the MySQL database. The developers use the API Connect Essentials CLI command to import the database schema to a GraphQL API.
 
 <hr/><br/>
 
@@ -459,7 +459,7 @@ stepzen import mysql --db-host='db.introspection.stepzen.net' --db-database='int
 
 To check the new graphQL schema, they just need to open the mysql folder and open the new index.graphql file. Here they have their database schema from MySQL.
 
-By now, they are invoking two REST APIs and one MySQL database in their GraphQL API.
+By now, they are invoking two REST APIs and one MySQL database query in their GraphQL API.
 
 <hr/><br/>
 
@@ -531,7 +531,7 @@ This code is defining a getAddressById query to select address from mySQL databa
 
 At this stage, they have multiple subgraphs. They would like to explore the scenario of link types across subgraphs with @materializer.
 
-Focus’ team just need to change the address field to use the getAdressById query that they have just created. With that, they can easily link these two subgraphs with @materializer.
+Focus’ team just needs to change the address field to use the getAddressById query that they have just created. With that, they can easily link these two subgraphs with @materializer.
 
 <hr/><br/>
 
@@ -565,20 +565,20 @@ address: [Address]
 
 Focus’ developers are ready to deploy their new API. Now they can test the new API, by creating a customers query including address attributes.
 
-Finally, here is the response, including data from REST API and MySQL database at the same time.
+Finally, here is the response, including data from the REST API and the MySQL database at the same time.
 
-Before the developers move to API Connections part, to see how to manage, secure and socialize this API, they need to take a copy of their API endpoint and the Authorization header. They will use this information later to invoke this API.
+Before the developers move to the API Connections part, to see how to manage, secure and socialize this API, they need to take a copy of their API endpoint and the Authorization header. They will use this information later to invoke this API.
 
-One important point to highlight here is about how StepZen controls access to GraphQL schemas and endpoints.
+One important point to highlight here is about how API Connect Essentials controls access to GraphQL schemas and endpoints.
 
-As Focus’team build out their GraphQL APIs, they will want to add access control mechanisms to prevent unauthorized use of these endpoints. StepZen supports two different solutions for this problem.
+As Focus’ team build out their GraphQL APIs, they will want to add access control mechanisms to prevent unauthorized use of these endpoints. API Connect Essentials supports two different solutions for this problem.
 
 <ul>
   <li>API Keys: they can use API keys to control access to the entire endpoint. API keys are the default access control mechanism.</li>
   <li>And Field Policies: they can use Field policies to control access to specific entry point fields on the endpoint. Field policies provide fine-grained access control to their GraphQL API, using a model similar to attribute-based access control.</li>
 </ul><br/>
 
-StepZen provides two different types of API keys for use with an account: Admin Keys and API Keys. Admin keys provide administrative-level access to their account, and should only be used at development time. API keys provide more limited access to their account, and should be used for production.
+API Connect Essentials provides two different types of API keys for use with an account: Admin Keys and API Keys. Admin keys provide administrative-level access to their account and should only be used at development time. API keys provide more limited access to their account and should be used for production.
 
 In this demo, for simplification purpose, Focus’ developers will use the Admin Keys to access their API. In a real environment, they should use API Keys or Field Policies to improve their API’s security.
 
@@ -638,7 +638,7 @@ They are looking for an integrated API management offering, with capabilities an
 
 IBM API Connect is a full lifecycle API management solution that uses an intuitive experience to help consistently create, manage, secure, socialize and monetize APIs, which promotes digital transformation on premises and across clouds. This means Focus can power digital apps and spur innovation in real-time. IBM API Connect is also available as-a-Service as a highly scalable, fully managed API management platform on Amazon Web Services (AWS).
 
-The Focus’ developer would like to explore how IBM API Connect will support them to manage their GraphQL APIs.  For this demo, they are using a trial account of IBM APIC on AWS.
+The Focus developers would like to explore how IBM API Connect will support them to manage their GraphQL APIs.  For this demo, they are using a trial account of IBM APIC on AWS.
 
 <hr/><br/>
 
@@ -749,7 +749,7 @@ Select **From Existing GraphQL service (GraphQL proxy)** (1).  Then click **Next
 
 Now, Focus’ developers need to add details from their GraphQL API created with API Connect Essentials (StepZen).  Pointing to an existing GraphQL server, API Connect introspects the service and automatically creates a GraphQL proxy service.
 
-As described earlier in this demo, the StepZen API is using an API Key approach to control access to the entire endpoint. Because of that, the Focus’ developers need to include the API Key in the Authorization Header of the HTTP Header.
+As described earlier in this demo, the API Connect Essentials API is using an API Key approach to control access to the entire endpoint. Because of that, the Focus developers need to include the API Key in the Authorization Header of the HTTP Header.
 
 The schema validator reports warning and errors if found. By now, the developers ignore the schema warning. They will fix this warning in later steps.
 
@@ -936,11 +936,11 @@ Enter **Authorization** as the new header allowed (1) and click **Save** button 
 
 At this stage, they are ready to test the Proxy API. To publish the API, first they need to set their API to online.
 
-After successfully publishing the API to API Gateway, additional tabs appear on the screen. It is time to explore the Test tab.
+After successfully publishing the API to the API Gateway, additional tabs appear on the screen. It is time to explore the Test tab.
 
 The Test page also includes a GraphQL Editor. Here Focus’ developers can include their customers query. If necessary, they can use Prettify option to improve the visualization of the GraphQL query.
 
-Next, they need to include the Authorization heard in the Parameters tab.
+Next, they need to include the Authorization details in the Parameters tab.
 
 Every time that they invoke their API, they need to pass their API Key as the Authorization header. By now, they will include it in their test.
 
@@ -1076,9 +1076,9 @@ Another way to test your API is using a GraphQL sandbox. For example, open this 
 
 **Narration**
 
-That is really good! But the Focus’. Team decided to simplify it. They decided to hardcode the Authorization header parameter in their GraphQL API Proxy flow.
+That is really good! But the Focus team decided to simplify it. They decided to hardcode the Authorization header parameter in their GraphQL API Proxy flow.
 
-To do it, they will add a set variable node before the graphql-invoke. This node will add the authorization header in their message with the value that they copied from StepZen Dashboard.
+To do it, they will add a set variable node before the graphql-invoke. This node will add the authorization header in their message with the value that they copied from the API Connect Essentials Dashboard.
 
 <hr/><br/>
 
@@ -1190,13 +1190,13 @@ You can keep using the <a href="https://graphqlzero.almansi.me/api" target="_bla
 
 **Narration**
 
-Having successfully tested their GraphQL Proxy API, Focus’ team is ready to package their APIs using products for publishing to consumers. Products are packages that contain both the APIs and the accompanying plans. The providers use plans to control access to APIs and to manage API usage. Plans can use differing rate limits to provide different levels of service to API consumers. Focus Corporation can have multiple plans for different consumers. For example, they can add approval steps for consumers when they sign up, or they can allocate them plans as a provider.
+Having successfully tested their GraphQL Proxy API, Focus’ team is ready to package their APIs using products for publishing to consumers. Products are packages that contain both the APIs and the accompanying plans. The providers use plans to control access to APIs and to manage API usage. Plans can use differing rate limits to provide different levels of service to API consumers. Focus Corporation can have multiple plans for different consumers. For example, they can add approval steps for consumers when they sign up, or they can allocate the plans as a provider.
 
-Based on that, the Focus’ team decided to create a product from scratch. After including the basic information about the product, they an define the default plan.
+Based on that, the Focus team decided to create a product from scratch. After including the basic information about the product, they can define the default plan.
 
 The Default Plan contains traditional rate limiting options, but in the next steps, they will be able to list and define the GraphQL rate limits.
 
-Next, they publish the product to Sandbox catalog and accept the default for Visibility and Subscribability.
+Next, they publish the product to the Sandbox catalog and accept the default for Visibility and Subscribability.
 
 Great! Focus Corporation has a new API product.
 
@@ -1265,7 +1265,7 @@ Click **Done**.
 
 **Narration**
 
-At this moment, Focus’ team had successfully created a new plan. They want to review the plan to check the GraphQL rate limits.
+At this moment, Focus’ team has successfully created a new plan. They want to review the plan to check the GraphQL rate limits.
 
 In the Plan page, they are able to adjust GraphQL cost parameters, including costs per field or type. They can set a limit or make it unlimited.
 
@@ -1354,11 +1354,11 @@ Here you have your **Portal URL**. Copy it, and open it in a new browser tab.
 
 Focus’ Developer Portal is their public-facing website and therefore it is highly flexible and customizable, in this demo they are using the default design.
 
-Focus team will share this Developer Portal with their Developers ecosystem, other developers that want to consume Focus’ APIs to create new applications. Focus’ team call them as API Consumers.
+Focus team will share this Developer Portal with their Developers ecosystem, other developers that want to consume Focus’ APIs to create new applications. Focus’ team calls them API Consumers.
 
-These consumers need need to create an account to access the developer portal. It is a self-service process.
+These consumers need to create an account to access the developer portal. It is a self-service process.
 
-After validate their account, the consumers are ready to log in!
+After validating their account, the consumers are ready to log in!
 
 
 <hr/><br/>
@@ -1403,11 +1403,11 @@ You will receive an email to activate your new developer account.  Click on the 
 
 **Narration**
 
-Note that all of these next steps are simulating what Focus’ API Consumers, their end-user customer, will do to find, buy, and use the Focus’ API.
+Note that all of these next steps are simulating what Focus’ API Consumers, their end-user customer, will do to find, buy, and use Focus’ API.
 
-Developer Portal displays all the products that are currently published. In Focus’ case, no Apps created yet. As a consumer/developer, they are going to create a new application in the portal. This will give them an API key, allowing them to call Focus’ APIs.
+Developer Portal displays all the products that are currently published. In Focus’ case, no Apps are created yet. As a consumer/developer, they are going to create a new application in the portal. This will give them an API key, allowing them to call Focus’ APIs.
 
-They have not subscribed to any APIs yet, they need to do it now. Next, they need to select the Customers Product 1.0. After that, they can see the plans available. In this case, only the Default plan. Now, they just need to select the app that Focus’ team created earlier and confirm their subscription. And done - they are subscribed to Focus API and they are ready to use it!
+They have not subscribed to any APIs yet; they need to do it now. Next, they need to select the Customers Product 1.0. After that, they can see the plans available. In this case, only the Default plan. Now, they just need to select the app that Focus’ team created earlier and confirm their subscription. And done - they are subscribed to Focus API and they are ready to use it!
 
 <hr/><br/>
 
@@ -1490,7 +1490,7 @@ Click **Done**.
 
 **Narration**
 
-The App developesr are now back at the product screen. They are able to explore the Focus’ API here. From the Overview page, they can download the OpenAPI Document and get the API endpoint. Note the portal has everything the consumers need to call the API, it’s even generated clients in various languages for them to copy/paste into their calling application. They can try the API on the Try it area. They can use the customers query here. It is time to test it. Great, they got a response, The Focus’ GraphQL Proxy API is running and available for their ecosystem. It is amazing how quickly the results are returned in the results window, coming from different sources. If this was a REST API multiple end points would be needed to achieve the same result.
+The App developers are now back at the product screen. They are able to explore the Focus’ API here. From the Overview page, they can download the OpenAPI Document and get the API endpoint. Note the portal has everything the consumers need to call the API, it’s even generated clients in various languages for them to copy/paste into their calling application. They can try the API on the Try it area. They can use the customers query here. It is time to test it. Great, they got a response. The Focus’ GraphQL Proxy API is running and available for their ecosystem. It is amazing how quickly the results are returned in the results window, coming from different sources. If this was a REST API multiple end points would be needed and aggregated to achieve the same result.
 
 <hr/><br/>
 
@@ -1580,7 +1580,7 @@ You can keep using the <a href="https://graphqlzero.almansi.me/api" target="_bla
 
 **Narration**
 
-Another great capability from API Connect, the consumers can see the API statistics in the portal. They just need to select ther app, and here they can see all the API calls, including any possible errors. If they make more calls, they will see larger statistic results.
+Another great capability of API Connect, the consumers can see the API statistics in the portal. They just need to select their app, and here they can see all the API calls, including any possible errors. If they make more calls, they will see larger statistic results.
 
 In this page, the developers can view information about the APIs to help them to develop new applications.
 
@@ -1618,10 +1618,10 @@ Let’s summarize what Focus’ developers have done today. In this demo they: <
 <li>Deployed the new GraphQL API on StepZen Cloud runtime;</li>
 <li>Created a GraphQL Proxy API in API Connect to call the GraphQL API on StepZen;</li>
 <li>Managed their API and set up the security policies;</li>
-<li>Create a Product and apply GraphQL rate limits;</li>
-<li>Socialize their GraphQL API on Developer Portal and demonstrated how an API consumer can use the API portal to perform self-service consumption of the API;</li>
+<li>Created a Product and apply GraphQL rate limits;</li>
+<li>Socialized their GraphQL API on the Developer Portal and demonstrated how an API consumer can use the API portal to perform self-service consumption of the API;</li>
 </ul><br/>
-From a business perspective, Focus Corporate learned how to use APIs to automate a series of steps to obtain customer and order information from different sources (legacy services and databases). They verified how to use API as the foundation of their digital transformation journey.
+From a business perspective, Focus Corporate learned how to use APIs to automate a series of steps to obtain customer and order information from different sources (legacy services and databases). They verified how to use an API as the foundation of their digital transformation journey.
 <br/><br/>
 For Focus’ Development team, they learned an easier way to build GraphQL APIs and consume data stored everywhere.  At the same time, they saw a complete API Management solution that enables them to create, secure, socialize and manage APIs.
 <br/><br/>
