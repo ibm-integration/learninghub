@@ -2,12 +2,8 @@
   pages:
     - title: APIC GraphQL Demo
       path: /demos/apic-tech-graphql/demo-preparation
-    - title: Aspera Sales Demo
-      path: /demos/aoc-sales/demo-preparation
     - title: Aspera TechSales Demo
       path: /demos/aoc-techsales/demo-preparation
-    - title: CP4I Sales API Demo
-      path: /demos/cp4i-sales/demo-preparation
     - title: CP4I TechSales API Demo
       path: /demos/cp4i-api-tech/demo-preparation
     - title: CP4I Low-code Demo
