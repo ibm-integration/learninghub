@@ -62,12 +62,12 @@ Follow the steps below to provision a Red Hat OpenShift Container Platform clust
 
 | Field  | Value |
 | ------------- | ------------- |
-| OpenShift Version | 4.12 |
-| Storage  | ODF - 500 GiB |
+| OpenShift Version | 4.14 |
+| Storage  | ODF - 2 TB |
 | Worker Node Count  | 5 |
 | Worker Node Flavor  | 16 vCPU x 64 GB - 100 GB ephemeral storage |
 
-![](images/ocp-install-1-2.png)
+![](images/ocp-install-new-1-2.png)
 
 2.2 **Agree** with the TechZone Terms and Conditions (A) and click **Submit** (B).
 ![](images/ocp-install-2.png)
@@ -113,12 +113,17 @@ To use this guide you will need to clone the <a href="https://github.ibm.com/joe
 4.1 Open a terminal window and **run** the command below.
 
 ```
-git clone https://github.ibm.com/joel-gomez/cp4i-demo.git
+gh repo clone gomezrjo/cp4i-demo
 ```
 
 4.2 Open the **cp4i-demo** folder.
 ```
 cd cp4i-demo
+```
+
+4.3 Set the script permissions.
+```
+chmod 755 scripts/*.sh
 ```
 
 ***
@@ -191,7 +196,7 @@ cert-manager-operator-controller-manager-7f779b98b4-2f64r   2/2     Running   0 
 
 6.3 Now, you need to install Postgress SQL Catalog Source.
 ```
-oc apply -f catalog-sources/${CP4I_VER}/01-postgress-sql-catalog-source-4.18.0.yaml
+oc apply -f catalog-sources/${CP4I_VER}/01-postgress-sql-catalog-source-4.22.0.yaml
 ```
 
 6.4 Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
@@ -206,7 +211,7 @@ cloud-native-postgresql-catalog-jsmbk                             1/1     Runnin
 
 6.5 Ok, now you need to install Common Services Catalog source.
 ```
-oc apply -f catalog-sources/${CP4I_VER}/02-common-services-catalog-source-4.4.0.yaml
+oc apply -f catalog-sources/${CP4I_VER}/02-common-services-catalog-source-4.5.0.yaml
 ```
 
 6.6 Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
@@ -247,7 +252,7 @@ Deploying the Platform UI allows you to deploy and manage instances from a centr
 
 7.1 First, let's install Platform UI Catalog source.
 ```
-oc apply -f catalog-sources/${CP4I_VER}/03-platform-navigator-catalog-source-7.2.1.yaml
+oc apply -f catalog-sources/${CP4I_VER}/03-platform-navigator-catalog-source-7.2.3.yaml
 ```
 
 7.2 Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
@@ -305,7 +310,7 @@ scripts/03b-cp4i-access-info.sh
 
 8.1 First, let's intall the MQ Catalog Source.
 ```
-oc apply -f catalog-sources/${CP4I_VER}/09-mq-catalog-source-3.0.1.yaml
+oc apply -f catalog-sources/${CP4I_VER}/09-mq-catalog-source-3.1.1.yaml
 ```
 
 8.2 Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
