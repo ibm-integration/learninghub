@@ -1,0 +1,1901 @@
+---
+title: ACE Toolkit Demo
+description: ACE Toolkit Demo for TechSales
+tabs: [ 'Demo preparation', 'Demo script']
+---
+
+
+<FeatureCard
+  title="Create integrations with App Connect for Developers Toolkit - Demo Script"
+  color="dark"
+  >
+
+![banner](./images/banner-ace-toolkit.jpg)
+
+</FeatureCard>
+
+
+<span id="place1"></span>
+
+### **Introduction**
+<br/>
+Today's organizations use a wide variety of diverse Software as a Service (SaaS) applications, often without centralized coordination between them. However, integrating applications  is essential to help organizations increase efficiency and optimize business workflows. For instance, in a typical sales process without application integration, sales reps may use Salesforce for customer relationships and Excel for quotes. After finalizing a sale, they have to manually transfer data such as customer details, product information, and pricing data from Salesforce to Excel. This can be time-consuming and prone to errors, leading to delays in processing sales orders and potential inaccuracies in pricing.
+<br/><br/>
+By connecting your apps using IBM App Connect, the process becomes more streamlined, accurate and efficient because reps can automate data input to create quotes directly from their CPQ application with centralized tracking.
+<br/><br/>
+IBM App Connect can help you securely connect all your endpoints, from databases to packaged apps. It provides  an out-of-the-box set of capabilities that will accelerate  SaaS integration and automation across your business. Additionally, the development kit allows citizen integrators to understand and build powerful integrations with little to no training.
+<br/><br/>
+Focus Corporation, a hypothetical retail company engaged with IBM, is highly motivated to derive more revenue from first-time customers to their online storefronts. Focus has acquired another business and needs to integrate the different IT applications.
+<br/><br/>
+Focus Integration expert would like to build complex, multi-style integrations with support for multiple programming languages and fully integrated with source and pipeline management tools like GIT, Maven, Jenkins, etc. 
+<br/><br/>
+Focus’ team requested a demo to learn how IBM App Connect for Developers Toolkit can help them to implement complex and advanced integration scenarios.
+<br/><br/>
+
+(Demo Slides <a href="https://github.com/ibm-integration/learninghub/blob/main/src/pages/demos/apic-tech-graphql/files/APICGraphQLSlides.pptx" target="_blank" rel="noreferrer">here</a>)
+<br/>
+
+
+### **1 - Create your Integration flow**
+
+<details>
+<summary>1.1 - Starting App Connect Toolkit</summary><br/>
+
+**Narration**
+
+IBM App Connect is an industry-leading integration solution that connects any of your applications and data, no matter where they reside. With hundreds of prebuilt connectors and customizable templates, App Connect helps users of all skill levels rapidly connect Software as a Service (SaaS) applications and build integration flows.
+
+Focus team is looking for an advanced, fully customizable code platform. They would like to harness a lightweight, fast-performing engine that easily scales to support their growing needs. They need to enable support for multiple types of data integration, including event, application programming interfaces (APIs), services, sync/async, transactional batch processing and more. Focus Integration experts needs to map data fields and transform data formats exchanged between applications, such as XML, JSON, CSV, EDIFACT, SWIFT and other industry protocols.
+
+Because of that, they decided to explore IBM App Connect Enterprise for Developers (Toolkit). The Toolkit is an integrated development environment and graphical user interface based on the Eclipse platform. Focus Integration experts can use the IBM App Connect Enterprise Toolkit to build powerful integration applications, services, and APIs. And they can then deploy their integration solutions to the software run time, IBM App Connect Enterprise as a Service, containers, or a combination of those environments.
+
+<hr/><br/>
+
+**Action** &nbsp; 1.1.1
+
+Open your **App Connect Enterprise Toolkit** by clicking the icon on the Launchpad (MAC OS) or Desktop (Windows) or executing **ace toolkit** in terminal window.
+
+  ![](images/start-toolkit-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 1.1.2
+
+In the Workspace Launcher window, accept the default one. Click **Launch**.
+
+  ![](images/start-toolkit-2.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 1.1.3
+
+**Close** the *welcome page*.
+
+  ![](images/start-toolkit-3.png)
+
+***
+</details>
+
+
+<details>
+<summary>1.2 - Creating a REST API</summary><br/>
+
+**Narration**
+
+From the Integration Development perspective, Focus Integration experts can create all manner of integration flows, as well as manage connectivity between services and endpoints.
+
+Focus team would like to explore how easy is to create an API flow that implement different type of message transformation.
+
+App Connect provides a specific type of project to support REST API implementations, which can either be based upon a Swagger (v2) specification document or an OpenAPI (v3) specification document. REST APIs can be authored and deployed from the IBM App Connect Enterprise Toolkit.
+
+Let's see how easy is to create an REST API using the Toolkit. Focus team will create a REST API from an existing OpenAPI 3 document.
+
+<hr/><br/>
+
+**Action** &nbsp; 1.2.1
+
+From the Application Development view click the **New...** hyperlink at the top right and from the menu which appears, click on **REST API**.
+
+  ![](images/create-rest-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 1.2.2
+
+Type the Name **ShoppingListAPI** (1), and switch the radio button to the option labelled “**Import resources and operations defined in a REST API document**" (2) then click **Next** (3).
+
+  ![](images/create-rest-2.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 1.2.3
+
+You will be asked to import an OpenAPI 3 document either from the file system or your workspace. Using the radio button to “**Select from your workspace**” (1), select **ShoppingListAPI.json** from the json folder in the **HelperFiles** project (2) (note: if you don't see the HelperFiles project, maybe you forgot to import this project in the Demo Preparation part). Click **Next** (3).
+
+  ![](images/create-rest-3.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 1.2.4
+
+Click **Finish**.
+
+  ![](images/create-rest-4.png)
+
+
+***
+</details>
+
+
+<details>
+<summary>1.3 - Exploring the REST API details</summary><br/>
+
+**Narration**
+
+Focus team created the REST API and they can see a summary page displaying details about the API such as its title and base URL. The next section down entitled Resources and Operations lists the operations in bright colors.
+
+Focus developers can easily edit the API Document using the OpenAPI editor interface.
+
+<hr/><br/>
+
+**Action** &nbsp; 1.3.1
+
+Show the **API Details** (1) and **Resources and Operations** (2) sections.
+
+  ![](images/api-doc-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 1.3.2
+
+Click on **Edit API Document in OpenAPI editor**.
+
+  ![](images/api-doc-2.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 1.3.3
+
+If necessary accept the incoming network connections.
+
+  ![](images/api-doc-3.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 1.3.4
+
+Show the *OpenAPI Editor*.
+
+  ![](images/api-doc-4.png)
+
+
+***
+</details>
+
+<br/><br/>
+
+### **2 - Add a new operation**
+
+<details>
+<summary>2.1 - Adding a new path</summary><br/>
+
+**Narration**
+
+The Integration experts decided to create a new API operation to list the products of a specific department.
+
+<hr/><br/>
+
+
+**Action** &nbsp; 2.1.1
+
+On the **Path** section (1), on left menu, click on the **Plus** button (2).
+
+  ![](images/new-path-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 2.1.2
+
+Enter **/shoppinglist/{department}** as the new *Path* (1). You are welcome to enter a *summary* (2) and *description* (3). Then click **Add** (4).
+
+  ![](images/new-path-2.png)
+
+
+***
+</details>
+
+<details>
+<summary>2.2 - Adding a new operation</summary><br/>
+
+**Narration**
+
+They go ahead and create a new path with the GET operation in the ShoppingListAPI.
+
+<hr/><br/>
+
+
+**Action** &nbsp; 2.2.1
+
+On the **Operations** section (1) of the new path, click on the **Plus** button (2).
+
+  ![](images/new-oper-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 2.2.2
+
+Select the **get** verb (1) and click **Add**.
+
+  ![](images/new-oper-2.png)
+
+
+***
+</details>
+
+<details>
+<summary>2.3 - Defining parameter</summary><br/>
+
+**Narration**
+
+This new path will receive the product department as parameter in the path request.
+
+<hr/><br/>
+
+
+**Action** &nbsp; 2.3.1
+
+Scroll down to see the *Parameter* section (1) and click **Add** button (2).
+
+  ![](images/def-param-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 2.3.2
+
+Enter **department** as parameter name (1) and select **path** in *Located In* field (2).
+
+  ![](images/def-param-2.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 2.3.3
+
+Scroll down to see the checkbox list and select **Required** field (1). Then click **Add** (2).
+
+  ![](images/def-param-3.png)
+
+***
+</details>
+
+
+<details>
+<summary>2.4 - Defining schema</summary><br/>
+
+**Narration**
+
+Focus developers define the schema of the parameter as a simple string.
+
+Great, Focus’ developers successfully created a new operation in the ShoppingListAPI!
+
+<hr/><br/>
+
+
+**Action** &nbsp; 2.4.1
+
+Scroll down to see the *Schema* section and type **department** as schema title (1), and select **string** as *schema type* (2).
+
+  ![](images/def-schema-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 2.4.2
+
+Scroll up and click **Save**.
+
+  ![](images/def-schema-2.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 2.4.3
+
+**Close** the OpenAPI editor.
+
+  ![](images/def-schema-3.png)
+
+***
+</details>
+
+
+<br/><br/>
+
+### **3 - Create Subflow**
+<details>
+<summary>3.1 - Creating GetDepartment Subflow</summary><br/>
+
+**Narration**
+
+With IBM App Connect is really simple to implement the logic of your API operation. Focus team can easily create a subflow to do it!
+
+<hr/><br/>
+
+
+**Action** &nbsp; 3.1.1
+
+Back to the ShoppingListAPI description, open the **/shoppinglist/{department|** section.
+
+  ![](images/create-subflow-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 3.1.2
+
+Click **Create subflow**.
+
+  ![](images/create-subflow-2.png)
+
+***
+</details>
+
+
+<details>
+<summary>3.2 - Connecting nodes</summary><br/>
+
+**Narration**
+
+Here Focus team has their subflow. A message flow is a sequence of processing steps that run in the integration node when an input message is received. You define a message flow by including a number of message flow nodes, each of which represents a set of actions that define a processing step.
+
+In the flow editor, they can edit and change their flow. Message flows are created in the Toolkit using a drag and drop editor.
+
+The flow is quite simple, consisting of only an Input and Output node. However, the Integration experts would like to explore how to do some message transformations. Let's see how simple is to do it!
+
+<hr/><br/>
+
+**Action** &nbsp; 3.2.1
+
+In the subflow, wire the **Input** node to the **Output** node.
+
+  ![](images/connect-nodes-1.png)
+
+
+***
+</details>
+
+<br/><br/>
+
+
+### **4 - Using the Mapping Assist feature**
+<details>
+<summary>4.1 - Add Mapping Transformation</summary><br/>
+
+**Narration**
+
+First, they decided to explore the Mapping transformation.
+
+<hr/><br/>
+
+
+**Action** &nbsp; 4.1.1
+
+Open the **Transformation** section.
+
+  ![](images/add-mapping-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 4.1.2
+
+Drag and drop a **Mapping** node on to the wire and its terminals will be connected up for you (the out terminal of the Input node will be wired to the in terminal of the Mapping node, and the out terminal of the Mapping node will be wired to the in terminal of the Output node).
+
+  ![](images/add-mapping-2.png)
+
+***
+</details>
+
+
+<details>
+<summary>4.2 - Editing Mapping</summary><br/>
+
+**Narration**
+
+With a mapping, they can use the Graphical Data Mapping editor to take input (source) objects and transform them before they save the resulting output (target) objects.
+
+<hr/><br/>
+
+
+**Action** &nbsp; 4.2.1
+
+Double-click the **Mapping** node.
+
+  ![](images/edit-mapping-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 4.2.2
+
+Leave the default settings and click **Finish**.
+
+  ![](images/edit-mapping-2.png)
+
+
+***
+</details>
+
+<details>
+<summary>4.3 - Adding new output</summary><br/>
+
+**Narration**
+
+Initially, they will change the output object to use the Item JSON type.
+
+<hr/><br/>
+
+
+**Action** &nbsp; 4.3.1
+
+Click on “**Add an output object**” button.
+
+  ![](images/new-output-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 4.3.2
+
+On the “Select a map output” option, open (double click) the **ShoppingListAPI** (1), open the **JSON Types** (2) and select **Item - Rest API model** (3), then click **OK** (4).
+
+  ![](images/new-output-2.png)
+
+
+<hr/><br/>
+
+
+**Action** &nbsp; 4.3.3
+
+Select the **original Message Assembly** (1), right click and select **delete** (2) (or press delete on your keyboard).
+
+  ![](images/new-output-3.png)
+
+
+***
+</details>
+
+<details>
+<summary>4.4 - Move Department value</summary><br/>
+
+**Narration**
+
+The input objects are shown on the left side of the canvas, and the output objects are shown on the right side. You can create connections between the input and output elements by clicking one element, and dragging the mouse to the element that you want to connect to.
+
+Focus team  easily link the Department input parameter to Department parameter of Item JSON Type.
+
+<hr/><br/>
+
+
+**Action** &nbsp; 4.4.1
+
+Expand the **JSON** message assembly on the right (1), then expand the **Data** section underneath (2). Notice that department is listed as a *parameter* (3).
+
+  ![](images/move-dept-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 4.4.2
+
+On the left Message Assembly, open the **LocalEnvironment > REST > Input > Parameters**.
+
+  ![](images/move-dept-2.png)
+
+
+<hr/><br/>
+
+
+**Action** &nbsp; 4.4.3
+
+Right-click the **department** entry (1) and select **Quick Link to Output** (2).
+
+  ![](images/move-dept-3.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 4.4.4
+
+In the dialog, scroll down and expand **Data : Item [1..1]** (1) and select **department:<string>[1..1]** (2).
+
+  ![](images/move-dept-4.png)
+
+
+***
+</details>
+
+<details>
+<summary>4.5 - Setting Cardinality</summary><br/>
+
+**Narration**
+
+They use the Quick Fix capability to solve the cardinality issue of the new mapping.
+
+<hr/><br/>
+
+
+**Action** &nbsp; 4.5.1
+
+Hover the mouse over the **Quick Fix** (light bulb) icon of the new Move box (!) and click the "**Set cardinality to first index**” link (2).
+
+  ![](images/quick-fix-1.png)
+
+
+***
+</details>
+
+<details>
+<summary>4.6 - Assigning values</summary><br/>
+
+**Narration**
+
+Now, for demo purpose, they will use the assign function to define a hard coded value to name and description fields.  In this demo, they decided to use the description field just to inform the type of transformation node that is processing the transformation, in this case the Mapping node.
+
+Great, Focus’ developers successfully created a mapping transformation in the ShoppingListAPI!
+
+<hr/><br/>
+
+
+**Action** &nbsp; 4.6.1
+
+On the new Message Assembly JSON, drag and drop the **name** field to the left (1).  IBM App Connect Enterprise places an **Assign** action for this field (2). 
+
+  ![](images/assign-values-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 4.6.2
+
+Under the **Properties** for the Assign action, enter “**Caramel Candy Bars**” for the name value.
+
+  ![](images/assign-values-2.png)
+
+
+<hr/><br/>
+
+
+**Action** &nbsp; 4.6.3
+
+Repeat the same steps for the description field: drag and drop the **description** field to the left (1).  IBM App Connect Enterprise places an **Assign** action for this field (2). 
+
+  ![](images/assign-values-3.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 4.6.4
+
+Under the **Properties** for the Assign action, enter “**Request has been processed by Mapping Node**” for the name value.
+
+*Note: In this demo, we are using the description field just to inform the node that is processing the transformation.*
+
+  ![](images/assign-values-4.png)
+
+
+<hr/><br/>
+
+
+**Action** &nbsp; 4.6.5
+
+Click **File > Save all**.
+
+  ![](images/assign-values-5.png)
+
+***
+</details>
+
+
+<br/><br/>
+
+### **5 - Create local test server**
+<details>
+<summary>5.1 - Creating a local integration server</summary><br/>
+
+**Narration**
+
+At this stage, they are ready to test the API. To publish the API, first they need to create a local integration server.
+
+<hr/><br/>
+
+
+**Action** &nbsp; 5.1.1
+
+Right-click **Integration Servers** in the **Integration Explorer** tab (1) and select **Create a local Integration Server** (2).
+
+  ![](images/local-server-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 5.1.2
+
+Keep the default values and click **Finish**.
+
+  ![](images/local-server-2.png)
+
+<hr/><br/>
+
+
+
+**Action** &nbsp; 5.1.3
+
+On the *Success* Dialog click **OK**.
+
+  ![](images/local-server-3.png)
+
+<br/>
+
+***
+</details>
+
+<details>
+<summary>5.2 - Adding CORS authorization</summary><br/>
+
+**Narration**
+
+Next, they need to configure the server so that the HTTP listener is enabled for CORS. 
+
+<hr/><br/>
+
+
+**Action** &nbsp; 5.2.1
+
+Expand the **TEST_SERVER** directory under the **Independent Resources** folder and double-click the **server.conf.yaml** file to open it in the IBM App Connect Enterprise text editor to the right.
+
+  ![](images/cors-auth-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 5.2.2
+
+Scroll down to the **HTTPConnector** section and paste the code below:
+```
+CORSEnabled: true
+CORSAllowOrigins: '*'
+CORSAllowMethods: 'GET,HEAD,POST,PUT,PATCH,DELETE,OPTIONS'
+CORSAllowHeaders: 'Accept,Accept-Language,Content-Language,Content-Type'
+```
+
+  ![](images/cors-auth-2.png)
+
+<hr/><br/>
+
+
+
+**Action** &nbsp; 5.2.3
+
+**Save** the changes to the **server.conf.yaml** file or click **File > Save all**.
+
+  ![](images/cors-auth-3.png)
+
+<hr/><br/>
+
+
+
+**Action** &nbsp; 5.2.4
+
+Right-click the **TEST_SERVER** (1) and select **Restart** (2).
+
+  ![](images/cors-auth-4.png)
+
+<hr/><br/>
+
+
+
+**Action** &nbsp; 5.2.5
+
+Click **OK** on the Success dialog again.
+
+  ![](images/cors-auth-5.png)
+
+<br/>
+
+***
+</details>
+
+<br/><br/>
+
+### **6 - Test the API**
+<details>
+<summary>6.1 - Deploying the API</summary><br/>
+
+**Narration**
+
+Now, they need to deploy the ShoppingListAPI to the new Local Integration server. They can do it, by dragging and dropping the API to the new server.
+
+<hr/><br/>
+
+
+**Action** &nbsp; 6.1.1
+
+Deploy the REST API which we created earlier named **ShoppingListAPI** (1), by dragging and dropping it from the Application Development view on to the **TEST_SERVER** Integration Server (2).
+
+  ![](images/deploy-api-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 6.1.2
+
+On the *Progress Information* dialog, click **Close**.
+
+  ![](images/deploy-api-2.png)
+
+
+***
+</details>
+
+
+<details>
+<summary>6.2 - Starting Web User Interface</summary><br/>
+
+**Narration**
+
+At this moment, the Focus Integration experts are ready to test the API. They start the Web User Interface.
+
+<hr/><br/>
+
+**Action** &nbsp; 6.2.1
+
+Right-click **TEST_SERVER** (1) and select **Start Web User Interface** (2). 
+
+  ![](images/start-wui-1.png)
+
+***
+</details>
+
+
+<details>
+<summary>6.3 - Testing the ShoppingList API</summary><br/>
+
+**Narration**
+
+And select the ShoppingListAPI and the new Get Department operation. Not they can use the Try it capability, and enter any product department, for example “Candies”.
+
+Great, the subflow was invoked and our mapping transformation created a response with our hard coded values. Focus team verified how is really simple to implement a mapping transformation using IBM App Connect.
+
+<hr/><br/>
+
+**Action** &nbsp; 6.3.1
+
+Click the **ShoppingListAPI** tile in the web user interface. 
+
+  ![](images/test-api-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 6.3.2
+
+Select the **GET /shoppinglist/{department}** operation on the left. 
+
+  ![](images/test-api-2.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 6.3.3
+
+Click the **Try it** tab.
+
+  ![](images/test-api-3.png)
+
+
+<hr/><br/>
+
+
+**Action** &nbsp; 6.3.4
+
+Enter any **department** name (by now, we are not checking the department) such as **Candies** (1). Click **Send** (2).
+
+  ![](images/test-api-4.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 6.3.5
+
+Show the **Response body**.
+
+  ![](images/test-api-5.png)
+
+***
+</details>
+
+<br/><br/>
+
+
+### **7 - Add Compute transformation**
+<details>
+<summary>7.1 - Adding Compute node</summary><br/>
+
+**Narration**
+
+Focus developers heard about ESQL language. Extended Structured Query Language (ESQL) is a programming language based on Structured Query Language (SQL) that is typically used to work with databases. ESQL is extended to access and manipulate data in messages and databases.
+
+They would like to see how to use ESQL to transform and enrich messages using the Compute node.  Because of it, they decided to explore the Compute node transformation.
+
+<hr/><br/>
+
+
+**Action** &nbsp; 7.1.1
+
+Back to the getDepartment subflow, open again the Transformation menu and drag and drop a **Compute** node.
+
+  ![](images/add-compute-1.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 7.1.2
+
+Readjust the connections of Input and output node to connect to the Compute node (the out terminal of the Input node will be wired to the in terminal of the Compute node, and the out terminal of the Compute node will be wired to the in terminal of the Output node).
+
+  ![](images/add-compute-2.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 7.1.3
+
+Click on the **Compute** node (1). On the Compute node's properties change the *Compute mode* to be “**LocalEnvironment and Message**” (2).
+
+  ![](images/add-compute-3.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 7.1.4
+
+**Save** the subflow (you can safely ignore the red crosses on the Compute node - we will fix these up in the next step!).
+
+  ![](images/add-compute-4.png)
+
+***
+</details>
+
+<details>
+<summary>7.2 - Create Broker Schema</summary><br/>
+
+**Narration**
+
+To simplify the demo, they decided to reuse a pre-created ESQL file.
+
+First, they need to create a Broker Schema to include the ESQL file. A broker schema is a symbol space that defines the scope of uniqueness of the names of resources defined within it.
+
+<hr/><br/>
+
+
+**Action** &nbsp; 7.2.1
+
+Right click the **ShoppingListAPI** (1) and choose **New > Broker Schema** (2).
+
+  ![](images/broker-schema-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 7.2.2
+
+Type **utils** as the Schema name (1) and click **Finish** (2).
+
+  ![](images/broker-schema-2.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 7.2.3
+
+On the *New Broker Schema* dialog, click **OK**.
+
+  ![](images/broker-schema-3.png)
+
+
+***
+</details>
+
+<details>
+<summary>7.3 - Copy ESQL file</summary><br/>
+
+**Narration**
+
+Next, Focus developers will copy the pre-created ESQL file to the broker schema folder.
+
+<hr/><br/>
+
+**Action** &nbsp; 7.3.1
+
+Switch to the Resource perspective using the menu **Window > Perspective > Open Perspective > Other…**
+
+  ![](images/copy-esql-1.png)
+
+
+<hr/><br/>
+
+**Action** &nbsp; 7.3.2
+
+Choose **Resource** (1) and click **Open** (2).
+
+  ![](images/copy-esql-2.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 7.3.3
+
+Using the Project Explorer view in the top left corner, copy the file **Compute.esql** from the folder named **utils** in the project named *HelperFiles* (1) into the **utils** folder in the project **ShoppingListAPI** (2).
+
+  ![](images/copy-esql-3.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 7.3.4
+
+Switch back to the *Integration Development* perspective using the **Window > Perspective > Open Perspective > Integration Development** menu.
+
+  ![](images/copy-esql-4.png)
+
+
+***
+</details>
+
+<details>
+<summary>7.4 - Update the ESQL module</summary><br/>
+
+**Narration**
+
+Now, they just need to update the Compute node to use the new ESQL file. They will use a specific module of the ESQL file: the getDepartment.
+
+<hr/><br/>
+
+**Action** &nbsp; 7.4.1
+
+Return to the *getDepartment* subflow and click on **Compute** node again.
+
+  ![](images/update-esql-1.png)
+
+
+<hr/><br/>
+
+**Action** &nbsp; 7.4.2
+
+On the Compute node's properties, you need to update the *ESQL module* property. Click **Browse** button.
+
+  ![](images/update-esql-2.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 7.4.3
+
+Select **{utils}:getDepartment_Compute** (1) and click **OK** (2).
+
+  ![](images/update-esql-3.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 7.4.4
+
+**Save** the subflow.
+
+  ![](images/update-esql-4.png)
+
+
+***
+</details>
+
+<details>
+<summary>7.5 - Review the ESQL</summary><br/>
+
+**Narration**
+
+Let's review the ESQL file. Focus developers can create and modify their ESQL code in the ESQL editor.
+
+The ESQL code for each of your nodes is contained within a module in an ESQL file. Here they have a specific module for GetDepartment operation.  The module is really simple, just select the Item with Department value equals the Department parameter.
+
+All three items are hardcoded created in the Initialise procedure. In a real scenario, this data should be retrieved from Products database or Product system.
+
+<hr/><br/>
+
+**Action** &nbsp; 7.5.1
+
+Double click the **Compute** node, to see the ESQL file.
+
+  ![](images/review-esql-1.png)
+
+
+<hr/><br/>
+
+**Action** &nbsp; 7.5.2
+
+Show the **getDepartment_Compute Module**.
+
+  ![](images/review-esql-2.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 7.5.3
+
+Scroll down and show the **Initialise Procedure**.
+
+  ![](images/review-esql-3.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 7.5.4
+
+**Close** the ESQL file.
+
+  ![](images/review-esql-4.png)
+
+
+***
+</details>
+
+<details>
+<summary>7.6 - Test compute node</summary><br/>
+
+**Narration**
+
+At this moment, the Focus Integration experts are ready to test the new API. They just need to redeploy the API and use the Web User Interface again to test it.
+
+Now, they will test using the three available departments: Candies, Snacks and Bakery.
+
+Great, the subflow was invoked and our compute transformation created a response with our hard coded values. Focus team verified how is really simple to use ESQL query language to implement message transformations.
+
+<hr/><br/>
+
+**Action** &nbsp; 7.6.1
+
+Re-deploy the REST API, by dragging and dropping the **ShoppingListAPI** (1) again from the Application Development view on to the **TEST_SERVER** Integration Server (2).
+
+  ![](images/test-compute-1.png)
+
+
+<hr/><br/>
+
+**Action** &nbsp; 7.6.2
+
+On the Progress Information dialog, click **Close**.
+
+  ![](images/test-compute-2.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 7.6.3
+
+On your browser, refresh the **Web User Interface** page.
+
+  ![](images/test-compute-3.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 7.6.4
+
+Open again the **ShoppingListAPI** (1), **GET /shoppinglist/{department}** (2), **Try it** tab (3).
+
+  ![](images/test-compute-4.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 7.6.5
+
+Enter a **department** name (it could be Candies, Snacks or Bakery)  (1). Click **Send** (2).
+
+*Note: You are welcome to try any of the three departments, or try a different one to see the 404 Not Found message*.
+
+  ![](images/test-compute-5.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 7.6.6
+
+Show the **Response** body.
+
+  ![](images/test-compute-6.png)
+
+
+***
+</details>
+
+<br/><br/>
+
+### **8 - Add Java transformation**
+<details>
+<summary>8.1 - Adding Java Compute node</summary><br/>
+
+**Narration**
+
+Great, now the Focus Developers would like to see how to use Java code to tailor the behavior of their integration messages.
+
+They want to learn how touse the JavaCompute node to examine the content of an input message, transform a message, and build new messages.
+
+Because of it, they decided to explore the JavaCompute node.
+
+<hr/><br/>
+
+**Action** &nbsp; 8.1.1
+
+Back to the getDepartment subflow, open again the Transformation menu and drag and drop a **JavaCompute** node.
+
+  ![](images/add-javacompute-1.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 8.1.2
+
+Readjust the connections of Input and output node to connect to the Java Compute node (the out terminal of the Input node will be wired to the in terminal of the Java Compute node, and the out terminal of the Java Compute node will be wired to the in terminal of the Output node).
+
+  ![](images/add-javacompute-2.png)
+
+
+***
+</details>
+
+<details>
+<summary>8.2 - Create Java Compute node class</summary><br/>
+
+**Narration**
+
+With App Connect toolkit, they can use the same tool that they use to create Integration flow to create Java code. Alternatively, if they want to share Java classes across multiple solutions, they can store Java code in a shared library and refer to that library from one or more applications that contain message flows with JavaCompute nodes
+
+However, the developers decided to try the Java Compute node class wizard to create template code to accelerate the development process. They selected the Modifying message class template, and in few seconds, they have a skeleton java code to manipulate and transform the integration message.
+
+<hr/><br/>
+
+**Action** &nbsp; 8.2.1
+
+Double click the **Java Compute** node.
+
+  ![](images/create-javaclass-1.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 8.2.2
+
+On the *New JavaCompute node class* dialog, accept the default values and click **Next**.
+
+  ![](images/create-javaclass-2.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 8.2.3
+
+Select **Modifying message class** template (1) and click **Next** (2).
+
+  ![](images/create-javaclass-3.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 8.2.4
+
+On the Java Settings view, accept the default values and click **Next**.
+
+  ![](images/create-javaclass-4.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 8.2.5
+
+Accept the default Project name and click **Finish**.
+
+  ![](images/create-javaclass-5.png)
+
+
+***
+</details>
+
+<details>
+<summary>8.3 - Adding code</summary><br/>
+
+**Narration**
+
+For this demo, they will only add a simple message code to create elements in the JSON message, for example add a new Apple Pie product item.
+
+<hr/><br/>
+
+
+**Action** &nbsp; 8.3.1
+
+On the *GetDepartment_JavaCompute* class, **copy and paste the code below**, below the *Add user code below* comment.
+```
+MbElement outRoot = outMessage.getRootElement();
+MbElement outJsonRoot = outRoot.createElementAsLastChild(MbJSON.PARSER_NAME);
+MbElement outJsonData = outJsonRoot.createElementAsLastChild(MbElement.TYPE_NAME, MbJSON.DATA_ELEMENT_NAME, null);
+outJsonData.createElementAsLastChild(MbElement.TYPE_NAME_VALUE, "name", "Apple Pie");
+outJsonData.createElementAsLastChild(MbElement.TYPE_NAME_VALUE, "department", "Bakery");
+outJsonData.createElementAsLastChild(MbElement.TYPE_NAME_VALUE, "description", "Request has been processed by Java Compute Node.");
+```
+
+  ![](images/add-code-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 8.3.2
+
+To solve the imports issue, click on **Source > Organize Imports** menu.
+
+  ![](images/add-code-2.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 8.3.3
+
+Click **File > Save All**.
+
+  ![](images/add-code-3.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 8.3.4
+
+**Close** the Java class.
+
+  ![](images/add-code-4.png)
+
+***
+</details>
+
+<details>
+<summary>8.4 - Test Java Compute node</summary><br/>
+
+**Narration**
+
+At this moment, the Focus Integration experts are ready to test the new API using the JavaCompute node. They just need to redeploy the API and use the Web User Interface again to test it.
+
+Now, they will test using the Bakery department only.
+
+Great, the subflow was invoked and our java compute transformation created a response with our hard coded Apple Pie product. Focus team verified how is really simple to use Java code to implement message transformation.
+
+<hr/><br/>
+
+
+**Action** &nbsp; 8.4.1
+
+Re-deploy the REST API, by dragging and dropping the **ShoppingListAPI** (1) again from the Application Development view on to the **TEST_SERVER** Integration Server (2).
+
+  ![](images/test-java-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 8.4.2
+
+On the Progress Information dialog, click **Close**.
+
+  ![](images/test-java-2.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 8.4.3
+
+On your browser, **refresh** the *Web User Interface* page.
+
+  ![](images/test-java-3.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 8.4.4
+
+Open again the **ShoppingListAPI** (1), **GET /shoppinglist/{department}** (2), **Try it** tab (3).
+
+  ![](images/test-java-4.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 8.4.5
+
+Enter **Candies** as **department** name (1). Click **Send** (2).
+
+  ![](images/test-java-5.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 8.4.6
+
+Show the **Response** body.
+
+  ![](images/test-java-6.png)
+
+***
+</details>
+
+<br/><br/>
+
+### **9 - Add Route**
+<details>
+<summary>9.1 - Adding Route node</summary><br/>
+
+**Narration**
+
+Finally, they want to see how they can route messages through different paths in a message flow, based on the content of the message using a Route node.
+
+Focus Integration experts decided to add a route node to route messages through all different transformation nodes based on the department parameter.  The idea is to redirect to Mapping node only messages to Candies department, redirect to Compute node only messages to Snacks department and redirect to Java node only messages to Bakery department.
+
+Let's see how to do it!
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.1.1
+
+Back to the getDepartment subflow, open the **Routing** menu and drag and drop a **Route** node.
+
+  ![](images/add-route-1.png)
+
+
+<hr/><br/>
+
+**Action** &nbsp; 9.1.2
+
+Delete all existing wiring. And wire the **Input** node to the new **Route** node.
+
+  ![](images/add-route-2.png)
+
+
+***
+</details>
+
+<details>
+<summary>9.2 - Renaming Match output terminal</summary><br/>
+
+**Narration**
+
+Initially, they need to rename the existing Match output terminal to mapping. And connect this terminal with the Mapping node.
+
+<hr/><br/>
+
+**Action** &nbsp; 9.2.1
+
+Right click on **Route** node (1), and select **Rename Output Terminal** (2).
+
+  ![](images/rename-terminal-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.2.2
+
+On Select output terminal to rename select **Match** (1). In the *Enter new name for the selected output terminal*, enter **mapping** (2). Then click **OK** (3).
+
+  ![](images/rename-terminal-2.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.2.3
+
+Wire the **mapping** output terminal from **Route** node to the **in** terminal of the **Mapping node**.
+
+  ![](images/rename-terminal-3.png)
+
+
+***
+</details>
+
+<details>
+<summary>9.3 - Creating new output terminal</summary><br/>
+
+**Narration**
+
+Second, they need to create more two output terminals to compute and java transformation. And connect these terminals to Compute and JavaCompute nodes.
+
+<hr/><br/>
+
+**Action** &nbsp; 9.3.1
+
+Right click on **Route** node (1), and select **Add Output Terminal** (2).
+
+  ![](images/new-terminal-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.3.2
+
+Enter **compute** as the name of the new output terminal (1) and click **OK** (2).
+
+  ![](images/new-terminal-2.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.3.3
+
+Repeat the same steps to create the java terminal: Right click on **Route** node (1), and select **Add Output Terminal** (2).
+
+  ![](images/new-terminal-3.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.3.4
+
+Enter **java** as the name of the new output terminal (1) and click **OK** (2).
+
+  ![](images/new-terminal-4.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.3.5
+
+Wire the **compute** output terminal from **Route** node to the **in** terminal of the **Compute** node.
+
+*Note: if you click the output terminals from Route, you will see a dialog to select the terminal that you want to wire.*
+
+  ![](images/new-terminal-5.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.3.6
+
+Repeat the same steps to wire the **java** output terminal from **Route** node to the **in** terminal of the **Java Compute** node.
+
+*Note: if you click the output terminals from Route, you will see a dialog to select the terminal that you want to wire.*
+
+  ![](images/new-terminal-6.png)
+
+***
+</details>
+
+<details>
+<summary>9.4 - Adding filter patterns</summary><br/>
+
+**Narration**
+
+Great! Now, they are ready to define the filter table. The Route node uses XPath expressions to control processing.
+
+Focus developers define the three XPath expressions, one for each transformation node.  The filter table map the XPath with the specific output terminal. The XPath is checking the department parameter value for each department.
+
+<hr/><br/>
+
+**Action** &nbsp; 9.4.1
+
+Click on the **Route** node.
+
+  ![](images/filter-patterns-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.4.2
+
+On the Filter table, click **Add** button.
+
+  ![](images/filter-patterns-2.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.4.3
+
+Enter **$LocalEnvironment/REST/Input/Parameters/department="Candies"** in the *Filter pattern* field (1) and select **mapping** as the *Routing output terminal* (2). Then click **OK**.
+
+*Note: During the copy and paste you should have some issues with “ “,  because of it, we recommend to type the “ “ again in the Filter pattern field.*
+
+  ![](images/filter-patterns-3.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.4.4
+
+Click **Add** button again.
+
+  ![](images/filter-patterns-4.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.4.5
+
+Enter **$LocalEnvironment/REST/Input/Parameters/department="Snacks”** in the *Filter pattern* field (1) and select **mapping** as the *Routing output terminal* (2). Then click **OK**.
+
+*Note: During the copy and paste you should have some issues with “ “,  because of it, we recommend to type the “ “ again in the Filter pattern field.*
+
+  ![](images/filter-patterns-5.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.4.6
+
+Click Add button again.
+
+  ![](images/filter-patterns-5.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.4.7
+
+Enter **$LocalEnvironment/REST/Input/Parameters/department="Bakery”** in the *Filter pattern* field (1) and select **mapping** as the *Routing output terminal* (2). Then click **OK**.
+
+*Note: During the copy and paste you should have some issues with “ “,  because of it, we recommend to type the “ “ again in the Filter pattern field.*
+
+  ![](images/filter-patterns-7.png)
+
+***
+</details>
+
+<details>
+<summary>9.5 - Connecting nodes</summary><br/>
+
+**Narration**
+
+Finally, the Focus team connects all the nodes to finalize the flow.
+
+<hr/><br/>
+
+**Action** &nbsp; 9.5.1
+
+Wire the out terminal of **Mapping** (1), **Compute** (2) and **Java Compute** (3) nodes to the in terminal of the **Output** node (4).
+
+  ![](images/route-connect-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.5.2
+
+Wire the **default** (1) and **failure** (2) terminal of **Route** node to the in terminal of the **Output** node (3).
+
+  ![](images/route-connect-2.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.5.3
+
+Click **File > Save All**.
+
+  ![](images/route-connect-3.png)
+
+
+
+***
+</details>
+
+<details>
+<summary>9.6- Test Route node</summary><br/>
+
+**Narration**
+
+At this stage, the Focus Integration experts are ready to test the new API using the route node. They just need to redeploy the API and use the Web User Interface again to test it.
+
+Now, they will test using all three departments: Candies, Bakery and Snacks.
+
+Great, the subflow was invoked and  the message is routed through all different transformation nodes based on the department parameter.
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.6.1
+
+Re-deploy the REST API, by dragging and dropping the **ShoppingListAPI** (1) again from the Application Development view on to the **TEST_SERVER** Integration Server (2).
+
+  ![](images/test-route-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.6.2
+
+On the Progress Information dialog, click **Close**.
+
+  ![](images/test-route-2.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.6.3
+
+On your browser, **refresh** the **Web User Interface** page.
+
+  ![](images/test-route-3.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.6.4
+
+Open again the **ShoppingListAPI** (1), **GET /shoppinglist/{department}** (2), **Try it** tab (3).
+
+  ![](images/test-route-4.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.6.5
+
+Enter **Candies** (or Bakery, or Snacks) as **department** name (1). Click **Send** (2).
+
+*Note: You are welcome to try any of the three departments.*
+
+  ![](images/test-route-5.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.6.6
+
+Show the **Response** body and show that each department is processed by different Transformation node (show the description field).
+
+  ![](images/test-route-6.png)
+
+***
+</details>
+
+<br/><br/>
+
+### **10 - Test on App Connect Enterprise**
+<details>
+<summary>10.1 - Exporting BAR File</summary><br/>
+
+**Narration**
+
+At this stage, Focus team is ready to deploy their Integration flow in a App Connect Server. They just need to generate a BAR (broker archive) file. The App Connect Enterprise server uses BAR files to save compiled message flows, libraries, and other elements critical to the Integration flow.
+
+<hr/><br/>
+
+**Action** &nbsp; 10.1.1
+
+Right click the **ShoppingListAPI** (1) and choose **New > BAR file** (2).
+
+  ![](images/bar-file-1.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 10.1.2
+
+On the Window New Bar file, type **shoppinglist** as the bar file name (1) and click **Finish** (2).
+
+  ![](images/bar-file-2.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 10.1.3
+
+On the *Prepare screen*, mark the **REST APIs** checkbox (1). Check **Compile and in-line resources** (2). Click **Build and Save** (3).
+
+  ![](images/bar-file-3.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 10.1.4
+
+Now, a popup window displays *Operation completed successfully*. Click **OK**.
+
+  ![](images/bar-file-4.png)
+
+***
+</details>
+
+<details>
+<summary>10.2 - Accessing App Connect Enterprise environment</summary><br/>
+
+**Narration**
+
+IBM App Connect is an industry-leading integration solution that connects any of your applications and data, no matter where they reside. With hundreds of prebuilt connectors and customizable templates, App Connect helps users of all skill levels rapidly connect Software as a Service (SaaS) applications and build integration flows.
+
+For this demo, Focus Corp is using a trial account of IBM App Connect Enterprise as a Service on AWS.
+
+<hr/><br/>
+
+**Action** &nbsp; 10.2.1
+
+In your email inbox (that you used to create the App Connect trial account), search for **IBM SaaS** (1), open the ”**Your IBM App Connect trial is ready**” email (2).
+
+  ![](images/ace-access-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 10.2.2
+
+Now, click the **Access trial** button.
+
+  ![](images/ace-access-2.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 10.2.3
+
+**Log in** with your App Connect *username* and *password*.
+
+  ![](images/ace-access-3.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 10.2.4
+
+Use the Instance switcher to change to the **Dashboard** instance.
+
+  ![](images/ace-access-4.png)
+
+***
+</details>
+
+<details>
+<summary>10.3 - Creating Integration server</summary><br/>
+
+**Narration**
+
+Focus Integration Experts begin in the IBM App Connect Dashboard. Here they can administer integration servers and integration runtimes, which are deployed from the BAR files mentioned earlier. They want to deploy the Integration flow defined in the previous steps.
+
+Because they need to deploy a simple integration, let’s select with the Quick start integration type.
+
+Now they need to provide the BAR file. The BAR file contains all the resources that are needed to deploy an integration. The BAR file parameters will expose both the integration and its operations.
+
+They can use the Configuration component to apply any customizations to the integration server when they deploy it. For their scenario, they don’t need to use the configuration package.
+
+Now, they need to define a name for their Integration server, for example shoppinglist.
+
+That is it! After few minutes their server should be ready with their integration flow.
+
+<hr/><br/>
+
+**Action** &nbsp; 10.3.1
+
+Click **Deploy integrations**.
+
+  ![](images/inter-server-1.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 10.3.2
+
+Select **Quick start integration** option (1) and click **Next** (2).
+
+  ![](images/inter-server-2.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 10.3.3
+
+Click to upload your BAR File. And select the **shoppinglist.bar** (1) file (it is in your workspace folder in a Bar Files directory). And click **Next** (B).
+
+  ![](images/inter-server-3.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 10.3.4
+
+You don’t need any Integration configuration, click **Next**.
+
+  ![](images/inter-server-4.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 10.3.5
+
+Enter the Integration Server name as **shoppinglist** (1). Disable the option to **Force Flow Basic Auth** (2). Then click **Create** (3).
+
+  ![](images/inter-server-5.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 10.3.6
+
+The deployment process takes up to 5 minutes, **refresh** the browser to see the BAR file deployed and started.
+
+  ![](images/inter-server-6.png)
+
+***
+</details>
+
+<details>
+<summary>10.4 - Testing the API</summary><br/>
+
+**Narration**
+
+To finalize, the Focus Integration experts would like to test the new API in the App Connect Enterprise environment. They just need to open the Integration server and the API.
+
+Now, using the Try it capability, they will test using all three departments: Candies, Bakery and Snacks.
+
+Great, the subflow was invoked and  the message is routed through all different transformation nodes based on the department parameter.
+
+<hr/><br/>
+
+**Action** &nbsp; 10.4.1
+
+Click the **shoppinglist** server icon.
+
+  ![](images/final-test-1.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 10.4.2
+
+Click the **ShoppingListAPI** icon.
+
+  ![](images/final-test-2.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 10.4.3
+
+Ignore the Open API Validation errors. Click on **GET /shoppinglist/{department}**,
+
+  ![](images/final-test-3.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 10.4.4
+
+Open the **Try it** tab.
+
+  ![](images/final-test-4.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 10.4.5
+
+Enter **Candies** (or **Bakery**, or **Snacks**) as *department* name (1). Click **Send** (2).
+
+*Note: You are welcome to try any of the three departments.*
+
+  ![](images/final-test-5.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 10.4.6
+
+Show the **Response** body and show that each department is processed by different Transformation node (show the description field). 
+
+  ![](images/final-test-6.png)
+
+***
+</details>
+
+
+<br/><br/>
+
+### **Summary**
+
+<br/>
+Let’s summarize what Focus developers have done today. In this demo they: <br/>
+<ul>
+<li>Created Rest API using the App Connect Toolkit</li>
+<li>Created new API operation using the OpenAPI editor</li>
+<li>Implemented mapping transformation using the Mapping node</li>
+<li>Implemented compute transformation using ESQL query language and compute node</li>
+<li>Implemented java transformation using Java code and JavaCompute node</li>
+<li>Implemented messaging routing using Route node</li>
+<li>Deployed and tested the Integration flow on IBM App Connect Enterprise as a Service on AWS</li>
+</ul><br/>
+In this demo, Focus Integration experts learned how to build complex, multi-style integrations with support for multiple programming languages and fully integrated with source and pipeline management tools using the IBM App Connect toolkit.
+<br/><br/>
+Thank you for attending today’s presentation.
+<br/>
