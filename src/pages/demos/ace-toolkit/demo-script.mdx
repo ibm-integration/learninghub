@@ -566,7 +566,7 @@ On the new Message Assembly JSON, drag and drop the **name** field to the left (
 
 **Action** &nbsp; 4.6.2
 
-Under the **Properties** for the Assign action, enter “**Caramel Candy Bars**” for the name value.
+Select the **Assign** action (1). Under the **Properties** for the Assign action, enter “**Caramel Candy Bars**” for the name value (2).
 
   ![](images/assign-values-2.png)
 
@@ -585,7 +585,7 @@ Repeat the same steps for the description field: drag and drop the **description
 
 **Action** &nbsp; 4.6.4
 
-Under the **Properties** for the Assign action, enter “**Request has been processed by Mapping Node**” for the name value.
+Select the **Assign** action (1). Under the **Properties** for the Assign action, enter “**Request has been processed by Mapping Node**” for the name value.
 
 *Note: In this demo, we are using the description field just to inform the node that is processing the transformation.*
 
@@ -660,7 +660,7 @@ Next, they need to configure the server so that the HTTP listener is enabled for
 
 **Action** &nbsp; 5.2.1
 
-Expand the **TEST_SERVER** directory under the **Independent Resources** folder and double-click the **server.conf.yaml** file to open it in the IBM App Connect Enterprise text editor to the right.
+Expand the **TEST_SERVER** directory under the **Independent Resources** folder (1) and double-click the **server.conf.yaml** file to open it in the IBM App Connect Enterprise text editor to the right.
 
   ![](images/cors-auth-1.png)
 
@@ -695,7 +695,7 @@ CORSAllowHeaders: 'Accept,Accept-Language,Content-Language,Content-Type'
 
 **Action** &nbsp; 5.2.4
 
-Right-click the **TEST_SERVER** (1) and select **Restart** (2).
+Back to the *Integration Explorer* view, right-click the **TEST_SERVER** (1) and select **Restart** (2).
 
   ![](images/cors-auth-4.png)
 
@@ -816,7 +816,7 @@ Enter any **department** name (by now, we are not checking the department) such 
 
 **Action** &nbsp; 6.3.5
 
-Show the **Response body**.
+Show the **Response body**. Show the assigned name and description fields.
 
   ![](images/test-api-5.png)
 
@@ -841,7 +841,7 @@ They would like to see how to use ESQL to transform and enrich messages using th
 
 **Action** &nbsp; 7.1.1
 
-Back to the getDepartment subflow, open again the Transformation menu and drag and drop a **Compute** node.
+Back to the **getDepartment** subflow (1), open again the Transformation menu and drag and drop a **Compute** node (2).
 
   ![](images/add-compute-1.png)
 
@@ -849,7 +849,7 @@ Back to the getDepartment subflow, open again the Transformation menu and drag a
 
 **Action** &nbsp; 7.1.2
 
-Readjust the connections of Input and output node to connect to the Compute node (the out terminal of the Input node will be wired to the in terminal of the Compute node, and the out terminal of the Compute node will be wired to the in terminal of the Output node).
+Readjust the connections of Input and output node to connect to the Compute node (the out terminal of the Input node will be wired to the in terminal of the Compute node, and the **out** terminal of the Compute node will be wired to the in terminal of the Output node).
 
   ![](images/add-compute-2.png)
 
@@ -941,7 +941,7 @@ Choose **Resource** (1) and click **Open** (2).
 
 **Action** &nbsp; 7.3.3
 
-Using the Project Explorer view in the top left corner, copy the file **Compute.esql** from the folder named **utils** in the project named *HelperFiles* (1) into the **utils** folder in the project **ShoppingListAPI** (2).
+Using the Project Explorer view, open the *HelperFiles* project and the **utils** folder, right click on the **Compute.esql** file (1) and select **Copy** (2).
 
   ![](images/copy-esql-3.png)
 
@@ -949,9 +949,18 @@ Using the Project Explorer view in the top left corner, copy the file **Compute.
 
 **Action** &nbsp; 7.3.4
 
-Switch back to the *Integration Development* perspective using the **Window > Perspective > Open Perspective > Integration Development** menu.
+On the **ShoppingListAPI** project, right click on the **utils** folder, and select **Paste** (2).
 
   ![](images/copy-esql-4.png)
+
+
+<hr/><br/>
+
+**Action** &nbsp; 7.3.5
+
+Switch back to the *Integration Development* perspective using the **Window > Perspective > Open Perspective > Integration Development** menu.
+
+  ![](images/copy-esql-5.png)
 
 
 ***
@@ -1016,7 +1025,7 @@ All three items are hardcoded created in the Initialise procedure. In a real sce
 
 **Action** &nbsp; 7.5.1
 
-Double click the **Compute** node, to see the ESQL file.
+**Double click** on the **Compute** node, to see the ESQL file.
 
   ![](images/review-esql-1.png)
 
@@ -1082,8 +1091,6 @@ On the Progress Information dialog, click **Close**.
 **Action** &nbsp; 7.6.3
 
 On your browser, refresh the **Web User Interface** page.
-
-  ![](images/test-compute-3.png)
 
 <hr/><br/>
 
@@ -1162,7 +1169,7 @@ However, the developers decided to try the Java Compute node class wizard to cre
 
 **Action** &nbsp; 8.2.1
 
-Double click the **Java Compute** node.
+*Double click* the **Java Compute** node.
 
   ![](images/create-javaclass-1.png)
 
@@ -1292,8 +1299,6 @@ On the Progress Information dialog, click **Close**.
 
 On your browser, **refresh** the *Web User Interface* page.
 
-  ![](images/test-java-3.png)
-
 <hr/><br/>
 
 
@@ -1308,7 +1313,7 @@ Open again the **ShoppingListAPI** (1), **GET /shoppinglist/{department}** (2), 
 
 **Action** &nbsp; 8.4.5
 
-Enter **Candies** as **department** name (1). Click **Send** (2).
+Enter **Bakery** as **department** name (1). Click **Send** (2).
 
   ![](images/test-java-5.png)
 
@@ -1495,7 +1500,7 @@ On the Filter table, click **Add** button.
 
 **Action** &nbsp; 9.4.3
 
-Enter **$LocalEnvironment/REST/Input/Parameters/department="Candies"** in the *Filter pattern* field (1) and select **mapping** as the *Routing output terminal* (2). Then click **OK**.
+Enter **$LocalEnvironment/REST/Input/Parameters/department="Candies"** in the *Filter pattern* field (1) and select **mapping** as the *Routing output terminal* (2). Then click **OK** (3).
 
 *Note: During the copy and paste you should have some issues with “ “,  because of it, we recommend to type the “ “ again in the Filter pattern field.*
 
@@ -1515,7 +1520,7 @@ Click **Add** button again.
 
 **Action** &nbsp; 9.4.5
 
-Enter **$LocalEnvironment/REST/Input/Parameters/department="Snacks”** in the *Filter pattern* field (1) and select **mapping** as the *Routing output terminal* (2). Then click **OK**.
+Enter **$LocalEnvironment/REST/Input/Parameters/department="Snacks”** in the *Filter pattern* field (1) and select **compute** as the *Routing output terminal* (2). Then click **OK** (3).
 
 *Note: During the copy and paste you should have some issues with “ “,  because of it, we recommend to type the “ “ again in the Filter pattern field.*
 
@@ -1526,16 +1531,16 @@ Enter **$LocalEnvironment/REST/Input/Parameters/department="Snacks”** in the *
 
 **Action** &nbsp; 9.4.6
 
-Click Add button again.
+Click **Add** button again.
 
-  ![](images/filter-patterns-5.png)
+  ![](images/filter-patterns-6.png)
 
 <hr/><br/>
 
 
 **Action** &nbsp; 9.4.7
 
-Enter **$LocalEnvironment/REST/Input/Parameters/department="Bakery”** in the *Filter pattern* field (1) and select **mapping** as the *Routing output terminal* (2). Then click **OK**.
+Enter **$LocalEnvironment/REST/Input/Parameters/department="Bakery”** in the *Filter pattern* field (1) and select **java** as the *Routing output terminal* (2). Then click **OK** (3).
 
 *Note: During the copy and paste you should have some issues with “ “,  because of it, we recommend to type the “ “ again in the Filter pattern field.*
 
@@ -1618,8 +1623,6 @@ On the Progress Information dialog, click **Close**.
 
 On your browser, **refresh** the **Web User Interface** page.
 
-  ![](images/test-route-3.png)
-
 <hr/><br/>
 
 
@@ -1627,7 +1630,7 @@ On your browser, **refresh** the **Web User Interface** page.
 
 Open again the **ShoppingListAPI** (1), **GET /shoppinglist/{department}** (2), **Try it** tab (3).
 
-  ![](images/test-route-4.png)
+  ![](images/test-java-4.png)
 
 <hr/><br/>
 
@@ -1674,7 +1677,7 @@ Right click the **ShoppingListAPI** (1) and choose **New > BAR file** (2).
 
 **Action** &nbsp; 10.1.2
 
-On the Window New Bar file, type **shoppinglist** as the bar file name (1) and click **Finish** (2).
+On the *New Bar file* dialog, type **shoppinglist** as the bar file name (1) and click **Finish** (2).
 
   ![](images/bar-file-2.png)
 
@@ -1821,7 +1824,7 @@ To finalize, the Focus Integration experts would like to test the new API in the
 
 Now, using the Try it capability, they will test using all three departments: Candies, Bakery and Snacks.
 
-Great, the subflow was invoked and  the message is routed through all different transformation nodes based on the department parameter.
+Great, the subflow was invoked and the message is routed through all different transformation nodes based on the department parameter.
 
 <hr/><br/>
 
