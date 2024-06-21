@@ -19,13 +19,13 @@ tabs: [ 'Demo preparation', 'Demo script']
 
 ### **Introduction**
 <br/>
-In a world where disruption is the norm, businesses that harness AI will become industry leaders. On the other hand, we know that Integration is the key step of a successful Digital Transformation journey. But, how are you leveraging AI to implement your Integration strategy?  Are you creating Integration flows using AI Natural Language Processing capabilities? Are you using AI-powered mapping assistance and data transformation capabilities when designing integration flow?
+In a world where disruption is the norm, businesses that harness AI will become industry leaders. On the other hand, we know that Integration is the key step of a successful Digital Transformation journey. But, how are you leveraging AI to implement your Integration strategy?  Are you creating Integration flows using AI Natural Language Processing capabilities? Are you using AI-powered mapping assistance and data transformation capabilities when designing integration flows?
 <br/><br/>
 Focus Corporation, a hypothetical retail company engaged with IBM, is highly motivated to derive more revenue from first-time customers to their online storefronts. Focus has acquired another business and needs to synchronize the contacts between two CRM applications. Data mapping is among the most important design steps in building an integration flow. This design-time task is usually the most tedious, time-consuming, complex, and error-prone because it requires deep understanding of all the data fields on the source and target systems. Building a successful data mapping also requires business analysis, domain expertise, and technical knowledge on both source and target systems.
 <br/><br/>
 In the first part of the demo, Focus team will learn how to use AI generated flow capability to easily create an event-driven flow to synchronize the CRM solutions. With this new flow, Focus team will synchronize contact information between the Salesforce and Insightly CRM systems. They will recognize and automatically match fields with high confidence levels. They will also recommend and assist with other fields where there is lower confidence. And Focus team will generate a transformation across the fields when the field formats are not the same. As they continue to use the Mapping Assist capability it learns from previously accepted matches to raise confidence levels in future mapping efforts.
 <br/><br/>
-Second part of the lab, Focus team will develop an API flow from scratch using a low-code approach. They will learn how easy to create APIs using App Connect.
+Second part of the lab, Focus team will develop an API flow from scratch using a low-code approach. They will learn how easily they can create APIs using App Connect.
 <br/><br/>
 In the following demo, Focus team will learn how to use IBM App Connect to implement an AI powered Integration. Using AI-powered mapping, they can reduce errors and speed integration development.
 <br/><br/>
@@ -86,9 +86,9 @@ In the home page, Focus can get started with creating and importing flows.
 
 In the Designer dashboard page, Focus team will be able to monitor, edit, or delete their flows. They can also create more flows from this dashboard. They will do it, later
 
-In the Monitor page, they are able to see CPU and memory usage date for the integration runtimes.  Summary data is shown in graphs and tables, and they can drill down to see more detailed data.
+In the Monitor page, they are able to see CPU and memory usage data for the integration runtimes.  Summary data is shown in graphs and tables, and they can drill down to see more detailed data.
 
-In the Catalog page, Focus can lists all the applications and APIs and the associated events and actions that they can add to their flows.  Here, they can connect App Connect to their application accounts on the catalog tab, or they can choose to connect to them when they create their flows. By now, they already have two connected acccounts: Insightly and Salesforce. These connectors were pre-configured and they are ready to be used.
+In the Catalog page, Focus can list all the applications and APIs and the associated events and actions that they can add to their flows.  Here, they can connect App Connect to their application accounts on the catalog tab, or they can choose to connect to them when they create their flows. By now, they already have two connected acccounts: Insightly and Salesforce. These connectors were pre-configured and they are ready to be used.
 
 In the Templates page, Focus can explore the templates gallery, where they’ll find templates that cover a range of cognitive, marketing, sales, support, business ops, e-commerce, and finance use cases.
 
@@ -179,7 +179,7 @@ You start by entering a sentence in plain English that describes your integratio
 
 As you can see, Focus team receives an auto-generated flow, editable in Designer, based on a simple text sequence. But, let's focus on Focus CRM synchronization scenario.
 
-Focus Integration team would like to get contacts from Salesforce and copy them to the new Insightly CRM, let's try it!
+Focus Integration team would like to get contacts from Salesforce and copy them to the new Insightly CRM. Let's try it!
 
 Voila! Here they have their AI generated flow, when they're ready, they open the template in the flow editor, where they can connect to their accounts, map data between their applications, and customize their flow.
 
@@ -199,6 +199,8 @@ Click **Create > AI-generated flow**.
 
 Type the following sentence: "**Send a slack message when a new ticket is created in ServiceNow**”, then press **Enter**.
 
+You now see the AI-generated template doing exactly as you asked.
+
   ![](images/ai-generated-2.png)
 
 <hr/><br/>
@@ -206,7 +208,7 @@ Type the following sentence: "**Send a slack message when a new ticket is create
 
 **Action** &nbsp; 2.1.3
 
-Type the following sentence: "**Get contacts from Salesforce and copy it to Insightly**”, then press **Enter**.
+Overwrite the existing phrase and type the following sentence: "**Get contacts from Salesforce and copy it to Insightly**”, then press **Enter**.
 
   ![](images/ai-generated-3.png)
 
@@ -231,11 +233,11 @@ Click **Open in Designer**.
 
 **Narration**
 
-Here Focus team can see their initial flow, which initially has a Salesforce integration to retrieve contacts and an Insightly integration to create a new content. They will use the designer flow editor to edit and change their flow to add the necessary additional steps.
+Here Focus team can see their initial flow, which initially has a Salesforce integration to retrieve contacts and an Insightly integration to create a new contact. They will use the designer flow editor to edit and change their flow to add the necessary additional steps.
 
 The connectors are already using the pre-configured accounts. However they need to do some adjusts to finalize the flow.
 
-First, Focus team configures the Salesforce node to limit a maximum number of items to retrieve.  Here, they can see there is a error message in Insightly integration, this message is informing that Focus team needs to inform the First name field in the new CRM. They will need to mapping fields between Salesforce and Insightly. They will do it later taking advantage of the AI capabilities from IBM App Connect.
+First, Focus team configures the Salesforce node to limit a maximum number of items to retrieve.  Here, they can see there is an error message in the Insightly integration. This message is informing the Focus team needs to include the First name field in the new CRM. They will need to map fields between Salesforce and Insightly. They will do it later taking advantage of the AI capabilities from IBM App Connect.
 
 <hr/><br/>
 
@@ -751,7 +753,7 @@ From your pre-configured Salesforce connector, select **Contacts > Create contac
 
 **Narration**
 
-Now, Focus team needs to map fields from the request into the Salesforce Create contact action. Because they already knows the Mapping Assist capability from IBM App Connect, it is really simple to do it. They just need to put AI to simplify their work.
+Now, Focus team needs to map fields from the request into the Salesforce Create contact action. Because they already know the Mapping Assist capability from IBM App Connect, it is really simple to do it. They just need to use AI to simplify their work.
 
 <hr/><br/>
 
@@ -921,7 +923,6 @@ Let’s summarize what Focus’ team has done today. In this demo they: <br/>
 <ul>
 <li>Created AI generated flow to synchronize contact data between SalesForce CRM and Insightly CRM</li>
 <li>Improved the Event-driven flow using IBM App Connect Designer</li>
-<li>Created a graph composition using @materializer</li>
 <li>Used the Mapping Assist capability to implement data mapping between the different applications</li>
 <li>Created data transformation function in minutes instead of hours</li>
 <li>Created a flow for an API from scratch using no-code/low-code approach</li>
