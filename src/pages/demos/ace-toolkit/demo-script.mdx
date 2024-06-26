@@ -31,14 +31,12 @@ Focus Integration expert would like to build complex, multi-style integrations w
 <br/><br/>
 Focus’ team requested a demo to learn how IBM App Connect for Developers Toolkit can help them to implement complex and advanced integration scenarios.
 <br/><br/>
-(Demo Slides <a href="https://github.com/ibm-integration/learninghub/blob/main/src/pages/demos/apic-tech-graphql/files/APICGraphQLSlides.pptx" target="_blank" rel="noreferrer">here</a>)
-<br/>
 
 
-### **1 - Create your Integration flow**
+### **1. Create your Integration flow**
 
 <details>
-<summary>1.1 - Starting App Connect Toolkit</summary><br/>
+<summary>1.1. Starting App Connect Toolkit</summary><br/>
 
 **Narration**
 
@@ -50,7 +48,7 @@ Because of that, they decided to explore IBM App Connect Enterprise for Develope
 
 <hr/><br/>
 
-**Action** &nbsp; 1.1.1
+**Action** &nbsp; 1.1.1.
 
 Open your **App Connect Enterprise Toolkit** by clicking the icon on the Launchpad (MAC OS) or Desktop (Windows) or executing **ace toolkit** in terminal window.
 
@@ -59,7 +57,7 @@ Open your **App Connect Enterprise Toolkit** by clicking the icon on the Launchp
 <hr/><br/>
 
 
-**Action** &nbsp; 1.1.2
+**Action** &nbsp; 1.1.2.
 
 In the Workspace Launcher window, accept the default one. Click **Launch**.
 
@@ -68,7 +66,7 @@ In the Workspace Launcher window, accept the default one. Click **Launch**.
 <hr/><br/>
 
 
-**Action** &nbsp; 1.1.3
+**Action** &nbsp; 1.1.3.
 
 **Close** the *welcome page*.
 
@@ -79,7 +77,7 @@ In the Workspace Launcher window, accept the default one. Click **Launch**.
 
 
 <details>
-<summary>1.2 - Creating a REST API</summary><br/>
+<summary>1.2. Creating a REST API</summary><br/>
 
 **Narration**
 
@@ -93,34 +91,34 @@ Let's see how easy is to create an REST API using the Toolkit. Focus team will c
 
 <hr/><br/>
 
-**Action** &nbsp; 1.2.1
+**Action** &nbsp; 1.2.1.
 
-From the Application Development view click the **New...** hyperlink at the top right (1) and from the menu which appears, click on **REST API** (2).
+From the Application Development view click the **New...** hyperlink at the top right (A) and from the menu which appears, click on **REST API** (B).
 
   ![](images/create-rest-1.png)
 
 <hr/><br/>
 
 
-**Action** &nbsp; 1.2.2
+**Action** &nbsp; 1.2.2.
 
-Type the Name **ShoppingListAPI** (1), and switch the radio button to the option labelled “**Import resources and operations defined in a REST API document**" (2) then click **Next** (3).
+Type the Name **ShoppingListAPI** (A), and switch the radio button to the option labelled “**Import resources and operations defined in a REST API document**" (B) then click **Next** (C).
 
   ![](images/create-rest-2.png)
 
 <hr/><br/>
 
 
-**Action** &nbsp; 1.2.3
+**Action** &nbsp; 1.2.3.
 
-You will be asked to import an OpenAPI 3 document either from the file system or your workspace. Using the radio button to “**Select from your workspace**” (1), select **ShoppingListAPI.json** from the json folder in the **HelperFiles** project (2) (note: if you don't see the HelperFiles project, maybe you forgot to import this project in the Demo Preparation part). Click **Next** (3).
+You will be asked to import an OpenAPI 3 document either from the file system or your workspace. Using the radio button to “**Select from your workspace**” (A), select **ShoppingListAPI.json** from the json folder in the **HelperFiles** project (B) (note: if you don't see the HelperFiles project, maybe you forgot to import this project in the Demo Preparation part). Click **Next** (C).
 
   ![](images/create-rest-3.png)
 
 <hr/><br/>
 
 
-**Action** &nbsp; 1.2.4
+**Action** &nbsp; 1.2.4.
 
 Click **Finish**.
 
@@ -132,7 +130,7 @@ Click **Finish**.
 
 
 <details>
-<summary>1.3 - Exploring the REST API details</summary><br/>
+<summary>1.3. Exploring the REST API details</summary><br/>
 
 **Narration**
 
@@ -142,16 +140,16 @@ Focus developers can easily edit the API Document using the OpenAPI editor inter
 
 <hr/><br/>
 
-**Action** &nbsp; 1.3.1
+**Action** &nbsp; 1.3.1.
 
-Show the **API Details** (1) and **Resources and Operations** (2) sections.
+Show the **API Details** (A) and **Resources and Operations** (B) sections.
 
   ![](images/api-doc-1.png)
 
 <hr/><br/>
 
 
-**Action** &nbsp; 1.3.2
+**Action** &nbsp; 1.3.2.
 
 Click on **Edit API Document in OpenAPI editor**.
 
@@ -160,7 +158,7 @@ Click on **Edit API Document in OpenAPI editor**.
 <hr/><br/>
 
 
-**Action** &nbsp; 1.3.3
+**Action** &nbsp; 1.3.3.
 
 If necessary accept the incoming network connections.
 
@@ -169,7 +167,7 @@ If necessary accept the incoming network connections.
 <hr/><br/>
 
 
-**Action** &nbsp; 1.3.4
+**Action** &nbsp; 1.3.4.
 
 Show the *OpenAPI Editor*.
 
@@ -181,10 +179,10 @@ Show the *OpenAPI Editor*.
 
 <br/><br/>
 
-### **2 - Add a new operation**
+### **2. Add a new operation**
 
 <details>
-<summary>2.1 - Adding a new path</summary><br/>
+<summary>2.1. Adding a new path</summary><br/>
 
 **Narration**
 
@@ -193,7 +191,7 @@ The Integration experts decided to create a new API operation to list the produc
 <hr/><br/>
 
 
-**Action** &nbsp; 2.1.1
+**Action** &nbsp; 2.1.1.
 
 On the **Path** section, on left menu, click on the **Plus** button.
 
@@ -202,9 +200,9 @@ On the **Path** section, on left menu, click on the **Plus** button.
 <hr/><br/>
 
 
-**Action** &nbsp; 2.1.2
+**Action** &nbsp; 2.1.2.
 
-Enter **/shoppinglist/{department}** as the new *Path* (1). You are welcome to enter a *summary* (2) and *description* (3). Then click **Add** (4).
+Enter **/shoppinglist/{department}** as the new *Path* (A). You are welcome to enter a *summary* (B) and *description* (C). Then click **Add** (D).
 
   ![](images/new-path-2.png)
 
@@ -213,7 +211,7 @@ Enter **/shoppinglist/{department}** as the new *Path* (1). You are welcome to e
 </details>
 
 <details>
-<summary>2.2 - Adding a new operation</summary><br/>
+<summary>2.2. Adding a new operation</summary><br/>
 
 **Narration**
 
@@ -222,7 +220,7 @@ They go ahead and create a new path with the GET operation in the ShoppingListAP
 <hr/><br/>
 
 
-**Action** &nbsp; 2.2.1
+**Action** &nbsp; 2.2.1.
 
 On the **Operations** section of the new path, click on the **Plus** button.
 
@@ -231,9 +229,9 @@ On the **Operations** section of the new path, click on the **Plus** button.
 <hr/><br/>
 
 
-**Action** &nbsp; 2.2.2
+**Action** &nbsp; 2.2.2.
 
-Select the **get** verb (1) and click **Add**.
+Select the **get** verb (A) and click **Add** (B).
 
   ![](images/new-oper-2.png)
 
@@ -242,7 +240,7 @@ Select the **get** verb (1) and click **Add**.
 </details>
 
 <details>
-<summary>2.3 - Defining parameter</summary><br/>
+<summary>2.3. Defining parameter</summary><br/>
 
 **Narration**
 
@@ -251,27 +249,27 @@ This new path will receive the product department as parameter in the path reque
 <hr/><br/>
 
 
-**Action** &nbsp; 2.3.1
+**Action** &nbsp; 2.3.1.
 
-Scroll down to see the *Parameter* section (1) and click **Add** button (2).
+Scroll down to see the *Parameter* section (A) and click **Add** button (B).
 
   ![](images/def-param-1.png)
 
 <hr/><br/>
 
 
-**Action** &nbsp; 2.3.2
+**Action** &nbsp; 2.3.2.
 
-Enter **department** as parameter name (1) and select **path** in *Located In* field (2).
+Enter **department** as parameter name (A) and select **path** in *Located In* field (B).
 ßÍÍ
   ![](images/def-param-2.png)
 
 <hr/><br/>
 
 
-**Action** &nbsp; 2.3.3
+**Action** &nbsp; 2.3.3.
 
-Scroll down to see the checkbox list and select **Required** field (1). Then click **Add** (2).
+Scroll down to see the checkbox list and select **Required** field (A). Then click **Add** (B).
 
   ![](images/def-param-3.png)
 
@@ -280,7 +278,7 @@ Scroll down to see the checkbox list and select **Required** field (1). Then cli
 
 
 <details>
-<summary>2.4 - Defining schema</summary><br/>
+<summary>2.4. Defining schema</summary><br/>
 
 **Narration**
 
@@ -291,16 +289,16 @@ Great, Focus’ developers successfully created a new operation in the ShoppingL
 <hr/><br/>
 
 
-**Action** &nbsp; 2.4.1
+**Action** &nbsp; 2.4.1.
 
-Scroll down to see the *Schema* section and type **department** as schema title (1), and select **string** as *schema type* (2).
+Scroll down to see the *Schema* section and type **department** as schema title (A), and select **string** as *schema type* (B).
 
   ![](images/def-schema-1.png)
 
 <hr/><br/>
 
 
-**Action** &nbsp; 2.4.2
+**Action** &nbsp; 2.4.2.
 
 Scroll up and click **Save**.
 
@@ -309,7 +307,7 @@ Scroll up and click **Save**.
 <hr/><br/>
 
 
-**Action** &nbsp; 2.4.3
+**Action** &nbsp; 2.4.3.
 
 **Close** the OpenAPI editor.
 
@@ -319,9 +317,9 @@ Scroll up and click **Save**.
 
 <br/><br/>
 
-### **3 - Create Subflow**
+### **3. Create Subflow**
 <details>
-<summary>3.1 - Creating GetDepartment Subflow</summary><br/>
+<summary>3.1. Creating GetDepartment Subflow</summary><br/>
 
 **Narration**
 
@@ -330,7 +328,7 @@ With IBM App Connect is really simple to implement the logic of your API operati
 <hr/><br/>
 
 
-**Action** &nbsp; 3.1.1
+**Action** &nbsp; 3.1.1.
 
 Back to the ShoppingListAPI description, open the **/shoppinglist/{department|** section.
 
@@ -339,7 +337,7 @@ Back to the ShoppingListAPI description, open the **/shoppinglist/{department|**
 <hr/><br/>
 
 
-**Action** &nbsp; 3.1.2
+**Action** &nbsp; 3.1.2.
 
 Click **Create subflow**.
 
@@ -350,7 +348,7 @@ Click **Create subflow**.
 
 
 <details>
-<summary>3.2 - Connecting nodes</summary><br/>
+<summary>3.2. Connecting nodes</summary><br/>
 
 **Narration**
 
@@ -362,7 +360,7 @@ The flow is quite simple, consisting of only an Input and Output node. However, 
 
 <hr/><br/>
 
-**Action** &nbsp; 3.2.1
+**Action** &nbsp; 3.2.1.
 
 In the subflow, wire the **Input** node to the **Output** node.
 
@@ -375,9 +373,9 @@ In the subflow, wire the **Input** node to the **Output** node.
 <br/><br/>
 
 
-### **4 - Using the Mapping Assist feature**
+### **4. Using the Mapping Assist feature**
 <details>
-<summary>4.1 - Add Mapping Transformation</summary><br/>
+<summary>4.1. Add Mapping Transformation</summary><br/>
 
 **Narration**
 
@@ -386,7 +384,7 @@ First, they decided to explore the Mapping transformation.
 <hr/><br/>
 
 
-**Action** &nbsp; 4.1.1
+**Action** &nbsp; 4.1.1.
 
 Open the **Transformation** section.
 
@@ -395,7 +393,7 @@ Open the **Transformation** section.
 <hr/><br/>
 
 
-**Action** &nbsp; 4.1.2
+**Action** &nbsp; 4.1.2.
 
 Drag and drop a **Mapping** node on to the wire and its terminals will be connected up for you (the out terminal of the Input node will be wired to the in terminal of the Mapping node, and the out terminal of the Mapping node will be wired to the in terminal of the Output node).
 
@@ -406,7 +404,7 @@ Drag and drop a **Mapping** node on to the wire and its terminals will be connec
 
 
 <details>
-<summary>4.2 - Editing Mapping</summary><br/>
+<summary>4.2. Editing Mapping</summary><br/>
 
 **Narration**
 
@@ -415,7 +413,7 @@ With a mapping, they can use the Graphical Data Mapping editor to take input (so
 <hr/><br/>
 
 
-**Action** &nbsp; 4.2.1
+**Action** &nbsp; 4.2.1.
 
 Double-click the **Mapping** node.
 
@@ -424,7 +422,7 @@ Double-click the **Mapping** node.
 <hr/><br/>
 
 
-**Action** &nbsp; 4.2.2
+**Action** &nbsp; 4.2.2.
 
 Leave the default settings and click **Finish**.
 
@@ -435,7 +433,7 @@ Leave the default settings and click **Finish**.
 </details>
 
 <details>
-<summary>4.3 - Adding new output</summary><br/>
+<summary>4.3. Adding new output</summary><br/>
 
 **Narration**
 
@@ -444,7 +442,7 @@ Initially, they will change the output object to use the Item JSON type.
 <hr/><br/>
 
 
-**Action** &nbsp; 4.3.1
+**Action** &nbsp; 4.3.1.
 
 Click on “**Add an output object**” button.
 
@@ -453,9 +451,9 @@ Click on “**Add an output object**” button.
 <hr/><br/>
 
 
-**Action** &nbsp; 4.3.2
+**Action** &nbsp; 4.3.2.
 
-On the “Select a map output” option, open (double click) the **ShoppingListAPI** (1), open the **JSON Types** (2) and select **Item - Rest API model** (3), then click **OK** (4).
+On the “Select a map output” option, open (double click) the **ShoppingListAPI** (A), open the **JSON Types** (B) and select **Item - Rest API model** (C), then click **OK** (D).
 
   ![](images/new-output-2.png)
 
@@ -463,9 +461,9 @@ On the “Select a map output” option, open (double click) the **ShoppingListA
 <hr/><br/>
 
 
-**Action** &nbsp; 4.3.3
+**Action** &nbsp; 4.3.3.
 
-Select the **original Message Assembly** (1), right click and select **delete** (2) (or press delete on your keyboard).
+Select the **original Message Assembly** (A), right click and select **delete** (B) (or press delete on your keyboard).
 
   ![](images/new-output-3.png)
 
@@ -474,7 +472,7 @@ Select the **original Message Assembly** (1), right click and select **delete** 
 </details>
 
 <details>
-<summary>4.4 - Move Department value</summary><br/>
+<summary>4.4. Move Department value</summary><br/>
 
 **Narration**
 
@@ -485,16 +483,16 @@ Focus team  easily link the Department input parameter to Department parameter o
 <hr/><br/>
 
 
-**Action** &nbsp; 4.4.1
+**Action** &nbsp; 4.4.1.
 
-Expand the **JSON** message assembly on the right (1), then expand the **Data** section underneath (2). Notice that department is listed as a *parameter* (3).
+Expand the **JSON** message assembly on the right (A), then expand the **Data** section underneath (B). Notice that department is listed as a *parameter* (C).
 
   ![](images/move-dept-1.png)
 
 <hr/><br/>
 
 
-**Action** &nbsp; 4.4.2
+**Action** &nbsp; 4.4.2.
 
 On the left Message Assembly, open the **LocalEnvironment > REST > Input > Parameters**.
 
@@ -504,18 +502,18 @@ On the left Message Assembly, open the **LocalEnvironment > REST > Input > Param
 <hr/><br/>
 
 
-**Action** &nbsp; 4.4.3
+**Action** &nbsp; 4.4.3.
 
-Right-click the **department** entry (1) and select **Quick Link to Output** (2).
+Right-click the **department** entry (A) and select **Quick Link to Output** (B).
 
   ![](images/move-dept-3.png)
 
 <hr/><br/>
 
 
-**Action** &nbsp; 4.4.4
+**Action** &nbsp; 4.4.4.
 
-In the dialog, scroll down and expand **Data : Item [1..1]** (1) and select **department:string [1..1]** (2).
+In the dialog, scroll down and expand **Data : Item [1..1]** (A) and select **department:string [1..1]** (B).
 
   ![](images/move-dept-4.png)
 
@@ -524,7 +522,7 @@ In the dialog, scroll down and expand **Data : Item [1..1]** (1) and select **de
 </details>
 
 <details>
-<summary>4.5 - Setting Cardinality</summary><br/>
+<summary>4.5. Setting Cardinality</summary><br/>
 
 **Narration**
 
@@ -533,9 +531,9 @@ They use the Quick Fix capability to solve the cardinality issue of the new mapp
 <hr/><br/>
 
 
-**Action** &nbsp; 4.5.1
+**Action** &nbsp; 4.5.1.
 
-Hover the mouse over the **Quick Fix** (light bulb) icon of the new Move box (!) and click the "**Set cardinality to first index**” link (2).
+Hover the mouse over the **Quick Fix** (light bulb) icon of the new *Move* box (A) and click the "**Set cardinality to first index**” link (B).
 
   ![](images/quick-fix-1.png)
 
@@ -544,7 +542,7 @@ Hover the mouse over the **Quick Fix** (light bulb) icon of the new Move box (!)
 </details>
 
 <details>
-<summary>4.6 - Assigning values</summary><br/>
+<summary>4.6. Assigning values</summary><br/>
 
 **Narration**
 
@@ -555,18 +553,18 @@ Great, Focus’ developers successfully created a mapping transformation in the 
 <hr/><br/>
 
 
-**Action** &nbsp; 4.6.1
+**Action** &nbsp; 4.6.1.
 
-On the new Message Assembly JSON, drag and drop the **name** field to the left (1).  IBM App Connect Enterprise places an **Assign** action for this field (2). 
+On the new Message Assembly JSON, drag and drop the **name** field to the left (A).  IBM App Connect Enterprise places an **Assign** action for this field (B). 
 
   ![](images/assign-values-1.png)
 
 <hr/><br/>
 
 
-**Action** &nbsp; 4.6.2
+**Action** &nbsp; 4.6.2.
 
-Select the **Assign** action (1). Under the **Properties** for the Assign action, enter “**Caramel Candy Bars**” for the name value (2).
+Select the **Assign** action (A). Under the **Properties** for the Assign action, enter “**Caramel Candy Bars**” for the name value (B).
 
   ![](images/assign-values-2.png)
 
@@ -574,18 +572,18 @@ Select the **Assign** action (1). Under the **Properties** for the Assign action
 <hr/><br/>
 
 
-**Action** &nbsp; 4.6.3
+**Action** &nbsp; 4.6.3.
 
-Repeat the same steps for the description field: drag and drop the **description** field to the left (1).  IBM App Connect Enterprise places an **Assign** action for this field (2). 
+Repeat the same steps for the description field: drag and drop the **description** field to the left (A).  IBM App Connect Enterprise places an **Assign** action for this field (B). 
 
   ![](images/assign-values-3.png)
 
 <hr/><br/>
 
 
-**Action** &nbsp; 4.6.4
+**Action** &nbsp; 4.6.4.
 
-Select the **Assign** action (1). Under the **Properties** for the Assign action, enter “**Request has been processed by Mapping Node**” for the name value.
+Select the **Assign** action (A). Under the **Properties** for the Assign action, enter “**Request has been processed by Mapping Node**” for the name value (B).
 
 *Note: In this demo, we are using the description field just to inform the node that is processing the transformation.*
 
@@ -595,7 +593,7 @@ Select the **Assign** action (1). Under the **Properties** for the Assign action
 <hr/><br/>
 
 
-**Action** &nbsp; 4.6.5
+**Action** &nbsp; 4.6.5.
 
 Click **File > Save all**.
 
@@ -607,9 +605,9 @@ Click **File > Save all**.
 
 <br/><br/>
 
-### **5 - Create local test server**
+### **5. Create local test server**
 <details>
-<summary>5.1 - Creating a local integration server</summary><br/>
+<summary>5.1. Creating a local integration server</summary><br/>
 
 **Narration**
 
@@ -618,16 +616,16 @@ At this stage, they are ready to test the API. To publish the API, first they ne
 <hr/><br/>
 
 
-**Action** &nbsp; 5.1.1
+**Action** &nbsp; 5.1.1.
 
-Right-click **Integration Servers** in the **Integration Explorer** tab (1) and select **Create a local Integration Server** (2).
+Right-click **Integration Servers** in the **Integration Explorer** tab (A) and select **Create a local Integration Server** (B).
 
   ![](images/local-server-1.png)
 
 <hr/><br/>
 
 
-**Action** &nbsp; 5.1.2
+**Action** &nbsp; 5.1.2.
 
 Keep the default values and click **Finish**.
 
@@ -637,7 +635,7 @@ Keep the default values and click **Finish**.
 
 
 
-**Action** &nbsp; 5.1.3
+**Action** &nbsp; 5.1.3.
 
 On the *Success* Dialog click **OK**.
 
@@ -649,7 +647,7 @@ On the *Success* Dialog click **OK**.
 </details>
 
 <details>
-<summary>5.2 - Adding CORS authorization</summary><br/>
+<summary>5.2. Adding CORS authorization</summary><br/>
 
 **Narration**
 
@@ -658,16 +656,16 @@ Next, they need to configure the server so that the HTTP listener is enabled for
 <hr/><br/>
 
 
-**Action** &nbsp; 5.2.1
+**Action** &nbsp; 5.2.1.
 
-Expand the **TEST_SERVER** directory under the **Independent Resources** folder (1) and double-click the **server.conf.yaml** file to open it in the IBM App Connect Enterprise text editor to the right.
+Expand the **TEST_SERVER** directory under the **Independent Resources** folder (A) and double-click the **server.conf.yaml** file (B) to open it in the IBM App Connect Enterprise text editor to the right.
 
   ![](images/cors-auth-1.png)
 
 <hr/><br/>
 
 
-**Action** &nbsp; 5.2.2
+**Action** &nbsp; 5.2.2.
 
 Scroll down to the **HTTPConnector** section and paste the code below:
 ```
@@ -683,7 +681,7 @@ CORSAllowHeaders: 'Accept,Accept-Language,Content-Language,Content-Type'
 
 
 
-**Action** &nbsp; 5.2.3
+**Action** &nbsp; 5.2.3.
 
 **Save** the changes to the **server.conf.yaml** file or click **File > Save all**.
 
@@ -693,9 +691,9 @@ CORSAllowHeaders: 'Accept,Accept-Language,Content-Language,Content-Type'
 
 
 
-**Action** &nbsp; 5.2.4
+**Action** &nbsp; 5.2.4.
 
-Back to the *Integration Explorer* view, right-click the **TEST_SERVER** (1) and select **Restart** (2).
+Back to the *Integration Explorer* view, right-click the **TEST_SERVER** (A) and select **Restart** (B).
 
   ![](images/cors-auth-4.png)
 
@@ -703,7 +701,7 @@ Back to the *Integration Explorer* view, right-click the **TEST_SERVER** (1) and
 
 
 
-**Action** &nbsp; 5.2.5
+**Action** &nbsp; 5.2.5.
 
 Click **OK** on the Success dialog again.
 
@@ -716,9 +714,9 @@ Click **OK** on the Success dialog again.
 
 <br/><br/>
 
-### **6 - Test the API**
+### **6. Test the API**
 <details>
-<summary>6.1 - Deploying the API</summary><br/>
+<summary>6.1. Deploying the API</summary><br/>
 
 **Narration**
 
@@ -727,16 +725,16 @@ Now, they need to deploy the ShoppingListAPI to the new Local Integration server
 <hr/><br/>
 
 
-**Action** &nbsp; 6.1.1
+**Action** &nbsp; 6.1.1.
 
-Deploy the REST API which we created earlier named **ShoppingListAPI** (1), by dragging and dropping it from the Application Development view on to the **TEST_SERVER** Integration Server (2).
+Deploy the REST API which we created earlier named **ShoppingListAPI** (A), by dragging and dropping it from the Application Development view on to the **TEST_SERVER** Integration Server (B).
 
   ![](images/deploy-api-1.png)
 
 <hr/><br/>
 
 
-**Action** &nbsp; 6.1.2
+**Action** &nbsp; 6.1.2.
 
 On the *Progress Information* dialog, click **Close**.
 
@@ -748,7 +746,7 @@ On the *Progress Information* dialog, click **Close**.
 
 
 <details>
-<summary>6.2 - Starting Web User Interface</summary><br/>
+<summary>6.2. Starting Web User Interface</summary><br/>
 
 **Narration**
 
@@ -756,9 +754,9 @@ At this moment, the Focus Integration experts are ready to test the API. They st
 
 <hr/><br/>
 
-**Action** &nbsp; 6.2.1
+**Action** &nbsp; 6.2.1.
 
-Right-click **TEST_SERVER** (1) and select **Start Web User Interface** (2). 
+Right-click **TEST_SERVER** (A) and select **Start Web User Interface** (B). 
 
   ![](images/start-wui-1.png)
 
@@ -767,7 +765,7 @@ Right-click **TEST_SERVER** (1) and select **Start Web User Interface** (2). 
 
 
 <details>
-<summary>6.3 - Testing the ShoppingList API</summary><br/>
+<summary>6.3. Testing the ShoppingList API</summary><br/>
 
 **Narration**
 
@@ -777,7 +775,7 @@ Great, the subflow was invoked and our mapping transformation created a response
 
 <hr/><br/>
 
-**Action** &nbsp; 6.3.1
+**Action** &nbsp; 6.3.1.
 
 Click the **ShoppingListAPI** tile in the web user interface. 
 
@@ -786,7 +784,7 @@ Click the **ShoppingListAPI** tile in the web user interface. 
 <hr/><br/>
 
 
-**Action** &nbsp; 6.3.2
+**Action** &nbsp; 6.3.2.
 
 Select the **GET /shoppinglist/{department}** operation on the left. 
 
@@ -795,7 +793,7 @@ Select the **GET /shoppinglist/{department}** operation on the left. 
 <hr/><br/>
 
 
-**Action** &nbsp; 6.3.3
+**Action** &nbsp; 6.3.3.
 
 Click the **Try it** tab.
 
@@ -805,16 +803,16 @@ Click the **Try it** tab.
 <hr/><br/>
 
 
-**Action** &nbsp; 6.3.4
+**Action** &nbsp; 6.3.4.
 
-Enter any **department** name (by now, we are not checking the department) such as **Candies** (1). Click **Send** (2).
+Enter any **department** name (by now, we are not checking the department) such as **Candies** (A). Click **Send** (B).
 
   ![](images/test-api-4.png)
 
 <hr/><br/>
 
 
-**Action** &nbsp; 6.3.5
+**Action** &nbsp; 6.3.5.
 
 Show the **Response body**. Show the assigned name and description fields.
 
@@ -826,9 +824,9 @@ Show the **Response body**. Show the assigned name and description fields.
 <br/><br/>
 
 
-### **7 - Add Compute transformation**
+### **7. Add Compute transformation**
 <details>
-<summary>7.1 - Adding Compute node</summary><br/>
+<summary>7.1. Adding Compute node</summary><br/>
 
 **Narration**
 
@@ -839,7 +837,7 @@ They would like to see how to use ESQL to transform and enrich messages using th
 <hr/><br/>
 
 
-**Action** &nbsp; 7.1.1
+**Action** &nbsp; 7.1.1.
 
 Back to the **getDepartment** subflow (1), open again the Transformation menu and drag and drop a **Compute** node (2).
 
@@ -847,7 +845,7 @@ Back to the **getDepartment** subflow (1), open again the Transformation menu an
 
 <hr/><br/>
 
-**Action** &nbsp; 7.1.2
+**Action** &nbsp; 7.1.2.
 
 Readjust the connections of Input and output node to connect to the Compute node (the out terminal of the Input node will be wired to the in terminal of the Compute node, and the **out** terminal of the Compute node will be wired to the in terminal of the Output node).
 
@@ -856,7 +854,7 @@ Readjust the connections of Input and output node to connect to the Compute node
 <hr/><br/>
 
 
-**Action** &nbsp; 7.1.3
+**Action** &nbsp; 7.1.3.
 
 Click on the **Compute** node (1). On the Compute node's properties change the *Compute mode* to be “**LocalEnvironment and Message**” (2).
 
@@ -864,7 +862,7 @@ Click on the **Compute** node (1). On the Compute node's properties change the *
 
 <hr/><br/>
 
-**Action** &nbsp; 7.1.4
+**Action** &nbsp; 7.1.4.
 
 **Save** the subflow (you can safely ignore the red crosses on the Compute node - we will fix these up in the next step!).
 
@@ -874,7 +872,7 @@ Click on the **Compute** node (1). On the Compute node's properties change the *
 </details>
 
 <details>
-<summary>7.2 - Create Broker Schema</summary><br/>
+<summary>7.2. Create Broker Schema</summary><br/>
 
 **Narration**
 
@@ -885,7 +883,7 @@ First, they need to create a Broker Schema to include the ESQL file. A broker sc
 <hr/><br/>
 
 
-**Action** &nbsp; 7.2.1
+**Action** &nbsp; 7.2.1.
 
 Right click the **ShoppingListAPI** (1) and choose **New > Broker Schema** (2).
 
@@ -894,7 +892,7 @@ Right click the **ShoppingListAPI** (1) and choose **New > Broker Schema** (2).
 <hr/><br/>
 
 
-**Action** &nbsp; 7.2.2
+**Action** &nbsp; 7.2.2.
 
 Type **utils** as the Schema name (1) and click **Finish** (2).
 
@@ -903,7 +901,7 @@ Type **utils** as the Schema name (1) and click **Finish** (2).
 <hr/><br/>
 
 
-**Action** &nbsp; 7.2.3
+**Action** &nbsp; 7.2.3.
 
 On the *New Broker Schema* dialog, click **OK**.
 
@@ -914,7 +912,7 @@ On the *New Broker Schema* dialog, click **OK**.
 </details>
 
 <details>
-<summary>7.3 - Copy ESQL file</summary><br/>
+<summary>7.3. Copy ESQL file</summary><br/>
 
 **Narration**
 
@@ -922,7 +920,7 @@ Next, Focus developers will copy the pre-created ESQL file to the broker schema 
 
 <hr/><br/>
 
-**Action** &nbsp; 7.3.1
+**Action** &nbsp; 7.3.1.
 
 Switch to the Resource perspective using the menu **Window > Perspective > Open Perspective > Other…**
 
@@ -931,7 +929,7 @@ Switch to the Resource perspective using the menu **Window > Perspective > Open 
 
 <hr/><br/>
 
-**Action** &nbsp; 7.3.2
+**Action** &nbsp; 7.3.2.
 
 Choose **Resource** (1) and click **Open** (2).
 
@@ -939,7 +937,7 @@ Choose **Resource** (1) and click **Open** (2).
 
 <hr/><br/>
 
-**Action** &nbsp; 7.3.3
+**Action** &nbsp; 7.3.3.
 
 Using the Project Explorer view, open the *HelperFiles* project and the **utils** folder, right click on the **Compute.esql** file (1) and select **Copy** (2).
 
@@ -947,7 +945,7 @@ Using the Project Explorer view, open the *HelperFiles* project and the **utils*
 
 <hr/><br/>
 
-**Action** &nbsp; 7.3.4
+**Action** &nbsp; 7.3.4.
 
 On the **ShoppingListAPI** project, right click on the **utils** folder, and select **Paste** (2).
 
@@ -956,7 +954,7 @@ On the **ShoppingListAPI** project, right click on the **utils** folder, and sel
 
 <hr/><br/>
 
-**Action** &nbsp; 7.3.5
+**Action** &nbsp; 7.3.5.
 
 Switch back to the *Integration Development* perspective using the **Window > Perspective > Open Perspective > Integration Development** menu.
 
@@ -967,7 +965,7 @@ Switch back to the *Integration Development* perspective using the **Window > Pe
 </details>
 
 <details>
-<summary>7.4 - Update the ESQL module</summary><br/>
+<summary>7.4. Update the ESQL module</summary><br/>
 
 **Narration**
 
@@ -975,7 +973,7 @@ Now, they just need to update the Compute node to use the new ESQL file. They wi
 
 <hr/><br/>
 
-**Action** &nbsp; 7.4.1
+**Action** &nbsp; 7.4.1.
 
 Return to the *getDepartment* subflow and click on **Compute** node again.
 
@@ -984,7 +982,7 @@ Return to the *getDepartment* subflow and click on **Compute** node again.
 
 <hr/><br/>
 
-**Action** &nbsp; 7.4.2
+**Action** &nbsp; 7.4.2.
 
 On the Compute node's properties, you need to update the *ESQL module* property. Click **Browse** button.
 
@@ -992,7 +990,7 @@ On the Compute node's properties, you need to update the *ESQL module* property.
 
 <hr/><br/>
 
-**Action** &nbsp; 7.4.3
+**Action** &nbsp; 7.4.3.
 
 Select **{utils}:getDepartment_Compute** (1) and click **OK** (2).
 
@@ -1000,7 +998,7 @@ Select **{utils}:getDepartment_Compute** (1) and click **OK** (2).
 
 <hr/><br/>
 
-**Action** &nbsp; 7.4.4
+**Action** &nbsp; 7.4.4.
 
 **Save** the subflow.
 
@@ -1011,7 +1009,7 @@ Select **{utils}:getDepartment_Compute** (1) and click **OK** (2).
 </details>
 
 <details>
-<summary>7.5 - Review the ESQL</summary><br/>
+<summary>7.5. Review the ESQL</summary><br/>
 
 **Narration**
 
@@ -1023,7 +1021,7 @@ All three items are hardcoded created in the Initialise procedure. In a real sce
 
 <hr/><br/>
 
-**Action** &nbsp; 7.5.1
+**Action** &nbsp; 7.5.1.
 
 **Double click** on the **Compute** node, to see the ESQL file.
 
@@ -1032,7 +1030,7 @@ All three items are hardcoded created in the Initialise procedure. In a real sce
 
 <hr/><br/>
 
-**Action** &nbsp; 7.5.2
+**Action** &nbsp; 7.5.2.
 
 Show the **getDepartment_Compute Module**.
 
@@ -1040,7 +1038,7 @@ Show the **getDepartment_Compute Module**.
 
 <hr/><br/>
 
-**Action** &nbsp; 7.5.3
+**Action** &nbsp; 7.5.3.
 
 Scroll down and show the **Initialise Procedure**.
 
@@ -1048,7 +1046,7 @@ Scroll down and show the **Initialise Procedure**.
 
 <hr/><br/>
 
-**Action** &nbsp; 7.5.4
+**Action** &nbsp; 7.5.4.
 
 **Close** the ESQL file.
 
@@ -1059,7 +1057,7 @@ Scroll down and show the **Initialise Procedure**.
 </details>
 
 <details>
-<summary>7.6 - Test compute node</summary><br/>
+<summary>7.6. Test compute node</summary><br/>
 
 **Narration**
 
@@ -1071,7 +1069,7 @@ Great, the subflow was invoked and our compute transformation created a response
 
 <hr/><br/>
 
-**Action** &nbsp; 7.6.1
+**Action** &nbsp; 7.6.1.
 
 Re-deploy the REST API, by dragging and dropping the **ShoppingListAPI** (1) again from the Application Development view on to the **TEST_SERVER** Integration Server (2).
 
@@ -1080,7 +1078,7 @@ Re-deploy the REST API, by dragging and dropping the **ShoppingListAPI** (1) aga
 
 <hr/><br/>
 
-**Action** &nbsp; 7.6.2
+**Action** &nbsp; 7.6.2.
 
 On the Progress Information dialog, click **Close**.
 
@@ -1088,13 +1086,13 @@ On the Progress Information dialog, click **Close**.
 
 <hr/><br/>
 
-**Action** &nbsp; 7.6.3
+**Action** &nbsp; 7.6.3.
 
 On your browser, refresh the **Web User Interface** page.
 
 <hr/><br/>
 
-**Action** &nbsp; 7.6.4
+**Action** &nbsp; 7.6.4.
 
 Open again the **ShoppingListAPI** (1), **GET /shoppinglist/{department}** (2), **Try it** tab (3).
 
@@ -1102,7 +1100,7 @@ Open again the **ShoppingListAPI** (1), **GET /shoppinglist/{department}** (2), 
 
 <hr/><br/>
 
-**Action** &nbsp; 7.6.5
+**Action** &nbsp; 7.6.5.
 
 Enter a **department** name (it could be Candies, Snacks or Bakery)  (1). Click **Send** (2).
 
@@ -1112,7 +1110,7 @@ Enter a **department** name (it could be Candies, Snacks or Bakery)  (1). Click 
 
 <hr/><br/>
 
-**Action** &nbsp; 7.6.6
+**Action** &nbsp; 7.6.6.
 
 Show the **Response** body.
 
@@ -1124,9 +1122,9 @@ Show the **Response** body.
 
 <br/><br/>
 
-### **8 - Add Java transformation**
+### **8. Add Java transformation**
 <details>
-<summary>8.1 - Adding Java Compute node</summary><br/>
+<summary>8.1. Adding Java Compute node</summary><br/>
 
 **Narration**
 
@@ -1138,7 +1136,7 @@ Because of it, they decided to explore the JavaCompute node.
 
 <hr/><br/>
 
-**Action** &nbsp; 8.1.1
+**Action** &nbsp; 8.1.1.
 
 Back to the getDepartment subflow, open again the Transformation menu and drag and drop a **JavaCompute** node.
 
@@ -1146,7 +1144,7 @@ Back to the getDepartment subflow, open again the Transformation menu and drag a
 
 <hr/><br/>
 
-**Action** &nbsp; 8.1.2
+**Action** &nbsp; 8.1.2.
 
 Readjust the connections of Input and output node to connect to the Java Compute node (the out terminal of the Input node will be wired to the in terminal of the Java Compute node, and the out terminal of the Java Compute node will be wired to the in terminal of the Output node).
 
@@ -1157,7 +1155,7 @@ Readjust the connections of Input and output node to connect to the Java Compute
 </details>
 
 <details>
-<summary>8.2 - Create Java Compute node class</summary><br/>
+<summary>8.2. Create Java Compute node class</summary><br/>
 
 **Narration**
 
@@ -1167,7 +1165,7 @@ However, the developers decided to try the Java Compute node class wizard to cre
 
 <hr/><br/>
 
-**Action** &nbsp; 8.2.1
+**Action** &nbsp; 8.2.1.
 
 *Double click* the **Java Compute** node.
 
@@ -1175,7 +1173,7 @@ However, the developers decided to try the Java Compute node class wizard to cre
 
 <hr/><br/>
 
-**Action** &nbsp; 8.2.2
+**Action** &nbsp; 8.2.2.
 
 On the *New JavaCompute node class* dialog, accept the default values and click **Next**.
 
@@ -1183,7 +1181,7 @@ On the *New JavaCompute node class* dialog, accept the default values and click 
 
 <hr/><br/>
 
-**Action** &nbsp; 8.2.3
+**Action** &nbsp; 8.2.3.
 
 Select **Modifying message class** template (1) and click **Next** (2).
 
@@ -1191,7 +1189,7 @@ Select **Modifying message class** template (1) and click **Next** (2).
 
 <hr/><br/>
 
-**Action** &nbsp; 8.2.4
+**Action** &nbsp; 8.2.4.
 
 On the Java Settings view, accept the default values and click **Next**.
 
@@ -1199,7 +1197,7 @@ On the Java Settings view, accept the default values and click **Next**.
 
 <hr/><br/>
 
-**Action** &nbsp; 8.2.5
+**Action** &nbsp; 8.2.5.
 
 Accept the default Project name and click **Finish**.
 
@@ -1210,7 +1208,7 @@ Accept the default Project name and click **Finish**.
 </details>
 
 <details>
-<summary>8.3 - Adding code</summary><br/>
+<summary>8.3. Adding code</summary><br/>
 
 **Narration**
 
@@ -1219,7 +1217,7 @@ For this demo, they will only add a simple message code to create elements in th
 <hr/><br/>
 
 
-**Action** &nbsp; 8.3.1
+**Action** &nbsp; 8.3.1.
 
 On the *GetDepartment_JavaCompute* class, **copy and paste the code below**, below the *Add user code below* comment.
 ```
@@ -1236,7 +1234,7 @@ outJsonData.createElementAsLastChild(MbElement.TYPE_NAME_VALUE, "description", "
 <hr/><br/>
 
 
-**Action** &nbsp; 8.3.2
+**Action** &nbsp; 8.3.2.
 
 To solve the imports issue, click on **Source > Organize Imports** menu.
 
@@ -1245,7 +1243,7 @@ To solve the imports issue, click on **Source > Organize Imports** menu.
 <hr/><br/>
 
 
-**Action** &nbsp; 8.3.3
+**Action** &nbsp; 8.3.3.
 
 Click **File > Save All**.
 
@@ -1254,7 +1252,7 @@ Click **File > Save All**.
 <hr/><br/>
 
 
-**Action** &nbsp; 8.3.4
+**Action** &nbsp; 8.3.4.
 
 **Close** the Java class.
 
@@ -1264,7 +1262,7 @@ Click **File > Save All**.
 </details>
 
 <details>
-<summary>8.4 - Test Java Compute node</summary><br/>
+<summary>8.4. Test Java Compute node</summary><br/>
 
 **Narration**
 
@@ -1277,7 +1275,7 @@ Great, the subflow was invoked and our java compute transformation created a res
 <hr/><br/>
 
 
-**Action** &nbsp; 8.4.1
+**Action** &nbsp; 8.4.1.
 
 Re-deploy the REST API, by dragging and dropping the **ShoppingListAPI** (1) again from the Application Development view on to the **TEST_SERVER** Integration Server (2).
 
@@ -1286,7 +1284,7 @@ Re-deploy the REST API, by dragging and dropping the **ShoppingListAPI** (1) aga
 <hr/><br/>
 
 
-**Action** &nbsp; 8.4.2
+**Action** &nbsp; 8.4.2.
 
 On the Progress Information dialog, click **Close**.
 
@@ -1295,14 +1293,14 @@ On the Progress Information dialog, click **Close**.
 <hr/><br/>
 
 
-**Action** &nbsp; 8.4.3
+**Action** &nbsp; 8.4.3.
 
 On your browser, **refresh** the *Web User Interface* page.
 
 <hr/><br/>
 
 
-**Action** &nbsp; 8.4.4
+**Action** &nbsp; 8.4.4.
 
 Open again the **ShoppingListAPI** (1), **GET /shoppinglist/{department}** (2), **Try it** tab (3).
 
@@ -1311,7 +1309,7 @@ Open again the **ShoppingListAPI** (1), **GET /shoppinglist/{department}** (2), 
 <hr/><br/>
 
 
-**Action** &nbsp; 8.4.5
+**Action** &nbsp; 8.4.5.
 
 Enter **Bakery** as **department** name (1). Click **Send** (2).
 
@@ -1331,9 +1329,9 @@ Show the **Response** body.
 
 <br/><br/>
 
-### **9 - Add Route**
+### **9. Add Route**
 <details>
-<summary>9.1 - Adding Route node</summary><br/>
+<summary>9.1. Adding Route node</summary><br/>
 
 **Narration**
 
@@ -1346,7 +1344,7 @@ Let's see how to do it!
 <hr/><br/>
 
 
-**Action** &nbsp; 9.1.1
+**Action** &nbsp; 9.1.1.
 
 Back to the getDepartment subflow, open the **Routing** menu and drag and drop a **Route** node.
 
@@ -1355,7 +1353,7 @@ Back to the getDepartment subflow, open the **Routing** menu and drag and drop a
 
 <hr/><br/>
 
-**Action** &nbsp; 9.1.2
+**Action** &nbsp; 9.1.2.
 
 Delete all existing wiring. And wire the **Input** node to the new **Route** node.
 
@@ -1366,7 +1364,7 @@ Delete all existing wiring. And wire the **Input** node to the new **Route** nod
 </details>
 
 <details>
-<summary>9.2 - Renaming Match output terminal</summary><br/>
+<summary>9.2. Renaming Match output terminal</summary><br/>
 
 **Narration**
 
@@ -1374,7 +1372,7 @@ Initially, they need to rename the existing Match output terminal to mapping. An
 
 <hr/><br/>
 
-**Action** &nbsp; 9.2.1
+**Action** &nbsp; 9.2.1.
 
 Right click on **Route** node (1), and select **Rename Output Terminal** (2).
 
@@ -1392,7 +1390,7 @@ On Select output terminal to rename select **Match** (1). In the *Enter new name
 <hr/><br/>
 
 
-**Action** &nbsp; 9.2.3
+**Action** &nbsp; 9.2.3.
 
 Wire the **mapping** output terminal from **Route** node to the **in** terminal of the **Mapping node**.
 
@@ -1403,7 +1401,7 @@ Wire the **mapping** output terminal from **Route** node to the **in** terminal 
 </details>
 
 <details>
-<summary>9.3 - Creating new output terminal</summary><br/>
+<summary>9.3. Creating new output terminal</summary><br/>
 
 **Narration**
 
@@ -1411,7 +1409,7 @@ Second, they need to create more two output terminals to compute and java transf
 
 <hr/><br/>
 
-**Action** &nbsp; 9.3.1
+**Action** &nbsp; 9.3.1.
 
 Right click on **Route** node (1), and select **Add Output Terminal** (2).
 
@@ -1420,7 +1418,7 @@ Right click on **Route** node (1), and select **Add Output Terminal** (2).
 <hr/><br/>
 
 
-**Action** &nbsp; 9.3.2
+**Action** &nbsp; 9.3.2.
 
 Enter **compute** as the name of the new output terminal (1) and click **OK** (2).
 
@@ -1429,7 +1427,7 @@ Enter **compute** as the name of the new output terminal (1) and click **OK** (2
 <hr/><br/>
 
 
-**Action** &nbsp; 9.3.3
+**Action** &nbsp; 9.3.3.
 
 Repeat the same steps to create the java terminal: Right click on **Route** node (1), and select **Add Output Terminal** (2).
 
@@ -1438,7 +1436,7 @@ Repeat the same steps to create the java terminal: Right click on **Route** node
 <hr/><br/>
 
 
-**Action** &nbsp; 9.3.4
+**Action** &nbsp; 9.3.4.
 
 Enter **java** as the name of the new output terminal (1) and click **OK** (2).
 
@@ -1447,7 +1445,7 @@ Enter **java** as the name of the new output terminal (1) and click **OK** (2).
 <hr/><br/>
 
 
-**Action** &nbsp; 9.3.5
+**Action** &nbsp; 9.3.5.
 
 Wire the **compute** output terminal from **Route** node to the **in** terminal of the **Compute** node.
 
@@ -1458,7 +1456,7 @@ Wire the **compute** output terminal from **Route** node to the **in** terminal 
 <hr/><br/>
 
 
-**Action** &nbsp; 9.3.6
+**Action** &nbsp; 9.3.6.
 
 Repeat the same steps to wire the **java** output terminal from **Route** node to the **in** terminal of the **Java Compute** node.
 
@@ -1470,7 +1468,7 @@ Repeat the same steps to wire the **java** output terminal from **Route** node t
 </details>
 
 <details>
-<summary>9.4 - Adding filter patterns</summary><br/>
+<summary>9.4. Adding filter patterns</summary><br/>
 
 **Narration**
 
@@ -1480,7 +1478,7 @@ Focus developers define the three XPath expressions, one for each transformation
 
 <hr/><br/>
 
-**Action** &nbsp; 9.4.1
+**Action** &nbsp; 9.4.1.
 
 Click on the **Route** node.
 
@@ -1489,7 +1487,7 @@ Click on the **Route** node.
 <hr/><br/>
 
 
-**Action** &nbsp; 9.4.2
+**Action** &nbsp; 9.4.2.
 
 On the Filter table, click **Add** button.
 
@@ -1498,7 +1496,7 @@ On the Filter table, click **Add** button.
 <hr/><br/>
 
 
-**Action** &nbsp; 9.4.3
+**Action** &nbsp; 9.4.3.
 
 Enter **$LocalEnvironment/REST/Input/Parameters/department="Candies"** in the *Filter pattern* field (1) and select **mapping** as the *Routing output terminal* (2). Then click **OK** (3).
 
@@ -1509,7 +1507,7 @@ Enter **$LocalEnvironment/REST/Input/Parameters/department="Candies"** in the *F
 <hr/><br/>
 
 
-**Action** &nbsp; 9.4.4
+**Action** &nbsp; 9.4.4.
 
 Click **Add** button again.
 
@@ -1518,7 +1516,7 @@ Click **Add** button again.
 <hr/><br/>
 
 
-**Action** &nbsp; 9.4.5
+**Action** &nbsp; 9.4.5.
 
 Enter **$LocalEnvironment/REST/Input/Parameters/department="Snacks”** in the *Filter pattern* field (1) and select **compute** as the *Routing output terminal* (2). Then click **OK** (3).
 
@@ -1529,7 +1527,7 @@ Enter **$LocalEnvironment/REST/Input/Parameters/department="Snacks”** in the *
 <hr/><br/>
 
 
-**Action** &nbsp; 9.4.6
+**Action** &nbsp; 9.4.6.
 
 Click **Add** button again.
 
@@ -1538,7 +1536,7 @@ Click **Add** button again.
 <hr/><br/>
 
 
-**Action** &nbsp; 9.4.7
+**Action** &nbsp; 9.4.7.
 
 Enter **$LocalEnvironment/REST/Input/Parameters/department="Bakery”** in the *Filter pattern* field (1) and select **java** as the *Routing output terminal* (2). Then click **OK** (3).
 
@@ -1550,7 +1548,7 @@ Enter **$LocalEnvironment/REST/Input/Parameters/department="Bakery”** in the *
 </details>
 
 <details>
-<summary>9.5 - Connecting nodes</summary><br/>
+<summary>9.5. Connecting nodes</summary><br/>
 
 **Narration**
 
@@ -1558,7 +1556,7 @@ Finally, the Focus team connects all the nodes to finalize the flow.
 
 <hr/><br/>
 
-**Action** &nbsp; 9.5.1
+**Action** &nbsp; 9.5.1.
 
 Wire the out terminal of **Mapping** (1), **Compute** (2) and **Java Compute** (3) nodes to the in terminal of the **Output** node (4).
 
@@ -1567,7 +1565,7 @@ Wire the out terminal of **Mapping** (1), **Compute** (2) and **Java Compute** (
 <hr/><br/>
 
 
-**Action** &nbsp; 9.5.2
+**Action** &nbsp; 9.5.2.
 
 Wire the **default** (1) and **failure** (2) terminal of **Route** node to the in terminal of the **Output** node (3).
 
@@ -1576,7 +1574,7 @@ Wire the **default** (1) and **failure** (2) terminal of **Route** node to the i
 <hr/><br/>
 
 
-**Action** &nbsp; 9.5.3
+**Action** &nbsp; 9.5.3.
 
 Click **File > Save All**.
 
@@ -1588,7 +1586,7 @@ Click **File > Save All**.
 </details>
 
 <details>
-<summary>9.6- Test Route node</summary><br/>
+<summary>9.6. Test Route node</summary><br/>
 
 **Narration**
 
@@ -1601,7 +1599,7 @@ Great, the subflow was invoked and  the message is routed through all different 
 <hr/><br/>
 
 
-**Action** &nbsp; 9.6.1
+**Action** &nbsp; 9.6.1.
 
 Re-deploy the REST API, by dragging and dropping the **ShoppingListAPI** (1) again from the Application Development view on to the **TEST_SERVER** Integration Server (2).
 
@@ -1610,7 +1608,7 @@ Re-deploy the REST API, by dragging and dropping the **ShoppingListAPI** (1) aga
 <hr/><br/>
 
 
-**Action** &nbsp; 9.6.2
+**Action** &nbsp; 9.6.2.
 
 On the Progress Information dialog, click **Close**.
 
@@ -1619,14 +1617,14 @@ On the Progress Information dialog, click **Close**.
 <hr/><br/>
 
 
-**Action** &nbsp; 9.6.3
+**Action** &nbsp; 9.6.3.
 
 On your browser, **refresh** the **Web User Interface** page.
 
 <hr/><br/>
 
 
-**Action** &nbsp; 9.6.4
+**Action** &nbsp; 9.6.4.
 
 Open again the **ShoppingListAPI** (1), **GET /shoppinglist/{department}** (2), **Try it** tab (3).
 
@@ -1635,7 +1633,7 @@ Open again the **ShoppingListAPI** (1), **GET /shoppinglist/{department}** (2), 
 <hr/><br/>
 
 
-**Action** &nbsp; 9.6.5
+**Action** &nbsp; 9.6.5.
 
 Enter **Candies** (or Bakery, or Snacks) as **department** name (1). Click **Send** (2).
 
@@ -1646,7 +1644,7 @@ Enter **Candies** (or Bakery, or Snacks) as **department** name (1). Click **Sen
 <hr/><br/>
 
 
-**Action** &nbsp; 9.6.6
+**Action** &nbsp; 9.6.6.
 
 Show the **Response** body and show that each department is processed by different Transformation node (show the description field).
 
@@ -1657,9 +1655,9 @@ Show the **Response** body and show that each department is processed by differe
 
 <br/><br/>
 
-### **10 - Test on App Connect Enterprise**
+### **10. Test on App Connect Enterprise**
 <details>
-<summary>10.1 - Exporting BAR File</summary><br/>
+<summary>10.1. Exporting BAR File</summary><br/>
 
 **Narration**
 
@@ -1667,7 +1665,7 @@ At this stage, Focus team is ready to deploy their Integration flow in a App Con
 
 <hr/><br/>
 
-**Action** &nbsp; 10.1.1
+**Action** &nbsp; 10.1.1.
 
 Right click the **ShoppingListAPI** (1) and choose **New > BAR file** (2).
 
@@ -1675,7 +1673,7 @@ Right click the **ShoppingListAPI** (1) and choose **New > BAR file** (2).
 
 <hr/><br/>
 
-**Action** &nbsp; 10.1.2
+**Action** &nbsp; 10.1.2.
 
 On the *New Bar file* dialog, type **shoppinglist** as the bar file name (1) and click **Finish** (2).
 
@@ -1683,7 +1681,7 @@ On the *New Bar file* dialog, type **shoppinglist** as the bar file name (1) and
 
 <hr/><br/>
 
-**Action** &nbsp; 10.1.3
+**Action** &nbsp; 10.1.3.
 
 On the *Prepare screen*, mark the **REST APIs** checkbox (1). Check **Compile and in-line resources** (2). Click **Build and Save** (3).
 
@@ -1691,7 +1689,7 @@ On the *Prepare screen*, mark the **REST APIs** checkbox (1). Check **Compile an
 
 <hr/><br/>
 
-**Action** &nbsp; 10.1.4
+**Action** &nbsp; 10.1.4.
 
 Now, a popup window displays *Operation completed successfully*. Click **OK**.
 
@@ -1701,7 +1699,7 @@ Now, a popup window displays *Operation completed successfully*. Click **OK**.
 </details>
 
 <details>
-<summary>10.2 - Accessing App Connect Enterprise environment</summary><br/>
+<summary>10.2. Accessing App Connect Enterprise environment</summary><br/>
 
 **Narration**
 
@@ -1711,7 +1709,7 @@ For this demo, Focus Corp is using a trial account of IBM App Connect Enterprise
 
 <hr/><br/>
 
-**Action** &nbsp; 10.2.1
+**Action** &nbsp; 10.2.1.
 
 In your email inbox (that you used to create the App Connect trial account), search for **IBM SaaS** (1), open the ”**Your IBM App Connect trial is ready**” email (2).
 
@@ -1720,7 +1718,7 @@ In your email inbox (that you used to create the App Connect trial account), sea
 <hr/><br/>
 
 
-**Action** &nbsp; 10.2.2
+**Action** &nbsp; 10.2.2.
 
 Now, click the **Access trial** button.
 
@@ -1729,7 +1727,7 @@ Now, click the **Access trial** button.
 <hr/><br/>
 
 
-**Action** &nbsp; 10.2.3
+**Action** &nbsp; 10.2.3.
 
 **Log in** with your App Connect *username* and *password*.
 
@@ -1748,7 +1746,7 @@ Use the Instance switcher to change to the **Dashboard** instance.
 </details>
 
 <details>
-<summary>10.3 - Creating Integration server</summary><br/>
+<summary>10.3. Creating Integration server</summary><br/>
 
 **Narration**
 
@@ -1766,7 +1764,7 @@ That is it! After few minutes their server should be ready with their integratio
 
 <hr/><br/>
 
-**Action** &nbsp; 10.3.1
+**Action** &nbsp; 10.3.1.
 
 Click **Deploy integrations**.
 
@@ -1774,7 +1772,7 @@ Click **Deploy integrations**.
 
 <hr/><br/>
 
-**Action** &nbsp; 10.3.2
+**Action** &nbsp; 10.3.2.
 
 Select **Quick start integration** option (1) and click **Next** (2).
 
@@ -1782,7 +1780,7 @@ Select **Quick start integration** option (1) and click **Next** (2).
 
 <hr/><br/>
 
-**Action** &nbsp; 10.3.3
+**Action** &nbsp; 10.3.3.
 
 Click to upload your BAR File. And select the **shoppinglist.bar** (1) file (it is in your workspace folder in a Bar Files directory). And click **Next** (B).
 
@@ -1790,7 +1788,7 @@ Click to upload your BAR File. And select the **shoppinglist.bar** (1) file (it 
 
 <hr/><br/>
 
-**Action** &nbsp; 10.3.4
+**Action** &nbsp; 10.3.4.
 
 You don’t need any Integration configuration, click **Next**.
 
@@ -1798,7 +1796,7 @@ You don’t need any Integration configuration, click **Next**.
 
 <hr/><br/>
 
-**Action** &nbsp; 10.3.5
+**Action** &nbsp; 10.3.5.
 
 Enter the Integration Server name as **shoppinglist** (1). Disable the option to **Force Flow Basic Auth** (2). Then click **Create** (3).
 
@@ -1806,7 +1804,7 @@ Enter the Integration Server name as **shoppinglist** (1). Disable the option to
 
 <hr/><br/>
 
-**Action** &nbsp; 10.3.6
+**Action** &nbsp; 10.3.6.
 
 The deployment process takes up to 5 minutes, **refresh** the browser to see the BAR file deployed and started.
 
@@ -1816,7 +1814,7 @@ The deployment process takes up to 5 minutes, **refresh** the browser to see the
 </details>
 
 <details>
-<summary>10.4 - Testing the API</summary><br/>
+<summary>10.4. Testing the API</summary><br/>
 
 **Narration**
 
@@ -1828,7 +1826,7 @@ Great, the subflow was invoked and the message is routed through all different t
 
 <hr/><br/>
 
-**Action** &nbsp; 10.4.1
+**Action** &nbsp; 10.4.1.
 
 Click the **shoppinglist** server icon.
 
@@ -1836,7 +1834,7 @@ Click the **shoppinglist** server icon.
 
 <hr/><br/>
 
-**Action** &nbsp; 10.4.2
+**Action** &nbsp; 10.4.2.
 
 Click the **ShoppingListAPI** icon.
 
@@ -1844,7 +1842,7 @@ Click the **ShoppingListAPI** icon.
 
 <hr/><br/>
 
-**Action** &nbsp; 10.4.3
+**Action** &nbsp; 10.4.3.
 
 Ignore the Open API Validation errors. Click on **GET /shoppinglist/{department}**,
 
@@ -1852,7 +1850,7 @@ Ignore the Open API Validation errors. Click on **GET /shoppinglist/{department}
 
 <hr/><br/>
 
-**Action** &nbsp; 10.4.4
+**Action** &nbsp; 10.4.4.
 
 Open the **Try it** tab.
 
@@ -1860,7 +1858,7 @@ Open the **Try it** tab.
 
 <hr/><br/>
 
-**Action** &nbsp; 10.4.5
+**Action** &nbsp; 10.4.5.
 
 Enter **Candies** (or **Bakery**, or **Snacks**) as *department* name (1). Click **Send** (2).
 
@@ -1870,7 +1868,7 @@ Enter **Candies** (or **Bakery**, or **Snacks**) as *department* name (1). Click
 
 <hr/><br/>
 
-**Action** &nbsp; 10.4.6
+**Action** &nbsp; 10.4.6.
 
 Show the **Response** body and show that each department is processed by different Transformation node (show the description field).
 
