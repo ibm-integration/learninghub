@@ -839,7 +839,7 @@ They would like to see how to use ESQL to transform and enrich messages using th
 
 **Action** &nbsp; 7.1.1.
 
-Back to the **getDepartment** subflow (1), open again the Transformation menu and drag and drop a **Compute** node (2).
+Back to the **getDepartment** subflow (A), open again the Transformation menu and drag and drop a **Compute** node (B).
 
   ![](images/add-compute-1.png)
 
@@ -856,7 +856,7 @@ Readjust the connections of Input and output node to connect to the Compute node
 
 **Action** &nbsp; 7.1.3.
 
-Click on the **Compute** node (1). On the Compute node's properties change the *Compute mode* to be “**LocalEnvironment and Message**” (2).
+Click on the **Compute** node (A). On the Compute node's properties change the *Compute mode* to be “**LocalEnvironment and Message**” (B).
 
   ![](images/add-compute-3.png)
 
@@ -894,7 +894,7 @@ Right click the **ShoppingListAPI** (1) and choose **New > Broker Schema** (2).
 
 **Action** &nbsp; 7.2.2.
 
-Type **utils** as the Schema name (1) and click **Finish** (2).
+Type **utils** as the Schema name (A) and click **Finish** (B).
 
   ![](images/broker-schema-2.png)
 
@@ -931,7 +931,7 @@ Switch to the Resource perspective using the menu **Window > Perspective > Open 
 
 **Action** &nbsp; 7.3.2.
 
-Choose **Resource** (1) and click **Open** (2).
+Choose **Resource** (A) and click **Open** (B).
 
   ![](images/copy-esql-2.png)
 
@@ -939,7 +939,7 @@ Choose **Resource** (1) and click **Open** (2).
 
 **Action** &nbsp; 7.3.3.
 
-Using the Project Explorer view, open the *HelperFiles* project and the **utils** folder, right click on the **Compute.esql** file (1) and select **Copy** (2).
+Using the Project Explorer view, open the *HelperFiles* project and the **utils** folder, right click on the **Compute.esql** file (A) and select **Copy** (B).
 
   ![](images/copy-esql-3.png)
 
@@ -947,7 +947,7 @@ Using the Project Explorer view, open the *HelperFiles* project and the **utils*
 
 **Action** &nbsp; 7.3.4.
 
-On the **ShoppingListAPI** project, right click on the **utils** folder, and select **Paste** (2).
+On the **ShoppingListAPI** project, right click on the **utils** folder, and select **Paste**.
 
   ![](images/copy-esql-4.png)
 
@@ -992,7 +992,7 @@ On the Compute node's properties, you need to update the *ESQL module* property.
 
 **Action** &nbsp; 7.4.3.
 
-Select **{utils}:getDepartment_Compute** (1) and click **OK** (2).
+Select **{utils}:getDepartment_Compute** (A) and click **OK** (B).
 
   ![](images/update-esql-3.png)
 
@@ -1071,7 +1071,7 @@ Great, the subflow was invoked and our compute transformation created a response
 
 **Action** &nbsp; 7.6.1.
 
-Re-deploy the REST API, by dragging and dropping the **ShoppingListAPI** (1) again from the Application Development view on to the **TEST_SERVER** Integration Server (2).
+Re-deploy the REST API, by dragging and dropping the **ShoppingListAPI** again from the Application Development view on to the **TEST_SERVER** Integration Server.
 
   ![](images/test-compute-1.png)
 
@@ -1094,7 +1094,7 @@ On your browser, refresh the **Web User Interface** page.
 
 **Action** &nbsp; 7.6.4.
 
-Open again the **ShoppingListAPI** (1), **GET /shoppinglist/{department}** (2), **Try it** tab (3).
+Open again the **ShoppingListAPI** (A), **GET /shoppinglist/{department}** (B), **Try it** tab (C).
 
   ![](images/test-compute-4.png)
 
@@ -1102,7 +1102,7 @@ Open again the **ShoppingListAPI** (1), **GET /shoppinglist/{department}** (2), 
 
 **Action** &nbsp; 7.6.5.
 
-Enter a **department** name (it could be Candies, Snacks or Bakery)  (1). Click **Send** (2).
+Enter a **department** name (it could be Candies, Snacks or Bakery)  (A). Click **Send** (B).
 
 *Note: You are welcome to try any of the three departments, or try a different one to see the 404 Not Found message*.
 
@@ -1183,7 +1183,7 @@ On the *New JavaCompute node class* dialog, accept the default values and click 
 
 **Action** &nbsp; 8.2.3.
 
-Select **Modifying message class** template (1) and click **Next** (2).
+Select **Modifying message class** template (A) and click **Next** (B).
 
   ![](images/create-javaclass-3.png)
 
@@ -1277,7 +1277,7 @@ Great, the subflow was invoked and our java compute transformation created a res
 
 **Action** &nbsp; 8.4.1.
 
-Re-deploy the REST API, by dragging and dropping the **ShoppingListAPI** (1) again from the Application Development view on to the **TEST_SERVER** Integration Server (2).
+Re-deploy the REST API, by dragging and dropping the **ShoppingListAPI** again from the Application Development view on to the **TEST_SERVER** Integration Server.
 
   ![](images/test-java-1.png)
 
@@ -1302,7 +1302,7 @@ On your browser, **refresh** the *Web User Interface* page.
 
 **Action** &nbsp; 8.4.4.
 
-Open again the **ShoppingListAPI** (1), **GET /shoppinglist/{department}** (2), **Try it** tab (3).
+Open again the **ShoppingListAPI** (A), **GET /shoppinglist/{department}** (B), **Try it** tab (C).
 
   ![](images/test-java-4.png)
 
@@ -1311,7 +1311,7 @@ Open again the **ShoppingListAPI** (1), **GET /shoppinglist/{department}** (2), 
 
 **Action** &nbsp; 8.4.5.
 
-Enter **Bakery** as **department** name (1). Click **Send** (2).
+Enter **Bakery** as **department** name (A). Click **Send** (B).
 
   ![](images/test-java-5.png)
 
@@ -1374,7 +1374,7 @@ Initially, they need to rename the existing Match output terminal to mapping. An
 
 **Action** &nbsp; 9.2.1.
 
-Right click on **Route** node (1), and select **Rename Output Terminal** (2).
+Right click on **Route** node (A), and select **Rename Output Terminal** (B).
 
   ![](images/rename-terminal-1.png)
 
@@ -1383,7 +1383,7 @@ Right click on **Route** node (1), and select **Rename Output Terminal** (2).
 
 **Action** &nbsp; 9.2.2
 
-On Select output terminal to rename select **Match** (1). In the *Enter new name for the selected output terminal*, enter **mapping** (2). Then click **OK** (3).
+On Select output terminal to rename select **Match** (A). In the *Enter new name for the selected output terminal*, enter **mapping** (B). Then click **OK** (C).
 
   ![](images/rename-terminal-2.png)
 
@@ -1411,7 +1411,7 @@ Second, they need to create more two output terminals to compute and java transf
 
 **Action** &nbsp; 9.3.1.
 
-Right click on **Route** node (1), and select **Add Output Terminal** (2).
+Right click on **Route** node (A), and select **Add Output Terminal** (B).
 
   ![](images/new-terminal-1.png)
 
@@ -1420,7 +1420,7 @@ Right click on **Route** node (1), and select **Add Output Terminal** (2).
 
 **Action** &nbsp; 9.3.2.
 
-Enter **compute** as the name of the new output terminal (1) and click **OK** (2).
+Enter **compute** as the name of the new output terminal (A) and click **OK** (B).
 
   ![](images/new-terminal-2.png)
 
@@ -1429,7 +1429,7 @@ Enter **compute** as the name of the new output terminal (1) and click **OK** (2
 
 **Action** &nbsp; 9.3.3.
 
-Repeat the same steps to create the java terminal: Right click on **Route** node (1), and select **Add Output Terminal** (2).
+Repeat the same steps to create the java terminal: Right click on **Route** node (A), and select **Add Output Terminal** (B).
 
   ![](images/new-terminal-3.png)
 
@@ -1438,7 +1438,7 @@ Repeat the same steps to create the java terminal: Right click on **Route** node
 
 **Action** &nbsp; 9.3.4.
 
-Enter **java** as the name of the new output terminal (1) and click **OK** (2).
+Enter **java** as the name of the new output terminal (A) and click **OK** (B).
 
   ![](images/new-terminal-4.png)
 
@@ -1498,7 +1498,7 @@ On the Filter table, click **Add** button.
 
 **Action** &nbsp; 9.4.3.
 
-Enter **$LocalEnvironment/REST/Input/Parameters/department="Candies"** in the *Filter pattern* field (1) and select **mapping** as the *Routing output terminal* (2). Then click **OK** (3).
+Enter **$LocalEnvironment/REST/Input/Parameters/department="Candies"** in the *Filter pattern* field (A) and select **mapping** as the *Routing output terminal* (B). Then click **OK** (C).
 
 *Note: During the copy and paste you should have some issues with “ “,  because of it, we recommend to type the “ “ again in the Filter pattern field.*
 
@@ -1518,7 +1518,7 @@ Click **Add** button again.
 
 **Action** &nbsp; 9.4.5.
 
-Enter **$LocalEnvironment/REST/Input/Parameters/department="Snacks”** in the *Filter pattern* field (1) and select **compute** as the *Routing output terminal* (2). Then click **OK** (3).
+Enter **$LocalEnvironment/REST/Input/Parameters/department="Snacks”** in the *Filter pattern* field (A) and select **compute** as the *Routing output terminal* (B). Then click **OK** (C).
 
 *Note: During the copy and paste you should have some issues with “ “,  because of it, we recommend to type the “ “ again in the Filter pattern field.*
 
@@ -1538,7 +1538,7 @@ Click **Add** button again.
 
 **Action** &nbsp; 9.4.7.
 
-Enter **$LocalEnvironment/REST/Input/Parameters/department="Bakery”** in the *Filter pattern* field (1) and select **java** as the *Routing output terminal* (2). Then click **OK** (3).
+Enter **$LocalEnvironment/REST/Input/Parameters/department="Bakery”** in the *Filter pattern* field (A) and select **java** as the *Routing output terminal* (B). Then click **OK** (C).
 
 *Note: During the copy and paste you should have some issues with “ “,  because of it, we recommend to type the “ “ again in the Filter pattern field.*
 
@@ -1558,7 +1558,7 @@ Finally, the Focus team connects all the nodes to finalize the flow.
 
 **Action** &nbsp; 9.5.1.
 
-Wire the out terminal of **Mapping** (1), **Compute** (2) and **Java Compute** (3) nodes to the in terminal of the **Output** node (4).
+Wire the *out* terminal of **Mapping**, **Compute** and **Java Compute** nodes to the *in* terminal of the **Output** node.
 
   ![](images/route-connect-1.png)
 
@@ -1567,7 +1567,7 @@ Wire the out terminal of **Mapping** (1), **Compute** (2) and **Java Compute** (
 
 **Action** &nbsp; 9.5.2.
 
-Wire the **default** (1) and **failure** (2) terminal of **Route** node to the in terminal of the **Output** node (3).
+Wire the *default* and *failure* terminal of **Route** node to the *in* terminal of the **Output** node.
 
   ![](images/route-connect-2.png)
 
@@ -1601,7 +1601,7 @@ Great, the subflow was invoked and  the message is routed through all different 
 
 **Action** &nbsp; 9.6.1.
 
-Re-deploy the REST API, by dragging and dropping the **ShoppingListAPI** (1) again from the Application Development view on to the **TEST_SERVER** Integration Server (2).
+Re-deploy the REST API, by dragging and dropping the **ShoppingListAPI** again from the Application Development view on to the **TEST_SERVER** Integration Server.
 
   ![](images/test-route-1.png)
 
@@ -1626,7 +1626,7 @@ On your browser, **refresh** the **Web User Interface** page.
 
 **Action** &nbsp; 9.6.4.
 
-Open again the **ShoppingListAPI** (1), **GET /shoppinglist/{department}** (2), **Try it** tab (3).
+Open again the **ShoppingListAPI** (A), **GET /shoppinglist/{department}** (B), **Try it** tab (C).
 
   ![](images/test-java-4.png)
 
@@ -1635,7 +1635,7 @@ Open again the **ShoppingListAPI** (1), **GET /shoppinglist/{department}** (2), 
 
 **Action** &nbsp; 9.6.5.
 
-Enter **Candies** (or Bakery, or Snacks) as **department** name (1). Click **Send** (2).
+Enter **Candies** (or Bakery, or Snacks) as **department** name (A). Click **Send** (B).
 
 *Note: You are welcome to try any of the three departments.*
 
@@ -1667,7 +1667,7 @@ At this stage, Focus team is ready to deploy their Integration flow in a App Con
 
 **Action** &nbsp; 10.1.1.
 
-Right click the **ShoppingListAPI** (1) and choose **New > BAR file** (2).
+Right click the **ShoppingListAPI** (A) and choose **New > BAR file** (B).
 
   ![](images/bar-file-1.png)
 
@@ -1675,7 +1675,7 @@ Right click the **ShoppingListAPI** (1) and choose **New > BAR file** (2).
 
 **Action** &nbsp; 10.1.2.
 
-On the *New Bar file* dialog, type **shoppinglist** as the bar file name (1) and click **Finish** (2).
+On the *New Bar file* dialog, type **shoppinglist** as the bar file name (A) and click **Finish** (B).
 
   ![](images/bar-file-2.png)
 
@@ -1683,7 +1683,7 @@ On the *New Bar file* dialog, type **shoppinglist** as the bar file name (1) and
 
 **Action** &nbsp; 10.1.3.
 
-On the *Prepare screen*, mark the **REST APIs** checkbox (1). Check **Compile and in-line resources** (2). Click **Build and Save** (3).
+On the *Prepare screen*, mark the **REST APIs** checkbox (A). Check **Compile and in-line resources** (B). Click **Build and Save** (C).
 
   ![](images/bar-file-3.png)
 
@@ -1711,7 +1711,7 @@ For this demo, Focus Corp is using a trial account of IBM App Connect Enterprise
 
 **Action** &nbsp; 10.2.1.
 
-In your email inbox (that you used to create the App Connect trial account), search for **IBM SaaS** (1), open the ”**Your IBM App Connect trial is ready**” email (2).
+In your email inbox (that you used to create the App Connect trial account), search for **IBM SaaS** (A), open the ”**Your IBM App Connect trial is ready**” email (B).
 
   ![](images/ace-access-1.png)
 
@@ -1774,7 +1774,7 @@ Click **Deploy integrations**.
 
 **Action** &nbsp; 10.3.2.
 
-Select **Quick start integration** option (1) and click **Next** (2).
+Select **Quick start integration** option (A) and click **Next** (B).
 
   ![](images/inter-server-2.png)
 
@@ -1782,7 +1782,7 @@ Select **Quick start integration** option (1) and click **Next** (2).
 
 **Action** &nbsp; 10.3.3.
 
-Click to upload your BAR File. And select the **shoppinglist.bar** (1) file (it is in your workspace folder in a Bar Files directory). And click **Next** (B).
+Click to upload your BAR File. And select the **shoppinglist.bar** (A) file (it is in your workspace folder in a Bar Files directory). And click **Next** (B).
 
   ![](images/inter-server-3.png)
 
@@ -1798,7 +1798,7 @@ You don’t need any Integration configuration, click **Next**.
 
 **Action** &nbsp; 10.3.5.
 
-Enter the Integration Server name as **shoppinglist** (1). Disable the option to **Force Flow Basic Auth** (2). Then click **Create** (3).
+Enter the Integration Server name as **shoppinglist** (A). Disable the option to **Force Flow Basic Auth** (B). Then click **Create** (C).
 
   ![](images/inter-server-5.png)
 
@@ -1860,7 +1860,7 @@ Open the **Try it** tab.
 
 **Action** &nbsp; 10.4.5.
 
-Enter **Candies** (or **Bakery**, or **Snacks**) as *department* name (1). Click **Send** (2).
+Enter **Candies** (or **Bakery**, or **Snacks**) as *department* name (A). Click **Send** (B).
 
 *Note: You are welcome to try any of the three departments.*
 
@@ -1877,8 +1877,6 @@ Show the **Response** body and show that each department is processed by differe
 ***
 </details>
 
-
-<br/><br/>
 
 ### **Summary**
 
