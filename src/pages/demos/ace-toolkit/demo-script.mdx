@@ -19,7 +19,7 @@ tabs: [ 'Demo preparation', 'Demo script']
 
 ### **Introduction**
 <br/>
-Today's organizations use a wide variety of diverse Software as a Service (SaaS) applications, often without centralized coordination between them. However, integrating applications  is essential to help organizations increase efficiency and optimize business workflows. For instance, in a typical sales process without application integration, sales reps may use Salesforce for customer relationships and Excel for quotes. After finalizing a sale, they have to manually transfer data such as customer details, product information, and pricing data from Salesforce to Excel. This can be time-consuming and prone to errors, leading to delays in processing sales orders and potential inaccuracies in pricing.
+Today's organizations use a wide variety of diverse Software as a Service (SaaS) applications, often without centralized coordination between them. However, integrating applications  is essential to help organizations increase efficiency and optimize business workflows. For instance, in a typical sales process without application integration, sales reps may use Salesforce for customer relationships and Excel for quotes. After finalizing a sale, they must manually transfer data such as customer details, product information, and pricing data from Salesforce to Excel. This can be time-consuming and prone to errors, leading to delays in processing sales orders and potential inaccuracies in pricing.
 <br/><br/>
 By connecting your apps using IBM App Connect, the process becomes more streamlined, accurate and efficient because reps can automate data input to create quotes directly from their CPQ application with centralized tracking.
 <br/><br/>
@@ -42,7 +42,7 @@ Focus’ team requested a demo to learn how IBM App Connect for Developers Toolk
 
 IBM App Connect is an industry-leading integration solution that connects any of your applications and data, no matter where they reside. With hundreds of prebuilt connectors and customizable templates, App Connect helps users of all skill levels rapidly connect Software as a Service (SaaS) applications and build integration flows.
 
-Focus team is looking for an advanced, fully customizable code platform. They would like to harness a lightweight, fast-performing engine that easily scales to support their growing needs. They need to enable support for multiple types of data integration, including event, application programming interfaces (APIs), services, sync/async, transactional batch processing and more. Focus Integration experts needs to map data fields and transform data formats exchanged between applications, such as XML, JSON, CSV, EDIFACT, SWIFT and other industry protocols.
+The Focus team is looking for an advanced, fully customizable code platform. They would like to harness a lightweight, fast-performing engine that easily scales to support their growing needs. They need to enable support for multiple types of data integration, including event, application programming interfaces (APIs), services, sync/async, transactional batch processing and more. Focus Integration experts need to map data fields and transform data formats exchanged between applications, such as XML, JSON, CSV, EDIFACT, SWIFT and other industry protocols.
 
 Because of that, they decided to explore IBM App Connect Enterprise for Developers (Toolkit). The Toolkit is an integrated development environment and graphical user interface based on the Eclipse platform. Focus Integration experts can use the IBM App Connect Enterprise Toolkit to build powerful integration applications, services, and APIs. And they can then deploy their integration solutions to the software run time, IBM App Connect Enterprise as a Service, containers, or a combination of those environments.
 
@@ -83,11 +83,11 @@ In the Workspace Launcher window, accept the default one. Click **Launch**.
 
 From the Integration Development perspective, Focus Integration experts can create all manner of integration flows, as well as manage connectivity between services and endpoints.
 
-Focus team would like to explore how easy is to create an API flow that implement different type of message transformation.
+The Focus team would like to explore how easy is to create an API flow that implements different types of message transformation.
 
 App Connect provides a specific type of project to support REST API implementations, which can either be based upon a Swagger (v2) specification document or an OpenAPI (v3) specification document. REST APIs can be authored and deployed from the IBM App Connect Enterprise Toolkit.
 
-Let's see how easy is to create an REST API using the Toolkit. Focus team will create a REST API from an existing OpenAPI 3 document.
+Let's see how easy is to create a REST API using the Toolkit. The Focus team will create a REST API from an existing OpenAPI v3 document.
 
 <hr/><br/>
 
@@ -102,7 +102,7 @@ From the Application Development view click the **New...** hyperlink at the top 
 
 **Action** &nbsp; 1.2.2.
 
-Type the Name **ShoppingListAPI** (A), and switch the radio button to the option labelled “**Import resources and operations defined in a REST API document**" (B) then click **Next** (C).
+Type the Name **ShoppingListAPI** (A) and switch the radio button to the option labelled “**Import resources and operations defined in a REST API document**" (B) then click **Next** (C).
 
   ![](images/create-rest-2.png)
 
@@ -134,7 +134,7 @@ Click **Finish**.
 
 **Narration**
 
-Focus team created the REST API and they can see a summary page displaying details about the API such as its title and base URL. The next section down entitled Resources and Operations lists the operations in bright colors.
+The Focus team created the REST API and they can see a summary page displaying details about the API such as its title and base URL. The next section down entitled Resources and Operations lists the operations in bright colors.
 
 Focus developers can easily edit the API Document using the OpenAPI editor interface.
 
@@ -160,7 +160,7 @@ Click on **Edit API Document in OpenAPI editor**.
 
 **Action** &nbsp; 1.3.3.
 
-If necessary accept the incoming network connections.
+If necessary, accept the incoming network connections.
 
   ![](images/api-doc-3.png)
 
@@ -261,7 +261,7 @@ Scroll down to see the *Parameter* section (A) and click **Add** button (B).
 **Action** &nbsp; 2.3.2.
 
 Enter **department** as parameter name (A) and select **path** in *Located In* field (B).
-ßÍÍ
+
   ![](images/def-param-2.png)
 
 <hr/><br/>
@@ -291,7 +291,7 @@ Great, Focus’ developers successfully created a new operation in the ShoppingL
 
 **Action** &nbsp; 2.4.1.
 
-Scroll down to see the *Schema* section and type **department** as schema title (A), and select **string** as *schema type* (B).
+Scroll down to see the *Schema* section and type **department** as schema title (A) and select **string** as *schema type* (B).
 
   ![](images/def-schema-1.png)
 
@@ -323,7 +323,7 @@ Scroll up and click **Save**.
 
 **Narration**
 
-With IBM App Connect is really simple to implement the logic of your API operation. Focus team can easily create a subflow to do it!
+With IBM App Connect it is really simple to implement the logic of your API operation. The Focus team can easily create a subflow to do it!
 
 <hr/><br/>
 
@@ -352,7 +352,7 @@ Click **Create subflow**.
 
 **Narration**
 
-Here Focus team has their subflow. A message flow is a sequence of processing steps that run in the integration node when an input message is received. You define a message flow by including a number of message flow nodes, each of which represents a set of actions that define a processing step.
+Here the Focus team has their subflow. A message flow is a sequence of processing steps that run in the integration runtime when an input message is received. You define a message flow by including a number of message flow nodes, each of which represents a set of actions that define a processing step.
 
 In the flow editor, they can edit and change their flow. Message flows are created in the Toolkit using a drag and drop editor.
 
@@ -362,7 +362,7 @@ The flow is quite simple, consisting of only an Input and Output node. However, 
 
 **Action** &nbsp; 3.2.1.
 
-In the subflow, wire the **Input** node to the **Output** node.
+In the subflow, wire the **Input** node to the **Output** node (the *out* terminal of the *Input* node will be wired to the *in* terminal of the *Output* node)
 
   ![](images/connect-nodes-1.png)
 
@@ -386,7 +386,7 @@ First, they decided to explore the Mapping transformation.
 
 **Action** &nbsp; 4.1.1.
 
-Open the **Transformation** section.
+Open the **Transformation** section in the Palette.
 
   ![](images/add-mapping-1.png)
 
@@ -395,7 +395,7 @@ Open the **Transformation** section.
 
 **Action** &nbsp; 4.1.2.
 
-Drag and drop a **Mapping** node on to the wire and its terminals will be connected up for you (the out terminal of the Input node will be wired to the in terminal of the Mapping node, and the out terminal of the Mapping node will be wired to the in terminal of the Output node).
+Drag and drop a **Mapping** node on to the wire and its terminals will be connected for you (the out terminal of the Input node will be wired to the in terminal of the Mapping node, and the out terminal of the Mapping node will be wired to the in terminal of the Output node).
 
   ![](images/add-mapping-2.png)
 
@@ -478,7 +478,7 @@ Select the **original Message Assembly** (A), right click and select **delete** 
 
 The input objects are shown on the left side of the canvas, and the output objects are shown on the right side. You can create connections between the input and output elements by clicking one element, and dragging the mouse to the element that you want to connect to.
 
-Focus team  easily link the Department input parameter to Department parameter of Item JSON Type.
+The Focus team can easily link the Department input parameter to the Department parameter of Item JSON Type.
 
 <hr/><br/>
 
@@ -546,7 +546,7 @@ Hover the mouse over the **Quick Fix** (light bulb) icon of the new *Move* box (
 
 **Narration**
 
-Now, for demo purpose, they will use the assign function to define a hard coded value to name and description fields.  In this demo, they decided to use the description field just to inform the type of transformation node that is processing the transformation, in this case the Mapping node.
+Now, for demo purposes, they will use the assign function to define a hard coded value to the name and description fields.  In this demo, they decided to use the description field to just inform the type of transformation node that is processing the transformation, in this case the Mapping node.
 
 Great, Focus’ developers successfully created a mapping transformation in the ShoppingListAPI!
 
@@ -585,7 +585,7 @@ Repeat the same steps for the description field: drag and drop the **description
 
 Select the **Assign** action (A). Under the **Properties** for the Assign action, enter “**Request has been processed by Mapping Node**” for the name value (B).
 
-*Note: In this demo, we are using the description field just to inform the node that is processing the transformation.*
+*Note: In this demo, we are using the description field to just inform the node that is processing the transformation.*
 
   ![](images/assign-values-4.png)
 
@@ -769,9 +769,9 @@ Right-click **TEST_SERVER** (A) and select **Start Web User Interface** (B). 
 
 **Narration**
 
-And select the ShoppingListAPI and the new Get Department operation. Not they can use the Try it capability, and enter any product department, for example “Candies”.
+Select the ShoppingListAPI and the new Get Department operation. Note they can use the Try it capability, and enter any product department, for example “Candies”.
 
-Great, the subflow was invoked and our mapping transformation created a response with our hard coded values. Focus team verified how is really simple to implement a mapping transformation using IBM App Connect.
+Great, the subflow was invoked and our mapping transformation created a response with our hard coded values. The Focus team verified it is really simple to implement a mapping transformation using IBM App Connect.
 
 <hr/><br/>
 
@@ -830,7 +830,7 @@ Show the **Response body**. Show the assigned name and description fields.
 
 **Narration**
 
-Focus developers heard about ESQL language. Extended Structured Query Language (ESQL) is a programming language based on Structured Query Language (SQL) that is typically used to work with databases. ESQL is extended to access and manipulate data in messages and databases.
+The Focus developers heard about ESQL language. Extended Structured Query Language (ESQL) is a programming language based on Structured Query Language (SQL) that is typically used to work with databases. ESQL is extended to access and manipulate data in messages and databases.
 
 They would like to see how to use ESQL to transform and enrich messages using the Compute node.  Because of it, they decided to explore the Compute node transformation.
 
@@ -847,7 +847,7 @@ Back to the **getDepartment** subflow (A), open again the Transformation menu an
 
 **Action** &nbsp; 7.1.2.
 
-Readjust the connections of Input and output node to connect to the Compute node (the out terminal of the Input node will be wired to the in terminal of the Compute node, and the **out** terminal of the Compute node will be wired to the in terminal of the Output node).
+Readjust the connections of the *Input* and *Output* nodes to connect to the *Compute* node (the *out* terminal of the *Input* node will be wired to the *in* terminal of the *Compute* node, and the *out* terminal of the *Compute* node will be wired to the *in* terminal of the *Output* node).
 
   ![](images/add-compute-2.png)
 
@@ -1004,7 +1004,6 @@ Select **{utils}:getDepartment_Compute** (A) and click **OK** (B).
 
   ![](images/update-esql-4.png)
 
-
 ***
 </details>
 
@@ -1015,9 +1014,9 @@ Select **{utils}:getDepartment_Compute** (A) and click **OK** (B).
 
 Let's review the ESQL file. Focus developers can create and modify their ESQL code in the ESQL editor.
 
-The ESQL code for each of your nodes is contained within a module in an ESQL file. Here they have a specific module for GetDepartment operation.  The module is really simple, just select the Item with Department value equals the Department parameter.
+The ESQL code for each of your nodes is contained within a module in an ESQL file. Here they have a specific module for getDepartment operation.  The module is simple; just select the Item where the Department value equals the Department parameter.
 
-All three items are hardcoded created in the Initialise procedure. In a real scenario, this data should be retrieved from Products database or Product system.
+All three items are hardcoded and created in the Initialise procedure. In a real scenario, this data should be retrieved from the Products database or Product system.
 
 <hr/><br/>
 
@@ -1065,7 +1064,7 @@ At this moment, the Focus Integration experts are ready to test the new API. The
 
 Now, they will test using the three available departments: Candies, Snacks and Bakery.
 
-Great, the subflow was invoked and our compute transformation created a response with our hard coded values. Focus team verified how is really simple to use ESQL query language to implement message transformations.
+Great, the subflow was invoked and our compute transformation created a response with our hard coded values. The Focus team verified how simple it is to use ESQL query language to implement message transformations.
 
 <hr/><br/>
 
@@ -1094,7 +1093,7 @@ On your browser, refresh the **Web User Interface** page.
 
 **Action** &nbsp; 7.6.4.
 
-Open again the **ShoppingListAPI** (A), **GET /shoppinglist/{department}** (B), **Try it** tab (C).
+Open again the **ShoppingListAPI** (A), **GET /shoppinglist/{department}** (B), and **Try it** tab (C).
 
   ![](images/test-compute-4.png)
 
@@ -1104,7 +1103,7 @@ Open again the **ShoppingListAPI** (A), **GET /shoppinglist/{department}** (B), 
 
 Enter a **department** name (it could be Candies, Snacks or Bakery)  (A). Click **Send** (B).
 
-*Note: You are welcome to try any of the three departments, or try a different one to see the 404 Not Found message*.
+*Note: You are welcome to try any of the three departments or try a different one to see the 404 Not Found message*.
 
   ![](images/test-compute-5.png)
 
@@ -1130,9 +1129,9 @@ Show the **Response** body.
 
 Great, now the Focus Developers would like to see how to use Java code to tailor the behavior of their integration messages.
 
-They want to learn how touse the JavaCompute node to examine the content of an input message, transform a message, and build new messages.
+They want to learn how to use the JavaCompute node to examine the content of an input message, transform a message, and build new messages.
 
-Because of it, they decided to explore the JavaCompute node.
+Because of this, they decided to explore the JavaCompute node.
 
 <hr/><br/>
 
@@ -1146,7 +1145,7 @@ Back to the getDepartment subflow, open again the Transformation menu and drag a
 
 **Action** &nbsp; 8.1.2.
 
-Readjust the connections of Input and output node to connect to the Java Compute node (the out terminal of the Input node will be wired to the in terminal of the Java Compute node, and the out terminal of the Java Compute node will be wired to the in terminal of the Output node).
+Readjust the connections of the Input and output node to connect to the Java Compute node (the *out* terminal of the *Input* node will be wired to the *in* terminal of the *Java Compute* node, and the *out* terminal of the *Java Compute* node will be wired to the *in* terminal of the *Output* node).
 
   ![](images/add-javacompute-2.png)
 
@@ -1159,7 +1158,7 @@ Readjust the connections of Input and output node to connect to the Java Compute
 
 **Narration**
 
-With App Connect toolkit, they can use the same tool that they use to create Integration flow to create Java code. Alternatively, if they want to share Java classes across multiple solutions, they can store Java code in a shared library and refer to that library from one or more applications that contain message flows with JavaCompute nodes
+With the App Connect toolkit, they can use the same tool that they use to create Integration flow to create Java code. Alternatively, if they want to share Java classes across multiple solutions, they can store Java code in a shared library and refer to that library from one or more applications that contain message flows with JavaCompute nodes
 
 However, the developers decided to try the Java Compute node class wizard to create template code to accelerate the development process. They selected the Modifying message class template, and in few seconds, they have a skeleton java code to manipulate and transform the integration message.
 
@@ -1270,7 +1269,7 @@ At this moment, the Focus Integration experts are ready to test the new API usin
 
 Now, they will test using the Bakery department only.
 
-Great, the subflow was invoked and our java compute transformation created a response with our hard coded Apple Pie product. Focus team verified how is really simple to use Java code to implement message transformation.
+Great, the subflow was invoked and our java compute transformation created a response with our hard coded Apple Pie product. The Focus team verified how simple it is to use Java code to implement message transformation.
 
 <hr/><br/>
 
@@ -1355,7 +1354,7 @@ Back to the getDepartment subflow, open the **Routing** menu and drag and drop a
 
 **Action** &nbsp; 9.1.2.
 
-Delete all existing wiring. And wire the **Input** node to the new **Route** node.
+Delete all existing wiring and connect the **Input** node to the new **Route** node.
 
   ![](images/add-route-2.png)
 
@@ -1374,7 +1373,7 @@ Initially, they need to rename the existing Match output terminal to mapping. An
 
 **Action** &nbsp; 9.2.1.
 
-Right click on **Route** node (A), and select **Rename Output Terminal** (B).
+Right click on **Route** node (A) and select **Rename Output Terminal** (B).
 
   ![](images/rename-terminal-1.png)
 
@@ -1383,7 +1382,7 @@ Right click on **Route** node (A), and select **Rename Output Terminal** (B).
 
 **Action** &nbsp; 9.2.2
 
-On Select output terminal to rename select **Match** (A). In the *Enter new name for the selected output terminal*, enter **mapping** (B). Then click **OK** (C).
+*On Select output terminal to rename* field, select **Match** (A). In the *Enter new name for the selected output terminal*, enter **mapping** (B). Then click **OK** (C).
 
   ![](images/rename-terminal-2.png)
 
@@ -1405,13 +1404,13 @@ Wire the **mapping** output terminal from **Route** node to the **in** terminal 
 
 **Narration**
 
-Second, they need to create more two output terminals to compute and java transformation. And connect these terminals to Compute and JavaCompute nodes.
+Second, they need to create two more output terminals to the compute and java transformation nodes. Connect these terminals to the Compute and JavaCompute nodes.
 
 <hr/><br/>
 
 **Action** &nbsp; 9.3.1.
 
-Right click on **Route** node (A), and select **Add Output Terminal** (B).
+Right click on **Route** node (A) and select **Add Output Terminal** (B).
 
   ![](images/new-terminal-1.png)
 
@@ -1429,7 +1428,7 @@ Enter **compute** as the name of the new output terminal (A) and click **OK** (B
 
 **Action** &nbsp; 9.3.3.
 
-Repeat the same steps to create the java terminal: Right click on **Route** node (A), and select **Add Output Terminal** (B).
+Repeat the same steps to create the java terminal: Right click on **Route** node (A) and select **Add Output Terminal** (B).
 
   ![](images/new-terminal-3.png)
 
@@ -1500,7 +1499,7 @@ On the Filter table, click **Add** button.
 
 Enter **$LocalEnvironment/REST/Input/Parameters/department="Candies"** in the *Filter pattern* field (A) and select **mapping** as the *Routing output terminal* (B). Then click **OK** (C).
 
-*Note: During the copy and paste you should have some issues with “ “,  because of it, we recommend to type the “ “ again in the Filter pattern field.*
+*Note: During the copy and paste you should have some issues with “ “,  because of that, we recommend typing the “ “ again in the Filter pattern field.*
 
   ![](images/filter-patterns-3.png)
 
@@ -1520,7 +1519,7 @@ Click **Add** button again.
 
 Enter **$LocalEnvironment/REST/Input/Parameters/department="Snacks”** in the *Filter pattern* field (A) and select **compute** as the *Routing output terminal* (B). Then click **OK** (C).
 
-*Note: During the copy and paste you should have some issues with “ “,  because of it, we recommend to type the “ “ again in the Filter pattern field.*
+*Note: During the copy and paste you should have some issues with “ “,  because of that, we recommend typing the “ “ again in the Filter pattern field.*
 
   ![](images/filter-patterns-5.png)
 
@@ -1540,7 +1539,7 @@ Click **Add** button again.
 
 Enter **$LocalEnvironment/REST/Input/Parameters/department="Bakery”** in the *Filter pattern* field (A) and select **java** as the *Routing output terminal* (B). Then click **OK** (C).
 
-*Note: During the copy and paste you should have some issues with “ “,  because of it, we recommend to type the “ “ again in the Filter pattern field.*
+*Note: During the copy and paste you should have some issues with “ “,  because of that, we recommend typing the “ “ again in the Filter pattern field.*
 
   ![](images/filter-patterns-7.png)
 
@@ -1661,7 +1660,7 @@ Show the **Response** body and show that each department is processed by differe
 
 **Narration**
 
-At this stage, Focus team is ready to deploy their Integration flow in a App Connect Server. They just need to generate a BAR (broker archive) file. The App Connect Enterprise server uses BAR files to save compiled message flows, libraries, and other elements critical to the Integration flow.
+At this stage, the Focus team is ready to deploy their Integration flow in an App Connect Server. They just need to generate a BAR (broker archive) file. The App Connect Enterprise server uses BAR files to save compiled message flows, libraries, and other elements critical to the Integration flow.
 
 <hr/><br/>
 
@@ -1750,7 +1749,7 @@ Use the Instance switcher to change to the **Dashboard** instance.
 
 **Narration**
 
-Focus Integration Experts begin in the IBM App Connect Dashboard. Here they can administer integration servers and integration runtimes, which are deployed from the BAR files mentioned earlier. They want to deploy the Integration flow defined in the previous steps.
+Focus integration experts begin in the IBM App Connect Dashboard. Here they can administer integration servers and integration runtimes, which are deployed from the BAR files mentioned earlier. They want to deploy the Integration flow defined in the previous steps.
 
 Because they need to deploy a simple integration, let’s select with the Quick start integration type.
 
@@ -1886,7 +1885,7 @@ Let’s summarize what Focus developers have done today. In this demo they: <br/
 <li>Created Rest API using the App Connect Toolkit</li>
 <li>Created new API operation using the OpenAPI editor</li>
 <li>Implemented mapping transformation using the Mapping node</li>
-<li>Implemented compute transformation using ESQL query language and compute node</li>
+<li>Implemented compute transformation using ESQL query language and Compute node</li>
 <li>Implemented java transformation using Java code and JavaCompute node</li>
 <li>Implemented messaging routing using Route node</li>
 <li>Deployed and tested the Integration flow on IBM App Connect Enterprise as a Service on AWS</li>
