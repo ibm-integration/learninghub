@@ -260,7 +260,7 @@ Scroll down to see the *Parameter* section (A) and click **Add** button (B).
 
 **Action** &nbsp; 2.3.2.
 
-Enter **department** as parameter name (A) and select **path** in *Located In* field (B).
+Enter **department** as *Parameter name* (A) and select **path** in *Located In* field (B).
 
   ![](images/def-param-2.png)
 
@@ -291,7 +291,7 @@ Great, Focus’ developers successfully created a new operation in the ShoppingL
 
 **Action** &nbsp; 2.4.1.
 
-Scroll down to see the *Schema* section and type **department** as schema title (A) and select **string** as *schema type* (B).
+Scroll down to see the *Schema* section and type **department** as *Title* (A) and select **string** as *Type* (B).
 
   ![](images/def-schema-1.png)
 
@@ -330,7 +330,7 @@ With IBM App Connect it is really simple to implement the logic of your API oper
 
 **Action** &nbsp; 3.1.1.
 
-Back to the ShoppingListAPI description, open the **/shoppinglist/{department|** section.
+Back to the ShoppingListAPI description, open the **/shoppinglist/{department}** section.
 
   ![](images/create-subflow-1.png)
 
@@ -463,7 +463,7 @@ On the “Select a map output” option, open (double click) the **ShoppingListA
 
 **Action** &nbsp; 4.3.3.
 
-Select the **original Message Assembly** (A), right click and select **delete** (B) (or press delete on your keyboard).
+Select the original **Message Assembly** (A), right click and select **delete** (B) (or press delete on your keyboard).
 
   ![](images/new-output-3.png)
 
@@ -686,7 +686,7 @@ CORSAllowHeaders: 'Accept,Accept-Language,Content-Language,Content-Type'
 
 **Action** &nbsp; 5.2.3.
 
-**Save** the changes to the **server.conf.yaml** file or click **File > Save all**.
+**Save** the changes to the **server.conf.yaml** file or click **File** (A) > **Save All** (B).
 
   ![](images/cors-auth-3.png)
 
@@ -842,7 +842,7 @@ They would like to see how to use ESQL to transform and enrich messages using th
 
 **Action** &nbsp; 7.1.1.
 
-Back to the **getDepartment** subflow (A), open again the Transformation menu and drag and drop a **Compute** node (B).
+Back to the **getDepartment.subflow** (A), open again the Transformation menu and drag and drop a **Compute** node (B).
 
   ![](images/add-compute-1.png)
 
@@ -888,7 +888,7 @@ First, they need to create a Broker Schema to include the ESQL file. A broker sc
 
 **Action** &nbsp; 7.2.1.
 
-Right click the **ShoppingListAPI** (1) and choose **New > Broker Schema** (2).
+Right click the **ShoppingListAPI**  and choose **New > Broker Schema**.
 
   ![](images/broker-schema-1.png)
 
@@ -1140,7 +1140,7 @@ Because of this, they decided to explore the JavaCompute node.
 
 **Action** &nbsp; 8.1.1.
 
-Back to the getDepartment subflow, open again the Transformation menu and drag and drop a **JavaCompute** node.
+Back to the *getDepartment.subflow*, open again the *Transformation* menu and drag and drop a **JavaCompute** node.
 
   ![](images/add-javacompute-1.png)
 
