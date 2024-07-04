@@ -17,6 +17,9 @@ tabs: [ 'Demo preparation', 'Demo script']
 
 <span id="place1"></span>
 
+<InlineNotification kind="warning">There is a known issue with App Connect on AWS with a specific step of this demo. The IBM Development team is working to fix it as soon as possible. Because of it, there are some workaround steps to enable you to complete the demo. As soon as the issues are fixed, the workaround steps will be removed.</InlineNotification>
+
+
 ### **Introduction**
 <br/>
 In a world where disruption is the norm, businesses that harness AI will become industry leaders. On the other hand, we know that Integration is the key step of a successful Digital Transformation journey. But how are you leveraging AI to implement your Integration strategy? Are you creating Integration flows using AI Natural Language Processing capabilities? Are you using AI-powered mapping assistance and data transformation capabilities when designing integration flows?
@@ -215,6 +218,37 @@ You now see the AI-generated template doing exactly as you asked. Now overwrite 
 Click **Open in Designer**.
 
   ![](images/ai-generated-4.png)
+
+
+<hr/><br/>
+
+<InlineNotification kind="warning">There is a known issue with the Salesforce Retrieve contacts node when added by the AI-generated flow feature on App Connect on AWS. The IBM Development team is working to fix it as soon as possible. Because of it, the steps below are a workaround to manualy add another Salesforce Retrieve Contact node. As soon as the bug is fixed, steps 2.1.5 to 2.1.7 will be removed.</InlineNotification>
+
+<br/>
+
+**Action** &nbsp; 2.1.5 (WORKAROUND)
+
+Click on the **Salesforce Retrieve contacts** node (A). And click to **Delete** it (B).
+
+  ![](images/workaround-sfnode-1.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 2.1.6 (WORKAROUND)
+
+Click the **Plus** icon (A). Search for the **Salesforce** connector (B).
+
+  ![](images/workaround-sfnode-2.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 2.1.7 (WORKAROUND)
+
+From your pre-configured Salesforce connector, select **Contacts** (A) > **Retrieve contacts** (B).
+
+  ![](images/workaround-sfnode-3.png)
+
+<br/>
 
 ***
 </details>
