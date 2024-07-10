@@ -24,7 +24,7 @@ description: Cloud Pak for Integration for Windows Users - Demo Preparation
 ### 1 - Provision a Red Hat VDI
 
 
-This documentations is only for Windows users, who wants to install CP4I environment. The Demo Preparation document of different Integration Sales Enablement course uses pre-created script to install CP4I and other integration software. These scripts are available for MAC OS and Linux users. If you are a Windows user and would like to install your CP4I, you have some possibilities to do it:
+This documentations is only for Windows users, who wants to install CP4I environment. The Demo Preparation document of different Integration Sales Enablement course uses pre-created script to install CP4I and other integration software. These scripts are available for MAC OS and Linux users. If you are a Windows user and would like to install your CP4I, you have some options to do it:
   1) Request a MAC OS/Linux friend to execute the Demo Preparation script for you.
   2) Try to use linux emulator in your Windows machine.
   3) Or request a Linux Virtual Machine desktop on TechZone and execute the demo script from there.
@@ -58,7 +58,7 @@ In this section, you access your OpenShift cluster and install the OpenShift com
 
 ![](images/access-vdi-1.png)
 
-2.2 Scroll down to the *Virtual Machines** section and click on **Console** button.
+2.2 Scroll down to the *Virtual Machines* section and click on **Console** button.
 
 ![](images/access-vdi-2.png)
 
@@ -82,6 +82,30 @@ In this section, you access your OpenShift cluster and install the OpenShift com
 
 ![](images/access-vdi-7.png)
 
-`Note:` If your demo preparation includes steps that only uses browser, you can use your hostmachine (Windows) to do it.
+`Note:` If your demo preparation includes other steps that use browser, you can use your Windows machine to do it.
 
 <br/>
+
+***
+
+### 3 - Access your CP4I environment
+
+After you complete the demo preparation document of your course, you can use this section to get the info about your CP4I environment from your Windows.
+
+3.1 In you Windows machine, open a browser and access the OpenShift Web Console of your OCP cluster (check section 3 of your Demo Preparation about how to do it).
+
+![](images/ocp-info-1.png)
+
+3.2 To get your Platform Navigator URL, open the **Networking** (A) > **Routes** (B) menu. Filter by **cp4i** project (C) and scroll down to see the *platform-navigator-pn* route, here you can see your **Platform Navigator URL** (D).
+
+![](images/ocp-info-2.png)
+
+3.3 To get your *CP4I Admin temporary credentials*, open the **Workloads** (A) > **Secrets** (B) menu. Filter by **cp4i** project (C) again and scroll down to open the **integration-admin-initial-temporary-credentials** (D).
+
+![](images/ocp-info-3.png)
+
+3.4 Here you can copy the CP4I admin **usernmae** and **password**.
+
+![](images/ocp-info-4.png)
+
+You are ready to follow with your Demo script.
