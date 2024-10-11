@@ -18,7 +18,8 @@
     "gatsby-transformer-json": "^2.2.25",
     "lodash": "latest",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "sass": "^1.77.8"
   },
   "devDependencies": {
     "gh-pages": "^2.1.1"
