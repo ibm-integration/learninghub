@@ -218,7 +218,6 @@ oc get pods -n openshift-marketplace | grep postgresql
 
     <InlineNotification kind="warning">You may be seeing a response of *TRANSIENT_FAILURE* which indicates the deployment is underway but not yet complete. Wait until the *READY* response is received before continuing.</InlineNotification>
 
-
 6.3 Install the Common Services Catalog source.
 
     > Time to install: ~1 minute
@@ -261,125 +260,133 @@ SUB_NAME=$(oc get deployment/ibm-common-service-operator -n openshift-operators 
 Deploying the Platform UI allows you to deploy and manage instances from a central location.
 
 7.1 First, let's install Platform UI Catalog source.
+
+  > Time to install: ~1 minute
+
 ```
-oc apply -f catalog-sources/${CP4I_VER}/03-platform-navigator-catalog-source-7.2.3.yaml
+oc apply -f catalog-sources/${CP4I_VER}/03-platform-navigator-catalog-source.yaml
 ```
 
-7.2 Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
+    Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
 ```
-oc get pods -n openshift-marketplace | grep ibm-integration-platform-navigator
-```
-
-You should get a response like this:
-```
-ibm-integration-platform-navigator-catalog-xsm4w                  1/1     Running     0             14h
+oc get catalogsources ibm-integration-platform-navigator-catalog -n openshift-marketplace -o jsonpath='{.status.connectionState.lastObservedState}';echo
 ```
 
-7.3 Now, let's install the Platform UI Operator.
+    Wait for a response of `READY`.
+
+
+7.2 Install the Platform UI Operator.
+
+  > Time to install: ~1 minute
+
 ```
 oc apply -f subscriptions/${CP4I_VER}/01-platform-navigator-subscription.yaml
 ```
 
-7.4 Confirm the operator has been deployed successfully before moving to the next step running the following command.
+    Confirm the operator has been deployed successfully before moving to the next step running the following command.
 ```
-oc get pods -n openshift-operators | grep ibm-integration-platform-navigator
-```
-
-You should get a response like this:
-```
-ibm-integration-platform-navigator-operator-6489bb9b7-tcnz8       1/1     Running     0          14h
+SUB_NAME=$(oc get deployment ibm-integration-platform-navigator-operator -n openshift-operators --ignore-not-found -o jsonpath='{.metadata.labels.olm\.owner}');if [ ! -z "$SUB_NAME" ]; then oc get csv/$SUB_NAME --ignore-not-found -o jsonpath='{.status.phase}';fi;echo
 ```
 
-7.5 Let's deploy a Platform UI instance.
+    Wait for a response of `Succeeded`.
+
+7.3 Deploy a Platform UI instance.
+
+  > Time to install: ~10 minute
+
 ```
 oc apply -f instances/${CP4I_VER}/common/01-platform-navigator-instance.yaml
 ```
 
-7.6 Confirm the instance has been deployed successfully before moving to the next step running the following command:
+    Confirm the instance has been deployed successfully before moving to the next step running the following command.
 ```
-oc get platformnavigator -n tools
-```
-
-You should get a response like this:
-```
-NAME             REPLICAS   VERSION      STATUS   READY   LASTUPDATE   AGE   MESSAGE
-cp4i-navigator   3          2023.4.1-0   Ready    True    13h          14h   Platform UI has been provisioned.
+oc get platformnavigator cp4i-navigator -n tools -o jsonpath='{.status.conditions[0].type}';echo
 ```
 
-7.7 Once the Platform UI instance is up and running get the access info.
+    Wait for a response of `READY`.
+
+    <InlineNotification kind="warning">You may be seeing a response of `PENDING` which indicates the deployment is underway but not yet complete. Wait until the `READY` response is received before continuing.</InlineNotification>
+
+
+7.4 Once the Platform UI instance is up and running get the access info.
 ```
 scripts/03b-cp4i-access-info.sh
 ```
 
-7.8 Open the Platform UI  URL and log in. Note the password is temporary and you will be required to change it. Take note of your new password, you will use it multiple times.
+7.5 Open the Platform UI  URL and log in. Note the password is temporary and you will be required to change it. Take note of your new password, you will use it multiple times.
 ![](images/platform-ui-8.png)
+
+    Record the credentials to a notepad for reference later.
+
+7.6 Open the Platform UI URL with a web browser and log in. Note the password is temporary and you will be required to change it. Take note of your new password, as you will use it multiple times throughout the lab.
+![](images/platform-ui-9.png)
 
 ***
 
 ### 8 - Deploy the Enterprise Messaging (MQ)
 
-8.1 First, let's intall the MQ Catalog Source.
+8.1 Install the Enterprise Messaging (MQ) Catalog Source.
+
+  > Time to install: ~1 minute
+
 ```
-oc apply -f catalog-sources/${CP4I_VER}/09-mq-catalog-source-3.1.1.yaml
+oc apply -f catalog-sources/${CP4I_VER}/09-mq-catalog-source.yaml
 ```
 
-8.2 Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
+    Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
 ```
-oc get pods -n openshift-marketplace | grep ibmmq
-```
-
-You should get a response like this:
-```
-ibmmq-operator-catalogsource-4h9ql                                1/1     Running     0              3d23h
+oc get catalogsources ibmmq-operator-catalogsource -n openshift-marketplace -o jsonpath='{.status.connectionState.lastObservedState}';echo
 ```
 
-8.3 Now, let's install the MQ Operator.
+    Wait for a response of `READY`.
+
+8.2 Install the MQ Operator.
+
+  > Time to install: ~1 minute
+
 ```
 oc apply -f subscriptions/${CP4I_VER}/06-mq-subscription.yaml
 ```
 
-8.4 Confirm the operator has been deployed successfully before moving to the next step running the following command.
+    Confirm the operator has been deployed successfully before moving to the next step running the following command.
 ```
-oc get pods -n openshift-operators | grep ibm-mq
-```
-
-You should get a response like this:
-```
-ibm-mq-operator-5965468479-btnkh                                  1/1     Running     0               3d23h
+SUB_NAME=$(oc get deployment ibm-mq-operator -n openshift-operators --ignore-not-found -o jsonpath='{.metadata.labels.olm\.owner}');if [ ! -z "$SUB_NAME" ]; then oc get csv/$SUB_NAME --ignore-not-found -o jsonpath='{.status.phase}';fi;echo
 ```
 
-8.5 Set MQ namespace environment variable.
+    Wait for a response of `Succeeded`.
+
+8.3 Set MQ namespace environment variable.
 ```
 export MQ_NAMESPACE=cp4i-mq
 ```
 
-8.6 Create certificates and extra route.
+8.4 Create certificates and extra route.
 ```
 scripts/10a-qmgr-pre-config.sh
 ```
 
-8.7 Create configmap with MQ configuration.
+8.5 Create **configmap** with MQ configuration.
 ```
 oc apply -f resources/03c-qmgr-mqsc-config.yaml
 ```
 
-8.8 Deploy MQ Queue Manager instance.
+8.6 Deploy MQ Queue Manager instance.
+
+  > Time to install: ~5 minutes
+
 ```
 scripts/10b-qmgr-inst-deploy.sh
 ```
 
-8.9 Confirm the instance has been deployed successfully before moving to the next step running the following command.
+    Confirm the instance has been deployed successfully before moving to the next step running the following command.
 ```
-oc get queuemanager -n tools
-```
-
-`Note` this will take few minutes, but at the end you should get a response like this:
-```
-NAME        PHASE
-qmgr-demo   Running
+oc get queuemanager qmgr-demo -n tools -o jsonpath='{.status.phase}';echo
 ```
 
-8.10 Create CCDT.
+    Wait for a response of `Running`.
+
+
+8.7 Create CCDT.
 ```
 scripts/10c-qmgr-post-config.sh
 ```

@@ -72,6 +72,7 @@ Let's get started!<br/><br/>
 | :--- | :--- |
 | **Narration** | The objective of a uniform cluster deployment is that applications can be designed for scale and availability and can connect to any of the queue managers within the uniform cluster. This removes any dependency on a specific queue manager, resulting in better availability and workload balancing of messaging traffic.<br/><br/>Let’s create it now. First, we need to create our uniform cluster configurations. <br/><br/> Let's start the configuration to create a queue manager uniform cluster with two queue managers. <br/><br/> A ConfigMap with a config.ini is used by all three queue managers. This identifies which of the queue managers are going to maintain the full repository of information about the cluster. <br/><br/> Another ConfigMap holds the MQSC commands that all queue managers use to define the channel they will need to be members of the cluster. <br/><br/> Each queue manager then has it’s own ConfigMap with an additional MQSC file defining the addresses for the channels it will use to join the cluster.|
 | **Action** &nbsp; 2.1.1 | On a terminal windows, open the *cp4i-demo* folder that you created in the Demo Preparation part, **log in** on your OpenShift environment and run the command below. <br/> ```oc apply -f resources/03d-qmgr-uniform-cluster-config.yaml```|
+| **Action** &nbsp; 2.1.2 | On a terminal windows, run the command below to prepare certificates for Queue Managers. <br/> ```scripts/10d-qmgr-uc-pre-config.sh```|
 
 | **2.2** | **Deploy Queue Managers** |
 | :--- | :--- |
