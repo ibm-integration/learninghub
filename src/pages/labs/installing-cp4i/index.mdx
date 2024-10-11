@@ -1,10 +1,10 @@
 ---
-title: Installing IBM API-Led solution using CP4I on IBM Cloud
+title: Installing IBM API-Led solution using CP4I on IBM TechZone
 ---
 
 
 <FeatureCard
-  title="Installing IBM API-Led solution using CP4I on IBM Cloud"
+  title="Installing IBM API-Led solution using CP4I on IBM TechZone"
   color="dark"
   >
 
@@ -76,193 +76,148 @@ In this document, we will follow the steps below to install CP4I. If you need mo
 
 ***
 
-## 1 - OpenShift Installation
+## 1 - Deploying the OCP cluster
 
 IBM Cloud Pak for Integration brings together IBM’s market-leading middleware capabilities to support a broad range of integration styles and use cases. With powerful deployment, lifecycle management, and production services running on Red Hat OpenShift, it enables clients to leverage the latest agile integration practices, simplify the management of their integration architecture, and reduce cost. Cloud Pak for Integration demands an OpenShift cluster.
 
 Follow the steps below to provision a Red Hat OpenShift Container Platform cluster on VMware on IBM Cloud.
 
-1. To request an OpenShift Cluster on VMware on IBM Cloud, go <a href="https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3" target="_blank">here</a> and complete the form with the follow details.
+1.1 To request an OpenShift Cluster on VMware on IBM Cloud, go <a href="https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3" target="_blank">here</a> and complete the form with the follow details.
 
 | Field  | Value |
 | ------------- | ------------- |
-| Purpose  | If you are doing the L4 course, select **Practice/Self Enablement**. <br/> If you are delivering a PoC, select:**Proof-of-Concept** and inform the Sales opportunity.  |
-| Purpose Description  | If you are doing the L4 course, enter: **API-Led Integration L4 Course**. <br/> If you are delivering a POC, enter the PoC details.  |
+| Purpose  | If you are doing the L4 course, select **Practice/Self Enablement**. <br/> If you are delivering a PoC, select:**Proof-of-Technology** and inform the Sales opportunity.  |
+| Purpose Description  | If you are doing the L3 course, enter: **MQ L3 Course**. <br/> If you are delivering a POC, enter the PoC details.  |
 | Preferred Geography  | You are welcome to select the preferred Geography |
 
 ![](images/ocp-install-1.png)
 
 | Field  | Value |
 | ------------- | ------------- |
-| OpenShift Version | 4.12 |
-| OCS/ODF Size  | 500 GiB |
+| OpenShift Version | 4.16 |
+| Storage  | ODF - 2 TB |
 | Worker Node Count  | 5 |
 | Worker Node Flavor  | 16 vCPU x 64 GB - 100 GB ephemeral storage |
 
+![](images/ocp-install-new-1-2.png)
+
+1.2 **Agree** with the TechZone Terms and Conditions (A) and click **Submit** (B).
 ![](images/ocp-install-2.png)
 
-
-2. Click **Submit**.
+1.3 You will receive an email confirming the instance is provisioning.
 ![](images/ocp-install-3.png)
 
-3. You will receive a confirmation email confirming the instance is provisioning.
+1.4 You will receive a second email once the environment is provisioned. You should expect this to take between 30 and 120 minutes. Now the status update changed to **Ready**.  Click on **Reservation ID** to open the details page of your new reservation environment.
 ![](images/ocp-install-4.png)
 
-4. You will receive a second email once the environment is provisioned. You should expect this to take between 30 and 120 minutes. This email contains information, such as URLs, allowing you to connect to the instance.
+1.5 Copy your **Cluster Admin Username** (A) and **Cluster Admin Password** (B). Copy the **OCP Console link** (C).
 ![](images/ocp-install-5.png)
 
-5. Copy your **Cluster Admin Username** (1) and **Cluster Admin Password** (2). Open the **OCP Console link** (3).
-![](images/ocp-install-6.png)
-
-6. Log in with the **Cluster Admin Username** and **Password** copied in the previous step.
-![](images/ocp-install-7.png)
-
-7. Great, you are almost ready for the lab. Last but not least important, let’s copy login command to access the cluster by CLI. On the top right, click your **username** and select **Copy login command**.
-![](images/ocp-install-8.png)
-
-8. Click **Display Token**.
-![](images/ocp-install-9.png)
-
-9. Copy the **Log in with this token** command and **paste** on a terminal window.
-![](images/ocp-install-10.png)
-
-  That is it! Now you are ready for the lab. Take a breath and enjoy your lab!
+    That is it! Now you are ready for the lab. Take a breath and enjoy your lab!
 
 ***
 
-## 2 - Clone Repositories
+## 2 - Accessing the OCP cluster
+
+In this section, you access your OpenShift cluster and install the OpenShift command line tool.
+
+3.1 In a web browser, open the OCP Console link and paste the **Cluster Admin Username** (A) and **Password** (B) copied in the previous step and click **Log in** (C).
+![](images/oc-cli-1.png)
+
+3.2 Great, you are almost ready for the demo. Last but not least important, let’s copy login command to access the cluster by CLI. On the top right, click your **username** (A) and select **Copy login command** (B).
+![](images/oc-cli-2.png)
+
+3.3 Click **Display Token**.
+![](images/oc-cli-3.png)
+
+3.4 Copy the **Log in with this token command** and **paste** on a terminal window.
+![](images/oc-cli-4.png)
+
+![](images/oc-cli-4-2.png)
+
+***
+
+## 3 - Cloning Repositories
 
 To use this guide you will need to clone the <a href="https://github.ibm.com/joel-gomez/cp4i-demo" target="_blank">CP4I end to end demo repo</a> to your workstation. Let's do it now!
 
 
-1. Open a terminal window and **run** the command below.
+3.1. Open a terminal window and run the command below. It is recommended you do so in a directory like `/Desktop` so that you can easily locate the files afterwards.
+     * First, authenticate your Terminal with the IBM GitHub repository with the following command:
 
 ```
-git clone https://github.ibm.com/joel-gomez/cp4i-demo.git
+gh auth login --hostname github.ibm.com
 ```
 
-2. Open the **cp4i-demo** folder.
+    * Within the Terminal window, navigate through the following prompts:
+      a. What is your preferred protocol for Git operations on this host? : `HTTPS`
+      b. Authenticate Git with your GitHub credentials? : `Yes`
+      c. How would you like to authenticate GitHub CLI? : `Login with a web browser`
+      d. Terminal will generate a one-time code : `copy this to a notepad`
+      e. Within your web browser, log in using your GitHub credentials
+      f. Supply the one-time code and approve access to GitHub
+      g. Wait until the Terminal window reports back a successful `Logged in as...`
+
+3.2 Execute the following within Terminal to clone the demo repository:
+```
+gh repo clone github.ibm.com/joel-gomez/cp4i-demo
+```
+
+3.3 Open the **cp4i-demo** folder.
 ```
 cd cp4i-demo
 ```
 
 ***
 
-## 3 - Set Context
+## 4 - Setting Context
 
 Based on where you have deployed your OCP cluster you will need to set up some environment variables to inform the installation script about your environment. Let's do it here!
 
-1. First, you need to define an environment variable to use the proper storage classes when deploying the instances. The two option available at the moment are ROKS and ODF. In this lab, you are using ODF.
+4.1 Define an environment variable to set the CP4I version.
+```
+export CP4I_VER=export CP4I_VER=16.1.0
+```
+
+4.2 Set the OCP type based on the storage classes in the cluster. If using a ROKS cluster, use export `OCP_TYPE=ROKS` instead.
 ```
 export OCP_TYPE=ODF
 ```
 
-2. To select which version you want to deploy set up the correspponding environment variable. The options available are the latest LTS and CD versions. In this lab, let's use **2022.4** version.
-```
-export CP4I_VER=2022.4
-```
-
-3. By default tracing will be enabled when possible to show this functionality. For clarify, when you are deploying CP4I v2022.2 tracing means Operations Dashboard, and when using v2022.4 it is Instana. In any case, if your demo does not require this option you can disable it setting the environment variable CP4I_TRACING to false, with it you are simplifying the deployment process. In this lab, you will disable tracing. Check the <a href="https://github.ibm.com/joel-gomez/cp4i-demo" target="_blank">CP4I end to end demo repo</a> for more information if you want/need to enable the tracing.
-```
-export CP4I_TRACING=NO
-```
-
-  Operations Dashboard provides integration tracing across instances to allow troubleshooting and investigating errors and latency issues across integration capabilities to ensure applications meet service level agreements.
-
-4. Before you start you can check you have the tools used by this repo running the following script:
-```
-scripts/00a-cp4i-prereq-vaidation.sh
-```
-
-5. We will start installing the overall prerequisites that will help to demonstrate the integration with OCP.
-   IBM Cloud Pak for Integration supports both Red Hat OpenShift cluster logging and user-defined logging solutions. For running pods, you can use the logs that are available in the OpenShift console. To make logging data persistent, you need to install a logging solution for your cluster. To do so, run the following command to install the logging functionality. The script will track the progress and it will send you an email to your *mailtrap* inbox when the operators and logging instance are ready or in case any problem is detected, for that you need to set the environment variables with your *mailtrap* account as shown below.
+4.3 Set mailtrap credentials, substituting `<my-mailtrap-user>` and `<my-mailtrap-pwd>`.
 ```
 export MAILTRAP_USER=<my-mailtrap-user>
 export MAILTRAP_PWD=<my-mailtrap-pwd>
-scripts/00b-logging-install.sh
 ```
 
-6. To confirm the installation completed successfully after receiving the email you can run the following commands:
+4.4 If you have provisioned the OCP cluster in Tech Zone you can use the following script to set the proper default storage class.
 ```
-oc get csv -n openshift-logging
-oc get pods -n openshift-logging
-```
-
-You should receive a response like this for each command respectively.
-```
-NAME                            DISPLAY                            VERSION   REPLACES   PHASE
-cluster-logging.v5.6.1          Red Hat OpenShift Logging          5.6.1                Succeeded
-elasticsearch-operator.v5.6.1   OpenShift Elasticsearch Operator   5.6.1                Succeeded
+scripts/99-odf-tkz-set-scs.sh
 ```
 
-```
-NAME                                            READY   STATUS      RESTARTS   AGE
-cluster-logging-operator-756b4c48cc-lhkzs       1/1     Running     0          6m41s
-collector-njm62                                 2/2     Running     0          5m36s
-collector-nxpmd                                 2/2     Running     0          5m36s
-collector-xjl96                                 2/2     Running     0          5m36s
-collector-xsv6b                                 2/2     Running     0          5m36s
-collector-z9k9l                                 2/2     Running     0          5m36s
-elasticsearch-cdm-dxgp4gmf-1-577dc997c-sk7kg    2/2     Running     0          5m36s
-elasticsearch-cdm-dxgp4gmf-2-5f5d564466-cgk6x   2/2     Running     0          5m35s
-elasticsearch-cdm-dxgp4gmf-3-8695d6658c-lxblf   2/2     Running     0          5m33s
-elasticsearch-im-app-27947625-m6qd9             0/1     Completed   0          2m58s
-elasticsearch-im-audit-27947625-ht4jj           0/1     Completed   0          2m58s
-elasticsearch-im-infra-27947625-r9j8c           0/1     Completed   0          2m58s
-kibana-746f699cc-72qfk                          2/2     Running     0          5m34s
-```
+4.5 Your cluster will also need access to pull the container software required to deploy the Cloud Pak. Your Entitlement Key is used to grant access. You can download you entitlement key from <a href="https://myibm.ibm.com/products-services/containerlibrary" target="_blank">My IBM</a>. Click **Copy**.
+![](images/set-context-5.png)
 
-7. Your cluster will also need access to pull the container software required to deploy the Cloud Pak. Your Entitlement Key is used to grant access. You can download you entitlement key from <a href="https://myibm.ibm.com/products-services/containerlibrary" target="_blank">My IBM</a>. Click **Copy**.
-![](images/set-context-1.png)
 
-8.The IBM Entitled Registry contains software images for the capabilities in IBM Cloud Pak® for Integration. To allow the Cloud Pak for Integration operators to automatically pull those software images, you must first obtain your entitlement key, then add your entitlement key in a pull secret.
-  Now, you will need a namespace called *tools* where you will deploy the different capabilities. You can create the namespace the way you want or you can use the following script which also creates the secret for the *ibm entitlement key*. Replace the *my-key* with your **IBM entitlement key**, run this from the root of the GitHub repo you cloned:
+<InlineNotification kind="warning">If no active entitlement keys are available, you can create one by clicking the **Add new key** button. If you receive an "Operation could not be completed at this time", try clicking the button a second or third time until one is generated.</InlineNotification>
+
+
+4.6 The IBM Entitled Registry contains software images for the capabilities in IBM Cloud Pak® for Integration. To allow the Cloud Pak for Integration operators to automatically pull those software images, you must first obtain your entitlement key, then add your entitlement key in a pull secret.  Replace the *my-key* with your **IBM entitlement key**.
 ```
 export ENT_KEY=<my-key>
+```
+
+
+4.7 Now, you need a namespace where you will deploy the different capabilities.
+```
 scripts/02a-cp4i-ns-key-config.sh
 ```
 
 
 ***
 
-## 4 – Add the Catalog Sources
 
-First, let's begin our installation by making the IBM Cloud Pak for Integration operators available to the cluster. Because our cluster has direct access to the internet, we will complete this task by addding the online catalog sources to our cluster.
-
-1. Run the following command:
-```
-oc apply -f catalog-sources/${CP4I_VER}/00-cp4i-catalog-sources.yaml
-```
-
-2. Validate the catalog sources have been added successfully using the following command:
-```
-oc get catalogsources -n openshift-marketplace
-```
-
-3. You should have a response like this:
-```
-NAME                                           DISPLAY                                                  TYPE   PUBLISHER   AGE
-appconnect-operator-catalogsource              ibm-appconnect-5.0.1                                     grpc   IBM         21m
-aspera-operators                               ibm-aspera-hsts-operator-1.5.2                           grpc   IBM         21m
-certified-operators                            Certified Operators                                      grpc   Red Hat     76m
-cloud-native-postgresql-catalog                ibm-cloud-native-postgresql-4.0.9                        grpc   IBM         21m
-community-operators                            Community Operators                                      grpc   Red Hat     76m
-ibm-apiconnect-catalog                         ibm-apiconnect-4.0.1                                     grpc   IBM         21m
-ibm-cloud-databases-redis-operator-catalog     ibm-cloud-databases-redis-1.5.3                          grpc   IBM         21m
-ibm-datapower-operator-catalog                 ibm-datapower-operator-1.6.4-linux-amd64                 grpc   IBM         21m
-ibm-eventstreams-catalog                       ibm-eventstreams-1.6.6                                   grpc   IBM         21m
-ibm-integration-asset-repository-catalog       ibm-integration-asset-repository-1.5.2-linux-amd64       grpc   IBM         21m
-ibm-integration-operations-dashboard-catalog   ibm-integration-operations-dashboard-2.6.3-linux-amd64   grpc   IBM         21m
-ibm-integration-platform-navigator-catalog     ibm-integration-platform-navigator-1.7.3                 grpc   IBM         21m
-ibmmq-operator-catalogsource                   ibm-mq-2.0.4                                             grpc   IBM         21m
-opencloud-operators                            ibm-cp-common-services-1.15.5                            grpc   IBM         21m
-redhat-marketplace                             Red Hat Marketplace                                      grpc   Red Hat     76m
-redhat-operators                               Red Hat Operators                                        grpc   Red Hat     76m
-```
-
-***
-
-## 5 - Install the Operators
+## 5 - Installing IBM Cloud Pak foundational services
 
 Red Hat OpenShift Operators automate the creation, configuration, and management of instances of Kubernetes-native applications. Operators provide automation at every level of the stack—from managing the parts that make up the platform all the way to applications that are provided as a managed service.
 
@@ -270,31 +225,80 @@ Red Hat OpenShift uses the power of Operators to run the entire platform in an a
 
 You can easily check all the Operators installed in your OpenShift environment, by opening the Operator Hub page in the OpenShift Web Console.
 
-1. Once you confirm the catalog sources are available you can proceed to install the CP4I operators running the following script.
+The IBM Cloud Pak foundational services operator is no longer installed automatically. Install this operator manually if you need to create an instance that uses identity and access management (IAM). The following steps will walk you through this process.
+
+The IBM Cloud Pak foundational services operator is no longer installed automatically. Install this operator manually if you need to create an instance that uses identity and access management. That is exactly, what you will do in this section.
+
+5.1 First we need to have a certificate manager, otherwise,  the IBM Cloud Pak foundational services operator installation will not complete. Let's do it!
+
+    > Time to install: ~1 minute
+
 ```
-scripts/02b-cp4i-apply-subscriptions.sh
+oc apply -f resources/00-cert-manager-namespace.yaml
+oc apply -f resources/00-cert-manager-operatorgroup.yaml
+oc apply -f resources/00-cert-manager-subscription.yaml
 ```
 
-2. Once you get the email or if you want to check manually run the following command:
+    Confirm the subscription has been completed successfully before moving to the next step running the following command.
 ```
-oc get csv -n openshift-operators
+SUB_NAME=$(oc get deployment cert-manager-operator-controller-manager -n cert-manager-operator --ignore-not-found -o jsonpath='{.metadata.labels.olm\.owner}');if [ ! -z "$SUB_NAME" ]; then oc get csv/$SUB_NAME -n cert-manager-operator --ignore-not-found -o jsonpath='{.status.phase}';fi;echo
 ```
 
-3. And you should get the following response with all the operators listed:
+    Wait for a response of `Succeeded`.
+    <InlineNotification kind="warning">If no response is generated, **wait a couple of minutes** and try again. Do not proceed until receiving the *Succeeded* prompt.</InlineNotification>
+
+
+5.2 Install the Postgress SQL Catalog Source.
+
+    > Time to install: ~1 minute
+
 ```
-NAME                                          DISPLAY                                                                                        VERSION   REPLACES                                      PHASE
-datapower-operator.v1.6.4                     IBM DataPower Gateway                                                                          1.6.4     datapower-operator.v1.6.3                     Succeeded
-ibm-apiconnect.v3.0.0                         IBM API Connect                                                                                3.0.0                                                   Succeeded
-ibm-appconnect.v5.0.1                         IBM App Connect                                                                                5.0.1     ibm-appconnect.v5.0.0                         Succeeded
-ibm-aspera-hsts-operator.v1.5.2               IBM Aspera HSTS                                                                                1.5.2     ibm-aspera-hsts-operator.v1.5.1               Succeeded
-ibm-cloud-databases-redis.v1.5.3              IBM Operator for Redis                                                                         1.5.3     ibm-cloud-databases-redis.v1.5.2              Succeeded
-ibm-common-service-operator.v3.19.5           IBM Cloud Pak foundational services                                                            3.19.5    ibm-common-service-operator.v3.19.4           Succeeded
-ibm-eventstreams.v3.0.5                       IBM Event Streams                                                                              3.0.5     ibm-eventstreams.v3.0.4                       Succeeded
-ibm-integration-asset-repository.v1.5.2       IBM Automation Foundation assets (previously IBM Cloud Pak for Integration Asset Repository)   1.5.2                                                   Succeeded
-ibm-integration-operations-dashboard.v2.6.3   IBM Cloud Pak for Integration Operations Dashboard                                             2.6.3     ibm-integration-operations-dashboard.v2.6.2   Succeeded
-ibm-integration-platform-navigator.v6.0.3     IBM Cloud Pak for Integration                                                                  6.0.3     ibm-integration-platform-navigator.v6.0.2     Succeeded
-ibm-mq.v2.0.4                                 IBM MQ                                                                                         2.0.4     ibm-mq.v2.0.3                                 Succeeded
+oc apply -f catalog-sources/${CP4I_VER}/01-postgress-sql-catalog-source.yaml
 ```
+
+    Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
+```
+oc get pods -n openshift-marketplace | grep postgresql
+```
+
+    Wait for a response of `READY`.
+
+    <InlineNotification kind="warning">You may be seeing a response of *TRANSIENT_FAILURE* which indicates the deployment is underway but not yet complete. Wait until the *READY* response is received before continuing.</InlineNotification>
+
+5.3 Install the Common Services Catalog source.
+
+    > Time to install: ~1 minute
+
+```
+oc apply -f catalog-sources/${CP4I_VER}/02-common-services-catalog-source.yaml
+```
+
+    Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
+```
+oc get catalogsources opencloud-operators -n openshift-marketplace -o jsonpath='{.status.connectionState.lastObservedState}';echo
+```
+
+    Wait for a response of `READY`.
+
+5.4 Create the Common Services namespace.
+```
+oc new-project ibm-common-services
+```
+
+5.5 Install the Foundational Services operator (former Common Services).
+
+    > Time to install: ~1 minute
+
+```
+oc apply -f subscriptions/${CP4I_VER}/00-common-service-subscription.yaml
+```
+
+    Confirm the operator has been deployed successfully before moving to the next step running the following command.
+```
+SUB_NAME=$(oc get deployment/ibm-common-service-operator -n openshift-operators --ignore-not-found -o jsonpath='{.metadata.labels.olm\.owner}');if [ ! -z "$SUB_NAME" ]; then oc get csv/$SUB_NAME --ignore-not-found -o jsonpath='{.status.phase}';fi;echo
+```
+
+    Wait for a response of `Succeeded`.
 
 ***
 

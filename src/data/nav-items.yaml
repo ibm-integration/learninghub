@@ -18,9 +18,5 @@
   pages:
     - title: Installing IBM API-led Solution
       path: /labs/installing-cp4i/
-    - title: Installing IBM Event-led Solution
-      path: /labs/installing-ea/
     - title: Accessing IBM API-Led on AWS
       path: /labs/trial-aws/
-    - title: Mastering Enterprise-Level GraphQL
-      path: /labs/stepzen/
