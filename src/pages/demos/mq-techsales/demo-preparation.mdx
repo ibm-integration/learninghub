@@ -180,6 +180,7 @@ The IBM Cloud Pak foundational services operator is no longer installed automati
 
 6.1 First we need to have a certificate manager, otherwise,  the IBM Cloud Pak foundational services operator installation will not complete. Let's do it!
 
+
 <InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
 
 ```
@@ -188,13 +189,13 @@ oc apply -f resources/00-cert-manager-operatorgroup.yaml
 oc apply -f resources/00-cert-manager-subscription.yaml
 ```
 
-    Confirm the subscription has been completed successfully before moving to the next step running the following command.
+Confirm the subscription has been completed successfully before moving to the next step running the following command.
 ```
 SUB_NAME=$(oc get deployment cert-manager-operator-controller-manager -n cert-manager-operator --ignore-not-found -o jsonpath='{.metadata.labels.olm\.owner}');if [ ! -z "$SUB_NAME" ]; then oc get csv/$SUB_NAME -n cert-manager-operator --ignore-not-found -o jsonpath='{.status.phase}';fi;echo
 ```
 
-    Wait for a response of `Succeeded`.
-    <InlineNotification kind="warning">If no response is generated, **wait a couple of minutes** and try again. Do not proceed until receiving the *Succeeded* prompt.</InlineNotification>
+Wait for a response of `Succeeded`.
+<InlineNotification kind="warning">If no response is generated, **wait a couple of minutes** and try again. Do not proceed until receiving the *Succeeded* prompt.</InlineNotification>
 
 
 6.2 Install the Postgress SQL Catalog Source.
@@ -205,14 +206,14 @@ SUB_NAME=$(oc get deployment cert-manager-operator-controller-manager -n cert-ma
 oc apply -f catalog-sources/${CP4I_VER}/01-postgress-sql-catalog-source.yaml
 ```
 
-    Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
+Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
 ```
 oc get pods -n openshift-marketplace | grep postgresql
 ```
 
-    Wait for a response of `READY`.
+Wait for a response of `READY`.
 
-    <InlineNotification kind="warning">You may be seeing a response of *TRANSIENT_FAILURE* which indicates the deployment is underway but not yet complete. Wait until the *READY* response is received before continuing.</InlineNotification>
+<InlineNotification kind="warning">You may be seeing a response of *TRANSIENT_FAILURE* which indicates the deployment is underway but not yet complete. Wait until the *READY* response is received before continuing.</InlineNotification>
 
 6.3 Install the Common Services Catalog source.
 
@@ -222,12 +223,12 @@ oc get pods -n openshift-marketplace | grep postgresql
 oc apply -f catalog-sources/${CP4I_VER}/02-common-services-catalog-source.yaml
 ```
 
-    Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
+Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
 ```
 oc get catalogsources opencloud-operators -n openshift-marketplace -o jsonpath='{.status.connectionState.lastObservedState}';echo
 ```
 
-    Wait for a response of `READY`.
+Wait for a response of `READY`.
 
 6.4 Create the Common Services namespace.
 ```
@@ -242,12 +243,12 @@ oc new-project ibm-common-services
 oc apply -f subscriptions/${CP4I_VER}/00-common-service-subscription.yaml
 ```
 
-    Confirm the operator has been deployed successfully before moving to the next step running the following command.
+Confirm the operator has been deployed successfully before moving to the next step running the following command.
 ```
 SUB_NAME=$(oc get deployment/ibm-common-service-operator -n openshift-operators --ignore-not-found -o jsonpath='{.metadata.labels.olm\.owner}');if [ ! -z "$SUB_NAME" ]; then oc get csv/$SUB_NAME --ignore-not-found -o jsonpath='{.status.phase}';fi;echo
 ```
 
-    Wait for a response of `Succeeded`.
+Wait for a response of `Succeeded`.
 
 ***
 
