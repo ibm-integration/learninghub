@@ -174,7 +174,7 @@ scripts/02a-cp4i-ns-key-config.sh
 
 ***
 
-### 6 - Install Foundational Services Test
+### 6 - Install Foundational Services
 
 The IBM Cloud Pak foundational services operator is no longer installed automatically. Install this operator manually if you need to create an instance that uses identity and access management. That is exactly, what you will do in this section.
 
@@ -264,12 +264,12 @@ Deploying the Platform UI allows you to deploy and manage instances from a centr
 oc apply -f catalog-sources/${CP4I_VER}/03-platform-navigator-catalog-source.yaml
 ```
 
-    Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
+Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
 ```
 oc get catalogsources ibm-integration-platform-navigator-catalog -n openshift-marketplace -o jsonpath='{.status.connectionState.lastObservedState}';echo
 ```
 
-    Wait for a response of `READY`.
+Wait for a response of `READY`.
 
 
 7.2 Install the Platform UI Operator.
@@ -280,12 +280,12 @@ oc get catalogsources ibm-integration-platform-navigator-catalog -n openshift-ma
 oc apply -f subscriptions/${CP4I_VER}/01-platform-navigator-subscription.yaml
 ```
 
-    Confirm the operator has been deployed successfully before moving to the next step running the following command.
+Confirm the operator has been deployed successfully before moving to the next step running the following command.
 ```
 SUB_NAME=$(oc get deployment ibm-integration-platform-navigator-operator -n openshift-operators --ignore-not-found -o jsonpath='{.metadata.labels.olm\.owner}');if [ ! -z "$SUB_NAME" ]; then oc get csv/$SUB_NAME --ignore-not-found -o jsonpath='{.status.phase}';fi;echo
 ```
 
-    Wait for a response of `Succeeded`.
+Wait for a response of `Succeeded`.
 
 7.3 Deploy a Platform UI instance.
 
@@ -295,14 +295,14 @@ SUB_NAME=$(oc get deployment ibm-integration-platform-navigator-operator -n open
 oc apply -f instances/${CP4I_VER}/common/01-platform-navigator-instance.yaml
 ```
 
-    Confirm the instance has been deployed successfully before moving to the next step running the following command.
+Confirm the instance has been deployed successfully before moving to the next step running the following command.
 ```
 oc get platformnavigator cp4i-navigator -n tools -o jsonpath='{.status.conditions[0].type}';echo
 ```
 
-    Wait for a response of `READY`.
+Wait for a response of `READY`.
 
-    <InlineNotification kind="warning">You may be seeing a response of `PENDING` which indicates the deployment is underway but not yet complete. Wait until the `READY` response is received before continuing.</InlineNotification>
+<InlineNotification kind="warning">You may be seeing a response of `PENDING` which indicates the deployment is underway but not yet complete. Wait until the `READY` response is received before continuing.</InlineNotification>
 
 
 7.4 Once the Platform UI instance is up and running get the access info.
@@ -313,7 +313,7 @@ scripts/03b-cp4i-access-info.sh
 7.5 Open the Platform UI  URL and log in. Note the password is temporary and you will be required to change it. Take note of your new password, you will use it multiple times.
 ![](images/platform-ui-8.png)
 
-    Record the credentials to a notepad for reference later.
+Record the credentials to a notepad for reference later.
 
 7.6 Open the Platform UI URL with a web browser and log in. Note the password is temporary and you will be required to change it. Take note of your new password, as you will use it multiple times throughout the lab.
 ![](images/platform-ui-9.png)
@@ -330,12 +330,12 @@ scripts/03b-cp4i-access-info.sh
 oc apply -f catalog-sources/${CP4I_VER}/09-mq-catalog-source.yaml
 ```
 
-    Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
+Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
 ```
 oc get catalogsources ibmmq-operator-catalogsource -n openshift-marketplace -o jsonpath='{.status.connectionState.lastObservedState}';echo
 ```
 
-    Wait for a response of `READY`.
+Wait for a response of `READY`.
 
 8.2 Install the MQ Operator.
 
@@ -345,12 +345,12 @@ oc get catalogsources ibmmq-operator-catalogsource -n openshift-marketplace -o j
 oc apply -f subscriptions/${CP4I_VER}/06-mq-subscription.yaml
 ```
 
-    Confirm the operator has been deployed successfully before moving to the next step running the following command.
+Confirm the operator has been deployed successfully before moving to the next step running the following command.
 ```
 SUB_NAME=$(oc get deployment ibm-mq-operator -n openshift-operators --ignore-not-found -o jsonpath='{.metadata.labels.olm\.owner}');if [ ! -z "$SUB_NAME" ]; then oc get csv/$SUB_NAME --ignore-not-found -o jsonpath='{.status.phase}';fi;echo
 ```
 
-    Wait for a response of `Succeeded`.
+Wait for a response of `Succeeded`.
 
 8.3 Set MQ namespace environment variable.
 ```
@@ -375,12 +375,12 @@ oc apply -f resources/03c-qmgr-mqsc-config.yaml
 scripts/10b-qmgr-inst-deploy.sh
 ```
 
-    Confirm the instance has been deployed successfully before moving to the next step running the following command.
+Confirm the instance has been deployed successfully before moving to the next step running the following command.
 ```
 oc get queuemanager qmgr-demo -n tools -o jsonpath='{.status.phase}';echo
 ```
 
-    Wait for a response of `Running`.
+Wait for a response of `Running`.
 
 
 8.7 Create CCDT.
