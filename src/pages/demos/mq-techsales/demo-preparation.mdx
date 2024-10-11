@@ -158,7 +158,7 @@ scripts/99-odf-tkz-set-scs.sh
 ![](images/set-context-5.png)
 
 
-<InlineNotification kind="warning">If no active entitlement keys are available, you can create one by clicking the **Add new key** button. If you receive an "Operation could not be completed at this time", try clicking the button a second or third time until one is generated.</InlineNotification>
+<InlineNotification kind="warning">If no active entitlement keys are available, you can create one by clicking the "Add new key" button. If you receive an "Operation could not be completed at this time", try clicking the button a second or third time until one is generated.</InlineNotification>
 
 
 5.6 The IBM Entitled Registry contains software images for the capabilities in IBM Cloud Pak® for Integration. To allow the Cloud Pak for Integration operators to automatically pull those software images, you must first obtain your entitlement key, then add your entitlement key in a pull secret.  Replace the *my-key* with your **IBM entitlement key**.
@@ -180,7 +180,7 @@ The IBM Cloud Pak foundational services operator is no longer installed automati
 
 6.1 First we need to have a certificate manager, otherwise,  the IBM Cloud Pak foundational services operator installation will not complete. Let's do it!
 
-    > Time to install: ~1 minute
+<InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
 
 ```
 oc apply -f resources/00-cert-manager-namespace.yaml
@@ -199,7 +199,7 @@ SUB_NAME=$(oc get deployment cert-manager-operator-controller-manager -n cert-ma
 
 6.2 Install the Postgress SQL Catalog Source.
 
-    > Time to install: ~1 minute
+<InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
 
 ```
 oc apply -f catalog-sources/${CP4I_VER}/01-postgress-sql-catalog-source.yaml
@@ -216,7 +216,7 @@ oc get pods -n openshift-marketplace | grep postgresql
 
 6.3 Install the Common Services Catalog source.
 
-    > Time to install: ~1 minute
+<InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
 
 ```
 oc apply -f catalog-sources/${CP4I_VER}/02-common-services-catalog-source.yaml
@@ -236,7 +236,7 @@ oc new-project ibm-common-services
 
 6.5 Install the Foundational Services operator (former Common Services).
 
-    > Time to install: ~1 minute
+<InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
 
 ```
 oc apply -f subscriptions/${CP4I_VER}/00-common-service-subscription.yaml
@@ -257,7 +257,7 @@ Deploying the Platform UI allows you to deploy and manage instances from a centr
 
 7.1 First, let's install Platform UI Catalog source.
 
-  > Time to install: ~1 minute
+<InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
 
 ```
 oc apply -f catalog-sources/${CP4I_VER}/03-platform-navigator-catalog-source.yaml
@@ -273,7 +273,7 @@ oc get catalogsources ibm-integration-platform-navigator-catalog -n openshift-ma
 
 7.2 Install the Platform UI Operator.
 
-  > Time to install: ~1 minute
+<InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
 
 ```
 oc apply -f subscriptions/${CP4I_VER}/01-platform-navigator-subscription.yaml
@@ -288,7 +288,7 @@ SUB_NAME=$(oc get deployment ibm-integration-platform-navigator-operator -n open
 
 7.3 Deploy a Platform UI instance.
 
-  > Time to install: ~10 minute
+<InlineNotification kind="info-square">Time to install: ~10 minutes.</InlineNotification>
 
 ```
 oc apply -f instances/${CP4I_VER}/common/01-platform-navigator-instance.yaml
@@ -323,7 +323,7 @@ scripts/03b-cp4i-access-info.sh
 
 8.1 Install the Enterprise Messaging (MQ) Catalog Source.
 
-  > Time to install: ~1 minute
+<InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
 
 ```
 oc apply -f catalog-sources/${CP4I_VER}/09-mq-catalog-source.yaml
@@ -338,7 +338,7 @@ oc get catalogsources ibmmq-operator-catalogsource -n openshift-marketplace -o j
 
 8.2 Install the MQ Operator.
 
-  > Time to install: ~1 minute
+<InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
 
 ```
 oc apply -f subscriptions/${CP4I_VER}/06-mq-subscription.yaml
@@ -368,7 +368,7 @@ oc apply -f resources/03c-qmgr-mqsc-config.yaml
 
 8.6 Deploy MQ Queue Manager instance.
 
-  > Time to install: ~5 minutes
+<InlineNotification kind="info-square">Time to install: ~5 minutes.</InlineNotification>
 
 ```
 scripts/10b-qmgr-inst-deploy.sh
