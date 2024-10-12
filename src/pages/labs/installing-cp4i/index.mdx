@@ -49,7 +49,7 @@ In this session you will learn:
   - github CLI
   - Bash Shell
   - JAVA v8+
-  - <a href="https://www.ibm.com/docs/en/api-connect/10.0.x?topic=configuration-installing-toolkit" target="_blank">apic CLI</a>
+  - <a href="https://www.ibm.com/docs/en/api-connect/10.0.x?topic=configuration-installing-toolkit" target="_blank">APIC CLI</a>
 
 Note some of the tools will be available after you deploy an instance of the capability you are working on. And you also need an account in the folllowing email service to configure APIC:
   - <a href="https://mailtrap.io/" target="_blank">mailtrap</a>
@@ -304,7 +304,7 @@ In this section, you will install the Platform Navigator UI. The Platform UI is 
 
 Deploying the Platform UI allows you to deploy and manage instances from a central location.
 
-7.1 First, let's install Platform UI Catalog source.
+6.1 First, let's install Platform UI Catalog source.
 
 <InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
 
@@ -319,8 +319,7 @@ oc get catalogsources ibm-integration-platform-navigator-catalog -n openshift-ma
 
 Wait for a response of `READY`.
 
-
-7.2 Install the Platform UI Operator.
+6.2 Install the Platform UI Operator.
 
 <InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
 
@@ -335,7 +334,7 @@ SUB_NAME=$(oc get deployment ibm-integration-platform-navigator-operator -n open
 
 Wait for a response of `Succeeded`.
 
-7.3 Deploy a Platform UI instance.
+6.3 Deploy a Platform UI instance.
 
 <InlineNotification kind="info-square">Time to install: ~10 minutes.</InlineNotification>
 
@@ -353,12 +352,12 @@ Wait for a response of `READY`.
 <InlineNotification kind="warning">You may be seeing a response of `PENDING` which indicates the deployment is underway but not yet complete. Wait until the `READY` response is received before continuing.</InlineNotification>
 
 
-7.4 Once the Platform UI instance is up and running get the access info.
+6.4 Once the Platform UI instance is up and running get the access info.
 ```
 scripts/03b-cp4i-access-info.sh
 ```
 
-7.5 Open the Platform UI  URL and log in. Note the password is temporary and you will be required to change it. Take note of your new password, you will use it multiple times.
+6.5 Open the Platform UI  URL and log in. Note the password is temporary and you will be required to change it. Take note of your new password, you will use it multiple times.
 ![](images/platform-ui-8.png)
 
 Record the credentials to a notepad for reference later.
@@ -483,6 +482,9 @@ oc get APIConnectCluster apim-demo -n tools -o jsonpath='{.status.phase}';echo
 Note this will take almost 30 minutes, so be patient, and at the end you should get a `Ready` response.
 
 8.6 Configure the email server in APIC.
+
+<InlineNotification kind="info-square">In this specific step you need to have APIC CLI installed, as described in the Prerequisites section. Follow this <a href="https://www.ibm.com/docs/en/api-connect/10.0.8?topic=configuration-installing-toolkit" target="_blank">this documentation to install it</a>.</InlineNotification>
+
 ```
 scripts/07f-apic-initial-config.sh
 ```
