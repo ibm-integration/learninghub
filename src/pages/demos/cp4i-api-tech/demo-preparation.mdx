@@ -576,29 +576,26 @@ Your Salesforce developer account is ready.
 ### 12 - Connect Cloud Pak for Integration instance to your endpoints
 
 Let’s configure our services endpoints in Cloud Pak for Integration.
-<br/>
 
-12.1	Return to the command line and access the Platform Navigator using the provided URL. Copy and paste  the **Username** (1) and **Password** (2) from the command line output, and click **Sign In** (3).<br/><img src="images/prep-image209.png" width="800" /><br/><img src="images/prep-image210.png" width="800" /><br/>
+12.1	Open the Platform Navigator URL. Enter your admin **Username** (1) and **Password** (2), and click **Sign In** (3).<br/><img src="images/prep-image210.png" width="800" /><br/>
 
-12.2 You will be asked to provide a new password. Provide a new password and click **Submit**. <br/><img src="images/prep-501.png" width="800" /><br/>
+12.2 In the menu on the top left, open the **Design** folder (1) and select **Integrations** (2). <br/><img src="images/prep-44.png" width="800" /><br/>
 
-12.3 In the menu on the top left, open the **Design** folder (1) and select **Integrations** (2). <br/><img src="images/prep-44.png" width="800" /><br/>
+12.3 Click on the **ace-designer-demo** entry. <br/><img src="images/prep-44-2.png" width="800" /><br/>
 
-12.4 Click on the **ace-designer-demo** entry. <br/><img src="images/prep-44-2.png" width="800" /><br/>
+12.4 Click the **Catalog** icon to see a list of the available connectors. <br/><img src="images/prep-45.png" width="800" /><br/>
 
-12.5 Click the **Catalog** icon to see a list of the available connectors. <br/><img src="images/prep-45.png" width="800" /><br/>
+12.5 Search for **salesforce** (1) and click **Connect** (2).<br/><img src="images/Prep4.5.png" width="800" /><br/>
 
-12.6 Search for **salesforce** (1) and click **Connect** (2).<br/><img src="images/Prep4.5.png" width="800" /><br/>
+12.6 Enter your Salesforce **Login URL**.<inline-notification text="You must enter <strong>‘https://’</strong> in front of the Saleforce Login URL you saved earlier. The connection will not work if you just copy/paste the hostname."></inline-notification><img src="images/Prep4.6.png" width="800" />
 
-12.7 Enter your Salesforce **Login URL**.<inline-notification text="You must enter <strong>‘https://’</strong> in front of the Saleforce Login URL you saved earlier. The connection will not work if you just copy/paste the hostname."></inline-notification><img src="images/Prep4.6.png" width="800" />
+12.7 Input your Salesforce **Username** (1). Fill in the connector's **Password** field (2) by concatenating your Salesforce **Password** and the **Security token** received via email.<br/><br/>For example, if your Salesforce password is ‘myGreatPassword’ and your Salesforce security token is ‘2325jsdhew4312hs534dh’ then enter ‘myGreatPassword2325jsdhew4312hs534dh’ in the **Password** field.<br/><img src="images/Prep4.7.png" width="800" /><br/><br/>
 
-12.8 Input your Salesforce **Username** (1). Fill in the connector's **Password** field (2) by concatenating your Salesforce **Password** and the **Security token** received via email.<br/><br/>For example, if your Salesforce password is ‘myGreatPassword’ and your Salesforce security token is ‘2325jsdhew4312hs534dh’ then enter ‘myGreatPassword2325jsdhew4312hs534dh’ in the **Password** field.<br/><img src="images/Prep4.7.png" width="800" /><br/><br/>
+12.8 Input Salesforce’s **Consumer Key** as **Client ID** (1) and **Secret** as **Client Secret** (2), in the connector account UI. Click **Connect** (3).<br/><img src="images/Prep4.8.png" width="800" /><br/>
 
-12.9 Input Salesforce’s **Consumer Key** as **Client ID** (1) and **Secret** as **Client Secret** (2), in the connector account UI. Click **Connect** (3).<br/><img src="images/Prep4.8.png" width="800" /><br/>
+12.9 Click on the **menu** icon (1) and select **Rename Account** (2).<br/><img src="images/Prep4.9.png" width="800" /><br/>
 
-12.10 Click on the **menu** icon (1) and select **Rename Account** (2).<br/><img src="images/Prep4.9.png" width="800" /><br/>
-
-12.11 Enter **App Connect Trial** (1) as **Account name** and click **Rename Account** (2).<br/><img src="images/Prep4.10.png" width="800" /><br/>
+12.10 Enter **App Connect Trial** (1) as **Account name** and click **Rename Account** (2).<br/><img src="images/Prep4.10.png" width="800" /><br/>
 
 Your environment is ready to demo.
 
