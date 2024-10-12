@@ -166,87 +166,72 @@ Show the Settings page and click the **Dashboard** button on the left menu.
 
 <br/><br/>
 
-### **2. Create  AI generated event-driven flow**
+### **2. Create Event-driven flow**
 
 <details>
-<summary>2.1. Using AI generated flow capability</summary><br/>
+<summary>2.1. Create the flow</summary><br/>
 
 **Narration**
 
-To transform a natural language description into an event-driven flow, IBM App Connect  connects to a service that is called Experimental Flow Generator. Experimental Flow Generator uses NLP to parse the natural language description that you provide, and AI to generate a flow template. This feature helps business users to quickly transform a natural language description into an event-driven flow, without needing any knowledge of flow design.
+In an event-driven flow, you identify an event that can occur, which automatically triggers defined actions in one or more applications. An event can be considered as a change or an activity that occurs in an application; for example, a contact is created in Salesforce. An action is an operation that App Connect initiates in an application when a flow runs; for example, contact details are retrieved from Salesforce (so they can subsequently be processed in some way later in the flow).
 
-You start by entering a sentence in plain English that describes your integration. You then review the template that is generated and, if necessary, refine your description to generate a more appropriate template. Let's try a first scenario about ServiceNow integration and Trello.
-
-As you can see, the Focus team receives an auto-generated flow, editable in Designer, based on a simple text sequence. But let's focus on the Focus CRM synchronization scenario.
+IBM App Connect supports streamed, polled, and “scheduled” events. An event node for one of these event types is always the starting point in an event-driven flow.
 
 The Focus integration team would like to get contacts from Salesforce and copy them to the new Insightly CRM. Let's try it!
-
-Voila! Here they have their AI generated flow, when they're ready, they open the template in the flow editor, where they can connect to their accounts, map data between their applications, and customize their flow.
 
 <hr/><br/>
 
 
 **Action** &nbsp; 2.1.1.
 
-Click **Create > AI-generated flow**.
+Click **Create > Event-driven flow**.
 
-  ![](images/ai-generated-1.png)
+  ![](images/event-flow-01.png)
 
 <hr/><br/>
 
 
 **Action** &nbsp; 2.1.2.
 
-Type the following sentence: "**Send a slack message when a new ticket is created in ServiceNow**”, then press **Enter**.
+Rename the flow to **Get contacts**.
 
-  ![](images/ai-generated-2.png)
+  ![](images/event-flow-02.png)
 
 <hr/><br/>
 
 
 **Action** &nbsp; 2.1.3.
 
-You now see the AI-generated template doing exactly as you asked. Now overwrite that phrase and type the following sentence: "**Get contacts from Salesforce and copy it to Insightly**”, then press **Enter**.
+Initially, we need to add our integration nodes. Click the **second Plus +** icon (A). Search for the **Salesforce** connector (B).
 
-  ![](images/ai-generated-3.png)
+  ![](images/event-flow-03.png)
 
 <hr/><br/>
 
 
 **Action** &nbsp; 2.1.4.
 
-Click **Open in Designer**.
+4.	From your pre-configured Salesforce connector, select **Contacts > Retrieve contact**.
 
-  ![](images/ai-generated-4.png)
+  ![](images/event-flow-04.png)
 
-
-<hr/><br/>
-
-<InlineNotification kind="warning">There is a known issue with the Salesforce Retrieve contacts node when added by the AI-generated flow feature on App Connect on AWS. The IBM Development team is working to fix it as soon as possible. Because of it, the steps below are a workaround to manualy add another Salesforce Retrieve Contact node. As soon as the bug is fixed, steps 2.1.5 to 2.1.7 will be removed.</InlineNotification>
-
-<br/>
-
-**Action** &nbsp; 2.1.5 (WORKAROUND)
-
-Click on the **Salesforce Retrieve contacts** node (A). And click to **Delete** it (B).
-
-  ![](images/workaround-sfnode-1.png)
 
 <hr/><br/>
 
-**Action** &nbsp; 2.1.6 (WORKAROUND)
 
-Click the **Plus** icon (A). Search for the **Salesforce** connector (B).
+**Action** &nbsp; 2.1.5
 
-  ![](images/workaround-sfnode-2.png)
+5.	Next section, you will configure this node. It is time to add the second integration node. Click on the **third plus +** icon (A) and search for **Insightly** (B).
+
+  ![](images/event-flow-05.png)
 
 <hr/><br/>
 
-**Action** &nbsp; 2.1.7 (WORKAROUND)
+**Action** &nbsp; 2.1.6
 
-From your pre-configured Salesforce connector, select **Contacts** (A) > **Retrieve contacts** (B).
+From your pre-configured *Insightly* connector, select **Contacts > Create contact**.
 
-  ![](images/workaround-sfnode-3.png)
+  ![](images/event-flow-06.png)
 
 <br/>
 
@@ -507,7 +492,7 @@ Using IBM App Connect and the Mapping Assist capability, they were able to easil
 
 **Action** &nbsp; 5.1.1.
 
-Click on the **Assistant name** field and select the **For each: Salesforce Contact/Contact > Full Name**.
+Click on the **Assistant name** field (A). Delete the current mapping, and click on **Insert a mapping** button (B), and select the **For each: Salesforce Contact/Contact > Full Name** (C).
 
   ![](images/data-assist-1.png)
 
@@ -547,8 +532,15 @@ Before the Focus team can start to test their data sync flow, they need to check
 
 <hr/><br/>
 
-
 **Action** &nbsp; 6.1.1.
+
+Open **your Insightly** <a href="https://login.insightly.com/" target="_blank">page</a> and log in with your lab user and password.
+
+  ![](images/check-target-0.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 6.1.2.
 
 Open your **Insightly** home page (A). Open the **Contacts** view (B).
 
@@ -557,7 +549,7 @@ Open your **Insightly** home page (A). Open the **Contacts** view (B).
 <hr/><br/>
 
 
-**Action** &nbsp; 6.1.2.
+**Action** &nbsp; 6.1.3.
 
 Notice that there are approximately 20 pre-created contacts, each with pictures.
 
@@ -573,13 +565,13 @@ Notice that there are approximately 20 pre-created contacts, each with pictures.
 
 **Narration**
 
-The Focus team can test the flow using the IBM App Connect Designer page. They just need to click on the “Try this flow” button.
+The Focus team can test the flow using the IBM App Connect Designer page. They just need to click on the “Test flow” button.
 
 <hr/><br/>
 
 **Action** &nbsp; 6.2.1.
 
-Back to the App Connect Designer page, click the **Try this flow** button.
+Back to the App Connect Designer page, click the **Test flow** button (A), and select **Using sample data** (B).
 
   ![](images/test-sync-1.png)
 
@@ -588,7 +580,7 @@ Back to the App Connect Designer page, click the **Try this flow** button.
 
 **Action** &nbsp; 6.2.2.
 
-Click **Continue** to confirm that you want to proceed with the test.
+Click **Test**.
 
   ![](images/test-sync-2.png)
 
@@ -835,34 +827,6 @@ For the mandatory response field **CustomerID** (A), map to the **Salesforce fie
 ***
 </details>
 
-<details>
-<summary>8.4. Starting the API</summary><br/>
-
-**Narration**
-
-Great, the API is ready, now the Focus team just needs to start the API.
-
-<hr/><br/>
-
-
-**Action** &nbsp; 8.4.1.
-
-Click **Done** to return to your model.
-
-  ![](images/start-api-1.png)
-
-<hr/><br/>
-
-
-**Action** &nbsp; 8.4.2.
-
-**Start** your flow.
-
-  ![](images/start-api-2.png)
-
-***
-</details>
-
 <br/><br/>
 
 ### **9. Test the API flow**
@@ -870,13 +834,38 @@ Click **Done** to return to your model.
 <summary>9.1. Test the API</summary><br/>
 
 **Narration**
-
-With the API started, they can use the Test tab of IBM App Connect to test the new API.
+Great, the API is ready, now the Focus team just needs to test the API.
 
 <hr/><br/>
 
-
 **Action** &nbsp; 9.1.1.
+
+Click **Done** to return to your model.
+
+  ![](images/test-api-0-1.png)
+
+
+<hr/><br/>
+
+**Action** &nbsp; 9.1.2.
+
+Click **Test API**.
+
+  ![](images/test-api-0-2.png)
+
+
+<hr/><br/>
+
+**Action** &nbsp; 9.1.3.
+
+On Test API dialog, click **Test**.
+
+  ![](images/test-api-0-3.png)
+
+
+<hr/><br/>
+
+**Action** &nbsp; 9.1.4.
 
 Open the **Test** tab (A). Click **POST /Customer** (B) and open the **Try it** tab (C).
 
@@ -885,7 +874,7 @@ Open the **Test** tab (A). Click **POST /Customer** (B) and open the **Try it** 
 
 <hr/><br/>
 
-**Action** &nbsp; 9.1.2.
+**Action** &nbsp; 9.1.5.
 
 Scroll down to see the body field and click **Generate** (A) to create some dummy body content. Click **Send** (B), and you should see a **201 Created** response (C).
 
@@ -909,14 +898,23 @@ Great! Everything works as expected.
 
 **Action** &nbsp; 9.2.1.
 
-Log in with your **Salesforce Dev account**. Open the **App Launcher** menu (A). Search for **Contacts** (B). And select the **Contacts** items (C).
+Open your Salesforce Dev account <a href="https://login.salesforce.com/" target="_blank">page</a>  and log in with your lab user and password.
+
+  ![](images/check-contact-0.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 9.2.2.
+
+Open the **App Launcher** menu (A). Search for **Contacts** (B). And select the **Contacts** items (C).
 
   ![](images/check-contact-1.png)
 
 <hr/><br/>
 
 
-**Action** &nbsp; 9.2.2.
+**Action** &nbsp; 9.2.3.
 
 Scroll down to check if your new contact is included in the list (you generated the contact information in the Try It panel). Open the **new contact**.
 
@@ -925,7 +923,7 @@ Scroll down to check if your new contact is included in the list (you generated 
 <hr/><br/>
 
 
-**Action** &nbsp; 9.2.3.
+**Action** &nbsp; 9.2.4.
 
 Open the **Details** page.
 
@@ -935,7 +933,7 @@ Open the **Details** page.
 <hr/><br/>
 
 
-**Action** &nbsp; 9.2.4.
+**Action** &nbsp; 9.2.5.
 
 Check the contact *Name* and *Email*.
 
