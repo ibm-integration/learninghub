@@ -580,21 +580,17 @@ Your Salesforce developer account is ready.
 
 Let’s configure our services endpoints in Cloud Pak for Integration.
 
-12.1	Back to the Platform Navigator page (If necessary log in with your admin *Username* and *Password*).<br/><img src="images/prep-image210.png" width="800" /><br/>
+12.1	Open the Platform Navigator URL. Enter your admin **Username** (1) and **Password** (2), and click **Sign In** (3).<br/><img src="images/prep-image210.png" width="800" /><br/>
 
 12.2 In the menu on the top left, open the **Design** folder (1) and select **Integrations** (2). <br/><img src="images/prep-44.png" width="800" /><br/>
 
-12.3 Click on the **ace-designer-ai** entry. <br/><img src="images/prep-44-2.png" width="800" /><br/>
+12.3 Click on the **ace-designer-demo** entry. <br/><img src="images/prep-44-2.png" width="800" /><br/>
 
 12.4 Click the **Catalog** icon to see a list of the available connectors. <br/><img src="images/prep-45.png" width="800" /><br/>
 
 12.5 Search for **salesforce** (1) and click **Connect** (2).<br/><img src="images/Prep4.5.png" width="800" /><br/>
 
-12.6 Enter your Salesforce **Login URL**.
-
-<InlineNotification kind="info-square">You must enter <strong>‘https://’</strong> in front of the Saleforce Login URL you saved earlier. The connection will not work if you just copy/paste the hostname.</InlineNotification>
-
-<br/><img src="images/Prep4.6.png" width="800" />
+12.6 Enter your Salesforce **Login URL**.<inline-notification text="You must enter <strong>‘https://’</strong> in front of the Saleforce Login URL you saved earlier. The connection will not work if you just copy/paste the hostname."></inline-notification><img src="images/Prep4.6.png" width="800" />
 
 12.7 Input your Salesforce **Username** (1). Fill in the connector's **Password** field (2) by concatenating your Salesforce **Password** and the **Security token** received via email.<br/><br/>For example, if your Salesforce password is ‘myGreatPassword’ and your Salesforce security token is ‘2325jsdhew4312hs534dh’ then enter ‘myGreatPassword2325jsdhew4312hs534dh’ in the **Password** field.<br/><img src="images/Prep4.7.png" width="800" /><br/><br/>
 
@@ -614,11 +610,11 @@ Your environment is ready to demo.
 
 During the demo we will import an existing flow from the assest repository. An GitHub repository will be configured to import the flow.
 
-13.1 Open the CP4I homepage (if necessary, click on *Home* icon on the top of the page). On the homepage, you should see the all instances available on your Pak. Select **asset-repo-ai**.<br/><img src="images/asset-repo-100.png" width="800" /><br/>
+13.1 In the CP4I homepage, you should see the all instances available on your Pak. Select **assetrepo**.<br/><img src="images/asset-repo-100.png" width="800" /><br/>
 
 13.2 Click **Remotes** (1) and select **Add remote** (2). <br/><img src="images/asset-repo-110.png" width="800" /><br/>
 
-13.3 Fill in the following values.
+13.3 Fill in the following values:<br/>
    * **Name** (1): CP4I Demo Assets
    * **Git URL** (2): https://github.com/IBM/cp4i-demos.git
    * **Automatic sync options** (3): 5 minutes
@@ -640,9 +636,7 @@ Now create a user in the Developer Portal.
 
 14.1 Expand **Design** and select **APIs** (1).<br/><img src="images/prep-image501.png" width="800" /><br/>
 
-14.2 Click **apim-demo** API management. <br/><img src="images/prep-image502.png" width="800" /><br/>
-
-<InlineNotification kind="warning">If necessary accept the connection risks.</InlineNotification>
+14.2 Click **ademo** API management. <br/><img src="images/prep-image502.png" width="800" /><br/>
 
 14.3 If a login screen is presented, select **Cloud Pak User Registry** <br/><img src="images/prep-image212.png" width="800" /><br/>
 
