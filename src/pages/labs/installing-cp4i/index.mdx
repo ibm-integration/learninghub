@@ -111,7 +111,7 @@ Follow the steps below to provision a Red Hat OpenShift Container Platform clust
 1.5 Copy your **Cluster Admin Username** (A) and **Cluster Admin Password** (B). Copy the **OCP Console link** (C).
 ![](images/ocp-install-5.png)
 
-    That is it! Now you are ready for the lab. Take a breath and enjoy your lab!
+That is it! Now you are ready for the lab. Take a breath and enjoy your lab!
 
 ***
 
@@ -148,13 +148,13 @@ gh auth login --hostname github.ibm.com
 ```
 
 * Within the Terminal window, navigate through the following prompts:
-  a. What is your preferred protocol for Git operations on this host? : `HTTPS`
-  b. Authenticate Git with your GitHub credentials? : `Yes`
-  c. How would you like to authenticate GitHub CLI? : `Login with a web browser`
-  d. Terminal will generate a one-time code : `copy this to a notepad`
-  e. Within your web browser, log in using your GitHub credentials
-  f. Supply the one-time code and approve access to GitHub
-  g. Wait until the Terminal window reports back a successful `Logged in as...`
+    - a. What is your preferred protocol for Git operations on this host? : `HTTPS`
+    - b. Authenticate Git with your GitHub credentials? : `Yes`
+    - c. How would you like to authenticate GitHub CLI? : `Login with a web browser`
+    - d. Terminal will generate a one-time code : `copy this to a notepad`
+    - e. Within your web browser, log in using your GitHub credentials
+    - f. Supply the one-time code and approve access to GitHub
+    - g. Wait until the Terminal window reports back a successful `Logged in as...`
 
 3.2 Execute the following within Terminal to clone the demo repository:
 ```
@@ -174,7 +174,7 @@ Based on where you have deployed your OCP cluster you will need to set up some e
 
 4.1 Define an environment variable to set the CP4I version.
 ```
-export CP4I_VER=export CP4I_VER=16.1.0
+export CP4I_VER=16.1.0
 ```
 
 4.2 Set the OCP type based on the storage classes in the cluster. If using a ROKS cluster, use export `OCP_TYPE=ROKS` instead.
@@ -368,10 +368,10 @@ Record the credentials to a notepad for reference later.
 7.6 Open the Platform UI URL with a web browser and log in. Note the password is temporary and you will be required to change it. Take note of your new password, as you will use it multiple times throughout the lab.
 ![](images/platform-ui-9.png)
 
-  In this lab, you are using the cp4i-access-info script to capture this information. But there are multiple ways to find the Platform Navigator URL. Below are some examples, but you can get more details in the <a href="https://www.ibm.com/docs/en/cloud-paks/cp-integration/2022.4?topic=ui-deploying-platform-using-openshift-console">Product documentation page</a>.
-    - On the IBM Cloud Pak for Integration operator page in the Installed Operator view in the OpenShift Web Console.
-    - Checking the Platform UI route on the Networking > Routes view on OpenShift Web Console.
-    - Using the "oc get consolelink" command and filter by "IBM CLoud Pak for Integration" to get the list of Platform UI URLs available.
+In this lab, you are using the cp4i-access-info script to capture this information. But there are multiple ways to find the Platform Navigator URL. Below are some examples, but you can get more details in the <a href="https://www.ibm.com/docs/en/cloud-paks/cp-integration/2022.4?topic=ui-deploying-platform-using-openshift-console">Product documentation page</a>.
+      - On the IBM Cloud Pak for Integration operator page in the Installed Operator view in the OpenShift Web Console.
+      - Checking the Platform UI route on the Networking > Routes view on OpenShift Web Console.
+      - Using the "oc get consolelink" command and filter by "IBM CLoud Pak for Integration" to get the list of Platform UI URLs available.
 
 ***
 
