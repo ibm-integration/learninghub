@@ -48,19 +48,12 @@ tabs: [ 'Demo preparation', 'Demo script']
 
 ### 2 - OpenShift Installation
 
-<InlineNotification>If you already requested an environment for <a href="https://ibm-integration.github.io/learninghub/demos/mq-techsales/demo-preparation" target="_blank">MQ Uniform Clusters Demo</a>, you can reuse the same environment! You don't need to repeat the same demo preparation steps again, just go ahead and skip to step <a href="https://ibm-integration.github.io/learninghub/demos/mq-ace-techsales/demo-preparation#9-deploy-the-app-connect">9 - Deploy the App Connect</a>, and complete steps 9 and 10, and you will be ready to complete this demo. If not, go ahead and complete all steps of this document (steps 2 to 10).</InlineNotification>
-
-
 IBM Cloud Pak for Integration brings together IBM’s market-leading middleware capabilities to support a broad range of integration styles and use cases. With powerful deployment, lifecycle management, and production services running on Red Hat OpenShift, it enables clients to leverage the latest agile integration practices, simplify the management of their integration architecture, and reduce cost. Cloud Pak for Integration demands an OpenShift cluster.
 
 Follow the steps below to provision a Red Hat OpenShift Container Platform cluster on VMware on IBM Cloud.
 
 
 2.1 To request an OpenShift Cluster on VMware on IBM Cloud, go <a href="https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3" target="_blank">here</a> and complete the form with the follow details.
-    Note: if you have any issue to access the url above, copy and paste the url below in your browser.
-```
-https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3
-```
 
 | Field  | Value |
 | ------------- | ------------- |
@@ -119,19 +112,19 @@ That is it! Now you are ready for the Cloud Pak for Integration installation. Ta
 
 To use this guide you will need to clone the demo repo to your workstation. Let's do it now!
 
-
 4.1 Open a terminal window and **run** the command below.
 
 ```
-gh repo clone gomezrjo/cp4i-demo
+git clone https://github.com/gomezrjo/cp4i-demo-yl.git
 ```
 
-4.2 Open the **cp4i-demo** folder.
+4.2 Open the **cp4i-demo-yl** folder.
 ```
-cd cp4i-demo
+cd cp4i-demo-yl
 ```
 
 ***
+
 
 ### 5 - Set Context
 
@@ -140,7 +133,7 @@ Based on where you have deployed your OCP cluster you will need to set up some e
 5.1 First, you need to define an environment variable to inform CP4I version.
 
 ```
-export CP4I_VER=2023.4
+export CP4I_VER=16.1.0
 ```
 
 5.2 Now let's set the OCP type based on the storage classes in your cluster.
@@ -165,10 +158,15 @@ scripts/99-odf-tkz-set-scs.sh
 5.5 Your cluster will also need access to pull the container software required to deploy the Cloud Pak. Your Entitlement Key is used to grant access. You can download you entitlement key from <a href="https://myibm.ibm.com/products-services/containerlibrary" target="_blank">My IBM</a>. Click **Copy**.
 ![](images/set-context-5.png)
 
+
+<InlineNotification kind="warning">If no active entitlement keys are available, you can create one by clicking the "Add new key" button. If you receive an "Operation could not be completed at this time", try clicking the button a second or third time until one is generated.</InlineNotification>
+
+
 5.6 The IBM Entitled Registry contains software images for the capabilities in IBM Cloud Pak® for Integration. To allow the Cloud Pak for Integration operators to automatically pull those software images, you must first obtain your entitlement key, then add your entitlement key in a pull secret.  Replace the *my-key* with your **IBM entitlement key**.
 ```
 export ENT_KEY=<my-key>
 ```
+
 
 5.7 Now, you need a namespace where you will deploy the different capabilities.
 ```
@@ -182,72 +180,76 @@ scripts/02a-cp4i-ns-key-config.sh
 The IBM Cloud Pak foundational services operator is no longer installed automatically. Install this operator manually if you need to create an instance that uses identity and access management. That is exactly, what you will do in this section.
 
 6.1 First we need to have a certificate manager, otherwise,  the IBM Cloud Pak foundational services operator installation will not complete. Let's do it!
+
+<InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
+
 ```
 oc apply -f resources/00-cert-manager-namespace.yaml
 oc apply -f resources/00-cert-manager-operatorgroup.yaml
 oc apply -f resources/00-cert-manager-subscription.yaml
 ```
 
-6.2 Confirm the subscription has been completed successfully before moving to the next step running the following command.
+Confirm the subscription has been completed successfully before moving to the next step running the following command.
 ```
-oc get pods -n cert-manager-operator
-```
-
-You should get a response like this:
-```
-NAME                                                        READY   STATUS    RESTARTS   AGE
-cert-manager-operator-controller-manager-7f779b98b4-2f64r   2/2     Running   0          13h
+SUB_NAME=$(oc get deployment cert-manager-operator-controller-manager -n cert-manager-operator --ignore-not-found -o jsonpath='{.metadata.labels.olm\.owner}');if [ ! -z "$SUB_NAME" ]; then oc get csv/$SUB_NAME -n cert-manager-operator --ignore-not-found -o jsonpath='{.status.phase}';fi;echo
 ```
 
-6.3 Now, you need to install Postgress SQL Catalog Source.
+Wait for a response of `Succeeded`.
+
+<InlineNotification kind="warning">If no response is generated, **wait a couple of minutes** and try again. Do not proceed until receiving the *Succeeded* prompt.</InlineNotification>
+
+
+6.2 Install the Postgress SQL Catalog Source.
+
+<InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
+
 ```
-oc apply -f catalog-sources/${CP4I_VER}/01-postgress-sql-catalog-source-4.22.0.yaml
+oc apply -f catalog-sources/${CP4I_VER}/01-postgress-sql-catalog-source.yaml
 ```
 
-6.4 Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
+Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
 ```
 oc get pods -n openshift-marketplace | grep postgresql
 ```
 
-You should get a response like this:
+Wait for a response of `READY`.
+
+<InlineNotification kind="warning">You may be seeing a response of *TRANSIENT_FAILURE* which indicates the deployment is underway but not yet complete. Wait until the *READY* response is received before continuing.</InlineNotification>
+
+6.3 Install the Common Services Catalog source.
+
+<InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
+
 ```
-cloud-native-postgresql-catalog-jsmbk                             1/1     Running     0             14h
+oc apply -f catalog-sources/${CP4I_VER}/02-common-services-catalog-source.yaml
 ```
 
-6.5 Ok, now you need to install Common Services Catalog source.
+Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
 ```
-oc apply -f catalog-sources/${CP4I_VER}/02-common-services-catalog-source-4.5.0.yaml
-```
-
-6.6 Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
-```
-oc get pods -n openshift-marketplace | grep opencloud
+oc get catalogsources opencloud-operators -n openshift-marketplace -o jsonpath='{.status.connectionState.lastObservedState}';echo
 ```
 
-You should get a response like this:
-```
-opencloud-operators-fhbfd                                         1/1     Running     0             14h
-```
+Wait for a response of `READY`.
 
-6.7 Create the Common Services namespace.
+6.4 Create the Common Services namespace.
 ```
 oc new-project ibm-common-services
 ```
 
-6.8 Now, let's intall the Foundational Services operator (former Common Services).
+6.5 Install the Foundational Services operator (former Common Services).
+
+<InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
+
 ```
 oc apply -f subscriptions/${CP4I_VER}/00-common-service-subscription.yaml
 ```
 
-6.9 Confirm the operator has been deployed successfully before moving to the next step running the following command.
+Confirm the operator has been deployed successfully before moving to the next step running the following command.
 ```
-oc get pods -n openshift-operators | grep ibm-common-service
+SUB_NAME=$(oc get deployment/ibm-common-service-operator -n openshift-operators --ignore-not-found -o jsonpath='{.metadata.labels.olm\.owner}');if [ ! -z "$SUB_NAME" ]; then oc get csv/$SUB_NAME --ignore-not-found -o jsonpath='{.status.phase}';fi;echo
 ```
 
-You should get a response like this:
-```
-ibm-common-service-operator-8c9b944f4-nkkgb                       1/1     Running     0          14h
-```
+Wait for a response of `Succeeded`.
 
 ***
 
@@ -256,125 +258,133 @@ ibm-common-service-operator-8c9b944f4-nkkgb                       1/1     Runnin
 Deploying the Platform UI allows you to deploy and manage instances from a central location.
 
 7.1 First, let's install Platform UI Catalog source.
+
+<InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
+
 ```
-oc apply -f catalog-sources/${CP4I_VER}/03-platform-navigator-catalog-source-7.2.3.yaml
+oc apply -f catalog-sources/${CP4I_VER}/03-platform-navigator-catalog-source.yaml
 ```
 
-7.2 Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
+Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
 ```
-oc get pods -n openshift-marketplace | grep ibm-integration-platform-navigator
-```
-
-You should get a response like this:
-```
-ibm-integration-platform-navigator-catalog-xsm4w                  1/1     Running     0             14h
+oc get catalogsources ibm-integration-platform-navigator-catalog -n openshift-marketplace -o jsonpath='{.status.connectionState.lastObservedState}';echo
 ```
 
-7.3 Now, let's install the Platform UI Operator.
+Wait for a response of `READY`.
+
+
+7.2 Install the Platform UI Operator.
+
+<InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
+
 ```
 oc apply -f subscriptions/${CP4I_VER}/01-platform-navigator-subscription.yaml
 ```
 
-7.4 Confirm the operator has been deployed successfully before moving to the next step running the following command.
+Confirm the operator has been deployed successfully before moving to the next step running the following command.
 ```
-oc get pods -n openshift-operators | grep ibm-integration-platform-navigator
-```
-
-You should get a response like this:
-```
-ibm-integration-platform-navigator-operator-6489bb9b7-tcnz8       1/1     Running     0          14h
+SUB_NAME=$(oc get deployment ibm-integration-platform-navigator-operator -n openshift-operators --ignore-not-found -o jsonpath='{.metadata.labels.olm\.owner}');if [ ! -z "$SUB_NAME" ]; then oc get csv/$SUB_NAME --ignore-not-found -o jsonpath='{.status.phase}';fi;echo
 ```
 
-7.5 Let's deploy a Platform UI instance.
+Wait for a response of `Succeeded`.
+
+7.3 Deploy a Platform UI instance.
+
+<InlineNotification kind="info-square">Time to install: ~10 minutes.</InlineNotification>
+
 ```
 oc apply -f instances/${CP4I_VER}/common/01-platform-navigator-instance.yaml
 ```
 
-7.6 Confirm the instance has been deployed successfully before moving to the next step running the following command:
+Confirm the instance has been deployed successfully before moving to the next step running the following command.
 ```
-oc get platformnavigator -n tools
-```
-
-You should get a response like this:
-```
-NAME             REPLICAS   VERSION      STATUS   READY   LASTUPDATE   AGE   MESSAGE
-cp4i-navigator   3          2023.4.1-0   Ready    True    13h          14h   Platform UI has been provisioned.
+oc get platformnavigator cp4i-navigator -n tools -o jsonpath='{.status.conditions[0].type}';echo
 ```
 
-7.7 Once the Platform UI instance is up and running get the access info.
+Wait for a response of `READY`.
+
+<InlineNotification kind="warning">You may be seeing a response of `PENDING` which indicates the deployment is underway but not yet complete. Wait until the `READY` response is received before continuing.</InlineNotification>
+
+
+7.4 Once the Platform UI instance is up and running get the access info.
 ```
 scripts/03b-cp4i-access-info.sh
 ```
 
-7.8 Open the Platform UI  URL and log in. Note the password is temporary and you will be required to change it. Take note of your new password, you will use it multiple times.
+7.5 Open the Platform UI  URL and log in. Note the password is temporary and you will be required to change it. Take note of your new password, you will use it multiple times.
 ![](images/platform-ui-8.png)
+
+Record the credentials to a notepad for reference later.
+
+7.6 Open the Platform UI URL with a web browser and log in. Note the password is temporary and you will be required to change it. Take note of your new password, as you will use it multiple times throughout the lab.
+![](images/platform-ui-9.png)
 
 ***
 
 ### 8 - Deploy the Enterprise Messaging (MQ)
 
-8.1 First, let's intall the MQ Catalog Source.
+8.1 Install the Enterprise Messaging (MQ) Catalog Source.
+
+<InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
+
 ```
-oc apply -f catalog-sources/${CP4I_VER}/09-mq-catalog-source-3.1.1.yaml
+oc apply -f catalog-sources/${CP4I_VER}/09-mq-catalog-source.yaml
 ```
 
-8.2 Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
+Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
 ```
-oc get pods -n openshift-marketplace | grep ibmmq
-```
-
-You should get a response like this:
-```
-ibmmq-operator-catalogsource-4h9ql                                1/1     Running     0              3d23h
+oc get catalogsources ibmmq-operator-catalogsource -n openshift-marketplace -o jsonpath='{.status.connectionState.lastObservedState}';echo
 ```
 
-8.3 Now, let's install the MQ Operator.
+Wait for a response of `READY`.
+
+8.2 Install the MQ Operator.
+
+<InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
+
 ```
 oc apply -f subscriptions/${CP4I_VER}/06-mq-subscription.yaml
 ```
 
-8.4 Confirm the operator has been deployed successfully before moving to the next step running the following command.
+Confirm the operator has been deployed successfully before moving to the next step running the following command.
 ```
-oc get pods -n openshift-operators | grep ibm-mq
-```
-
-You should get a response like this:
-```
-ibm-mq-operator-5965468479-btnkh                                  1/1     Running     0               3d23h
+SUB_NAME=$(oc get deployment ibm-mq-operator -n openshift-operators --ignore-not-found -o jsonpath='{.metadata.labels.olm\.owner}');if [ ! -z "$SUB_NAME" ]; then oc get csv/$SUB_NAME --ignore-not-found -o jsonpath='{.status.phase}';fi;echo
 ```
 
-8.5 Set MQ namespace environment variable.
+Wait for a response of `Succeeded`.
+
+8.3 Set MQ namespace environment variable.
 ```
 export MQ_NAMESPACE=cp4i-mq
 ```
 
-8.6 Create certificates and extra route.
+8.4 Create certificates and extra route.
 ```
 scripts/10a-qmgr-pre-config.sh
 ```
 
-8.7 Create configmap with MQ configuration.
+8.5 Create **configmap** with MQ configuration.
 ```
 oc apply -f resources/03c-qmgr-mqsc-config.yaml
 ```
 
-8.8 Deploy MQ Queue Manager instance.
+8.6 Deploy MQ Queue Manager instance.
+
+<InlineNotification kind="info-square">Time to install: ~5 minutes.</InlineNotification>
+
 ```
 scripts/10b-qmgr-inst-deploy.sh
 ```
 
-8.9 Confirm the instance has been deployed successfully before moving to the next step running the following command.
+Confirm the instance has been deployed successfully before moving to the next step running the following command.
 ```
-oc get queuemanager -n tools
-```
-
-`Note` this will take few minutes, but at the end you should get a response like this:
-```
-NAME        PHASE
-qmgr-demo   Running
+oc get queuemanager qmgr-demo -n tools -o jsonpath='{.status.phase}';echo
 ```
 
-8.10 Create CCDT.
+Wait for a response of `Running`.
+
+
+8.7 Create CCDT.
 ```
 scripts/10c-qmgr-post-config.sh
 ```
@@ -387,58 +397,48 @@ Now, let's install the IBM App Connect.
 
 Back to the terminal window logged in your OpenShift Environment.
 
-9.1 First, let's intall the App Connect Catalog source.
+9.1 Install the App Connect Catalog source.
 ```
-oc apply -f catalog-sources/${CP4I_VER}/10-app-connect-catalog-source-11.4.0.yaml
-```
-
-9.2 Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
-```
-oc get pods -n openshift-marketplace | grep appconnect
+oc apply -f catalog-sources/${CP4I_VER}/10-app-connect-catalog-source.yaml
 ```
 
-You should get a response like this.
+Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
 ```
-appconnect-operator-catalogsource-qt2p5                           1/1     Running     0              3d23h
+oc get catalogsources appconnect-operator-catalogsource -n openshift-marketplace -o jsonpath='{.status.connectionState.lastObservedState}';echo
 ```
 
-9.3 Now, we need to install the App Connect operator.
+Wait for a response of `READY`.
+
+9.2 Install the App Connect operator.
 ```
 oc apply -f subscriptions/${CP4I_VER}/07-app-connect-subscription.yaml
 ```
 
-9.4 Confirm the operator has been deployed successfully before moving to the next step running the following command.
+Confirm the operator has been deployed successfully before moving to the next step running the following command.
 ```
-oc get pods -n openshift-operators | grep ibm-appconnect
-```
-
-You should get a response like this.
-```
-ibm-appconnect-operator-7d789b5b4c-cr8qw                          1/1     Running     2 (3d4h ago)    3d23h
+SUB_NAME=$(oc get deployment ibm-appconnect-operator -n openshift-operators --ignore-not-found -o jsonpath='{.metadata.labels.olm\.owner}');if [ ! -z "$SUB_NAME" ]; then oc get csv/$SUB_NAME --ignore-not-found -o jsonpath='{.status.phase}';fi;echo
 ```
 
-9.5 It is time to Deploy the Dashboard instance.
+Wait for a response of `Succeeded`.
+
+9.3 It is time to Deploy the Dashboard instance.
 ```
 oc apply -f instances/${CP4I_VER}/${OCP_TYPE}/06-ace-dashboard-instance.yaml
 ```
 
-9.6 Confirm the instance has been deployed successfully before moving to the next step running the following command.
+Confirm the instance has been deployed successfully before moving to the next step running the following command.
 ```
-oc get dashboard -n tools
-```
-
-Note this will take few minutes, but at the end you should get a response like this.
-```
-NAME            RESOLVEDVERSION   REPLICAS   CUSTOMIMAGES   STATUS   URL                                                                                   AGE
-ace-dashboard   12.0.10.0-r3      1          false          Ready    https://ace-dashboard-ui-tools.apps.6597480c8e1478001153ba0d.cloud.techzone.ibm.com   3d23h
+oc get dashboard ace-dashboard -n tools -o jsonpath='{.status.phase}';echo
 ```
 
-9.7 Now, let's create Bar Auth Configuration.
+Note this will take few minutes, but at the end you should get a response of `Ready`.
+
+9.4 Now, let's create Bar Auth Configuration.
 ```
 scripts/11-ace-config-barauth-github.sh
 ```
 
-9.8 Create Policy Configuration to integrate with MQ.
+9.5 Create Policy Configuration to integrate with MQ.
 ```
 scripts/12a-ace-config-policy-mq.sh
 ```
