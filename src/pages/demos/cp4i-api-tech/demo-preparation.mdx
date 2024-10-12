@@ -45,29 +45,43 @@ tabs: [ 'Demo preparation', 'Demo script']
 
 ***
 
-### 2 - Provision a Red Hat OpenShift cluster
+### 2 - OpenShift Installation
 
-To provision your own Red Hat OpenShift cluster for the Cloud Pak for Integration, follow these steps: <br/>
+IBM Cloud Pak for Integration brings together IBM’s market-leading middleware capabilities to support a broad range of integration styles and use cases. With powerful deployment, lifecycle management, and production services running on Red Hat OpenShift, it enables clients to leverage the latest agile integration practices, simplify the management of their integration architecture, and reduce cost. Cloud Pak for Integration demands an OpenShift cluster.
 
-2.1  To deploy a Red Hat OpenShift cluster, go <a href="https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3" target="_blank" rel="noreferrer">here</a>. Select if you prefer to make a reservation now or schedule for later.
-<br/><img src="images/prep-image001.png" width="800" />
-<br/>
+Follow the steps below to provision a Red Hat OpenShift Container Platform cluster on VMware on IBM Cloud.
 
-2.2 If you do not have a sales opportunity, select the purpose **Practice / Self-Education** (1) for a 2-day reservation (which can be extended without any approvals to 6 days) and fill in the **Purpose description** (2).
-<br/><img src="images/prep-image002.png" width="800" />
-<br/>
 
-2.3 Select the **Preferred Geography**.
-<br/><img src="images/prep-image003.png" width="800" />
-<br/>
+2.1 To request an OpenShift Cluster on VMware on IBM Cloud, go <a href="https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3" target="_blank">here</a> and complete the form with the follow details.
 
-2.4 Several additional fields will appear. Select **4.14** (1) as the OpenShift version, **ODF - 2TB** (2) for the storage, **16 vCPU x 64 GB - 100 GB ephemeral storage** (3) as the worker node flavor, accept the terms and conditions (4) and click **Submit**.
-<br/><img src="images/prep-image004.png" width="800" />
-<br/>
+| Field  | Value |
+| ------------- | ------------- |
+| Purpose  | If you are doing the L4 course, select **Practice/Self Enablement**. <br/> If you are delivering a PoC, select:**Proof-of-Technology** and inform the Sales opportunity.  |
+| Purpose Description  | If you are doing the L3 course, enter: **MQ L3 Course**. <br/> If you are delivering a POC, enter the PoC details.  |
+| Preferred Geography  | You are welcome to select the preferred Geography |
 
-2.5 You will receive a few emails as the provisioning process continues. You should expect the final email to be sent after an hour. The final email should look similar to the following.
-<br/><img src="images/prep-image005.png" width="800" />
-<br/>
+![](images/ocp-install-1.png)
+
+| Field  | Value |
+| ------------- | ------------- |
+| OpenShift Version | 4.16 |
+| Storage  | ODF - 2 TB |
+| Worker Node Count  | 5 |
+| Worker Node Flavor  | 16 vCPU x 64 GB - 100 GB ephemeral storage |
+
+![](images/ocp-install-new-1-2.png)
+
+2.2 **Agree** with the TechZone Terms and Conditions (A) and click **Submit** (B).
+![](images/ocp-install-2.png)
+
+2.3 You will receive an email confirming the instance is provisioning.
+![](images/ocp-install-3.png)
+
+2.4 You will receive a second email once the environment is provisioned. You should expect this to take between 30 and 120 minutes. Now the status update changed to **Ready**.  Click on **Reservation ID** to open the details page of your new reservation environment.
+![](images/ocp-install-4.png)
+
+2.5 Copy your **Cluster Admin Username** (A) and **Cluster Admin Password** (B). Copy the **OCP Console link** (C).
+![](images/ocp-install-5.png)
 
 ***
 
@@ -75,114 +89,483 @@ To provision your own Red Hat OpenShift cluster for the Cloud Pak for Integratio
 
 In this section, you access your OpenShift cluster and install the OpenShift command line tool.
 
-3.1 Open the **Reservation ID** link that was included in the "Reservation Ready on IBM Technology Zone" email.
-<br/><img src="images/prep-image101.png" width="800" />
-<br/>
+3.1 In a Browser, open the OCP Console link and paste the **Cluster Admin Username** (A) and **Password** (B) copied in the previous step and click **Log in** (C).
+![](images/oc-cli-1.png)
 
-3.2 Copy the kubeadmin **Password** (1) and open the OpenShift console by clicking on **Open your IBM Cloud environment** (2).
-<br/><img src="images/prep-image102.png" width="800" />
-<br/>
+3.2 Great, you are almost ready for the demo. Last but not least important, let’s copy login command to access the cluster by CLI. On the top right, click your **username** (A) and select **Copy login command** (B).
+![](images/oc-cli-2.png)
 
-3.3 Use **kubeadmin** (1) as the user, paste the **Password** (2) and click **Login** (3).
-<br/><img src="images/prep-image103.png" width="800" />
-<br/>
+3.3 Click **Display Token**.
+![](images/oc-cli-3.png)
 
-3.4 On the web console page, click **?** (1), and select **Command line tools** (2).
-<br/><img src="images/prep-image104.png" width="800" />
-<br/>
+3.4 Copy the **Log in with this token command** and **paste** on a terminal window.
+![](images/oc-cli-4.png)
 
-3.5 Follow the links to install the OpenShift Command Line Interface (CLI) for your Operating System.
-<br/><img src="images/prep-image105.png" width="800" />
-<br/>
+![](images/oc-cli-4-2.png)
 
-3.6 To configure the command line on your machine, click on the down arrow to the right of kubeadmin (1) and select **Copy login command**.
-<br/><img src="images/prep-image106-1.png" width="800" />
-<br/>
-
-3.7 Click on **Display token**.
-
-3.8 Copy the **Login with this token** and run in the command line.
-<br/><img src="images/prep-image106-2.png" width="800" />
-<br/>
-
-You have successfully configured the Openshift command line on your machine.
-
-<br/>
+That is it! Now you are ready for the Cloud Pak for Integration installation. Take a breath and let's start to install the Pak.
 
 ***
 
-### 4 - Clone the demo assets from a GitHub repository
+## 4 - Cloning Repositories
 
-To copy the repository you will need to have the Git CLI on your machine. If you don’t have it, follow the installation steps described in this <a href="https://github.com/git-guides/install-git" target="_blank" rel="noreferrer">page</a>, based on your operating system.
+To use this guide you will need to clone the <a href="https://github.ibm.com/joel-gomez/cp4i-demo" target="_blank">CP4I end to end demo repo</a> to your workstation. Let's do it now!
 
-
-4.1 To download the scripts to install the demo, create a new directory, change to this newly created directory, and run the following command:
-
-```
-git clone https://github.com/ibm-integration/code-api-enabled-integration.git
-```
-
-   <br/>
-
-4.2 Change to the new **platinum-demo-code-api-enabled-integration** directory:
+4.1. Open a terminal window and run the command below. It is recommended you do so in a directory like `/Desktop` so that you can easily locate the files afterwards.
+* First, authenticate your Terminal with the IBM GitHub repository with the following command:
 
 ```
-cd code-api-enabled-integration
+gh auth login --hostname github.ibm.com
 ```
 
-   <br/>
+* Within the Terminal window, navigate through the following prompts:
+    - a. What is your preferred protocol for Git operations on this host? : `HTTPS`
+    - b. Authenticate Git with your GitHub credentials? : `Yes`
+    - c. How would you like to authenticate GitHub CLI? : `Login with a web browser`
+    - d. Terminal will generate a one-time code : `copy this to a notepad`
+    - e. Within your web browser, log in using your GitHub credentials
+    - f. Supply the one-time code and approve access to GitHub
+    - g. Wait until the Terminal window reports back a successful `Logged in as...`
+
+4.2 Execute the following within Terminal to clone the demo repository.
+```
+gh repo clone github.ibm.com/joel-gomez/cp4i-demo
+```
+
+4.3 Open the **cp4i-demo** folder.
+```
+cd cp4i-demo
+```
 
 ***
 
-### 5 - Install the demo
+## 5 - Setting Context
 
-5.1 The script to install the demo components requires a utility called jq. If you don't have it, follow the installation steps described in this <a href="https://jqlang.github.io/jq/download/" target="_blank" rel="noreferrer">page</a>, based on your operating system. <br/>
+Based on where you have deployed your OCP cluster you will need to set up some environment variables to inform the installation script about your environment. Let's do it here!
 
-5.2 Install API Connect and App Connect by running the `deploy.sh` command:<br/>
-
+5.1 Define an environment variable to set the CP4I version.
 ```
-./deploy.sh
+export CP4I_VER=16.1.0
 ```
 
-This script may take 30-45 minutes to complete.
+5.2 Set the OCP type based on the storage classes in the cluster. If using a ROKS cluster, use export `OCP_TYPE=ROKS` instead.
+```
+export OCP_TYPE=ODF
+```
 
-<br/>
+5.3 Set mailtrap credentials, substituting `<my-mailtrap-user>` and `<my-mailtrap-pwd>`.
+```
+export MAILTRAP_USER=<my-mailtrap-user>
+export MAILTRAP_PWD=<my-mailtrap-pwd>
+```
+
+5.4 If you have provisioned the OCP cluster in Tech Zone you can use the following script to set the proper default storage class.
+```
+scripts/99-odf-tkz-set-scs.sh
+```
+
+5.5 Your cluster will also need access to pull the container software required to deploy the Cloud Pak. Your Entitlement Key is used to grant access. You can download you entitlement key from <a href="https://myibm.ibm.com/products-services/containerlibrary" target="_blank">My IBM</a>. Click **Copy**.
+![](images/set-context-5.png)
+
+<InlineNotification kind="warning">If no active entitlement keys are available, you can create one by clicking the **Add new key** button. If you receive an "Operation could not be completed at this time", try clicking the button a second or third time until one is generated.</InlineNotification>
+
+5.6 The IBM Entitled Registry contains software images for the capabilities in IBM Cloud Pak® for Integration. To allow the Cloud Pak for Integration operators to automatically pull those software images, you must first obtain your entitlement key, then add your entitlement key in a pull secret.  Replace the *my-key* with your **IBM entitlement key**.
+```
+export ENT_KEY=<my-key>
+```
+
+5.7 Now, you need a namespace where you will deploy the different capabilities.
+```
+scripts/02a-cp4i-ns-key-config.sh
+```
 
 ***
 
-### 6 - Set up Salesforce
+
+## 6 - Installing Foundational Services
+
+Red Hat OpenShift Operators automate the creation, configuration, and management of instances of Kubernetes-native applications. Operators provide automation at every level of the stack—from managing the parts that make up the platform all the way to applications that are provided as a managed service.
+
+Red Hat OpenShift uses the power of Operators to run the entire platform in an autonomous fashion while exposing configuration natively through Kubernetes objects, allowing for quick installation and frequent, robust updates. In addition to the automation advantages of Operators for managing the platform, Red Hat OpenShift makes it easier to find, install, and manage Operators running on your clusters.
+
+You can easily check all the Operators installed in your OpenShift environment, by opening the Operator Hub page in the OpenShift Web Console.
+
+The IBM Cloud Pak foundational services operator is no longer installed automatically. Install this operator manually if you need to create an instance that uses identity and access management (IAM). The following steps will walk you through this process.
+
+6.1 First we need to have a certificate manager, otherwise,  the IBM Cloud Pak foundational services operator installation will not complete. Let's do it!
+
+<InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
+
+```
+oc apply -f resources/00-cert-manager-namespace.yaml
+oc apply -f resources/00-cert-manager-operatorgroup.yaml
+oc apply -f resources/00-cert-manager-subscription.yaml
+```
+
+Confirm the subscription has been completed successfully before moving to the next step running the following command.
+```
+SUB_NAME=$(oc get deployment cert-manager-operator-controller-manager -n cert-manager-operator --ignore-not-found -o jsonpath='{.metadata.labels.olm\.owner}');if [ ! -z "$SUB_NAME" ]; then oc get csv/$SUB_NAME -n cert-manager-operator --ignore-not-found -o jsonpath='{.status.phase}';fi;echo
+```
+
+Wait for a response of `Succeeded`.
+<InlineNotification kind="warning">If no response is generated, wait a couple of minutes and try again. Do not proceed until receiving the *Succeeded* prompt.</InlineNotification>
+
+
+6.2 Install the Postgress SQL Catalog Source.
+
+<InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
+
+```
+oc apply -f catalog-sources/${CP4I_VER}/01-postgress-sql-catalog-source.yaml
+```
+
+Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
+```
+oc get pods -n openshift-marketplace | grep postgresql
+```
+
+Wait for a response of `READY`.
+
+<InlineNotification kind="warning">You may be seeing a response of *TRANSIENT_FAILURE* which indicates the deployment is underway but not yet complete. Wait until the *READY* response is received before continuing.</InlineNotification>
+
+6.3 Install the Common Services Catalog source.
+
+<InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
+
+```
+oc apply -f catalog-sources/${CP4I_VER}/02-common-services-catalog-source.yaml
+```
+
+Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
+```
+oc get catalogsources opencloud-operators -n openshift-marketplace -o jsonpath='{.status.connectionState.lastObservedState}';echo
+```
+
+Wait for a response of `READY`.
+
+6.4 Create the Common Services namespace.
+```
+oc new-project ibm-common-services
+```
+
+6.5 Install the Foundational Services operator (former Common Services).
+
+<InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
+
+```
+oc apply -f subscriptions/${CP4I_VER}/00-common-service-subscription.yaml
+```
+
+Confirm the operator has been deployed successfully before moving to the next step running the following command.
+```
+SUB_NAME=$(oc get deployment/ibm-common-service-operator -n openshift-operators --ignore-not-found -o jsonpath='{.metadata.labels.olm\.owner}');if [ ! -z "$SUB_NAME" ]; then oc get csv/$SUB_NAME --ignore-not-found -o jsonpath='{.status.phase}';fi;echo
+```
+
+Wait for a response of `Succeeded`.
+
+***
+
+### 7 – Deploying the Platform UI
+
+In this section, you will install the Platform Navigator UI. The Platform UI is a user interface for the IBM Cloud Pak for Integration that allows the user to deploy and manage instances of the integration capabilities from a central location.
+
+Deploying the Platform UI allows you to deploy and manage instances from a central location.
+
+7.1 First, let's install Platform UI Catalog source.
+
+<InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
+
+```
+oc apply -f catalog-sources/${CP4I_VER}/03-platform-navigator-catalog-source.yaml
+```
+
+Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
+```
+oc get catalogsources ibm-integration-platform-navigator-catalog -n openshift-marketplace -o jsonpath='{.status.connectionState.lastObservedState}';echo
+```
+
+Wait for a response of `READY`.
+
+
+7.2 Install the Platform UI Operator.
+
+<InlineNotification kind="info-square">Time to install: ~1 minute.</InlineNotification>
+
+```
+oc apply -f subscriptions/${CP4I_VER}/01-platform-navigator-subscription.yaml
+```
+
+Confirm the operator has been deployed successfully before moving to the next step running the following command.
+```
+SUB_NAME=$(oc get deployment ibm-integration-platform-navigator-operator -n openshift-operators --ignore-not-found -o jsonpath='{.metadata.labels.olm\.owner}');if [ ! -z "$SUB_NAME" ]; then oc get csv/$SUB_NAME --ignore-not-found -o jsonpath='{.status.phase}';fi;echo
+```
+
+Wait for a response of `Succeeded`.
+
+7.3 Deploy a Platform UI instance.
+
+<InlineNotification kind="info-square">Time to install: ~10 minutes.</InlineNotification>
+
+```
+oc apply -f instances/${CP4I_VER}/common/01-platform-navigator-instance.yaml
+```
+
+Confirm the instance has been deployed successfully before moving to the next step running the following command.
+```
+oc get platformnavigator cp4i-navigator -n tools -o jsonpath='{.status.conditions[0].type}';echo
+```
+
+Wait for a response of `READY`.
+
+<InlineNotification kind="warning">You may be seeing a response of `PENDING` which indicates the deployment is underway but not yet complete. Wait until the `READY` response is received before continuing.</InlineNotification>
+
+
+7.4 Once the Platform UI instance is up and running get the access info.
+```
+scripts/03b-cp4i-access-info.sh
+```
+
+7.5 Open the Platform UI  URL and log in. Note the password is temporary and you will be required to change it. Take note of your new password, you will use it multiple times.
+![](images/platform-ui-8.png)
+
+Record the credentials to a notepad for reference later.
+
+7.6 Open the Platform UI URL with a web browser and log in. Note the password is temporary and you will be required to change it. Take note of your new password, as you will use it multiple times throughout the lab.
+![](images/platform-ui-9.png)
+
+In this lab, you are using the cp4i-access-info script to capture this information. But there are multiple ways to find the Platform Navigator URL. Below are some examples, but you can get more details in the <a href="https://www.ibm.com/docs/en/cloud-paks/cp-integration/2022.4?topic=ui-deploying-platform-using-openshift-console">Product documentation page</a>.
+  - On the IBM Cloud Pak for Integration operator page in the Installed Operator view in the OpenShift Web Console.
+  - Checking the Platform UI route on the Networking > Routes view on OpenShift Web Console.
+  - Using the "oc get consolelink" command and filter by "IBM CLoud Pak for Integration" to get the list of Platform UI URLs available.
+
+***
+
+### 8 - Deploying Automation Assets
+
+In this section, you will install the Automation foundation assets(Automation Assets). It is a capability that lets you store, manage, and share integration assets.
+
+Automation assets enables teams to share and reuse integration assets across capability instances. For example, you can import an OpenAPI specification asset within the IBM API Connect user interface.
+
+Assets can be located in remote repositories, such as Git. This feature allows users to take advantage of the versioning capability offered by the remote repository. Assets that are stored in a remote repository are read-only.
+
+8.1 Let's deploy an instance of the Automation Assets using the following script:
+```
+oc apply -f catalog-sources/${CP4I_VER}/04-asset-repo-catalog-source.yaml
+```
+
+Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
+```
+oc get catalogsources ibm-integration-asset-repository-catalog -n openshift-marketplace -o jsonpath='{.status.connectionState.lastObservedState}';echo
+```
+
+Wait for a response of `READY`.
+
+8.2 Install Asset Repo Operator.
+```
+oc apply -f subscriptions/${CP4I_VER}/02-asset-repo-subscription.yaml
+```
+
+Confirm the operator has been deployed successfully before moving to the next step running the following command.
+```
+SUB_NAME=$(oc get deployment ibm-integration-asset-repository-operator -n openshift-operators --ignore-not-found -o jsonpath='{.metadata.labels.olm\.owner}');if [ ! -z "$SUB_NAME" ]; then oc get csv/$SUB_NAME --ignore-not-found -o jsonpath='{.status.phase}';fi;echo
+```
+
+Wait for a response of `Succeeded`.
+
+8.3 Deploy an Asset Repo instance
+```
+oc apply -f instances/${CP4I_VER}/${OCP_TYPE}/02-asset-repo-ai-instance.yaml
+```
+
+Confirm the instance has been deployed successfully before moving to the next step running the following command.
+```
+oc get assetrepository asset-repo-ai -n tools -o jsonpath='{.status.phase}';echo
+```
+
+Wait for a response of `Ready`.
+
+
+***
+
+### 9 - Deploying API Connect
+
+9.1 Install DataPower Catalog Source
+```
+oc apply -f catalog-sources/${CP4I_VER}/05-datapower-catalog-source.yaml
+```
+
+Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
+```
+oc get catalogsources ibm-datapower-operator-catalog -n openshift-marketplace -o jsonpath='{.status.connectionState.lastObservedState}';echo
+```
+
+Wait for a response of `READY`.
+
+9.2 Install DataPower Operator.
+```
+oc apply -f subscriptions/${CP4I_VER}/03-datapower-subscription.yaml
+```
+
+Confirm the operator has been deployed successfully before moving to the next step running the following command.
+```
+SUB_NAME=$(oc get deployment datapower-operator -n openshift-operators --ignore-not-found -o jsonpath='{.metadata.labels.olm\.owner}');if [ ! -z "$SUB_NAME" ]; then oc get csv/$SUB_NAME --ignore-not-found -o jsonpath='{.status.phase}';fi;echo
+```
+
+Wait for a response of `Succeeded`.
+
+9.3 Install APIC Catalog Source.
+```
+oc apply -f catalog-sources/${CP4I_VER}/07-api-connect-catalog-source.yaml
+```
+
+Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
+```
+oc get catalogsources ibm-apiconnect-catalog -n openshift-marketplace -o jsonpath='{.status.connectionState.lastObservedState}';echo
+```
+
+Wait for a response of `READY`.
+
+9.4 Install APIC Operator
+```
+oc apply -f subscriptions/${CP4I_VER}/04-api-connect-subscription.yaml
+```
+
+Confirm the operator has been deployed successfully before moving to the next step running the following command.
+```
+SUB_NAME=$(oc get deployment ibm-apiconnect -n openshift-operators --ignore-not-found -o jsonpath='{.metadata.labels.olm\.owner}');if [ ! -z "$SUB_NAME" ]; then oc get csv/$SUB_NAME --ignore-not-found -o jsonpath='{.status.phase}';fi;echo
+```
+
+You should get responses of `Succeeded` for both of them.
+
+9.5 Deploy APIC instance with some extra features enabled.
+
+<InlineNotification kind="info-square">Time to install: ~30 minutes.</InlineNotification>
+
+```
+scripts/07d-apic-inst-deploy-instana.sh
+```
+
+Confirm the installation completed successfully before moving to the next step running the following commands.
+```
+oc get APIConnectCluster apim-demo -n tools -o jsonpath='{.status.phase}';echo
+```
+
+Note this will take almost 30 minutes, so be patient, and at the end you should get a `Ready` response.
+
+9.6 Configure the email server in APIC.
+```
+scripts/07f-apic-initial-config.sh
+```
+
+9.7 Create a Provider Organization for admin user.
+```
+scripts/07g-apic-new-porg-cs.sh
+```
+
+### 10 - Deploying App Connect
+
+10.1 Install the App Connect Catalog source.
+```
+oc apply -f catalog-sources/${CP4I_VER}/10-app-connect-catalog-source.yaml
+```
+
+Confirm the catalog source has been deployed successfully before moving to the next step running the following command.
+```
+oc get catalogsources appconnect-operator-catalogsource -n openshift-marketplace -o jsonpath='{.status.connectionState.lastObservedState}';echo
+```
+
+Wait for a response of `READY`.
+
+10.2 Install the App Connect operator.
+```
+oc apply -f subscriptions/${CP4I_VER}/07-app-connect-subscription.yaml
+```
+
+Confirm the operator has been deployed successfully before moving to the next step running the following command.
+```
+SUB_NAME=$(oc get deployment ibm-appconnect-operator -n openshift-operators --ignore-not-found -o jsonpath='{.metadata.labels.olm\.owner}');if [ ! -z "$SUB_NAME" ]; then oc get csv/$SUB_NAME --ignore-not-found -o jsonpath='{.status.phase}';fi;echo
+```
+
+Wait for a response of `Succeeded`.
+
+10.3 It is time to Deploy the Dashboard instance.
+```
+oc apply -f instances/${CP4I_VER}/${OCP_TYPE}/06-ace-dashboard-instance.yaml
+```
+
+Confirm the instance has been deployed successfully before moving to the next step running the following command.
+```
+oc get dashboard ace-dashboard -n tools -o jsonpath='{.status.phase}';echo
+```
+
+Note this will take few minutes, but at the end you should get a response of `Ready`.
+
+
+10.4 Deploy Designer Authoring instance with support for Callable Flow. First let's deploy the Switch Server instance.
+```
+oc apply -f instances/${CP4I_VER}/common/07-ace-switch-server-instance.yaml
+```
+
+Confirm the instance has been deployed successfully before moving to the next step running the following command.
+```
+oc get switchserver ace-switch-server -n tools -o jsonpath='{.status.phase}';echo
+```
+
+Wait for a response of `Ready`.
+
+10.5 Deploy Designer Authoring instance.
+```
+oc apply -f instances/${CP4I_VER}/${OCP_TYPE}/08-ace-designer-local-ai-instance.yaml
+```
+
+Confirm the instance has been deployed successfully before moving to the next step running the following command.
+```
+oc get designerauthoring ace-designer-ai -n tools -o jsonpath='{.status.phase}';echo
+```
+
+Wait for a response of `Ready`
+
+10.6 Now, let's create Bar Auth Configuration.
+```
+scripts/11-ace-config-barauth-github.sh
+```
+
+
+***
+
+### 11 - Set up Salesforce
 
 You need a Salesforce developer account to run this demo. If you already have a Salesforce developer account, you can use that (start at step 2 below). If not, you can sign up for a free developer account by following step 1 below.
 
-6.1 Go to <a href="https://developer.salesforce.com/signup" target="_blank" rel="noreferrer">Salesforce Developers</a>. Follow the prompts on the Saleforce pages to get your free developer account.<br/>
+11.1 Go to <a href="https://developer.salesforce.com/signup" target="_blank" rel="noreferrer">Salesforce Developers</a>. Follow the prompts on the Saleforce pages to get your free developer account.<br/>
 
-6.2 As soon as you have your account, go back to the <a href="https://login.salesforce.com/" target="_blank" rel="noreferrer">Salesforce log in page</a> and log in to your developer account.<br/><img src="images/Prep3.5.png" width="800" /><br/>
+11.2 As soon as you have your account, go back to the <a href="https://login.salesforce.com/" target="_blank" rel="noreferrer">Salesforce log in page</a> and log in to your developer account.<br/><img src="images/Prep3.5.png" width="800" /><br/>
 
-6.3 Click the **profile** icon (1) and save your Salesforce Login URL (2).<br/><img src="images/Prep3.6.png" width="800" /><br/>
+11.3 Click the **profile** icon (1) and save your Salesforce Login URL (2).<br/><img src="images/Prep3.6.png" width="800" /><br/>
 
-6.4 In the same user profile menu select **Settings**.<br/><img src="images/Prep3.7.png" width="800" /><br/>
+11.4 In the same user profile menu select **Settings**.<br/><img src="images/Prep3.7.png" width="800" /><br/>
 
-6.5 Click **Reset My Security Token** in the **My Personal Information** (1) menu. Then, click **Reset Security Token** (2). A newly-generated security token will be emailed to you.<br/><img src="images/Prep3.8.png" width="800" /><br/>
+11.5 Click **Reset My Security Token** in the **My Personal Information** (1) menu. Then, click **Reset Security Token** (2). A newly-generated security token will be emailed to you.<br/><img src="images/Prep3.8.png" width="800" /><br/>
 
-6.6 Next, you will create an application representing App Connect Enterprise, and then retrieve the Consumer Key and Consumer Secret. Click the **cogwheel** icon (1) and select **Setup** (2).<br/><img src="images/Prep3.9.png" width="800" /><br/>
+11.6 Next, you will create an application representing App Connect Enterprise, and then retrieve the Consumer Key and Consumer Secret. Click the **cogwheel** icon (1) and select **Setup** (2).<br/><img src="images/Prep3.9.png" width="800" /><br/>
 
-6.7 In the navigator on the left-hand side, scroll to **PLATFORM TOOLS**, expand **Apps** (1), and click **App Manager** (2).<br/><img src="images/prep-image3.7.png" width="800" /><br/>
+11.7 In the navigator on the left-hand side, scroll to **PLATFORM TOOLS**, expand **Apps** (1), and click **App Manager** (2).<br/><img src="images/prep-image3.7.png" width="800" /><br/>
 
-6.8 Click **New Connected App**.<br/><img src="images/prep-image3.8.png" width="800" /><br/>
+11.8 Click **New Connected App**.<br/><img src="images/prep-image3.8.png" width="800" /><br/>
 
-6.9 Enter **App Connect** (1) as the **Connect App Name** and your email as the **Contact Email** (2). Select **Enable OAuth Settings** (3).<br/><img src="images/prep-image3.9.png" width="800" /><br/>
+11.9 Enter **App Connect** (1) as the **Connect App Name** and your email as the **Contact Email** (2). Select **Enable OAuth Settings** (3).<br/><img src="images/prep-image3.9.png" width="800" /><br/>
 
-6.10 Select **Enable for Device Flow** (1). Now select **Manage user data via APIs (api)** (2) as the **Selected OAuth Scopes**. Click **Add** (3)<br/><img src="images/prep-image3.10.png" width="800" /><br/>
+11.10 Select **Enable for Device Flow** (1). Now select **Manage user data via APIs (api)** (2) as the **Selected OAuth Scopes**. Click **Add** (3)<br/><img src="images/prep-image3.10.png" width="800" /><br/>
 
-6.11 Click **Save**.<br/><img src="images/prep-image3.11.png" width="800" /><br/>
+11.11 Click **Save**.<br/><img src="images/prep-image3.11.png" width="800" /><br/>
 
-6.12 It will take approximately 10 minutes for the new connected app to register in Salesforce. Once it does, you should see **Manage Consumer Details** displayed. Click **Manage Consumer Details,** following any authentication directions.<br/><img src="images/Prep3.15.png" width="800" /><br/>
+11.12 It will take approximately 10 minutes for the new connected app to register in Salesforce. Once it does, you should see **Manage Consumer Details** displayed. Click **Manage Consumer Details,** following any authentication directions.<br/><img src="images/Prep3.15.png" width="800" /><br/>
 
-6.13 Save the **Consumer Key** and **Consumer Secret.**<br/><img src="images/salesforce-key-secret.png" width="800" /><br/>
+11.13 Save the **Consumer Key** and **Consumer Secret.**<br/><img src="images/salesforce-key-secret.png" width="800" /><br/>
 
-6.14 In the search box at the top of the screen, enter **OAuth** (1), and then select **OAuth and OpenID Connect Settings** (2).<br/><img src="images/oauth-and-open-id.png" width="800" /><br/>
+11.14 In the search box at the top of the screen, enter **OAuth** (1), and then select **OAuth and OpenID Connect Settings** (2).<br/><img src="images/oauth-and-open-id.png" width="800" /><br/>
 
-6.15 Ensure that **OAuth User-Agent Flows** and **OAuth Username-Password Flows** are enabled. <br/><img src="images/oauth-user-agent-flows.png" width="800" /><br/>
+11.15 Ensure that **OAuth User-Agent Flows** and **OAuth Username-Password Flows** are enabled. <br/><img src="images/oauth-user-agent-flows.png" width="800" /><br/>
 
 Your Salesforce developer account is ready.
 
@@ -190,32 +573,32 @@ Your Salesforce developer account is ready.
 
 ***
 
-### 7 - Connect Cloud Pak for Integration instance to your endpoints
+### 12 - Connect Cloud Pak for Integration instance to your endpoints
 
 Let’s configure our services endpoints in Cloud Pak for Integration.
 <br/>
 
-7.1	Return to the command line and access the Platform Navigator using the provided URL. Copy and paste  the **Username** (1) and **Password** (2) from the command line output, and click **Sign In** (3).<br/><img src="images/prep-image209.png" width="800" /><br/><img src="images/prep-image210.png" width="800" /><br/>
+12.1	Return to the command line and access the Platform Navigator using the provided URL. Copy and paste  the **Username** (1) and **Password** (2) from the command line output, and click **Sign In** (3).<br/><img src="images/prep-image209.png" width="800" /><br/><img src="images/prep-image210.png" width="800" /><br/>
 
-7.2 You will be asked to provide a new password. Provide a new password and click **Submit**. <br/><img src="images/prep-501.png" width="800" /><br/>
+12.2 You will be asked to provide a new password. Provide a new password and click **Submit**. <br/><img src="images/prep-501.png" width="800" /><br/>
 
-7.3 In the menu on the top left, open the **Design** folder (1) and select **Integrations** (2). <br/><img src="images/prep-44.png" width="800" /><br/>
+12.3 In the menu on the top left, open the **Design** folder (1) and select **Integrations** (2). <br/><img src="images/prep-44.png" width="800" /><br/>
 
-7.4 Click on the **ace-designer-demo** entry. <br/><img src="images/prep-44-2.png" width="800" /><br/>
+12.4 Click on the **ace-designer-demo** entry. <br/><img src="images/prep-44-2.png" width="800" /><br/>
 
-7.5 Click the **Catalog** icon to see a list of the available connectors. <br/><img src="images/prep-45.png" width="800" /><br/>
+12.5 Click the **Catalog** icon to see a list of the available connectors. <br/><img src="images/prep-45.png" width="800" /><br/>
 
-7.6 Search for **salesforce** (1) and click **Connect** (2).<br/><img src="images/Prep4.5.png" width="800" /><br/>
+12.6 Search for **salesforce** (1) and click **Connect** (2).<br/><img src="images/Prep4.5.png" width="800" /><br/>
 
-7.7 Enter your Salesforce **Login URL**.<inline-notification text="You must enter <strong>‘https://’</strong> in front of the Saleforce Login URL you saved earlier. The connection will not work if you just copy/paste the hostname."></inline-notification><img src="images/Prep4.6.png" width="800" />
+12.7 Enter your Salesforce **Login URL**.<inline-notification text="You must enter <strong>‘https://’</strong> in front of the Saleforce Login URL you saved earlier. The connection will not work if you just copy/paste the hostname."></inline-notification><img src="images/Prep4.6.png" width="800" />
 
-7.8 Input your Salesforce **Username** (1). Fill in the connector's **Password** field (2) by concatenating your Salesforce **Password** and the **Security token** received via email.<br/><br/>For example, if your Salesforce password is ‘myGreatPassword’ and your Salesforce security token is ‘2325jsdhew4312hs534dh’ then enter ‘myGreatPassword2325jsdhew4312hs534dh’ in the **Password** field.<br/><img src="images/Prep4.7.png" width="800" /><br/><br/>
+12.8 Input your Salesforce **Username** (1). Fill in the connector's **Password** field (2) by concatenating your Salesforce **Password** and the **Security token** received via email.<br/><br/>For example, if your Salesforce password is ‘myGreatPassword’ and your Salesforce security token is ‘2325jsdhew4312hs534dh’ then enter ‘myGreatPassword2325jsdhew4312hs534dh’ in the **Password** field.<br/><img src="images/Prep4.7.png" width="800" /><br/><br/>
 
-7.9 Input Salesforce’s **Consumer Key** as **Client ID** (1) and **Secret** as **Client Secret** (2), in the connector account UI. Click **Connect** (3).<br/><img src="images/Prep4.8.png" width="800" /><br/>
+12.9 Input Salesforce’s **Consumer Key** as **Client ID** (1) and **Secret** as **Client Secret** (2), in the connector account UI. Click **Connect** (3).<br/><img src="images/Prep4.8.png" width="800" /><br/>
 
-7.10 Click on the **menu** icon (1) and select **Rename Account** (2).<br/><img src="images/Prep4.9.png" width="800" /><br/>
+12.10 Click on the **menu** icon (1) and select **Rename Account** (2).<br/><img src="images/Prep4.9.png" width="800" /><br/>
 
-7.11 Enter **App Connect Trial** (1) as **Account name** and click **Rename Account** (2).<br/><img src="images/Prep4.10.png" width="800" /><br/>
+12.11 Enter **App Connect Trial** (1) as **Account name** and click **Rename Account** (2).<br/><img src="images/Prep4.10.png" width="800" /><br/>
 
 Your environment is ready to demo.
 
@@ -223,15 +606,15 @@ Your environment is ready to demo.
 
 ***
 
-### 8 - Configure the asset repository
+### 13 - Configure the asset repository
 
 During the demo we will import an existing flow from the assest repository. An GitHub repository will be configured to import the flow.
 
-8.1 In the CP4I homepage, you should see the all instances available on your Pak. Select **assetrepo**.<br/><img src="images/asset-repo-100.png" width="800" /><br/>
+13.1 In the CP4I homepage, you should see the all instances available on your Pak. Select **assetrepo**.<br/><img src="images/asset-repo-100.png" width="800" /><br/>
 
-8.2 Click **Remotes** (1) and select **Add remote** (2). <br/><img src="images/asset-repo-110.png" width="800" /><br/>
+13.2 Click **Remotes** (1) and select **Add remote** (2). <br/><img src="images/asset-repo-110.png" width="800" /><br/>
 
-8.3 Fill in the following values:<br/>
+13.3 Fill in the following values:<br/>
    * **Name** (1): CP4I Demo Assets
    * **Git URL** (2): https://github.com/IBM/cp4i-demos.git
    * **Automatic sync options** (3): 5 minutes
@@ -241,31 +624,31 @@ During the demo we will import an existing flow from the assest repository. An G
 
    <img src="images/asset-repo-120.png" width="800" /><br/>
 
-8.4 In a couple of minutes the resources from the GitHub repository will be synchronized.<br/><img src="images/asset-repo-130.png" width="800" /><br/>
+13.4 In a couple of minutes the resources from the GitHub repository will be synchronized.<br/><img src="images/asset-repo-130.png" width="800" /><br/>
 
 <br/>
 
 ***
 
-### 9 - Creating Dev User for Developer Portal
+### 14 - Creating Dev User for Developer Portal
 
 Now create a user in the Developer Portal.
 
-9.1 Expand **Design** and select **APIs** (1).<br/><img src="images/prep-image501.png" width="800" /><br/>
+14.1 Expand **Design** and select **APIs** (1).<br/><img src="images/prep-image501.png" width="800" /><br/>
 
-9.2 Click **ademo** API management. <br/><img src="images/prep-image502.png" width="800" /><br/>
+14.2 Click **ademo** API management. <br/><img src="images/prep-image502.png" width="800" /><br/>
 
-9.3 If a login screen is presented, select **Cloud Pak User Registry** <br/><img src="images/prep-image212.png" width="800" /><br/>
+14.3 If a login screen is presented, select **Cloud Pak User Registry** <br/><img src="images/prep-image212.png" width="800" /><br/>
 
-9.4 Click **Manage catalogs** (2).<br/><img src="images/prep-image213.png" width="800" /><br/>
+14.4 Click **Manage catalogs** (2).<br/><img src="images/prep-image213.png" width="800" /><br/>
 
-9.5 Open **Sandbox**.<br/><img src="images/prep-image214.png" width="800" /><br/>
+14.5 Open **Sandbox**.<br/><img src="images/prep-image214.png" width="800" /><br/>
 
-9.6 Select the **Consumers** (1) tab, click **Add** (2) and select **Create organization** (3).<br/><img src="images/prep-image215.png" width="800" /><br/>
+14.6 Select the **Consumers** (1) tab, click **Add** (2) and select **Create organization** (3).<br/><img src="images/prep-image215.png" width="800" /><br/>
 
-9.7 Fill in **IBM** as the title.<br/><img src="images/prep-image216.png" width="800" /><br/>
+14.7 Fill in **IBM** as the title.<br/><img src="images/prep-image216.png" width="800" /><br/>
 
-9.8 Scroll down to the Owner section, set the type of user to **New user** (1), fill in the following details and click **Create**.
+14.8 Scroll down to the Owner section, set the type of user to **New user** (1), fill in the following details and click **Create**.
 
 | FIELD | VALUE |
 | ------ | ------- |
@@ -277,7 +660,7 @@ Now create a user in the Developer Portal.
 
 <img src="images/prep-image217.png" width="800" />
 
-9.9 A new consumer organization is created.
+14.9 A new consumer organization is created.
 <br/><img src="images/prep-image218.png" width="800" /><br/>
 
 Congratulations! Your portal developer user has been created and you are ready for the demo.
