@@ -670,36 +670,6 @@ Log in with your APIC user and password.
   ![](images/apic-proxy-3.png)
 
 
-<hr/><br/>
-
-<InlineNotification kind="warning">There is a known issue editing the gateway policies in the new assembly editor on APIC on AWS. The IBM Development team is working to fix it as soon as possible. Because of it, the steps below are a workaround to set a flag to use the old editor. As soon as the bug is fixed, steps 6.1.4 to 6.1.6 will be removed.</InlineNotification>
-
-<br/>
-
-**Action** &nbsp; 6.1.4 (WORKAROUND)
-
-Edit your APIC on AWS home URL and include **/FF** at the end and press **ENTER**.
-
-  ![](images/flag-workaround-1.png)
-
-<hr/><br/>
-
-**Action** &nbsp; 6.1.5 (WORKAROUND)
-
-On the *Feature flags* page, scroll down to see the last flag **Enable legacy assembly editor for gateway policies** and toggle the button from offline to **online**.
-
-  ![](images/flag-workaround-2.png)
-
-<hr/><br/>
-
-**Action** &nbsp; 6.1.6 (WORKAROUND)
-
-Click the **Home** button to return to the APIC homepage.
-
-  ![](images/flag-workaround-3.png)
-
-<br/>
-
 ***
 </details>
 
@@ -766,7 +736,7 @@ Enter the following values:
 
   Title: **customers** (1)
 
-  GraphQL server URL: [*Your API URL copied from StepZen Dashboard*] (for example: https://wanaka.stepzen.net/api/product-demo/__graphql) (2)
+  GraphQL server URL: [*Your API URL copied from StepZen Dashboard*] (for example: https://akhirzaman.us-east-a.ibm.stepzen.net/api/product-demo/graphql) (2)
 
   ![](images/apic-proxy-7.png)
 
@@ -856,7 +826,7 @@ After applying the recommendations, the warning message is removed.
 
 **Action** &nbsp; 7.2.1
 
-Click **View** on the *Warning* message notification box.
+Click the **Warning icon**.
 
   ![](images/apic-edit-3.png)
 
@@ -904,6 +874,15 @@ Open the **Gateway** view.
 
 **Action** &nbsp; 7.3.2
 
+If necessary, close the **Build assembly flow**.
+
+  ![](images/apic-edit-6-5.png)
+
+
+<hr/><br/>
+
+**Action** &nbsp; 7.3.3
+
 Scroll down the flow (1) and on the **Otherwise** ramification (2), you should see a **graphql-invoke** node, click on it to edit (3).
 
   ![](images/apic-edit-7.png)
@@ -911,8 +890,7 @@ Scroll down the flow (1) and on the **Otherwise** ramification (2), you should s
 
 <hr/><br/>
 
-
-**Action** &nbsp; 7.3.3
+**Action** &nbsp; 7.3.4
 
 On the *graphql-invoke* node definition, scroll down to see the *Header control* section. Click on **Add allowlist** to add a new header in the list.
 
@@ -963,7 +941,17 @@ Open the **Test** tab .
 
 **Action** &nbsp; 7.4.2
 
-Toggle the *Auto-publish* button from off to **on** (1). Then click **Save Preferences** (2).
+Click on **Target Configuration** link.
+
+![](images/auto-publish-1-2.png)
+
+
+<hr/><br/>
+
+
+**Action** &nbsp; 7.4.3
+
+Toggle the *Auto-publish* button from off to **on**.
 
 ![](images/auto-publish-2.png)
 
@@ -971,22 +959,39 @@ Toggle the *Auto-publish* button from off to **on** (1). Then click **Save Prefe
 <hr/><br/>
 
 
-<InlineNotification kind="warning">There is a known issue with the GraphQL test tool on APIC on AWS. The IBM Development team is working to fix it as soon as possible. Because of it, please skip steps 7.4.3 - 7.4.8. Step 7.4.9 is a workaround to test your GraphQL Proxy API using an external tool. As soon as the issue is fixed, the step 7.4.9 will be removed.</InlineNotification>
+<InlineNotification kind="warning">There is a known issue with the GraphQL test tool on APIC on AWS. The IBM Development team is working to fix it as soon as possible. Because of it, in this lab, you will use an external tool to test your API.</InlineNotification>
 
 <br/>
 
-**Action** &nbsp; 7.4.3 (This step is currently not working, see the notification above)
+**Action** &nbsp; 7.4.4
 
-Select **Test** tab to test the API.
+Record (copy and paste) the **API Gateway URL of your API** to a notepad for reference later.
 
 ![](images/apic-edit-11.png)
 
 
 <hr/><br/>
 
-**Action** &nbsp; 7.4.4 (This step is currently not working, see the notification on step 7.4.3.)
+**Action** &nbsp; 7.4.5
 
-Enter the following GraphQL query in the GraphQL Editor. You may use the **Prettify** option to improve the visualization of the GraphQL query.
+Open the **Parameters** tab.
+
+![](images/apic-edit-11-2.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 7.4.6
+
+Record the **X-IBM-Client-id** to a notepad for reference later.
+
+![](images/apic-edit-11-3.png)
+
+
+<hr/><br/>
+
+**Action** &nbsp; 7.4.7
+
+11.	GraphQLZero is a free, online GraphQL API that you can use to get fake data from a real backend while testing or prototyping your app.  You will use the GraphQLZero API Playground to test your API. Open the <a href="https://graphqlzero.almansi.me/api" target="_blank">GraphQLZero API Playground</a>. Paste the **API Gateway URL of your API** (1), and enter the Graphql query below (2).
 
 ```
 {
@@ -1005,71 +1010,24 @@ Enter the following GraphQL query in the GraphQL Editor. You may use the **Prett
 ```
 &nbsp;
 &nbsp;
-  ![](images/apic-edit-12.png)
+  ![](images/graphqlzero-01.png)
 
 <hr/><br/>
 
-**Action** &nbsp; 7.4.5 (This step is currently not working, see the notification on step 7.4.3.)
+**Action** &nbsp; 7.4.8
 
-Now you need to include the Authorization header. Open the **Parameters** tab.
+Open the **HTTP Header** section (1), and paste the JSON below. Replace `<my-x-ibm-client-id>` with the value of **X-IBM-Client-Id** (2) that you copied from APIC parameters tab and replace `<my-authorization-header>` with the value that you copied from **API Connect Essentials Dashboard Headers** (3).
 
-  ![](images/apic-edit-13.png)
-
-<hr/><br/>
-
-**Action** &nbsp; 7.4.6 (This step is currently not working, see the notification on step 7.4.3.)
-
-On the bottom of the Parameters list, include a new parameter with the following value:
-
-Key: **Authorization** (1)
-
-Located In: **header** (2)
-
-Value: *[paste the API Key value that you copied from the StepZen Dashboard Headers]* (3)
-
-  ![](images/apic-edit-14.png)
+  ![](images/graphqlzero-02.png)
 
 <hr/><br/>
 
-**Action** &nbsp; 7.4.7 (This step is currently not working, see the notification on step 7.4.3.)
+**Action** &nbsp; 7.4.9
 
-Now click the **Send** button (1) and open the **GraphiQL** tab (2) again to see the result.
+Now click on the **Play** button (1) to see the graphQL returned data (2).
 
-  ![](images/apic-edit-15.png)
+  ![](images/graphqlzero-03.png)
 
-<hr/><br/>
-
-**Action** &nbsp; 7.4.8 (This step is currently not working, see the notification on step 7.4.3.)
-
-On the Trace section, you should see a HTTP Status: 200 (1) and in the Response data you have the data returned from your GraphQL API (2).
-
-  ![](images/apic-edit-16.png)
-
-
-<hr/><br/>
-
-**Action** &nbsp; 7.4.9 (WORKAROUND)
-
-Another way to test your API is using a GraphQL sandbox. For example, open this <a href="https://graphqlzero.almansi.me/api" target="_blank">URL</a> (1), copy and paste the requested URL from APIC (2), enter the Graphql query (3) and in the HTTP Header section, enter a JSON with the Authorization header parameter that you copied from StepZen, and copy and paste the X-IBM-Client-Id from APIC parameters tab (see step 7.4.6) (4). Click on the **Play** button to see the graphQL returned data (5).
-
-```
-{
-  customers {
-    email
-    id
-    name
-    address {
-      city
-      countryRegion
-      postalCode
-      stateProvince
-    }
-  }
-}
-```
-<br/>
-
-  ![](images/playground-workaround-1.png)
 
 ***
 </details>
@@ -1095,21 +1053,47 @@ Open the **Gateway** tab again.
 
 **Action** &nbsp; 7.5.2
 
-On the **Otherwise** (1) which starts with a *Parse*, you will add a node before the *graphql-invoke* node.  On the *Palette* view, scroll down to see the *Policies* section (2). Drag and drop the **Set Variable** (3) node between the "*ratelimit expected*" node and the "*graphql-invoke*" node (4).
+Close the **Build assembly flow** dialog again.
 
-  ![](images/apic-edit-18.png)
+  ![](images/apic-edit-17-1.png)
 
 <hr/><br/>
 
 **Action** &nbsp; 7.5.3
 
-Enter **set-authorization** as Title (1) and click **Add action** (2).
+On the **Otherwise** (1) which starts with a *Parse*, click the **Add node** button (plus icon) between the “*ratelimit expected*” node and the “*graphql-invoke*” node (2).
+
+  ![](images/apic-edit-18.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 7.5.4
+
+On the Build Assembly flow dialog, scroll down and select the **Set Variable** node on the Actions section.
+
+  ![](images/apic-edit-18-1.png)
+
+<hr/><br/>
+
+**Action** &nbsp; 7.5.5
+
+Click on the new **set-variable** node to edit it.
 
   ![](images/apic-edit-19.png)
 
 <hr/><br/>
 
-**Action** &nbsp; 7.5.4
+
+**Action** &nbsp; 7.5.6
+
+Enter **set-authorization** as Title (1) and click **Add action** (2).
+
+  ![](images/apic-edit-19-1.png)
+
+<hr/><br/>
+
+
+**Action** &nbsp; 7.5.7
 
 Keep **Set** (1) as the type of the action. On the Set field, enter **message.headers.Authorization** (2) as the name of the variable to be set. Select **String** (3) as type of the value to set. And in the *Value* field, paste the *API Key value that you copied from the StepZen Dashboard Headers* (4).
 
@@ -1117,7 +1101,7 @@ Keep **Set** (1) as the type of the action. On the Set field, enter **message.he
 
 <hr/><br/>
 
-**Action** &nbsp; 7.5.5
+**Action** &nbsp; 7.5.8
 
 Then click **Save**.
 
@@ -1138,48 +1122,25 @@ Great! Now their GraphQL Proxy is running and available to be used.
 
 <hr/><br/>
 
-<InlineNotification kind="warning">There is a known issue with the GraphQL test tool on APIC on AWS. The IBM Development team is working to fix it as soon as possible. Because of it, please skip steps 7.6.1 - 7.6.2. Step 7.6.3 is a workaround to test your GraphQL Proxy API using an external tool. As soon as the issue is fixed, the step 7.6.3 will be removed.</InlineNotification>
 
-<br/>
+**Action** &nbsp; 7.6.1
 
-**Action** &nbsp; 7.6.1 (This step is currently not working, see the notification above)
+You can keep using the <a href="https://graphqlzero.almansi.me/api" target="_blank">external GraphQL playground</a> to test your API, but now in the HTTP Header section, remove the **Authorization header** parameter (1). Then click on the **Play** button (2) to see the graphQL returned data (3).
 
-Open the **Test** tab (1) and click the **Execute Query** button (2). (Note: if you want, you can check in the Parameters tab that there isn't an Authorization header parameter).
-
-  ![](images/apic-edit-22.png)
+  ![](images/graphqlzero-04.png)
 
 <hr/><br/>
 
-**Action** &nbsp; 7.6.2 (This step is currently not working, see the notification on step 7.6.1.)
+**Action** &nbsp; 7.6.2
 
-Show the result. You are welcome to change the GraphQL query to test more scenarios. You can also use the **Example** button to help start your creativity. On the breadcrumbs, return to the **Develop** page.
+Show the result. You are welcome to change the GraphQL query to test more scenarios.
 
+<hr/><br/>
+
+**Action** &nbsp; 7.6.3
+
+On the breadcrumbs, return to the **Develop** page.
   ![](images/apic-edit-23.png)
-
-<hr/><br/>
-
-**Action** &nbsp; 7.6.3 (WORKAROUND)
-
-You can keep using the <a href="https://graphqlzero.almansi.me/api" target="_blank">external GraphQL playground</a> to test your API (1), but now in the HTTP Header section, remove the Authorization header parameter (4). Then click on the **Play** button to see the graphQL returned data (5).
-
-```
-{
-  customers {
-    email
-    id
-    name
-    address {
-      city
-      countryRegion
-      postalCode
-      stateProvince
-    }
-  }
-}
-```
-<br/>
-
-  ![](images/playground-workaround-2.png)
 
 ***
 
