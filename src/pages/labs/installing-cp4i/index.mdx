@@ -16,15 +16,15 @@ title: Installing IBM API-Led solution using CP4I on IBM TechZone
   <AnchorLink>Lab Overview</AnchorLink>
   <AnchorLink>Prerequisites</AnchorLink>
   <AnchorLink>Installation Overview</AnchorLink>
-  <AnchorLink>1 - OpenShift Installation</AnchorLink>
-  <AnchorLink>2 – Clone Repositories</AnchorLink>
-  <AnchorLink>3 – Set Context</AnchorLink>
-  <AnchorLink>4 – Add the Catalog Sources</AnchorLink>
-  <AnchorLink>5 – Install the Operators</AnchorLink>
-  <AnchorLink>6 – Deploy the Platform UI</AnchorLink>
-  <AnchorLink>7 - Deploy Automation Assets</AnchorLink>
-  <AnchorLink>8 - Deploy API Connect</AnchorLink>
-  <AnchorLink>9 - Deploy App Connect</AnchorLink>
+  <AnchorLink>1 - Deploying the OCP cluster</AnchorLink>
+  <AnchorLink>2 - Accessing the OCP cluster</AnchorLink>
+  <AnchorLink>3 - Cloning Repositories</AnchorLink>
+  <AnchorLink>4 - Setting Context</AnchorLink>
+  <AnchorLink>5 - Installing Foundational Services</AnchorLink>
+  <AnchorLink>6 – Deploying the Platform UI</AnchorLink>
+  <AnchorLink>7 - Deploying Automation Assets</AnchorLink>
+  <AnchorLink>8 - Deploying API Connect</AnchorLink>
+  <AnchorLink>9 - Deploying App Connect</AnchorLink>
   <AnchorLink>Summary</AnchorLink>
 </AnchorLinks>
 
@@ -62,15 +62,15 @@ A IBM Cloud Pak® for Integration installation consists of a Red Hat® OpenSh
 
 In this document, we will follow the steps below to install CP4I. If you need more details about the CP4I Installation process, please check the product documentation <a href="https://www.ibm.com/docs/en/cloud-paks/cp-integration/2022.4?topic=installing-overview-installation" target="_blank">here</a>.
 
-  - 1 - OpenShift Installation
-  - 2 – Clone Repositories
-  - 3 – Set Context
-  - 4 – Add the Catalog Sources
-  - 5 – Install the Operators
-  - 6 – Deploy the Platform Navigator UI
-  - 7 - Deploy Automation Assets
-  - 8 - Deploy API Connect
-  - 9 - Deploy App Connect
+  - 1 - Deploying the OCP cluster
+  - 2 - Accessing the OCP cluster
+  - 3 - Cloning Repositories
+  - 4 - Setting Context
+  - 5 - Installing Foundational Services
+  - 6 – Deploying the Platform UI
+  - 7 - Deploying Automation Assets
+  - 8 - Deploying API Connect
+  - 9 - Deploying App Connect
 
 ***
 
@@ -215,7 +215,7 @@ scripts/02a-cp4i-ns-key-config.sh
 ***
 
 
-## 5 - Installing IBM Cloud Pak foundational services
+## 5 - Installing Foundational Services
 
 Red Hat OpenShift Operators automate the creation, configuration, and management of instances of Kubernetes-native applications. Operators provide automation at every level of the stack—from managing the parts that make up the platform all the way to applications that are provided as a managed service.
 
@@ -224,8 +224,6 @@ Red Hat OpenShift uses the power of Operators to run the entire platform in an a
 You can easily check all the Operators installed in your OpenShift environment, by opening the Operator Hub page in the OpenShift Web Console.
 
 The IBM Cloud Pak foundational services operator is no longer installed automatically. Install this operator manually if you need to create an instance that uses identity and access management (IAM). The following steps will walk you through this process.
-
-The IBM Cloud Pak foundational services operator is no longer installed automatically. Install this operator manually if you need to create an instance that uses identity and access management. That is exactly, what you will do in this section.
 
 5.1 First we need to have a certificate manager, otherwise,  the IBM Cloud Pak foundational services operator installation will not complete. Let's do it!
 
@@ -300,7 +298,7 @@ Wait for a response of `Succeeded`.
 
 ***
 
-## 6 – Deploy the Platform UI
+## 6 – Deploying the Platform UI
 
 In this section, you will install the Platform Navigator UI. The Platform UI is a user interface for the IBM Cloud Pak for Integration that allows the user to deploy and manage instances of the integration capabilities from a central location.
 
@@ -497,7 +495,7 @@ scripts/07f-apic-initial-config.sh
 scripts/07g-apic-new-porg-cs.sh
 ```
 
-## 9 - Deploy App Connect
+## 9 - Deploying App Connect
 
 9.1 Install the App Connect Catalog source.
 ```
