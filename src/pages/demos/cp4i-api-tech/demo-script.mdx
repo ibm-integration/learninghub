@@ -34,16 +34,10 @@ Let’s get started!
 
 <br/>
 
-<InlineNotification>There is a known issue with Firefox when trying to access the API. For the best user experience, we recommend that you use the latest version of Safari or Chrome.</InlineNotification>
-
-<br/>
-
-<br/>
-
 | **1.1** | **Log into Cloud Pak for Integration** |
 | :--- | :--- |
 | **Narration** | Let’s see IBM Cloud Pak for Integration in action. Here I have a cloud version of the product on IBM Cloud. Let me log in here.|
-| **Action**  1.1.1 | Open the Cloud Pak for Integration and enter your **Username** (1), **Password** (2) and click **Sign In** (3). <br/><img src="images/prep-image210.png" width="800" /> |
+| **Action**  1.1.1 | Open the Cloud Pak for Integration and enter your **Username** (1), **Password** (2) and click **Sign In** (3). <br/><img src="images/prep-image211.png" width="800" /> |
 
 <br/>
 
@@ -57,7 +51,7 @@ Let’s get started!
 | **1.3** | **Access Integration instances** |
 | :--- | :--- |
 | **Narration** | To automate customer interactions with our company in this demo, we will use App Connect for application integration, API Connect for API management, and the Asset Repository as our centralized hub for allowing our teams to work together with integration assets. Let’s open our App Connect Designer. |
-| **Action**  1.3.1 | Click **ace-designer-demo** to open the Integration dashboard. <br/><img src="images/300-api-demo-1-3-1.png" width="800" />  |
+| **Action**  1.3.1 | Click **ace-designer-ai** to open the Integration design. <br/><img src="images/300-api-demo-1-3-1.png" width="800" />  |
 
 <br/>
 
@@ -73,14 +67,14 @@ Let’s get started!
 | **2.1** | **Create a flow** |
 | :--- | :--- |
 | **Narration** | We are in the designer tooling. This is where we can create all our API integration flows and manage our connectivity to services and endpoints. Since we are just starting, there is nothing to see yet. Let’s build some integration logic and see how simple it is to create our flow from the Asset Repository. |
-| **Action**  2.1.1 | Click **Create from an asset**.<br/><img src="images/Script2.1.1.png" width="800" /> |
+| **Action**  2.1.1 | Click **Create a flow by describing an integration**.<br/><img src="images/Script2.1.1.png" width="800" /> |
 
 <br/>
 
 | **2.2** | **Select an asset** |
 | :--- | :--- |
 | **Narration** | Let's click the + sign to import this flow. |
-| **Action**  2.2.1 | Click the **+** sign to the right on the **Car Insurance API Lab Short V3** row.<inline-notification text="Search for 'Car insurance' if the flow does not display on the first page."></inline-notification> <img src="images/300-api-demo-2-2-1.png" width="800" /> |
+| **Action**  2.2.1 | Open the **View all templates** section (1), then click the **+** sign to the right on the **Car Insurance API Lab Short V3** row (2). <img src="images/300-api-demo-2-2-1.png" width="800" /> |
 
 <br/>
 
@@ -135,7 +129,7 @@ Let’s get started!
 | :--- | :--- |
 | **Narration** | Now, we use a connector to create a case in Salesforce with the data from the API. This case is where we store the details and progress of our repair. We are using a hard-coded contact name: ‘Andy Young.' He’s the contact for the insurance company. Salesforce Developer Accounts have a pre-populated set of data that you can use to test. ‘Andy Young’ is one of those pre-populated contacts. Let’s test our connection with Salesforce. Let me change the contact to ‘Andrew Young‘ and test the connection. |
 | **Action**  3.6.1 | Show the **Salesforce - Retrieve contacts** box. <br/><img src="images/300-api-demo-3-6-1.png" width="800" />  |
-| **Action**  3.6.2 | Change the **Full Name** to **Andrew Young** (1). Click the highlighted icon to **Try this action**, which tests the connection (2). <br/><img src="images/300-api-demo-3-6-2.png" width="800" />  |
+| **Action**  3.6.2 | Change the **Full Name** to **Andrew Young** (1). Click the **Test action** link, which tests the connection (2). <br/><img src="images/300-api-demo-3-6-2.png" width="800" />  |
 | **Action**  3.6.3 | On the **Try this action** dialog, check **Do not show this dialog box again** (1) and click **Continue** (2).<br/><img src="images/300-api-demo-3-6-3.png" width="800" /><br/><br/>The result displays.<br/><img src="images/Script3.6.3.png" width="800" />|
 | **Narration** | The test shows that we don’t have an ‘Andrew Young.‘ Let’s change it back to ‘Andy Young‘ and test again. We now receive a successful response. This proves that our connection is working. Let’s check the details. Here we can see the output returned from Salesforce, including the Contact ID. |
 | **Action**  3.6.4 | Change the **Full Name** back to **Andy Young** (1). Click the highlighted icon to **Test** again (2). Click the **View details** link (3). <br/><img src="images/Script3.6.4.png" width="800" />  |
@@ -222,7 +216,7 @@ Let’s get started!
 | :--- | :--- |
 | **Narration** | Now, let’s explore the co-authoring capability. The co-authoring feature enables you to simultaneously expose your API in both App Connect Designer and API Connect. When you start the API in Designer, a Product is automatically created and published in the Sandbox Catalog. The Product is used to control the deployment of the API, such as making it visible in the Developer Portal. Let’s test it. Here in API Manager, we can see our API was automatically exposed from Designer, using the co-authoring feature. The Product title and name are derived from the name of the originating API flow, and also include a reference to App Connect Designer. The Product version is 0.0.1. |
 | **Action**  5.1.1 | Open the **menu**, expand the **Design** section, and select **APIs**. <br/><img src="images/Script4.4.1.png" width="800" /> <br/> |
-| **Action**  5.1.2 | Click the **ademo** entry. <br/><img src="images/Script4.4.1-1.png" width="800" /> <br/> |
+| **Action**  5.1.2 | Click the **apim-demo** entry. <br/><img src="images/Script4.4.1-1.png" width="800" /> <br/> |
 | **Action**  5.1.3 | In the **API Connect** page, if a login screen is presented, select **Cloud Pak User Registry**. <br/><img src="images/prep-image212.png" width="800" /> <br/> |
 | **Action**  5.1.4 | Click the **Manage** icon. <br/><img src="images/300-api-demo-4-4-3.png" width="800" /> <br/> |
 | **Action**  5.1.5 | Click the **Sandbox** catalog. <br/><img src="images/Script4.4.5.png" width="800" /> <br/> |
@@ -233,9 +227,10 @@ Let’s get started!
 | **5.2** | **Viewing the product in the developer portal using the co-authoring feature** |
 | :--- | :--- |
 | **Narration** | The co-authoring feature enables you to test the product in the developer portal too. With the portal URL, we can check that our API Product is available. With the co-authoring feature, you have a unified authoring experience across multiple Cloud Pak for Integration capabilities. It is important to note that the API product will exist in the developer portal only while the corresponding API in App Connect Designer is still running. When you stop the API in App Connect Designer, the API product is automatically removed from the portal. The purpose of this is to simplify the unit testing while developing the flow. |
-| **Action**  5.2.1 | Open the **Catalog settings** tab (1). Click **Portal** (2). Copy the **Portal URL** (3). Open a new browser tab and access the portal URL.<br/><img src="images/Script4.5.1.png" width="800" /> |
-| **Action**  5.2.2 | Show the **Car Insurance** API product in the developer portal home page. <br/><img src="images/300-api-demo-4-5-4.png" width="800" /> |
-| **Action**  5.2.3 | Click **Sign in** (1) at the top right corner of the page. Use the username and password created during the demo preparation step **Creating Dev User for Developer Portal**. Click **Sign in** (2) in the credentials box. <br/><img src="images/Script4.5.3.png" width="800" /> |
+| **Action**  5.2.1 | Open the **Catalog settings** tab (1). Click **Portal** (2). Click **Create** button (3). <br/><img src="images/Script4.5.1.png" width="800" /> |
+| **Action**  5.2.2 | Copy the **Portal URL** (1). Open a new browser tab and access the portal URL (Maybe you need to accept the connections issues. If you receive a *404 Not Found* issue, you will need to wait few minutes to have the portal provisioned).<br/><img src="images/Script4.5.1.2.png" width="800" /> |
+| **Action**  5.2.3 | Show the **Car Insurance** API product in the developer portal home page. <br/><img src="images/300-api-demo-4-5-4.png" width="800" /> |
+| **Action**  5.2.4 | Click **Sign in** (1) at the top right corner of the page. Use the username and password created during the demo preparation step **Creating Dev User for Developer Portal**. Click **Sign in** (2) in the credentials box. <br/><img src="images/Script4.5.3.png" width="800" /> |
 
 <br/>
 
