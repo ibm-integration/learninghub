@@ -61,7 +61,7 @@ tabs: [ 'Demo preparation', 'Demo script']
 
 ![](images/trial-4.png)
 
-2.6 Now, back to your email, you should have an email from IBM Aspera on Cloud. Open this email and click on **Start using IBM Aspera on Cloud now**.
+2.6 Now, back to your email, you should have an email from IBM Aspera on Cloud. Open this email and click on **Access trial**.
 
 ![](images/trial-5.png)
 
@@ -104,7 +104,7 @@ tabs: [ 'Demo preparation', 'Demo script']
 
 By default your first workspace is default. To have a more appealing demo workspace, let's rename it.
 
-4.1 Click on **Default Workspace** to edit it.
+4.1 Open the **Workspaces** page (A). Then click on **Default Workspace** (B) to edit it.
 
 ![](images/workspace-1.png)
 
@@ -142,63 +142,85 @@ Below are the names and size of files that we are using in the demo script. Feel
 
 ### 6 - Creating IBM Cloud Object Storage (ICOS) Services
 
-In this section and next, you will configure two Object Storage services in different cloud providers to use in the demo to show file transfer between different cloud providers. Because of configuration simplicity, in this demo, you will use IBM Cloud and Microsoft Azure. Both Cloud providers enable you to use object storage service as part of free tier / trial account. The same is true with Google Cloud Platform and AWS. You are welcome to use any Object Storage service. 
+In this section and next, you will configure two Object Storage services in different cloud providers to use in the demo to show file transfer between different cloud providers. Because of configuration simplicity, in this demo, you will use IBM Cloud and Microsoft Azure. Microsoft enables you to use object storage service as part of free tier / trial account. The same is true with Google Cloud Platform and AWS. You are welcome to use any Object Storage service. IBM Cloud Object Storage, you need to request a TechZone COS service. Let's do it!
 
-6.1 Access <a href="https://cloud.ibm.com/login" target="_blank">IBM Cloud log in page</a>.
+6.1 To request a TechZone Cloud Object Storage service, go <a href="https://techzone.ibm.com/my/reservations/create/66e30515c428e2fc24fa106f" target="_blank">here</a> and complete the form with the follow details.
 
-6.2 If you already have an account, just **log in**. If you don't, go ahead and follow all the steps to **create an account**.
+| Field  | Value |
+| ------------- | ------------- |
+| Purpose  | If you are doing the L3 course, select **Education**. <br/> If you are a demo, select:**Demo** and inform the Sales opportunity.  |
+| Purpose Description  | If you are doing the L3 course, enter: **Aspera L3 Course**. <br/> If you are delivering a Demo, enter the Demo details.  |
+| Preferred Geography  | You are welcome to select the preferred Geography |
 
-![](images/icos-1.png)
+![](images/tz-cos-01.png)
 
-6.3 On IBM Dashboard, on *Search* field, type **Object Storage** (A)  and select **Object Storage** in *Catalog Results* (B). 
+6.2 **Agree** with the TechZone Terms and Conditions (A) and click **Submit** (B).
+![](images/tz-cos-02.png)
 
-![](images/icos-2.png)
+6.3 You will receive an email confirming the instance is provisioning.
+![](images/tz-cos-03.png)
 
-6.4 On *Cloud Object Storage* page, keep the **Lite Plan** selected (A), and click **Create** (B).
+6.4 You will receive a second email once the environment is provisioned. You should expect this to take between 5 and 20 minutes. Now the status update changed to **Ready**.  The COS service is created in a specific TechZone (TZ) IBM Cloud account, you can check the account name in this email (A). If you have not done so (in a previous reservation) you will need to click on the
+notifications page link (B) to go and accept the invitation.
 
-![](images/icos-3.png)
+![](images/tz-cos-05.png)
 
-6.5 Open the **Instances** menu (A) and select your new **Cloud Object Storage instance** (B).
+6.5 Clicking on notifications page brings you to a login page where you need to provide your IBMid (and may have to log in with your credentials if you have
+not already done so). Then you will see the Action required item. Click on the **item** (A). Then click **Join now**.
 
-![](images/6-5-update-2024-1.png)
+![](images/tz-cos-06.png)
 
-6.6 Click **Create bucket**.
+6.6 You will now be sent back to the IBM Cloud login page. Use your IBMid to log in. You are asked to join the TechZone account. **Accept the Terms and Conditions** (A), then click **Join Account** (B).
+
+![](images/tz-cos-07.png)
+
+6.7 When you log in, ensure you are using the right account. Assuming that you have accepted the invitation, you should have an itz-watsonx -n account. Go to the menu bar and click on the icon to slide open the list of accounts available to you, and ensure that you select the account that was assigned to you from your current TechZone reservation. You can always check your reservation email to find the account name.
+
+![](images/tz-cos-08.png)
+
+6.8 On IBM Dashboard, open your **Resources** list.
+
+![](images/tz-cos-09.png)
+
+6.9 On *Resources* page, open **Storage** section and select your **Storage service**.
+
+6.10 On your *Storage Instance* page, click **Create bucket**.
 
 ![](images/6-6-update-2024-1.png)
 
-6.7 Select **Quickly get started** to use a predefined bucket.
+6.11 Select **Quickly get started** to use a predefined bucket.
 
 ![](images/6-7-update-2024-1.png)
 
-6.8 Your IBM Cloud storage must be in a region that is supported by the Aspera on Cloud transfer service. To view the supported regions, check the <a href="https://ats.aspera.io/pub/v1/servers/softlayer" target="_blank">list</a> here.  Check that you are using **us-south** (A) and click **Next** (B).
+6.12 Your IBM Cloud storage must be in a region that is supported by the Aspera on Cloud transfer service. To view the supported regions, check the <a href="https://ats.aspera.io/pub/v1/servers/softlayer" target="_blank">list</a> here.  Check that you are using **us-south** (A) and click **Next** (B).
 
 ![](images/icos-8.png)
 
-6.9 **Drag and drop a 50MB file** (A) and click **Next** (B).
+6.13 **Drag and drop a 50MB file** (A) and click **Next** (B).
 
 ![](images/icos-9.png)
 
-6.10 On *Test your bucket* page, click **View bucket configuration** button.
+6.14 On *Test your bucket* page, click **View bucket configuration** button.
 
 ![](images/icos-10.png)
 
-6.11 On the Bucket configuration page, take notes of your Bucket name (A), you will need that during the demo to integrate your ICOS bucket with Aspera on Cloud. On the Breadcrumbs, click on your new **Storage instance** link (B).
+6.15 On the Bucket configuration page, take notes of your Bucket name (A), you will need that during the demo to integrate your ICOS bucket with Aspera on Cloud. On the Breadcrumbs, click on your new **Storage instance** link (B).
 
 ![](images/6-11-update-2024-1.png)
 
-6.12 Open the **Service credentials** tab.
+6.16 Open the **Service credentials** tab.
 
 ![](images/6-12-update-2024-1.png)
 
-6.13 You need to have HMAC credentials for the IBM Cloud bucket. Let's create one! Click **New credential**.
+6.17 You need to have HMAC credentials for the IBM Cloud bucket. Let's create one! Click **New credential**.
 
 ![](images/icos-12.png)
 
-6.14 Enter **Service credentials-HMAC** as Credential Name (A). Select **Writer** as Role (B). **Turn On** the *Include HMAC Credential* (C). And click **Add** (D).
+6.18 Enter **Service credentials-HMAC** as Credential Name (A). Select **Writer** as Role (B). **Turn On** the *Include HMAC Credential* (C). And click **Add** (D).
 
 ![](images/6-14-update-2024-1.png)
 
-6.15 Click on **Service credentials-HMAC** credential (A) and take note of the **access_key_id** and **secret_access_key** (B). You will need both during the demo.
+6.19 Click on **Service credentials-HMAC** credential (A) and take note of the **access_key_id** and **secret_access_key** (B). You will need both during the demo.
 
 ![](images/icos-14.png)
 
