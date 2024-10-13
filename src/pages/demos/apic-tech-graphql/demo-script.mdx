@@ -991,7 +991,7 @@ Record the **X-IBM-Client-id** to a notepad for reference later.
 
 **Action** &nbsp; 7.4.7
 
-11.	GraphQLZero is a free, online GraphQL API that you can use to get fake data from a real backend while testing or prototyping your app.  You will use the GraphQLZero API Playground to test your API. Open the <a href="https://graphqlzero.almansi.me/api" target="_blank">GraphQLZero API Playground</a>. Paste the **API Gateway URL of your API** (1), and enter the Graphql query below (2).
+GraphQLZero is a free, online GraphQL API that you can use to get fake data from a real backend while testing or prototyping your app.  You will use the GraphQLZero API Playground to test your API. Open the <a href="https://graphqlzero.almansi.me/api" target="_blank">GraphQLZero API Playground</a>. Paste the **API Gateway URL of your API** (1), and enter the Graphql query below (2).
 
 ```
 {
@@ -1017,6 +1017,13 @@ Record the **X-IBM-Client-id** to a notepad for reference later.
 **Action** &nbsp; 7.4.8
 
 Open the **HTTP Header** section (1), and paste the JSON below. Replace `<my-x-ibm-client-id>` with the value of **X-IBM-Client-Id** (2) that you copied from APIC parameters tab and replace `<my-authorization-header>` with the value that you copied from **API Connect Essentials Dashboard Headers** (3).
+
+```
+{
+ "*X-IBM-Client-Id":"<my-x-ibm-client-id>",
+ "Authorization":"<my-authorization-header>"
+}
+```
 
   ![](images/graphqlzero-02.png)
 
@@ -1139,7 +1146,7 @@ Show the result. You are welcome to change the GraphQL query to test more scenar
 
 **Action** &nbsp; 7.6.3
 
-On the breadcrumbs, return to the **Develop** page.
+Back to the APIC page, on the breadcrumbs, return to the **Develop** page.
   ![](images/apic-edit-23.png)
 
 ***
