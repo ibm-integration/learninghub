@@ -1,6 +1,6 @@
 # Cloud Pal for Integration Level 3
 
-This repo is intended to simplify the copy and paste steps of commands of Event Automation L3. Instead to copy the commands from PDF file, go ahead and use commands from this file.
+This repo is intended to simplify the copy and paste steps of commands of Cloud Pak for Integration L3. Instead to copy the commands from PDF file, go ahead and use commands from this file.
 
 The commands are identified by the step number of the Original Demo Guide document.
 
