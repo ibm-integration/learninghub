@@ -1,4 +1,4 @@
-# API Connect Level 3
+<img width="475" height="74" alt="image" src="https://github.com/user-attachments/assets/19080ca3-f38d-4537-bd58-3a46e327253d" /># API Connect Level 3
 
 This repo is intended to simplify the copy and paste steps of commands of API Connect L3. Instead to copy the commands from PDF file, go ahead and use commands from this file.
 
@@ -41,12 +41,12 @@ stepzen init --endpoint=api/product-demo
 
 ### 3.3.3.1
 ```
-stepzen import curl "https://introspection.apis.stepzen.com/customers" --query-name "customers"
+stepzen import curl "https://sample-api.us-east-a.apiconnect.automation.ibm.com/api/customers" --query-name "customers"
 ```
 
 ### 3.4.1.1
 ```
-stepzen import curl "https://introspection.apis.stepzen.com/orders" --query-name "orders" --query-type "Order"
+stepzen import curl "https://sample-api.us-east-a.apiconnect.automation.ibm.com/api/orders" --query-name "orders" --query-type "Order"
 ```
 
 ### 3.4.3.1
