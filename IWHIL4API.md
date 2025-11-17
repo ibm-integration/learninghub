@@ -1,6 +1,6 @@
 # IWHI Level 4 - API Management Unified Experience Lab
 
-This repo is intended to simplify the copy and paste steps of commands of API Management Unified Experience Lab -m IWHI L4. Instead to copy the commands from PDF file, go ahead and use commands from this file.
+This repo is intended to simplify the copy and paste steps of commands of API Management Unified Experience Lab - IWHI L4. Instead to copy the commands from PDF file, go ahead and use commands from this file.
 
 The commands are identified by the step number of the Original Demo Guide document.
 
