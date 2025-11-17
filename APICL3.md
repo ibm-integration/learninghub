@@ -41,12 +41,12 @@ stepzen init --endpoint=api/product-demo
 
 ### 3.3.3.1
 ```
-stepzen import curl "https://introspection.apis.stepzen.com/customers" --query-name "customers"
+stepzen import curl "https://sample-api.us-east-a.apiconnect.automation.ibm.com/api/customers" --query-name "customers"
 ```
 
 ### 3.4.1.1
 ```
-stepzen import curl "https://introspection.apis.stepzen.com/orders" --query-name "orders" --query-type "Order"
+stepzen import curl "https://sample-api.us-east-a.apiconnect.automation.ibm.com/api/orders" --query-name "orders" --query-type "Order"
 ```
 
 ### 3.4.3.1
