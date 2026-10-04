@@ -1,0 +1,1006 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "description": "Cruise APIs for customer experience",
+        "version": "1.0",
+        "title": "rosorio_CruiseAPI"
+    },
+    "paths": {
+        "/getPassenger360": {
+            "get": {
+                "operationId": "getPassenger360_GET_1",
+                "parameters": [
+                    {
+                        "name": "passenger_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "_apiKeyAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/getPassenger360_GET_response_1"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Access Denied"
+                    }
+                }
+            }
+        },
+        "/getExcursionBookings": {
+            "get": {
+                "operationId": "getExcursionBookings_GET_2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "passenger_cruise_id",
+                        "in": "query",
+                        "description": "Passenger Cruise ID",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "_apiKeyAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/getExcursionBookings_GET_response_1"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Access Denied"
+                    }
+                }
+            }
+        },
+        "/getCruiseContext": {
+            "get": {
+                "operationId": "getCruiseContext_GET_3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "passenger_cruise_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "_apiKeyAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/getCruiseContext_GET_response_1"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Access Denied"
+                    }
+                }
+            }
+        },
+        "/getPassengerCruiseBookings": {
+            "get": {
+                "operationId": "getPassengerCruiseBookings_GET_4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cruise_id",
+                        "in": "query",
+                        "description": "Filter by cruise ID to get all passengers on a specific cruise",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cabin_number",
+                        "in": "query",
+                        "description": "Filter by cabin number. Can be combined with cruise_id to find a specific passenger.",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "_apiKeyAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/getPassengerCruiseBookings_GET_response_1"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Access Denied"
+                    }
+                }
+            }
+        },
+        "/getBehaviours_PassengerSpending": {
+            "get": {
+                "operationId": "getBehaviours_PassengerSpending_GET_5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "passenger_cruise_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "_apiKeyAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/getBehaviours_PassengerSpending_GET_response_1"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Access Denied"
+                    }
+                }
+            }
+        },
+        "/getBehaviors_Restaurants": {
+            "get": {
+                "operationId": "getBehaviors_Restaurants_GET_6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "passenger_cruise_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "_apiKeyAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/getBehaviors_Restaurants_GET_response_1"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Access Denied"
+                    }
+                }
+            }
+        },
+        "/getExcursions": {
+            "get": {
+                "operationId": "getExcursions_GET_7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Excursion id",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "port",
+                        "in": "query",
+                        "description": "Filter for destination Port related to the excursions, so you see only excursions valid at that port",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "_apiKeyAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/getExcursions_GET_response_1"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Access Denied"
+                    }
+                }
+            }
+        }
+    },
+    "servers": [
+        {
+            "url": "https://dev3048403.a-vir-r1.int.ipaas.automation.ibm.com/integration/restv2/development/fld431b2cd286a4cefbba0c90969213e49/Cruise_API_USER"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "_apiKeyAuth": {
+                "type": "apiKey",
+                "name": "X-INSTANCE-API-KEY",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "getExcursionBookings_GET_response_1": {
+                "type": "object",
+                "required": [
+                    "bookings",
+                    "count",
+                    "error_message",
+                    "status"
+                ],
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "count": {
+                        "type": "string"
+                    },
+                    "error_message": {
+                        "type": "string"
+                    },
+                    "bookings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/bookings"
+                        }
+                    }
+                }
+            },
+            "passenger_cruise_bookings": {
+                "type": "object",
+                "required": [
+                    "booking_date",
+                    "cabin_class",
+                    "cabin_number",
+                    "created_at",
+                    "cruise_id",
+                    "departure_date",
+                    "email",
+                    "first_name",
+                    "last_name",
+                    "number_of_companions",
+                    "passenger_cruise_id",
+                    "passenger_id",
+                    "ship_name",
+                    "travel_companions",
+                    "updated_at"
+                ],
+                "properties": {
+                    "passenger_cruise_id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "passenger_id": {
+                        "type": "string"
+                    },
+                    "cruise_id": {
+                        "type": "string"
+                    },
+                    "cabin_number": {
+                        "type": "string"
+                    },
+                    "cabin_class": {
+                        "type": "string"
+                    },
+                    "booking_date": {
+                        "type": "string"
+                    },
+                    "number_of_companions": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "travel_companions": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "updated_at": {
+                        "type": "string"
+                    },
+                    "first_name": {
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "ship_name": {
+                        "type": "string"
+                    },
+                    "departure_date": {
+                        "type": "string"
+                    }
+                }
+            },
+            "transactions": {
+                "type": "object",
+                "required": [
+                    "amount_usd",
+                    "category",
+                    "created_at",
+                    "description",
+                    "first_name",
+                    "last_name",
+                    "location",
+                    "passenger_cruise_id",
+                    "transaction_date",
+                    "transaction_id"
+                ],
+                "properties": {
+                    "transaction_id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "passenger_cruise_id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "transaction_date": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "type": "string"
+                    },
+                    "amount_usd": {
+                        "type": "string"
+                    },
+                    "location": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "first_name": {
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "getBehaviours_PassengerSpending_GET_response_1": {
+                "type": "object",
+                "required": [
+                    "count",
+                    "error_message",
+                    "status",
+                    "transactions"
+                ],
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "count": {
+                        "type": "string"
+                    },
+                    "error_message": {
+                        "type": "string"
+                    },
+                    "transactions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/transactions"
+                        }
+                    }
+                }
+            },
+            "restaurants": {
+                "type": "object",
+                "required": [
+                    "created_at",
+                    "cuisine_type",
+                    "first_name",
+                    "last_name",
+                    "party_size",
+                    "passenger_cruise_id",
+                    "restaurant_name",
+                    "restaurant_tier",
+                    "spend_amount",
+                    "visit_date",
+                    "visit_id",
+                    "visit_time"
+                ],
+                "properties": {
+                    "visit_id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "passenger_cruise_id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "restaurant_name": {
+                        "type": "string"
+                    },
+                    "visit_date": {
+                        "type": "string"
+                    },
+                    "visit_time": {
+                        "type": "string"
+                    },
+                    "party_size": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "spend_amount": {
+                        "type": "string"
+                    },
+                    "restaurant_tier": {
+                        "type": "string"
+                    },
+                    "cuisine_type": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "first_name": {
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "characteristics": {
+                "type": "object",
+                "required": [
+                    "confidence_score",
+                    "created_at",
+                    "email",
+                    "first_name",
+                    "last_name",
+                    "last_updated",
+                    "model_version",
+                    "passenger_id",
+                    "persona_id",
+                    "persona_type"
+                ],
+                "properties": {
+                    "persona_id": {
+                        "type": "string"
+                    },
+                    "passenger_id": {
+                        "type": "string"
+                    },
+                    "persona_type": {
+                        "type": "string"
+                    },
+                    "confidence_score": {
+                        "type": "string"
+                    },
+                    "model_version": {
+                        "type": "string"
+                    },
+                    "last_updated": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "first_name": {
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    }
+                }
+            },
+            "getBehaviors_Restaurants_GET_response_1": {
+                "type": "object",
+                "required": [
+                    "count",
+                    "error_message",
+                    "restaurants",
+                    "status"
+                ],
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "count": {
+                        "type": "string"
+                    },
+                    "error_message": {
+                        "type": "string"
+                    },
+                    "restaurants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/restaurants"
+                        }
+                    }
+                }
+            },
+            "passenger360": {
+                "type": "object",
+                "required": [
+                    "passenger",
+                    "personas"
+                ],
+                "properties": {
+                    "personas": {
+                        "$ref": "#/components/schemas/personas"
+                    },
+                    "passenger": {
+                        "$ref": "#/components/schemas/passenger"
+                    }
+                }
+            },
+            "personas": {
+                "type": "object",
+                "required": [
+                    "characteristics",
+                    "count"
+                ],
+                "properties": {
+                    "characteristics": {
+                        "$ref": "#/components/schemas/characteristics"
+                    },
+                    "count": {
+                        "type": "string"
+                    }
+                }
+            },
+            "context": {
+                "type": "object",
+                "required": [
+                    "context_id",
+                    "current_port",
+                    "days_remaining",
+                    "first_name",
+                    "last_activity_timestamp",
+                    "last_name",
+                    "location_context",
+                    "next_port",
+                    "passenger_cruise_id",
+                    "port_arrival_date",
+                    "preferences",
+                    "updated_at"
+                ],
+                "properties": {
+                    "context_id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "passenger_cruise_id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "current_port": {
+                        "type": "string"
+                    },
+                    "next_port": {
+                        "type": "string"
+                    },
+                    "port_arrival_date": {
+                        "type": "string"
+                    },
+                    "days_remaining": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "last_activity_timestamp": {
+                        "type": "string"
+                    },
+                    "location_context": {
+                        "type": "string"
+                    },
+                    "preferences": {
+                        "type": "string"
+                    },
+                    "updated_at": {
+                        "type": "string"
+                    },
+                    "first_name": {
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "getPassenger360_GET_response_1": {
+                "type": "object",
+                "required": [
+                    "error_message",
+                    "passenger360",
+                    "status"
+                ],
+                "properties": {
+                    "passenger360": {
+                        "$ref": "#/components/schemas/passenger360"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "error_message": {
+                        "type": "string"
+                    }
+                }
+            },
+            "bookings": {
+                "type": "object",
+                "required": [
+                    "booking_date",
+                    "booking_id",
+                    "cancellation_date",
+                    "cancellation_reason",
+                    "created_at",
+                    "excursion_date",
+                    "excursion_id",
+                    "excursion_name",
+                    "first_name",
+                    "last_name",
+                    "number_of_guests",
+                    "passenger_cruise_id",
+                    "port_code",
+                    "status",
+                    "total_price",
+                    "updated_at"
+                ],
+                "properties": {
+                    "booking_id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "passenger_cruise_id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "excursion_id": {
+                        "type": "string"
+                    },
+                    "booking_date": {
+                        "type": "string"
+                    },
+                    "excursion_date": {
+                        "type": "string"
+                    },
+                    "number_of_guests": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "total_price": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "cancellation_date": {
+                        "type": "string"
+                    },
+                    "cancellation_reason": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "updated_at": {
+                        "type": "string"
+                    },
+                    "first_name": {
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "type": "string"
+                    },
+                    "excursion_name": {
+                        "type": "string"
+                    },
+                    "port_code": {
+                        "type": "string"
+                    }
+                }
+            },
+            "passenger": {
+                "type": "object",
+                "required": [
+                    "country_code",
+                    "created_at",
+                    "date_of_birth",
+                    "email",
+                    "first_name",
+                    "last_name",
+                    "loyalty_tier",
+                    "passenger_id",
+                    "phone",
+                    "updated_at"
+                ],
+                "properties": {
+                    "passenger_id": {
+                        "type": "string"
+                    },
+                    "first_name": {
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "date_of_birth": {
+                        "type": "string"
+                    },
+                    "country_code": {
+                        "type": "string"
+                    },
+                    "loyalty_tier": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "updated_at": {
+                        "type": "string"
+                    }
+                }
+            },
+            "getPassengerCruiseBookings_GET_response_1": {
+                "type": "object",
+                "required": [
+                    "count",
+                    "error_message",
+                    "passenger_cruise_bookings",
+                    "status"
+                ],
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "count": {
+                        "type": "string"
+                    },
+                    "error_message": {
+                        "type": "string"
+                    },
+                    "passenger_cruise_bookings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/passenger_cruise_bookings"
+                        }
+                    }
+                }
+            },
+            "excursions": {
+                "type": "object",
+                "required": [
+                    "active",
+                    "category",
+                    "created_at",
+                    "description",
+                    "difficulty_level",
+                    "duration_minutes",
+                    "excursion_id",
+                    "excursion_name",
+                    "max_capacity",
+                    "min_age",
+                    "port_code",
+                    "price_usd",
+                    "requires_certification",
+                    "updated_at"
+                ],
+                "properties": {
+                    "excursion_id": {
+                        "type": "string"
+                    },
+                    "port_code": {
+                        "type": "string"
+                    },
+                    "excursion_name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "type": "string"
+                    },
+                    "min_age": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "max_capacity": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "price_usd": {
+                        "type": "string"
+                    },
+                    "duration_minutes": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "requires_certification": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "difficulty_level": {
+                        "type": "string"
+                    },
+                    "active": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "updated_at": {
+                        "type": "string"
+                    }
+                }
+            },
+            "getExcursions_GET_response_1": {
+                "type": "object",
+                "required": [
+                    "count",
+                    "excursions",
+                    "status"
+                ],
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "count": {
+                        "type": "string"
+                    },
+                    "error_message": {
+                        "type": "string"
+                    },
+                    "excursions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/excursions"
+                        }
+                    }
+                }
+            },
+            "getCruiseContext_GET_response_1": {
+                "type": "object",
+                "required": [
+                    "context",
+                    "count",
+                    "error_message",
+                    "status"
+                ],
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "count": {
+                        "type": "string"
+                    },
+                    "error_message": {
+                        "type": "string"
+                    },
+                    "context": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/context"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
